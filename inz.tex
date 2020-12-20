@@ -1,0 +1,397 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5 cm, bindingoffset=0.5cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{indentfirst}
+\usepackage{csquotes}
+\usepackage[backend=biber, maxbibnames=30]{biblatex}
+\usepackage{amsmath}
+\usepackage{todonotes}
+
+\addbibresource{inz.bib}
+\graphicspath{ {./images/} }
+
+\title{System IIoT do zbierania danych pomiarowych}
+\date{}
+
+\begin{document}
+
+\clearpage\maketitle %no page number on title page
+\thispagestyle{empty}
+
+\listoftodos
+
+\newpage
+
+\section{Wstęp}
+
+\section{Analiza tematu}
+
+\subsection{Systemy informatyczne do zbierania danych pomiarowych} \label{system-do-zbierania-danych}
+
+\subsubsection*{Systemy informatyczne}
+
+Na potrzeby omówienia zagadnienia \emph{systemu do zbierania danych pomiarowych} oraz
+rozpatrzenia jego możliwych zastosowań konieczne jest wprowadzenie pewnych 
+pojęć podstawowych.
+Jednym z nich jest \textbf{system}. Zgodnie z encyklopedią systemem
+nazywamy wyizolowany z otoczenia zespół elementów przeznaczonych
+do realizacji określonego zadania \cite{system}. Szczególnym przykładem systemu jest
+\textbf{system komputerowy}. Jego elementy stanowią komputery, 
+urządzenia peryferyjne
+i oprogramowanie podstawowe (np. system operacyjny) \cite{system-komputerowy}.
+Systemy komputerowe, sieci oraz oprogramowanie stanowią razem 
+\textbf{systemy informatyczne}, których celem zastosowania jest 
+przetwarzanie informacji \cite{system-informatyczny}. 
+\textbf{Przetwarzaniem informacji} nazywa się proces akwizycji, utrwalania, udostępniania,
+organizacji, interpretacji i wizualizacji informacji \cite{information-science}, 
+\cite{information-processing}. Warto w~tym miejscu również doprecyzować pojęcia
+\textbf{informacji} oraz \textbf{danych}. Dane są pewną reprezentacją
+faktów skodyfikowaną w odpowiedni sposób. Same dane nie posiadają jednak celu.
+Znaczenia nabierają te dane, które zostaną zinterpretowane przez odbiorcę 
+i~zmniejszają jego niewiedzę.
+Przyswojone w ten sposób dane stają się informacją \cite{dane-informacja-wiedza}.
+
+\subsubsection*{Systemy do zbierania danych pomiarowych}
+
+Jednym z możliwych źródeł informacji w systemie informatycznym mogą być 
+\textbf{systemy do zbierania danych pomiarowych} (system akwizycji danych, ang. \emph{Data Acquisition Systems}, w skrócie: DAQ).
+Są to systemy, których rolą jest gromadzenie w formie cyfrowej informacji opisujących 
+zjawiska fizyczne. Systemy DAQ tworzą między innymi następujące komponenty
+o odpowiednich przeznaczeniach:
+\begin{itemize}
+    \item czujniki (sensory, ang. \emph{sensors}): przetwarzanie zjawisk fizycznych na analogowy sygnał elektryczny,
+    \item przetworniki analogowo-cyfrowe: konwersja sygnału analogowego na cyfrowy,
+    \item sprzęt komputerowy i oprogramowanie: przetwarzanie informacji. 
+\end{itemize}
+Systemy DAQ stanowią jedno z głównych narzędzi stosowanych przez naukowców i~inżynierów
+na potrzeby testów, pomiarów, a także zadań automatyzacji \cite{data-aq-systems}.
+Do zakresu funkcjonalności systemu DAQ można zaliczyć także możliwość utrwalania (składowania)
+zebranych danych i/lub informacji na potrzeby przyszłej analizy i przetwarzania. 
+System taki można wówczas nazwać \textbf{systemem do zbierania i składowania danych pomiarowych}
+(ang. \emph{Data Acquisition And Storage System}, w skrócie: DAS, ASS) \cite{big-data-aq-storage-systems}. 
+
+\subsubsection*{Systemy cybernetyczno-fizyczne}
+
+Poza bierną obserwacją zjawisk fizycznych przydatną może okazać się również
+możliwość oddziaływania systemu wirtualnego na rzeczywistość. Ogólny typ systemów
+realizujących nazwane funkcjonalności stanowią \textbf{systemy cybernetyczno-fizyczne}
+(ang. \emph{Cyber-Physical Systems}, w skrócie: \emph{CPS}).
+Są to systemy fizyczne, których funkcjonowanie jest zintegrowane, monitorowane oraz 
+nadzorowane przez rdzeń obliczeniowy (system wbudowany). Człon ``cybernetyczny'' odnosi
+się do cyfrowych systemów przetwarzania informacji, natomiast człon ``fizyczny'' 
+dotyczy stworzonych przez ludzi rzeczywistych systemów technicznych. 
+Systemy cybernetyczno-fizyczne stanowią więc skrzyżowanie świata rzeczywistego oraz
+wirtualnego (cybernetycznego).
+Charakteryzują się one często działaniem w czasie rzeczywistym oraz rozproszeniem 
+\cite{iiot-cyber-manufacturing-systems}. 
+Obie wymienione cechy zostały dokładniej opisane w rozdziale \ref{isp}, 
+jako że mają one szczególne znaczenie w środowisku przemysłowym. \newline
+
+Systemy do zbierania i składowania danych, systemy 
+cybernetyczno-fizyczne oraz (ogólnie) systemy informatyczne mogą znaleźć 
+zastosowanie w przemyśle. Mogą one wchodzić w skład lub rozszerzać funkcjonalności
+projektowanych oraz istniejących systemów, które zostały szczegółowo omówione
+w rozdziale \ref{isp}.
+
+\subsection{Systemy informatyczne w przemyśle} \label{isp}
+
+\subsubsection{Podstawowe zagadnienia}
+
+Podrozdział przedstawia podstawowe zagadnienia dotyczące systemów informatyki
+stosowanych w przemyśle. Omówiono w nim kolejno: pojęcia związane z procesem przemysłowym,
+urządzenia i aparaturę oraz środowiskowe warunki funkcjonowania takich systemów.
+
+\subsubsection*{Proces przemysłowy} 
+
+Do zagadnień podstawowych odnoszących się do środowiska przemysłowego w kontekście 
+systemów informatycznych należy zaliczyć pojęcie \textbf{procesu przemysłowego} 
+nazywane też \textbf{procesem technologicznym}.
+Jest to ciąg określonych zjawisk fizykochemicznych mających na celu wytworzenie
+produktu. \textbf{Technologią} nazywamy w tym kontekście uporządkowany opis procesu przemysłowego.
+Zbiór powiązanych (współpracujących) procesów przemysłowych nazywa się 
+\textbf{procesem produkcyjnym}. Zestaw urządzeń technicznych wykonujących
+proces technologiczny nosi miano \textbf{węzła technologicznego}, zaś
+uporządkowany przyczynowo-skutkowo zbiór takich węzłów nazywa się \textbf{linią technologiczną}
+lub \textbf{linią produkcyjną} \cite{isp}. Działania techniczne i ekonomiczne
+składające się na proces produkcyjny obejmuje jednostka organizacyjna zwana
+\textbf{jednostką produkcyjną} \cite{jednostka-produkcyjna}. Obecnie w usprawnieniu
+działania złożonych jednostek produkcyjnych nieocenionym wsparciem może okazać się
+wdrożenie i wykorzystywanie systemów informatycznych.
+
+\subsubsection*{Urządzenia, aparatura} 
+
+W przemyśle wspomaganym przez systemy informatyczne wykorzystywane są 
+\textbf{urządzenia aparatury kontrolno-pomiarowej i automatyki} (w skrócie: AKPiA). 
+Mogą one stanowić pomost (interfejs, protokół) pomiędzy procesem przemysłowym a systemem informatycznym. 
+Zestaw takich urządzeń można określić zbiorem informacji, który nazywamy
+\textbf{obiektem przemysłowym} \cite{isp}. Zespoły AKPiA mogą tworzyć opisane
+w rozdziale \ref{system-do-zbierania-danych} systemy DAQ oraz CPS. W~obrębie
+CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego --- 
+tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}). 
+Jest to określenie trafne, jako że informacja cyfrowa pod postacią modeli i obiektów
+danych reprezentuje niejako drugą (sklonowaną) tożsamość obiektu rzeczywistego.
+Dynamiczna natura takich cyfrowych modeli pozwala na wdrażanie innowacyjnych usług,
+które obejmują cały cykl życia produktu~\cite{iiot-challenges-opportunities-directions}. 
+Ze względu na kierunek przepływu
+informacji wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
+\begin{itemize}
+    \item układy \textbf{inicjatorów} (czujniki, sensory, ang. \emph{sensors}) -- rejestrowanie stanu procesu (produkcja informacji),
+    \item układy \textbf{wykonawcze} (ang. \emph{actuators}) -- modyfikacja stanu procesu (konsumpcja informacji),
+    \item układy \textbf{mieszane} (ang. \emph{mixed}) -- jednoczesna produkcja i konsumpcja informacji.
+\end{itemize}
+
+\subsubsection*{Uwarunkowania środowiskowe} 
+
+Omawiając tematykę związaną z systemami przemysłowymi nie sposób pominąć kwestię
+warunków otoczenia. Środowisko przemysłowe charakteryzuje się zwiększoną uciążliwością.
+Autor pozycji \cite{isp} podkreśla, iż nigdy nie należy zakładać, że środowisko przemysłowe
+będzie przyjazne. Wymienia on następujące \textbf{zaburzenia środowiskowe}, które mogą mieć wpływ na pracę
+systemu przemysłowego:
+\begin{itemize}
+    \item otoczenia -- np. temperatura, wilgotność, czynniki chemiczne;
+    \item mechaniczne -- np. wstrząsy, zapylenie;
+    \item przewodzone -- zaburzenia w sieci zasilania;
+    \item elektromagnetyczne -- zaburzenia elektromagnetyczne.
+\end{itemize}
+
+\subsubsection{Systemy rozproszone czasu rzeczywistego}
+
+Systemy informatyczne w przemyśle często posiadają cechy \textbf{systemów rozproszonych}.
+W systemach tych nie występuje centralne urządzenie
+przetwarzające informacje, lecz składają się one z wielu jednostek
+przetwarzających o różnym zakresie funkcjonalności. Jest to rozproszenie logiczne,
+któremu może (lecz nie musi) towarzyszyć rozproszenie terytorialne. Do zalet
+takich systemów zalicza się zwiększoną: moc obliczeniową, niezawodność oraz 
+elastyczność (adaptacyjność, rekonfigurowalność)
+\cite{isp},
+\cite{isp-analiza-przepływu-informacji}. W obrębie systemów przemysłowych
+w szczególności stosuje się \textbf{rozproszone systemy sterowania}, 
+(ang. \emph{Distributed Control Systems}, w~skrócie: DCS). Do zadań takich systemów
+należą sterowanie i wizualizacja procesu przemysłowego. 
+
+Wymaganą cechą procesów przemysłowych jest determinizm \cite{isp}. \textbf{Determinizm}
+to twierdzenie, że wszystkie zdarzenia zachodzące w czasie są jednoznacznie
+warunkowane przez zdarzenia je poprzedzające. Innymi słowy --- wszystkie zjawiska
+podlegają jakimś nieuchronnym prawidłowościom \cite{determinizm}. Ścisła przewidywalność
+funkcjonowania systemu jest niezbędna dla zapewnienia pełnej zgodności 
+jego działania z założeniami. O ile teoretyczny determinizm zapewniają prawa fizyki,
+o tyle w praktyce mogą wystąpić zdarzenia trudne do przewidzenia, na które
+system musi być przygotowany \cite{isp}.
+
+Determinizm działania względem czasu określa się mianem \textbf{determinizmu czasowego}.
+Postawienie wymagania determinizmu czasowego względem systemu przemysłowego oznacza,
+że jego odpowiedź na zdarzenia musi zachodzić w zdefiniowanym, skończonym czasie
+\cite{isp}.
+Ściślej mówiąc, oczekuje się, że czas obsługi zdarzenia przez system $T_s$ będzie
+mniejszy lub równy od określonego czasu granicznego $T_g$, co przedstawia 
+wzór \ref{ts-tg}.
+\begin{equation}
+    T_s \leq T_g\label{ts-tg}
+\end{equation}
+
+Systemy charakteryzujące się silnymi ograniczeniami czasowymi nazywamy 
+\textbf{systemami czasu rzeczywistego} (ang. \emph{Real Time Systems}, w skrócie: RTS). 
+Czas jest w~nich parametrem krytycznym. 
+Własności systemów czasu rzeczywistego są typowe dla systemów
+nadzorujących przebieg procesów przemysłowych \cite{isp-analiza-przepływu-informacji}.
+Ze względu na stopień ograniczeń czasowych wyróżniamy następujące grupy systemów RTS 
+\cite{isp}, \cite{isp-analiza-przepływu-informacji}, \cite{iiot-cyber-manufacturing-systems}:
+\begin{itemize}
+    \item \textbf{systemy z łagodnymi ograniczeniami czasowymi} (ang. \emph{Soft Real-Time Systems}, w~skrócie: SRTS)
+     -- systemy, w których przekraczanie ograniczeń czasowych jest tolerowane do pewnego stopnia,
+    \item \textbf{systemy z silnymi ograniczeniami czasowymi} (ang. \emph{Firm Real-Time Systems}, w~skrócie: FRTS)
+     -- systemy, w których przekroczenie ograniczeń czasowych oznacza tymczasową
+     niedostępność oferowanych funkcjonalności, co skutkuje obniżoną jakością realizowanych usług,
+    \item \textbf{systemy z ostrymi ograniczeniami czasowymi} (ang. \emph{Hard Real-Time Systems}, w~skrócie: HRTS)
+     -- systemy, w których przekroczenie ograniczeń nie jest tolerowane, a ich 
+     wystąpienie jest jednoznaczne z awarią systemu. 
+\end{itemize}
+
+Systemy posiadające cechy zarówno systemów rozproszonych, jak i systemów
+czasu rzeczywistego nazywa się po prostu \textbf{systemami rozproszonymi czasu rzeczywistego}.
+W celu umożliwienia współpracy urządzeń w obrębie systemów rozproszonych konieczna
+jest \textbf{komunikacja} \cite{isp-analiza-przepływu-informacji}. Jest to zagadnienie kluczowe warunkujące efektywne działanie
+systemu --- w szczególności, gdy do stawianych wymagań zaliczymy spełnienie 
+ograniczeń czasowych. Rolę medium komunikacyjnego
+w systemach komputerowych stanowią \textbf{sieci komputerowe}. Na potrzeby 
+przemysłu opracowano dedykowane rozwiązania adresujące opisane problemy.
+Przeglądu wybranych przemysłowych sieci komputerowych realizujących wielowarstwowe
+modele komunikacyjne dokonano w rozdziale \todo{dać odwołanie do sieci}.
+
+\subsubsection{Dziedzina zastosowań systemów informatycznych w przemyśle}
+
+Jak wcześniej wspomniano, wykorzystanie systemów informatycznych może usprawnić
+działania podejmowane w ramach przedsiębiorstwa (należących do niego jednostek produkcyjnych). 
+Zespół takich działań można ściślej nazwać \textbf{prowadzeniem procesu}.
+Proces ten może mieć dwa aspekty: biznesowy (gospodarczy, zarządczy) oraz techniczny. 
+\textbf{Proces biznesowy} to zespół działań dążących do osiągnięcia pewnego celu
+zdefiniowanego w ramach przedsiębiorstwa. \textbf{Proces techniczny} dotyczy
+obsługi działań związanych z procesem przemysłowym. 
+
+
+\subsection{Internet Rzeczy}
+
+\subsubsection{Definicje i zastosowania Internetu Rzeczy}
+
+Pojęcie Internetu Rzeczy (ang. \emph{Internet of Things}, w skrócie: IoT) posiada różne definicje. 
+Jedną z prostszych jest sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
+do Internetu \cite{intro-to-iot}. Bardziej szczegółowe jest ujęcie IoT jako sieci jednoznacznie
+identyfikowalnych przedmiotów z wbudowanymi czujnikami, inteligencją obliczeniową
+oraz powszechną łącznością z Internetem \cite{iot-hype-to-reality}.
+Na nieco wyższym poziomie definiuje się IoT jako globalną infrastrukturę udostępniającą
+zaawansowane usługi poprzez połączenie przedmiotów z wykorzystaniem technologii informacyjnych.
+\cite{intro-to-iot}. W każdej z przytoczonych
+definicji zauważalne jest pewne podobieństwo pomiędzy IoT a pojęciem CPS 
+scharakteryzowanym w rozdziale \ref{system-do-zbierania-danych}. Zagadnienia te
+posiadają część wspólną, dotyczą podobnej tematyki (przede wszystkim połączenia świata fizycznego i logicznego), 
+lecz mają odrębną genezę i uwydatnia się w ich ramach różne aspekty: 
+inżynierię systemów sterowania w CPS oraz sieci i komunikację w IoT \cite{cps-vs-iot}.
+Głównym zastosowaniem Internetu Rzeczy jest monitorowanie świata rzeczywistego 
+oraz wchodzenie z nim w interakcję, co może usprawnić działalność człowieka na wielu płaszczyznach.
+Wśród praktycznych zastosowań IoT wymienia się między innymi:
+sieci czujników i pomiary rozproszone, urządzenia (gadżety) ubieralne, 
+inteligentne budynki, miasta, logistyka, przemysł, a także marketing \cite{internet-reczy}. 
+Możliwości, jakie niesie IoT dla przemysłu zostały w sposób szczególny rozpatrzone 
+w rozdziale \ref{iiot}.
+
+\subsubsection{``Rzeczy'' w IoT}
+
+Wśród przedmiotów tworzących IoT wyróżnia się dwie kategorie: 
+czujniki oraz urządzenia wykonawcze. Są to odpowiedniki aparatury kontrolno-pomiarowej 
+wykorzystywanej w przemyśle (patrz: rozdział \ref{isp}). Czujniki umożliwiają
+obserwację świata rzeczywistego i jej zapis w postaci cyfrowej.  
+Urządzenia wykonawcze są w stanie zmienić stan układu rzeczywistego (wprowadzać w nim ruch)
+na podstawie otrzymanej informacji cyfrowej \cite{iot-hype-to-reality}.
+Przykładowe czujniki to: przyciski, przełączniki, czujniki ruchu, czujniki gazów,
+czujniki wibracji, czujniki temperatury, wilgoci,
+nacisku, ultradźwięków i wielu innych wielkości fizycznych. Przykłady urządzeń
+wykonawczych to: silniki, siłowniki liniowe, przekaźniki, zawory. Ważnym elementem
+infrastruktury IoT są systemy wbudowane typu SoC (ang. \emph{System on a chip}).  
+Są to układy elektroniczne, których poszczególne komponenty realizujące wymagane 
+funkcjonalności są zintegrowane w ramach jednego, kompletnego układu scalonego. 
+System typu SoC mogą zawierać m. in.: procesory lub mikrokontrolery, przetworniki
+analogowo-cyfrowe i cyfrowo-analogowe, pamięci, procesory graficzne, interfejsy komunikacyjne \cite{intro-to-iot}, \cite{soc}. 
+Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące platformy uniwersalne \cite{intro-to-iot}:
+
+\begin{itemize}
+    \item Arduino -- Różne modele płytek rozwojowych wykorzystujące m. in. systemy
+    SoC producenta Atmel oparte o mikrokontrolery AVR. Wśród zestawów płytek
+    dostępne są moduły rozszerzeń posiadające przewodowe i bezprzewodowe interfejsy sieciowe.
+    \item ESP -- Systemy typu SoC producenta Espressif Systems zawierające wbudowane
+    bezprzewodowe interfejsy sieciowe.
+    \item Raspberry Pi -- Zaawansowane płytki tworzące komputery jednopłtykowe (ang. \emph{single-board computer}).    
+    Można na nich uruchomić system operacyjny (również z interfejsem graficznym). Posiadają liczne 
+    interfejsy komunikacyjne (w tym sieciowe) \cite{rpi}. 
+\end{itemize}
+
+\subsubsection{``Internet'' w IoT}
+
+Wymiana informacji w systemach IoT może odbywać się w sposób przewodowy lub bezprzewodowy.
+Stosowane modele komunikacji sieciowej bazują na standardowym modelu OSI bądź
+internetowym stosie TCP/IP. Urządzenia Internetu Rzeczy nie zawsze są jednak 
+w stanie implementować wszystkie warstwy stosu ze względu na ograniczone zasoby 
+(moc obliczeniowa, pamięć, energia elektryczna). W warstwie fizycznej i łącza danych
+sieci IoT wykorzystuje się protokoły: Ethernet, WiFi, Bluetooth, sieci komórkowe,
+ZigBee, Z-Wave, NFC. W warstwie sieciowej stosuje się: IPv4, IPv6 oraz zoptymalizowaną
+pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m. in.: TCP i UDP. 
+Warstwy sesji, prezentacji i aplikacji implementują powszechne internetowe protokoły, jak
+HTTP, RTP, SMTP. Na szczególną uwagę zasługują protokoły najwyższych warstw zaprojektowanie
+z myślą o IoT, są to m.in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
+
+\subsubsection*{Protokół MQTT}
+
+MQTT (ang. \emph{Message Queue Telemetry Transport}) to lekki pod względem wykorzystania zasobów
+protokół polegający na wymianie komunikatów (ang. \emph{messages}). Architektura komunikacji
+jest oparty na wzorcu publikuj-subskrybuj (ang. \emph{publish-subscribe}).
+Klienci łączą się do centralnego serwera (pośrednika, ang. \emph{broker}), za pośrednictwem
+którego mogą wysyłać i odbierać komunikaty pod konkretnym adresem (tematem, ang. \emph{topic}).
+Tematy tworzą hierarchiczną strukturę analogiczną do URL. MQTT jest protokołem binarnym
+wykorzystującym TCP w warstwie transportowej \cite{iot-hype-to-reality}.
+
+\subsubsection*{Protokół CoAP}
+
+CoAP (ang. \emph{Constrained Application Protocol}) to zoptymalizowana alternatywa dla HTTP
+przeznaczona dla urządzeń o ograniczonych zasobach. Posiada Wykorzystuje m. in. protokół
+UDP w warstwie transportowej, krótsze nagłówki w formie binarnej. 
+CoAP wywodzi się ze wzorca architektonicznego REST (ang. \emph{Representational state transfer}), 
+jest więc zorientowany na zasoby umożliwiając ich tworzenie, odczyt, aktualizację
+i usuwanie (ang. /emph{Create, Read, Update, Delete}, w skrócie: CRUD). 
+Identycznie jak w przypadku HTTP, architektura komunikacji protokołu CoAP to klient-serwer 
+\cite{intro-to-iot}, \cite{iot-hype-to-reality}.
+
+\subsubsection*{Modele komunikacyjne}
+
+W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{intro-to-iot}:
+
+\begin{itemize}
+    \item Urządzenie -- Urządzenie (ang. \emph{Machine to Machine, Device to Device}, w skrócie: M2M)
+    --- Urządzenia komunikują się bezpośrednio bez potrzeby translacji czy wykonywania 
+    skomplikowanego przetwarzania danych (dotyczy to zarówno urządzeń tej samej klasy, jak i różnej);
+    \item Urządzenie -- Brama (ang. \emph{Device to Gateway})
+    --- Występuje, gdy zachodzi potrzeba translacji informacji wymienianej pomiędzy różnymi sieciami.
+    Translacją zajmuje brama (ang. \emph{gateway}), którą tworzy dedykowane oprogramowanie i/lub urządzenie;
+    \item Urządzenie -- Chmura (ang. \emph{Device to Cloud})
+    --- Występuje, gdy zachodzi potrzeba zaawansowanego przetwarzania danych 
+    (statystyka, eksploracja danych, big data, składowanie, itp.), 
+    co nie jest możliwe w przypadku urządzeń o ograniczonych zasobach obliczeniowych, 
+    pamięciowych i energetycznych. Wówczas gromadzone przez urządzenia dane są 
+    przesyłane do platform opartych o usługi chmurowe. Może to być zarówno chmura publiczna 
+    (np. AWS, Azure), jak i lokalna, prywatna infrastruktura informatyczna. 
+    Niektóre urządzenia są w stanie komunikować się z chmurą bezpośrednio, inne
+    korzystają w tym celu z bram.
+\end{itemize}
+
+\subsubsection{Usługi chmurowe}
+
+Do niedawna większość przedsiębiorstw chcących czerpać korzyści z wykorzystania
+systemów informatycznych było zmuszonych do inwestowania we własną infrastrukturę
+komputerową. Przetwarzanie w chmurze (ang. \emph{cloud computing}) pozwala obecnie 
+na migrację części lub całości infrastruktury informatycznej na dostawców chmury,
+takich jak Microsoft Azure, Amazon AWS, Google Cloud, czy IBM Cloud. Usługi chmurowe
+udostępnianie przez wymienionych i innych dostawców noszą miano chmury publicznej. 
+Są one dostępne na życzenie za pośrednictwem Internetu i posiadają elastyczny
+system rozliczeń, w którym koszta są zależne od faktycznie zużytych zasobów
+(cykle procesorów, pamięć, wykorzystanie łącza, liczba zapytań). Do zalet takiego
+rozwiązania należą: łatwa skalowalność, konfigurowalność i duży wybór usług
+ułatwiających utrzymanie infrastruktury informatycznej. Spośród wad należy wymienić
+zależność od firm trzecich (dostawców chmury) oraz brak pełnej kontroli nad 
+posiadaną infrastrukturą \cite{iot-hype-to-reality}.
+
+W ramach usług dostawcy chmury udostępniają m.in.: przetwarzanie danych, 
+analitykę, eksplorację danych, uczenie maszynowe, konteneryzację, relacyjne i nierelacyjne
+bazy danych, integrację aplikacji, hosting aplikacji i stron internetowych, 
+maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkwnikami, a także
+platformy do zarządzania systemami IoT \cite{aws}, \cite{azure}.
+
+Zarządzanie dużą ilością danych jest podstawowym zadaniem systemu IoT. Składa się ono
+na: zbieranie, filtrowanie, agregację, przetwarzanie, składowanie, udostępnianie,
+wizualizację oraz zabezpieczanie \cite{intro-to-iot}. Usługi chmurowe umożliwiają złożone zarządzanie
+danymi oferując jednocześnie skalowalność, zdalny dostęp, opłaty zależne od zapotrzebowania
+i gotowe rozwiązania programistyczne skracające czas rozwoju systemów. 
+Wymienione usługi, jak i dedykowane chmurowe platformy do administrowania 
+urządzeniami mogą nieść wiele korzyści dla projektowanego lub rozwijanego
+systemu IoT \cite{measuring-value-of-cloud-computing}, \cite{iot-and-cloud}, \cite{iot-in-industrial-sector}. 
+
+\subsection{Internet rzeczy w przemyśle}\label{iiot}
+
+\subsection{Zakres tematyczny realizowanego projektu}
+
+
+\section{Wymagania i narzędzia}
+
+\section{Specyfikacja zewnętrzna}
+
+\section{Specyfikacja wewnętrzna}
+
+\section{Weryfikacja i walidacja}
+
+\section{Podsumowanie i wnioski}
+
+\printbibliography
+
+\end{document}
