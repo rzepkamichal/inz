@@ -174,16 +174,7 @@ w szczególności stosuje się \textbf{rozproszone systemy sterowania},
 (ang. \emph{Distributed Control Systems}, w~skrócie: DCS). Do zadań takich systemów
 należą sterowanie i wizualizacja procesu przemysłowego. 
 
-Wymaganą cechą procesów przemysłowych jest determinizm \cite{isp}. \textbf{Determinizm}
-to twierdzenie, że wszystkie zdarzenia zachodzące w czasie są jednoznacznie
-warunkowane przez zdarzenia je poprzedzające. Innymi słowy --- wszystkie zjawiska
-podlegają jakimś nieuchronnym prawidłowościom \cite{determinizm}. Ścisła przewidywalność
-funkcjonowania systemu jest niezbędna dla zapewnienia pełnej zgodności 
-jego działania z założeniami. O ile teoretyczny determinizm zapewniają prawa fizyki,
-o tyle w praktyce mogą wystąpić zdarzenia trudne do przewidzenia, na które
-system musi być przygotowany \cite{isp}.
-
-Determinizm działania względem czasu określa się mianem \textbf{determinizmu czasowego}.
+Wymaganą cechą procesów przemysłowych jest \textbf{determinizm czasowy}.
 Postawienie wymagania determinizmu czasowego względem systemu przemysłowego oznacza,
 że jego odpowiedź na zdarzenia musi zachodzić w zdefiniowanym, skończonym czasie
 \cite{isp}.
@@ -194,23 +185,18 @@ wzór \ref{ts-tg}.
     T_s \leq T_g\label{ts-tg}
 \end{equation}
 
-Systemy charakteryzujące się silnymi ograniczeniami czasowymi nazywamy 
+Systemy charakteryzujące się determinizmem czasowym nazywa się 
 \textbf{systemami czasu rzeczywistego} (ang. \emph{Real Time Systems}, w skrócie: RTS). 
-Czas jest w~nich parametrem krytycznym. 
-Własności systemów czasu rzeczywistego są typowe dla systemów
-nadzorujących przebieg procesów przemysłowych \cite{isp-analiza-przepływu-informacji}.
-Ze względu na stopień ograniczeń czasowych wyróżniamy następujące grupy systemów RTS 
-
 Systemy posiadające cechy zarówno systemów rozproszonych, jak i systemów
 czasu rzeczywistego nazywa się po prostu \textbf{systemami rozproszonymi czasu rzeczywistego}.
-W celu umożliwienia współpracy urządzeń w obrębie systemów rozproszonych konieczna
-jest \textbf{komunikacja} \cite{isp-analiza-przepływu-informacji}. Jest to zagadnienie kluczowe warunkujące efektywne działanie
-systemu --- w szczególności, gdy do stawianych wymagań zaliczymy spełnienie 
-ograniczeń czasowych. Rolę medium komunikacyjnego
+Zagadnieniem kluczowym w kontekście takich systemów
+jest \textbf{komunikacja} \cite{isp-analiza-przepływu-informacji}.
+Rolę medium komunikacyjnego
 w systemach komputerowych stanowią \textbf{sieci komputerowe}. Na potrzeby 
-przemysłu opracowano dedykowane rozwiązania adresujące opisane problemy.
-Przeglądu wybranych przemysłowych sieci komputerowych realizujących wielowarstwowe
-modele komunikacyjne dokonano w rozdziale \todo{dać odwołanie do sieci}.
+przemysłu opracowano dedykowane sieci komputerowe odpowiadająće m. in. na potrzebą
+działania w ramach ścisłych ograniczeń czasowych. Do przykładowych sieci należą:
+Modbus, Ethernet, Profinet, Profibus, CAN, EtherCAT
+
 
 \subsubsection{Dziedzina zastosowań systemów informatycznych w przemyśle}
 
@@ -223,7 +209,7 @@ zdefiniowanego w ramach przedsiębiorstwa. \textbf{Proces techniczny} dotyczy
 obsługi działań związanych z procesem przemysłowym. 
 
 
-\subsection{Internet Rzeczy}
+\subsection{Internet Rzeczy}\label{iot}
 
 \subsubsection{Definicje i zastosowania Internetu Rzeczy}
 
@@ -277,6 +263,12 @@ Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące 
     Można na nich uruchomić system operacyjny (również z interfejsem graficznym). Posiadają liczne 
     interfejsy komunikacyjne (w tym sieciowe) \cite{rpi}. 
 \end{itemize}
+
+Wymienione platformy uniwersalne mogą też stanowić pomost pomiędzy główną
+siecią IoT wykorzystującą np. Ethernet czy technologie bezprzewodowe a innymi urządzeniami
+peryferyjnemi (czujnikami i urządzeniami wykonawczymi) komunikującymi się za pośrednictwem 
+uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, 
+takich jak: SPI, I2C, RS232, USB \cite{intro-to-iot}.
 
 \subsubsection{``Internet'' w IoT}
 
@@ -462,14 +454,109 @@ typowe urządzenia systemów automatyki przemysłowej, m.in. czujniki i urządze
 sterowniki (np. klasy PLC). Warstwę platformową stanowią zwykle usługi chmurowe,
 takie jak Azure IoT Hub czy AWS IoT. Usługi te umożliwiają przede wszystkim zarządzanie
 systemem IoT, akwyizycję i agregację danych oraz trasowanie danych na wejścia 
-innych usług i aplikacji domenowych \cite{models-innovative-iot}. Działanie
-warstwy pierwszej i drugiej integruje oprogramowanie (ewentualne dedykowane urządzenia)
-nazywane bramą. Warstwę biznesową
+innych usług i aplikacji domenowych \cite{models-innovative-iot}. Warstwę biznesową
 stanowią aplikacje domenowe lub zaawansowane usługi chmurowe
 korzystające ze zgromadzonych danych w celu wspomagnia
 analityki, monitorowania, zarządzania, archiwizacji, itp. 
 
-\subsection{Zakres tematyczny realizowanego projektu}
+\subsection{Ujęcie tematu w świetle zgromadzonych informacji}
+
+Niniejszy rozdział przedstawia konsolidację wiedzy zebranej w ramach poprzednich
+rozdziałów i jej odniesienie do tematu pracy. 
+
+Głównym zagadnieniem rozważanym
+w ramach projektu jest zbieranie danych pomiarowych w środowisku
+przemysłowym. Problem ten adresują technologie IIoT oraz usługi chmurowe.
+Umożliwiają one gromadzenie i przetwarzanie danych w systemie rozproszonym składającym
+się z szeroko pojętej aparatury kontrolno-pomiarowej (urządzeń cybernetyczno-fizycznych).
+Wykorzystanie usług chmurowych dostępnych za pośrednictwem Internetu
+pozwala na dostęp do skalowalnych zasobów informatycznych --- m. in.
+mocy obliczeniowej, pamięci masowej, infrastruktury progrogramistycznej. Dostawcy
+chmury udostępniają ponadto platformy do zarządzania wielką ilością urządzeń IoT,
+co usprawnia nadzór nad systemem \cite{iot-gateway-medical-and-industrial}. 
+W niniejszej pracy podjęto zadanie \textbf{zaprojektowania architektury} opisanego systemu
+oraz \textbf{realizacji prototypu}.
+
+Sporządzenie koncepcji architektury systemu sprowadza się do wypracowania
+ogólnego rozwiązania dla klasy zadań, jaką jest zbieranie danych w środowisku przemysłowym.
+Zaproponowany model będzie więc abstrahować od konkretnych narzędzi, technologii,
+urządzeń czy szczegółowych przypadków użycia, a będzie odwoływać się do pewnych 
+podstawowych koncepcji (np. pojęcie czujnika, modele komunikacji w IoT, pojęcie bramy, przemysłowe protokoły sieciowe). 
+Przykładową implementację modelu ma stanowić wykonany prototyp, na poziomie którego dobór technologii
+i aparatury będzie skonkretyzowany na podstawie analizy i porównań dostępnych
+narzędzi i usług informatycznych. 
+
+Modelem referencyjnym dla projektowanego systemu jest zaprezentowana w rozdziale
+\ref{iiot} trójwarstwowa architektura systemów IIoT. Dla warstwy brzegowej przyjmuje 
+się, że w systemie jest zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
+lub zespoły urządzeń aparatury kontrolno-pomiarowej pracujące w czasie rzeczywistym 
+w ramach sieci przemysłowej
+(czujniki przemysłowe, wyspy czujników, moduły DAQ, moduły I/O, sterowniki, itp.)
+oraz typowe dla IoT bezprzewodowe sieci sensorowe (ang. \emph{Wireless Sensor Networks}, w skrócie: WSN)
+lub inne zespoły urządzeń zawierające czujniki komunikujące się z wykorzystaniem protokołów charakterystycznych dla IoT
+\cite{iiot-gateway-introduction}
+(przykłady takich urządzeń wymieniono w rozdziale \ref{iot}). Implementację warstwy
+platformowej realizują wspomniane już rozwiązania oferowane przez dostawców chmury.
+Do warstwy biznesowej mogą należeć istniejące aplikacje 
+wspomagające działalność przedsiębiorstwa 
+(m. in. systemy klasy ERP) oraz mogące przejmować ich funkcje usługi chmurowe. 
+
+Reasumując --- gromadzenie danych w ramach systemu umożliwia dostępna apratura pomiarowa
+składająca się z urządzeń przemysłowych i/lub IoT. Zarządzanie urządzeniami, agregację, przetwarzanie, składowanie i udostępnianie
+danych mogą realizować wybrane usługi chmurowe i/lub ``szyte na miarę'' aplikacje (głównie internetowe).
+Pewną lukę, element brakujący w proponowanym modelu stanowi konieczność dopasowania
+do różnych protokołów sieci przemysłowych oraz IoT. Konieczna jest też integracja
+warstwy brzegowej i platformowej zaproponowanego modelu. Są to krytyczne zadania
+przypisywane systemom IIoT. Dla rozwiązania 
+tego problemu stosuje się tak zwane bramy IoT (ang. \emph{IoT gateways}). Są to zwykle
+urządzenia wraz z oprogramowaniem będące w stanie integrować zarówno protokoły
+warstwy fizycznej i łącza danych, jak i dokonywać translacji protokołów wyższych warstw 
+(tzw. bramy semantyczne) wraz z możliwością udostępniania danych za pośrednictwem
+Internetu \cite{iiot-heterogenous-gateways}. Bramy mogą realizować również
+wstępne przetwarzanie danych odciążając w ten sposób usługi wyższych warstw.
+Jest to tzw. koncepcja przetwarzania brzegowego (ang. \emph{edge computing}) \cite{iot-gateway-medical-and-industrial}.
+W ogólniejszym rozumieniu bramy IoT mogą stanowić pomost pomiędzy infrastrukturą
+pomiarową a infrastrukturą sieciową lub też pomiędzy technologią operacyjną a 
+technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challenges-opportunities-directions}. 
+Bramy IoT z reguły
+mogą udostępniać dane za pośrednictwem Internetu na poziomie usługi \emph{best-effort}.
+Warto jednak, aby na poziomie lokalnym mogły one współpracować z istniejącymi
+systemami czasu rzeczywistego, co jest ważnym aspektem w środowisku przemysłowym. 
+
+Otrzymano zatem podstawowy zarys projektowanego systemu. 
+Składa się on z urządzeń pomiarowych udostępniających dane w ramach sieci 
+przemysłowych i/lub IoT. Integracji różnych protokołów i wstępnego przetwarzania
+dokonuje dedykowana brama (bramy) IoT. Brama przekazuje dane w spójnym, jednolitym
+formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
+Te z kolei mogą realizować zaawansowane przetwarzanie, składowanie, udostępnianie
+i wizualizację danych. Poza podstawowym zdefiniowanym celem gromadzenia danych pomiarowych
+możliwe jest też oddziaływanie systemów informatycznych na systemy nadzorujące 
+przebiegiem procesów przemysłowych. Wynikiem przetwarzania w chmurze może
+być informacja zwrotna dla systemu przemysłowego. Nie jest to przypadek użycia
+zalecany dla zadań automatyzacji, gdzie z reguły narzucany jest determinizm czasowy. 
+Aczkolwiek można sobie wyobrazić przykładową sytuację, w której wynikiem analizy danych jest 
+polecenie automatycznej kalibracji procesu przemysłowego, która niekoniecznie musi
+odbyć się w ścisłych ramach czasowych. Realizowany system powinien zatem dopuszczać
+możliwość implementacji podobnych funkcjonalności wpisujących się w paradygmat
+systemów CPS. W następującym, szczegółowym etapie projektowania poruszone zostaną również 
+inne ważne wyzwania IIoT, jakimi są bezpieczeństwo danych oraz bezpieczeństwo w kontekście niesprzyjająćego
+środowiska przemysłowego \cite{iiot-challenges-opportunities-directions}.
+
+Wśród istniejących, komercyjnych rozwiązań o podobnej dziedzinie funkcjonalnej
+znaleziono następujące przykłady:
+\begin{itemize}
+    \item Sensemetrics --- Rozwiązanie amerykańskiej firmy Industrial IoT Solutions
+    oparte na standaryzowanej architekturze warstwowej. Jest to system do akwizycji
+    i zarządzania danych. Producent przypisuje swojemu systemowi wysoką konfigurowalność \cite{sensmetrics};
+    \item Nazca 4.0 --- System rozwijany przez polską firmę APA Group zorientowany na Przemysł 4.0.
+    Wśród użytych technologii producent wymienia IoT, inteligentne czujniki, 
+    przetwarzanie w chmurze, integrację systemów \cite{nazca};
+    \item IXON --- Kompletne rozwiązanie IIoT holenderskiej firmy o tej samej nazwie.
+    System składa się z platformy internetowej umożliwiającej nadzór, analitykę i wizualizację danych,
+    a także dedykowanego routera/bramy IoT. Urządzenie wraz z opgrogramowaniem
+    integruje takie systemy i protokoły jak: OPC UA, Modbus, Ethernet \cite{ixon}.
+\end{itemize}
+
 
 
 \section{Wymagania i narzędzia}
