@@ -200,17 +200,6 @@ Czas jest w~nich parametrem krytycznym.
 Własności systemów czasu rzeczywistego są typowe dla systemów
 nadzorujących przebieg procesów przemysłowych \cite{isp-analiza-przepływu-informacji}.
 Ze względu na stopień ograniczeń czasowych wyróżniamy następujące grupy systemów RTS 
-\cite{isp}, \cite{isp-analiza-przepływu-informacji}, \cite{iiot-cyber-manufacturing-systems}:
-\begin{itemize}
-    \item \textbf{systemy z łagodnymi ograniczeniami czasowymi} (ang. \emph{Soft Real-Time Systems}, w~skrócie: SRTS)
-     -- systemy, w których przekraczanie ograniczeń czasowych jest tolerowane do pewnego stopnia,
-    \item \textbf{systemy z silnymi ograniczeniami czasowymi} (ang. \emph{Firm Real-Time Systems}, w~skrócie: FRTS)
-     -- systemy, w których przekroczenie ograniczeń czasowych oznacza tymczasową
-     niedostępność oferowanych funkcjonalności, co skutkuje obniżoną jakością realizowanych usług,
-    \item \textbf{systemy z ostrymi ograniczeniami czasowymi} (ang. \emph{Hard Real-Time Systems}, w~skrócie: HRTS)
-     -- systemy, w których przekroczenie ograniczeń nie jest tolerowane, a ich 
-     wystąpienie jest jednoznaczne z awarią systemu. 
-\end{itemize}
 
 Systemy posiadające cechy zarówno systemów rozproszonych, jak i systemów
 czasu rzeczywistego nazywa się po prostu \textbf{systemami rozproszonymi czasu rzeczywistego}.
@@ -378,6 +367,107 @@ urządzeniami mogą nieść wiele korzyści dla projektowanego lub rozwijanego
 systemu IoT \cite{measuring-value-of-cloud-computing}, \cite{iot-and-cloud}, \cite{iot-in-industrial-sector}. 
 
 \subsection{Internet rzeczy w przemyśle}\label{iiot}
+
+Zasadniczą ideą IoT jest połączenie wielu (nawet miliardów) inteligentnych urządzeń,
+które są w stanie monitorować środowisko, w którym się znajdują, przesyłać 
+i przetwarzać zebrane dane oraz dawać informację zwrotną do otoczenia. Przyłączenie
+takich przedmiotów do Internetu ma udoskonalić rozwój i bezpieczeństwo
+działania przedsiębiorstw oraz społeczeństwa, a także umożliwić efektywną
+interakcję pomiędzy światem rzeczywistym a cyfrowym (\todo{ref do CPS}). 
+Przemysłowym Internetem Rzeczy (ang. \emph{Industrial Internet of Things}, w skrócie IIoT)
+nazywamy rozwiązania IoT znajdujące zastosowanie w przemyśle. Do dziedziny
+IIoT należą: komunikacja M2M oraz przemysłowe technologie komunikacyjne stosowane 
+w systemach automatyzacji. IIoT ma umożliwić lepsze zrozumienie procesów
+przemysłowych, a w związku z tym zapewnić większą wydajność i zrównoważenie
+produkcji. Innymi słowy, IIoT ma za zadanie ułatwić integrację technologii operacyjnych 
+(ang. \emph{Operation Technologies}, w skrócie: OT) oraz
+technologii informatycznych (ang. \emph{Information Technologies}, w skrócie: IT) 
+\cite{iiot-challenges-opportunities-directions}.
+Technologie operacyjne to systemy nadzorujące przebieg procesów przemysłowych (systemy niskopoziomowe), 
+zaś technologie informatyczne to systemy, których rolą jest jest gromadzenie 
+i przetwarzanie informacji wartościowych z perspektywy przedsiębiorstwa (systemy wysokopoziomowe)
+\cite{ot-it-categorization-of-customer-concerns}.
+Można też spotkać analogiczny podział systemów na wspomagające proces biznesowy 
+oraz techniczny lub też na systemy poziomu procesu oraz poziomu zarządzania \cite{isp}.
+\todo{dodać rysunek IT/OT wraz z wymienionymi przykładami}.
+
+Z zagadnieniem IIoT ściśle związane jest też pojęcie Przemysłu 4.0 (ang. \emph{Industry 4.0})
+reprezentujące czwartą rewolucję przemysłową. Jest to koncept stosunkowo uniwersalny
+skupiający rozwiązania CPS, IoT, IIoT wykorzystywane w celu zwiększania efektywności
+procesów przemysłowych w ramach tzw. inteligentych fabryk (ang. \emph{smart factories})
+\cite{iiot-cyber-manufacturing-systems}, \cite{iiot-challenges-opportunities-directions}.
+\todo{dodać diagram Venne'a}.
+
+Ze względu na konieczność funkcjonowania w specyficznym środowisku przemysłowym
+IIoT posiada pewne cechy odróżniające od standardowego (konsumenckiego) IoT.
+Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
+\begin{itemize}
+    \item Rozwój o charakterze ewolucyjnym, nie rewolucyjnym
+    --- Podczas gdy wokół konsumenckiego IoT rozwijanych jest wiele nowych technologii i standardów, 
+    wdrażając systemy IIoT należy się liczyć z dużą bezwładnością
+    przemysłowego środowiska technologicznego. Istnieje wiele sprawdzonych, dobrze
+    funkcjonujących rozwiązań dedykowanych dla przemysłu, których przez długi czas
+    nie trzeba szczególnie rozbudowywać, lub co więcej --- wymieniać \cite{isp};
+    \item Infrastruktura komunikacyjna 
+    --- Infrastruktura IoT jest bardziej elastyczna, podczas gdy infrastruktura
+    IIoT wymaga dostosowania do bardziej ustrukturyzowanych modeli komunikacyjnych;
+    \item Ograniczenia
+    --- W otoczeniu przemysłowym charakterystyczne są wysokie wymagania dotyczące
+    ograniczeń czasowych (determinizmu), niezawodności, bezpieczeństwa danych oraz
+    funkcjonowania w niesprzyjających warunkach środowiskowych.
+\end{itemize}
+
+Szczególną uwagę należy poświęcić stwierdzeniu, że \textbf{intencją wykorzystania IIoT nie 
+jest zastąpienie tradycyjnych systemów automatyzacji procesów przemysłowych} \cite{iiot-challenges-opportunities-directions}. 
+Na tej płaszczyźnie istnieją bowiem sprawdzone, dedykowane rozwiązania adresujące
+problem ograniczeń spotykanych w autoamtyce przemysłowej. Do rozwiązań technologicznych należą: przemysłowe sieci komputerowe
+(np. Profinet, Ethercat), dedykowane urządzenia 
+(np. PLC, przemysłowe komputery klasy PC, stacje procesowe systemów DCS, panele HMI),
+systemy wykorzystujące redundancję, systemy SCADA \cite{isp}, \cite{systemy-automatyki-przemyslowej}.
+Właściwym \textbf{celem wdrażania systemów IIoT jest zwiększanie wiedzy na temat procesów
+przemysłowych, co w efekcie pozwala na ulepszenie jego wydajności}. Takie systemy
+z kolei niekoniecznie wymagają spełniania ścisłych ram ograniczeń 
+\cite{iiot-challenges-opportunities-directions}. 
+Ogólnie, ze względu na tolerancję ograniczeń (m. in. opóźnień czasowych) można 
+wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reality}: 
+\begin{itemize}
+    \item Dostarczanie z wykorzystaniem najlepszych możliwości (ang. \emph{best effort})
+    --- Komunikacja nie spełnia ścisłych ograniczeń czasowych, wykorzystywana jest 
+    maksymalna dostępna przepustowość. Jest to poziom jakości charakterystyczny
+    dla usług internetowych;
+    \item Dostarczanie w czasie gwarantowanym
+    --- Komunikacja spełnia pewne ograniczenia czasowe, których niedotrzymanie
+    skutkuje spadkiem korzyści płynących z wykorzystawanych usług;
+    \item Dostarczanie w czasie deterministycznym
+    --- Komunikacja powinna spełniać ścisłe ograniczenia czasowe,
+    których niedotrzymanie jest równoznaczne z awarią systemu.
+\end{itemize}
+Poziomy tolerancji opóźnień czasowych w różnych aplikacjach przedstawia rys. \todo{dodać rys}.
+Powszechna infrastruktura tworząca Internet, jak i usługi w nim dostępne, są z reguły
+niedeterministyczne pod względem czasowym. Systemy IoT czy IIoT mogą więc
+funkcjonować zgodnie paradygmatem \emph{best effort}. Można oczywiście rozważyć
+scenariusze, w których nie korzysta się z publicznej sieci Internet, a innych
+rozwiązań sieciowych, które umożliwiają zachowanie determinizmu. Nie są to jednak
+systemy IoT w ścisłym rozumieniu. Można też wyobrazić sobie heterogeniczny system
+IoT, w którym istnieje pewna sieć deterministyczna połączona z publicznym Internetem
+za pomocą odpowiedniej bramy. Takie podejście może okazać się przydatne w przemyśle, gdzie 
+może zaistnieć potrzeba integracji istniejących systemów automatyki z Internetem Rzeczy \cite{iiot-design-and-impl-gateway}.
+
+W systemach IIoT popularny jest podstawowy, trójwarstwowy model architektury. Wśród jego
+warstw wyróżniamy: warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
+i warstwę biznesową (ang. \emph{enterprise}) \cite{iiot-challenges-opportunities-directions}.
+Model ten przedstawia rys. \todo{dodać rys}.
+Do warstwy brzegowej należą
+typowe urządzenia systemów automatyki przemysłowej, m.in. czujniki i urządzenia wykonawcze oraz
+sterowniki (np. klasy PLC). Warstwę platformową stanowią zwykle usługi chmurowe,
+takie jak Azure IoT Hub czy AWS IoT. Usługi te umożliwiają przede wszystkim zarządzanie
+systemem IoT, akwyizycję i agregację danych oraz trasowanie danych na wejścia 
+innych usług i aplikacji domenowych \cite{models-innovative-iot}. Działanie
+warstwy pierwszej i drugiej integruje oprogramowanie (ewentualne dedykowane urządzenia)
+nazywane bramą. Warstwę biznesową
+stanowią aplikacje domenowe lub zaawansowane usługi chmurowe
+korzystające ze zgromadzonych danych w celu wspomagnia
+analityki, monitorowania, zarządzania, archiwizacji, itp. 
 
 \subsection{Zakres tematyczny realizowanego projektu}
 
