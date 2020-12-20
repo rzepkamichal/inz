@@ -33,70 +33,39 @@
 
 \subsection{Systemy informatyczne do zbierania danych pomiarowych} \label{system-do-zbierania-danych}
 
-\subsubsection*{Systemy informatyczne}
-
-Na potrzeby omówienia zagadnienia \emph{systemu do zbierania danych pomiarowych} oraz
-rozpatrzenia jego możliwych zastosowań konieczne jest wprowadzenie pewnych 
-pojęć podstawowych.
-Jednym z nich jest \textbf{system}. Zgodnie z encyklopedią systemem
-nazywamy wyizolowany z otoczenia zespół elementów przeznaczonych
-do realizacji określonego zadania \cite{system}. Szczególnym przykładem systemu jest
-\textbf{system komputerowy}. Jego elementy stanowią komputery, 
-urządzenia peryferyjne
-i oprogramowanie podstawowe (np. system operacyjny) \cite{system-komputerowy}.
-Systemy komputerowe, sieci oraz oprogramowanie stanowią razem 
-\textbf{systemy informatyczne}, których celem zastosowania jest 
+Zgodnie z encyklopedią \textbf{system informatyczny} to zespół systemów komputerowych,
+sieci oraz oprogramowanie, których celem zastosowania jest 
 przetwarzanie informacji \cite{system-informatyczny}. 
 \textbf{Przetwarzaniem informacji} nazywa się proces akwizycji, utrwalania, udostępniania,
 organizacji, interpretacji i wizualizacji informacji \cite{information-science}, 
-\cite{information-processing}. Warto w~tym miejscu również doprecyzować pojęcia
-\textbf{informacji} oraz \textbf{danych}. Dane są pewną reprezentacją
-faktów skodyfikowaną w odpowiedni sposób. Same dane nie posiadają jednak celu.
-Znaczenia nabierają te dane, które zostaną zinterpretowane przez odbiorcę 
-i~zmniejszają jego niewiedzę.
-Przyswojone w ten sposób dane stają się informacją \cite{dane-informacja-wiedza}.
-
-\subsubsection*{Systemy do zbierania danych pomiarowych}
+\cite{information-processing}. Warto w~tym miejscu doprecyzować pojęcia
+\textbf{informacji} oraz \textbf{danych}. Dane są pewną skodyfikowaną reprezentacją
+faktów. Natomiast dane, które podlegają intepretacji i nabierają znaczenia 
+stają się informacją \cite{dane-informacja-wiedza}.
 
 Jednym z możliwych źródeł informacji w systemie informatycznym mogą być 
 \textbf{systemy do zbierania danych pomiarowych} (system akwizycji danych, ang. \emph{Data Acquisition Systems}, w skrócie: DAQ).
-Są to systemy, których rolą jest gromadzenie w formie cyfrowej informacji opisujących 
+Są to systemy, których rolą jest gromadzenie w formie cyfrowej danych opisujących 
 zjawiska fizyczne. Systemy DAQ tworzą między innymi następujące komponenty
 o odpowiednich przeznaczeniach:
 \begin{itemize}
-    \item czujniki (sensory, ang. \emph{sensors}): przetwarzanie zjawisk fizycznych na analogowy sygnał elektryczny,
-    \item przetworniki analogowo-cyfrowe: konwersja sygnału analogowego na cyfrowy,
-    \item sprzęt komputerowy i oprogramowanie: przetwarzanie informacji. 
+    \itemsep0em 
+    \item czujniki (sensory, ang. \emph{sensors}) --- przetwarzanie zjawisk fizycznych na analogowy sygnał elektryczny,
+    \item przetworniki analogowo-cyfrowe --- konwersja sygnału analogowego na cyfrowy,
+    \item sprzęt komputerowy i oprogramowanie --- przetwarzanie informacji. 
 \end{itemize}
 Systemy DAQ stanowią jedno z głównych narzędzi stosowanych przez naukowców i~inżynierów
 na potrzeby testów, pomiarów, a także zadań automatyzacji \cite{data-aq-systems}.
-Do zakresu funkcjonalności systemu DAQ można zaliczyć także możliwość utrwalania (składowania)
-zebranych danych i/lub informacji na potrzeby przyszłej analizy i przetwarzania. 
-System taki można wówczas nazwać \textbf{systemem do zbierania i składowania danych pomiarowych}
-(ang. \emph{Data Acquisition And Storage System}, w skrócie: DAS, ASS) \cite{big-data-aq-storage-systems}. 
-
-\subsubsection*{Systemy cybernetyczno-fizyczne}
 
 Poza bierną obserwacją zjawisk fizycznych przydatną może okazać się również
 możliwość oddziaływania systemu wirtualnego na rzeczywistość. Ogólny typ systemów
-realizujących nazwane funkcjonalności stanowią \textbf{systemy cybernetyczno-fizyczne}
+realizujących nazwane funkcjonalności opierające się ponadto na zaawansowanym przetwarzaniu informacji
+stanowią \textbf{systemy cybernetyczno-fizyczne}
 (ang. \emph{Cyber-Physical Systems}, w skrócie: \emph{CPS}).
 Są to systemy fizyczne, których funkcjonowanie jest zintegrowane, monitorowane oraz 
 nadzorowane przez rdzeń obliczeniowy (system wbudowany). Człon ``cybernetyczny'' odnosi
 się do cyfrowych systemów przetwarzania informacji, natomiast człon ``fizyczny'' 
-dotyczy stworzonych przez ludzi rzeczywistych systemów technicznych. 
-Systemy cybernetyczno-fizyczne stanowią więc skrzyżowanie świata rzeczywistego oraz
-wirtualnego (cybernetycznego).
-Charakteryzują się one często działaniem w czasie rzeczywistym oraz rozproszeniem 
-\cite{iiot-cyber-manufacturing-systems}. 
-Obie wymienione cechy zostały dokładniej opisane w rozdziale \ref{isp}, 
-jako że mają one szczególne znaczenie w środowisku przemysłowym. \newline
-
-Systemy do zbierania i składowania danych, systemy 
-cybernetyczno-fizyczne oraz (ogólnie) systemy informatyczne mogą znaleźć 
-zastosowanie w przemyśle. Mogą one wchodzić w skład lub rozszerzać funkcjonalności
-projektowanych oraz istniejących systemów, które zostały szczegółowo omówione
-w rozdziale \ref{isp}.
+dotyczy stworzonych przez ludzi rzeczywistych systemów technicznych \cite{iiot-cyber-manufacturing-systems}. 
 
 \subsection{Systemy informatyczne w przemyśle} \label{isp}
 
@@ -140,6 +109,7 @@ które obejmują cały cykl życia produktu~\cite{iiot-challenges-opportunities-
 Ze względu na kierunek przepływu
 informacji wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
 \begin{itemize}
+    \itemsep0em 
     \item układy \textbf{inicjatorów} (czujniki, sensory, ang. \emph{sensors}) -- rejestrowanie stanu procesu (produkcja informacji),
     \item układy \textbf{wykonawcze} (ang. \emph{actuators}) -- modyfikacja stanu procesu (konsumpcja informacji),
     \item układy \textbf{mieszane} (ang. \emph{mixed}) -- jednoczesna produkcja i konsumpcja informacji.
@@ -153,6 +123,7 @@ Autor pozycji \cite{isp} podkreśla, iż nigdy nie należy zakładać, że środ
 będzie przyjazne. Wymienia on następujące \textbf{zaburzenia środowiskowe}, które mogą mieć wpływ na pracę
 systemu przemysłowego:
 \begin{itemize}
+    \itemsep0em 
     \item otoczenia -- np. temperatura, wilgotność, czynniki chemiczne;
     \item mechaniczne -- np. wstrząsy, zapylenie;
     \item przewodzone -- zaburzenia w sieci zasilania;
@@ -254,6 +225,7 @@ analogowo-cyfrowe i cyfrowo-analogowe, pamięci, procesory graficzne, interfejsy
 Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące platformy uniwersalne \cite{intro-to-iot}:
 
 \begin{itemize}
+    \itemsep0em 
     \item Arduino -- Różne modele płytek rozwojowych wykorzystujące m. in. systemy
     SoC producenta Atmel oparte o mikrokontrolery AVR. Wśród zestawów płytek
     dostępne są moduły rozszerzeń posiadające przewodowe i bezprzewodowe interfejsy sieciowe.
@@ -310,6 +282,7 @@ Identycznie jak w przypadku HTTP, architektura komunikacji protokołu CoAP to kl
 W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{intro-to-iot}:
 
 \begin{itemize}
+    \itemsep0em 
     \item Urządzenie -- Urządzenie (ang. \emph{Machine to Machine, Device to Device}, w skrócie: M2M)
     --- Urządzenia komunikują się bezpośrednio bez potrzeby translacji czy wykonywania 
     skomplikowanego przetwarzania danych (dotyczy to zarówno urządzeń tej samej klasy, jak i różnej);
@@ -394,6 +367,7 @@ Ze względu na konieczność funkcjonowania w specyficznym środowisku przemysł
 IIoT posiada pewne cechy odróżniające od standardowego (konsumenckiego) IoT.
 Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
 \begin{itemize}
+    \itemsep0em 
     \item Rozwój o charakterze ewolucyjnym, nie rewolucyjnym
     --- Podczas gdy wokół konsumenckiego IoT rozwijanych jest wiele nowych technologii i standardów, 
     wdrażając systemy IIoT należy się liczyć z dużą bezwładnością
@@ -423,6 +397,7 @@ z kolei niekoniecznie wymagają spełniania ścisłych ram ograniczeń
 Ogólnie, ze względu na tolerancję ograniczeń (m. in. opóźnień czasowych) można 
 wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reality}: 
 \begin{itemize}
+    \itemsep0em 
     \item Dostarczanie z wykorzystaniem najlepszych możliwości (ang. \emph{best effort})
     --- Komunikacja nie spełnia ścisłych ograniczeń czasowych, wykorzystywana jest 
     maksymalna dostępna przepustowość. Jest to poziom jakości charakterystyczny
@@ -545,6 +520,7 @@ inne ważne wyzwania IIoT, jakimi są bezpieczeństwo danych oraz bezpieczeństw
 Wśród istniejących, komercyjnych rozwiązań o podobnej dziedzinie funkcjonalnej
 znaleziono następujące przykłady:
 \begin{itemize}
+    \itemsep0em 
     \item Sensemetrics --- Rozwiązanie amerykańskiej firmy Industrial IoT Solutions
     oparte na standaryzowanej architekturze warstwowej. Jest to system do akwizycji
     i zarządzania danych. Producent przypisuje swojemu systemowi wysoką konfigurowalność \cite{sensmetrics};
