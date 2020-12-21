@@ -377,11 +377,6 @@ w ramach projektu jest zbieranie danych pomiarowych w środowisku
 przemysłowym. Problem ten adresują technologie IIoT oraz usługi chmurowe.
 Umożliwiają one gromadzenie i przetwarzanie danych w systemie rozproszonym składającym
 się z szeroko pojętej aparatury kontrolno-pomiarowej (urządzeń cybernetyczno-fizycznych).
-Wykorzystanie usług chmurowych dostępnych za pośrednictwem Internetu
-pozwala na dostęp do skalowalnych zasobów informatycznych --- m. in.
-mocy obliczeniowej, pamięci masowej i oprogramowania. Dostawcy
-chmury udostępniają ponadto platformy do zarządzania wielką ilością urządzeń IoT,
-co usprawnia nadzór nad systemem \cite{iot-gateway-medical-and-industrial}. 
 W niniejszej pracy podjęto zadanie \textbf{zaprojektowania architektury} opisanego systemu
 oraz \textbf{realizacji jego prototypu}.
 
@@ -395,7 +390,7 @@ narzędzi i usług informatycznych.
 
 Modelem referencyjnym dla projektowanego systemu jest zaprezentowana w rozdziale
 \ref{iiot} \textbf{trójwarstwowa architektura systemów IIoT}. Dla warstwy brzegowej przyjmuje 
-się, że w systemie jest zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
+się, że w systemie może być zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
 lub zespoły urządzeń aparatury kontrolno-pomiarowej pracujące w czasie rzeczywistym 
 w ramach sieci przemysłowej
 (czujniki przemysłowe, wyspy czujników, moduły DAQ, moduły I/O, sterowniki, itp.)
@@ -414,37 +409,40 @@ danych mogą realizować wybrane usługi chmurowe i/lub ``szyte na miarę'' apli
 Pewną lukę, element brakujący w proponowanym modelu stanowi konieczność dopasowania
 do różnych protokołów sieci przemysłowych i IoT. Konieczna jest też integracja
 warstwy brzegowej i platformowej zaproponowanego modelu. Są to krytyczne zadania
-przypisywane systemom IIoT. Dla rozwiązania 
-tego problemu stosuje się tak zwane \textbf{bramy IoT} (ang. \emph{IoT gateways}). Są to zwykle
+przypisywane systemom IIoT. Do rozwiązania 
+przytoczonego problemu stosuje się tak zwane \textbf{bramy IoT} (ang. \emph{IoT gateways}). Są to zwykle
 urządzenia wraz z oprogramowaniem będące w stanie integrować zarówno protokoły
 warstwy fizycznej i łącza danych, jak i dokonywać translacji protokołów wyższych warstw 
 (tzw. bramy semantyczne) wraz z możliwością udostępniania danych za pośrednictwem
 Internetu \cite{iiot-heterogenous-gateways}. Bramy mogą realizować również
 wstępne przetwarzanie danych odciążając w ten sposób usługi wyższych warstw.
-Jest to tzw. koncepcja przetwarzania brzegowego (ang. \emph{edge computing}) \cite{iot-gateway-medical-and-industrial}.
+Jest to tzw. koncepcja \textbf{przetwarzania brzegowego} (ang. \emph{edge computing}) \cite{iot-gateway-medical-and-industrial}.
 W ogólniejszym rozumieniu bramy IoT mogą stanowić pomost pomiędzy infrastrukturą
 pomiarową a infrastrukturą sieciową lub też pomiędzy technologią operacyjną a 
 technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challenges-opportunities-directions}. 
-Bramy IoT z reguły
-mogą udostępniać dane za pośrednictwem Internetu na poziomie usługi \emph{best-effort}.
+Bramy IoT mogą z reguły udostępniać dane za pośrednictwem Internetu na poziomie usługi \emph{best-effort}.
 Warto jednak rozważyć możliwość, aby na poziomie lokalnym mogły one współpracować z istniejącymi
 systemami czasu rzeczywistego, co jest ważnym aspektem w środowisku przemysłowym. 
 
 Otrzymano zatem podstawowy zarys projektowanego systemu.
 Składa się on z urządzeń pomiarowych udostępniających dane w ramach sieci 
-przemysłowych i/lub IoT. Integracji różnych protokołów i wstępnego przetwarzania
+przemysłowych oraz IoT. Integracji różnych protokołów i wstępnego przetwarzania
 dokonuje dedykowana brama (bramy) IoT. Brama przekazuje dane w spójnym, jednolitym
 formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
 Te z kolei mogą realizować zaawansowane przetwarzanie, składowanie, udostępnianie
-i wizualizację danych. Poza podstawowym zdefiniowanym celem gromadzenia danych pomiarowych
+i wizualizację danych. 
+
+Poza podstawowym zdefiniowanym celem gromadzenia danych pomiarowych
 możliwe jest też oddziaływanie systemów informatycznych na systemy nadzorujące 
 przebiegiem procesów przemysłowych. Nie jest to przypadek użycia
-zalecany dla zadań automatyzacji, gdzie z reguły narzucany jest determinizm czasowy. 
+zalecany dla zadań automatyzacji, gdzie zwykle narzucany jest determinizm czasowy. 
 Aczkolwiek zapewne można sobie wyobrazić przykładową sytuację, w której wynikiem analizy danych jest 
 polecenie dla systemu automatyzacji, które niekoniecznie musi
 być zrealizowane w ścisłych ramach czasowych. Projektowany system powinien zatem dopuszczać
 możliwość implementacji podobnych funkcjonalności wpisujących się w paradygmat
-systemów CPS. W następującym, szczegółowym etapie projektowania poruszone zostaną również 
+systemów CPS. 
+
+W następującym, szczegółowym etapie projektowania poruszone zostaną również 
 inne ważne wyzwania IIoT, jakimi są \textbf{bezpieczeństwo danych} oraz \textbf{bezpieczeństwo w kontekście niesprzyjająćego
 środowiska przemysłowego} \cite{iiot-challenges-opportunities-directions}.
 
