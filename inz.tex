@@ -71,43 +71,24 @@ dotyczy stworzonych przez ludzi rzeczywistych systemów technicznych \cite{iiot-
 
 \subsubsection{Podstawowe zagadnienia}
 
-Podrozdział przedstawia podstawowe zagadnienia dotyczące systemów informatyki
-stosowanych w przemyśle. Omówiono w nim kolejno: pojęcia związane z procesem przemysłowym,
-urządzenia i aparaturę oraz środowiskowe warunki funkcjonowania takich systemów.
-
-\subsubsection*{Proces przemysłowy} 
-
-Do zagadnień podstawowych odnoszących się do środowiska przemysłowego w kontekście 
-systemów informatycznych należy zaliczyć pojęcie \textbf{procesu przemysłowego} 
-nazywane też \textbf{procesem technologicznym}.
+Podstawowym zagadnieniem odnoszącym się do środowsika przemysłowego jest pojęcie
+\textbf{procesu przemysłowego} nazywane też \textbf{procesem technologicznym}.
 Jest to ciąg określonych zjawisk fizykochemicznych mających na celu wytworzenie
-produktu. \textbf{Technologią} nazywamy w tym kontekście uporządkowany opis procesu przemysłowego.
-Zbiór powiązanych (współpracujących) procesów przemysłowych nazywa się 
-\textbf{procesem produkcyjnym}. Zestaw urządzeń technicznych wykonujących
-proces technologiczny nosi miano \textbf{węzła technologicznego}, zaś
-uporządkowany przyczynowo-skutkowo zbiór takich węzłów nazywa się \textbf{linią technologiczną}
-lub \textbf{linią produkcyjną} \cite{isp}. Działania techniczne i ekonomiczne
-składające się na proces produkcyjny obejmuje jednostka organizacyjna zwana
-\textbf{jednostką produkcyjną} \cite{jednostka-produkcyjna}. Obecnie w usprawnieniu
-działania złożonych jednostek produkcyjnych nieocenionym wsparciem może okazać się
-wdrożenie i wykorzystywanie systemów informatycznych.
+produktu. Dla zwiększenia efektywności, bezpieczeństwa i kontroli nad procesami
+przemysłowymi praktykuje się wspomaganie systemami informatycznymi \cite{isp}.
 
-\subsubsection*{Urządzenia, aparatura} 
-
-W przemyśle wspomaganym przez systemy informatyczne wykorzystywane są 
+W dziedzinie informatyki przeymsłowej wykorzystuje się tzw.
 \textbf{urządzenia aparatury kontrolno-pomiarowej i automatyki} (w skrócie: AKPiA). 
-Mogą one stanowić pomost (interfejs, protokół) pomiędzy procesem przemysłowym a systemem informatycznym. 
-Zestaw takich urządzeń można określić zbiorem informacji, który nazywamy
-\textbf{obiektem przemysłowym} \cite{isp}. Zespoły AKPiA mogą tworzyć opisane
-w rozdziale \ref{system-do-zbierania-danych} systemy DAQ oraz CPS. W~obrębie
+Stanowią one pomost pomiędzy procesem przemysłowym a systemem informatycznym. 
+Zestaw takich urządzeń można zamodelować zbiorem informacji, który nazywamy
+\textbf{obiektem przemysłowym} \cite{isp}. Pojęcie AKPiA jest analogiczne do omawianych
+w rozdziale \ref{system-do-zbierania-danych} urządzeń systemów DAQ oraz CPS. W~obrębie
 CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego --- 
 tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}). 
 Jest to określenie trafne, jako że informacja cyfrowa pod postacią modeli i obiektów
-danych reprezentuje niejako drugą (sklonowaną) tożsamość obiektu rzeczywistego.
-Dynamiczna natura takich cyfrowych modeli pozwala na wdrażanie innowacyjnych usług,
-które obejmują cały cykl życia produktu~\cite{iiot-challenges-opportunities-directions}. 
-Ze względu na kierunek przepływu
-informacji wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
+danych reprezentuje niejako drugą (bliźniaczą) tożsamość obiektu rzeczywistego 
+\cite{iiot-challenges-opportunities-directions}. 
+Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
 \begin{itemize}
     \itemsep0em 
     \item układy \textbf{inicjatorów} (czujniki, sensory, ang. \emph{sensors}) -- rejestrowanie stanu procesu (produkcja informacji),
@@ -115,28 +96,18 @@ informacji wśród urządzeń AKPiA można wyróżnić następujące grupy \cite
     \item układy \textbf{mieszane} (ang. \emph{mixed}) -- jednoczesna produkcja i konsumpcja informacji.
 \end{itemize}
 
-\subsubsection*{Uwarunkowania środowiskowe} 
-
 Omawiając tematykę związaną z systemami przemysłowymi nie sposób pominąć kwestię
 warunków otoczenia. Środowisko przemysłowe charakteryzuje się zwiększoną uciążliwością.
-Autor pozycji \cite{isp} podkreśla, iż nigdy nie należy zakładać, że środowisko przemysłowe
-będzie przyjazne. Wymienia on następujące \textbf{zaburzenia środowiskowe}, które mogą mieć wpływ na pracę
-systemu przemysłowego:
-\begin{itemize}
-    \itemsep0em 
-    \item otoczenia -- np. temperatura, wilgotność, czynniki chemiczne;
-    \item mechaniczne -- np. wstrząsy, zapylenie;
-    \item przewodzone -- zaburzenia w sieci zasilania;
-    \item elektromagnetyczne -- zaburzenia elektromagnetyczne.
-\end{itemize}
+Wymienia się następujące \textbf{zaburzenia środowiskowe}, które mogą mieć wpływ na pracę
+systemu przemysłowego: zaburzenia otoczenia (np. temperatura, wilgotność, czynniki chemiczne),
+zaburzenia mechaniczne, przewodzone i elektromagnetyczne \cite{isp}.
 
 \subsubsection{Systemy rozproszone czasu rzeczywistego}
 
 Systemy informatyczne w przemyśle często posiadają cechy \textbf{systemów rozproszonych}.
 W systemach tych nie występuje centralne urządzenie
 przetwarzające informacje, lecz składają się one z wielu jednostek
-przetwarzających o różnym zakresie funkcjonalności. Jest to rozproszenie logiczne,
-któremu może (lecz nie musi) towarzyszyć rozproszenie terytorialne. Do zalet
+przetwarzających o różnym zakresie funkcjonalności. Do zalet
 takich systemów zalicza się zwiększoną: moc obliczeniową, niezawodność oraz 
 elastyczność (adaptacyjność, rekonfigurowalność)
 \cite{isp},
@@ -145,7 +116,7 @@ w szczególności stosuje się \textbf{rozproszone systemy sterowania},
 (ang. \emph{Distributed Control Systems}, w~skrócie: DCS). Do zadań takich systemów
 należą sterowanie i wizualizacja procesu przemysłowego. 
 
-Wymaganą cechą procesów przemysłowych jest \textbf{determinizm czasowy}.
+Często wymaganą cechą procesów przemysłowych jest \textbf{determinizm czasowy}.
 Postawienie wymagania determinizmu czasowego względem systemu przemysłowego oznacza,
 że jego odpowiedź na zdarzenia musi zachodzić w zdefiniowanym, skończonym czasie
 \cite{isp}.
@@ -166,8 +137,7 @@ Rolę medium komunikacyjnego
 w systemach komputerowych stanowią \textbf{sieci komputerowe}. Na potrzeby 
 przemysłu opracowano dedykowane sieci komputerowe odpowiadająće m. in. na potrzebą
 działania w ramach ścisłych ograniczeń czasowych. Do przykładowych sieci należą:
-Modbus, Ethernet, Profinet, Profibus, CAN, EtherCAT
-
+Modbus, Ethernet, Profinet, Profibus, CAN, EtherCAT \cite{systemy-automatyki-przemyslowej}.
 
 \subsubsection{Dziedzina zastosowań systemów informatycznych w przemyśle}
 
