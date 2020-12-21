@@ -141,10 +141,8 @@ Modbus, Ethernet, Profinet, Profibus, CAN, EtherCAT \cite{systemy-automatyki-prz
 
 \subsubsection{Dziedzina zastosowań systemów informatycznych w przemyśle}
 
-Jak wcześniej wspomniano, wykorzystanie systemów informatycznych może usprawnić
-działania podejmowane w ramach przedsiębiorstwa (należących do niego jednostek produkcyjnych). 
-Zespół takich działań można ściślej nazwać \textbf{prowadzeniem procesu}.
-Proces ten może mieć dwa aspekty: biznesowy (gospodarczy, zarządczy) oraz techniczny. 
+Zarządzanie przedsiębiorstwem przemysłowym moze mieć dwa aspekty: 
+biznesowy (gospodarczy, zarządczy) oraz techniczny. 
 \textbf{Proces biznesowy} to zespół działań dążących do osiągnięcia pewnego celu
 zdefiniowanego w ramach przedsiębiorstwa. \textbf{Proces techniczny} dotyczy
 obsługi działań związanych z procesem przemysłowym. 
@@ -154,19 +152,22 @@ obsługi działań związanych z procesem przemysłowym.
 
 \subsubsection{Definicje i zastosowania Internetu Rzeczy}
 
-Pojęcie Internetu Rzeczy (ang. \emph{Internet of Things}, w skrócie: IoT) posiada różne definicje. 
+\textbf{Internet Rzeczy} (ang. \emph{Internet of Things}, w skrócie: IoT) posiada różne definicje. 
 Jedną z prostszych jest sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
 do Internetu \cite{intro-to-iot}. Bardziej szczegółowe jest ujęcie IoT jako sieci jednoznacznie
 identyfikowalnych przedmiotów z wbudowanymi czujnikami, inteligencją obliczeniową
 oraz powszechną łącznością z Internetem \cite{iot-hype-to-reality}.
 Na nieco wyższym poziomie definiuje się IoT jako globalną infrastrukturę udostępniającą
 zaawansowane usługi poprzez połączenie przedmiotów z wykorzystaniem technologii informacyjnych.
-\cite{intro-to-iot}. W każdej z przytoczonych
-definicji zauważalne jest pewne podobieństwo pomiędzy IoT a pojęciem CPS 
+\cite{intro-to-iot}. 
+
+W każdej z przytoczonych
+definicji zauważalne jest pewne podobieństwo pomiędzy IoT a CPS 
 scharakteryzowanym w rozdziale \ref{system-do-zbierania-danych}. Zagadnienia te
 posiadają część wspólną, dotyczą podobnej tematyki (przede wszystkim połączenia świata fizycznego i logicznego), 
 lecz mają odrębną genezę i uwydatnia się w ich ramach różne aspekty: 
 inżynierię systemów sterowania w CPS oraz sieci i komunikację w IoT \cite{cps-vs-iot}.
+
 Głównym zastosowaniem Internetu Rzeczy jest monitorowanie świata rzeczywistego 
 oraz wchodzenie z nim w interakcję, co może usprawnić działalność człowieka na wielu płaszczyznach.
 Wśród praktycznych zastosowań IoT wymienia się między innymi:
@@ -178,10 +179,10 @@ w rozdziale \ref{iiot}.
 \subsubsection{``Rzeczy'' w IoT}
 
 Wśród przedmiotów tworzących IoT wyróżnia się dwie kategorie: 
-czujniki oraz urządzenia wykonawcze. Są to odpowiedniki aparatury kontrolno-pomiarowej 
+\textbf{czujniki oraz urządzenia wykonawcze}. Są to odpowiedniki aparatury kontrolno-pomiarowej 
 wykorzystywanej w przemyśle (patrz: rozdział \ref{isp}). Czujniki umożliwiają
 obserwację świata rzeczywistego i jej zapis w postaci cyfrowej.  
-Urządzenia wykonawcze są w stanie zmienić stan układu rzeczywistego (wprowadzać w nim ruch)
+Urządzenia wykonawcze są w stanie zmienić stan układu rzeczywistego
 na podstawie otrzymanej informacji cyfrowej \cite{iot-hype-to-reality}.
 Przykładowe czujniki to: przyciski, przełączniki, czujniki ruchu, czujniki gazów,
 czujniki wibracji, czujniki temperatury, wilgoci,
@@ -193,61 +194,34 @@ funkcjonalności są zintegrowane w ramach jednego, kompletnego układu scaloneg
 System typu SoC mogą zawierać m. in.: procesory lub mikrokontrolery, przetworniki
 analogowo-cyfrowe i cyfrowo-analogowe, pamięci, procesory graficzne, interfejsy komunikacyjne \cite{intro-to-iot}, \cite{soc}. 
 Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące platformy uniwersalne \cite{intro-to-iot}:
-
 \begin{itemize}
     \itemsep0em 
-    \item Arduino -- Różne modele płytek rozwojowych wykorzystujące m. in. systemy
+    \item Arduino --- Różne modele płytek rozwojowych wykorzystujące m. in. systemy
     SoC producenta Atmel oparte o mikrokontrolery AVR. Wśród zestawów płytek
     dostępne są moduły rozszerzeń posiadające przewodowe i bezprzewodowe interfejsy sieciowe.
-    \item ESP -- Systemy typu SoC producenta Espressif Systems zawierające wbudowane
+    \item ESP --- Systemy typu SoC producenta Espressif Systems zawierające wbudowane
     bezprzewodowe interfejsy sieciowe.
-    \item Raspberry Pi -- Zaawansowane płytki tworzące komputery jednopłtykowe (ang. \emph{single-board computer}).    
+    \item Raspberry Pi --- Zaawansowane płytki tworzące komputery jednopłtykowe (ang. \emph{single-board computer}).    
     Można na nich uruchomić system operacyjny (również z interfejsem graficznym). Posiadają liczne 
     interfejsy komunikacyjne (w tym sieciowe) \cite{rpi}. 
 \end{itemize}
-
-Wymienione platformy uniwersalne mogą też stanowić pomost pomiędzy główną
-siecią IoT wykorzystującą np. Ethernet czy technologie bezprzewodowe a innymi urządzeniami
-peryferyjnemi (czujnikami i urządzeniami wykonawczymi) komunikującymi się za pośrednictwem 
-uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, 
-takich jak: SPI, I2C, RS232, USB \cite{intro-to-iot}.
+Wymienione platformy uniwersalne mogą też stanowić pomost pomiędzy główną siecią w systemie
+IoT (np. Ethernet lub WiFi) a innymi urządzeniami
+peryferyjnemi komunikującymi się za pośrednictwem 
+uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, takich jak: SPI, I2C, RS232, USB \cite{intro-to-iot}.
 
 \subsubsection{``Internet'' w IoT}
 
 Wymiana informacji w systemach IoT może odbywać się w sposób przewodowy lub bezprzewodowy.
 Stosowane modele komunikacji sieciowej bazują na standardowym modelu OSI bądź
-internetowym stosie TCP/IP. Urządzenia Internetu Rzeczy nie zawsze są jednak 
-w stanie implementować wszystkie warstwy stosu ze względu na ograniczone zasoby 
-(moc obliczeniowa, pamięć, energia elektryczna). W warstwie fizycznej i łącza danych
+internetowym stosie TCP/IP. W warstwie fizycznej i łącza danych
 sieci IoT wykorzystuje się protokoły: Ethernet, WiFi, Bluetooth, sieci komórkowe,
 ZigBee, Z-Wave, NFC. W warstwie sieciowej stosuje się: IPv4, IPv6 oraz zoptymalizowaną
 pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m. in.: TCP i UDP. 
-Warstwy sesji, prezentacji i aplikacji implementują powszechne internetowe protokoły, jak
-HTTP, RTP, SMTP. Na szczególną uwagę zasługują protokoły najwyższych warstw zaprojektowanie
-z myślą o IoT, są to m.in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
+Warstwy sesji, prezentacji i aplikacji implementują powszechne używane internetowe protokoły, jak
+HTTP, RTP, SMTP. Wśród protokołów najwyższych wastw opracowano również 
+protokoły dedykowane dla IoT --- są to m. in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
 
-\subsubsection*{Protokół MQTT}
-
-MQTT (ang. \emph{Message Queue Telemetry Transport}) to lekki pod względem wykorzystania zasobów
-protokół polegający na wymianie komunikatów (ang. \emph{messages}). Architektura komunikacji
-jest oparty na wzorcu publikuj-subskrybuj (ang. \emph{publish-subscribe}).
-Klienci łączą się do centralnego serwera (pośrednika, ang. \emph{broker}), za pośrednictwem
-którego mogą wysyłać i odbierać komunikaty pod konkretnym adresem (tematem, ang. \emph{topic}).
-Tematy tworzą hierarchiczną strukturę analogiczną do URL. MQTT jest protokołem binarnym
-wykorzystującym TCP w warstwie transportowej \cite{iot-hype-to-reality}.
-
-\subsubsection*{Protokół CoAP}
-
-CoAP (ang. \emph{Constrained Application Protocol}) to zoptymalizowana alternatywa dla HTTP
-przeznaczona dla urządzeń o ograniczonych zasobach. Posiada Wykorzystuje m. in. protokół
-UDP w warstwie transportowej, krótsze nagłówki w formie binarnej. 
-CoAP wywodzi się ze wzorca architektonicznego REST (ang. \emph{Representational state transfer}), 
-jest więc zorientowany na zasoby umożliwiając ich tworzenie, odczyt, aktualizację
-i usuwanie (ang. /emph{Create, Read, Update, Delete}, w skrócie: CRUD). 
-Identycznie jak w przypadku HTTP, architektura komunikacji protokołu CoAP to klient-serwer 
-\cite{intro-to-iot}, \cite{iot-hype-to-reality}.
-
-\subsubsection*{Modele komunikacyjne}
 
 W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{intro-to-iot}:
 
@@ -272,21 +246,23 @@ W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{in
 
 \subsubsection{Usługi chmurowe}
 
-Do niedawna większość przedsiębiorstw chcących czerpać korzyści z wykorzystania
-systemów informatycznych było zmuszonych do inwestowania we własną infrastrukturę
-komputerową. Przetwarzanie w chmurze (ang. \emph{cloud computing}) pozwala obecnie 
-na migrację części lub całości infrastruktury informatycznej na dostawców chmury,
-takich jak Microsoft Azure, Amazon AWS, Google Cloud, czy IBM Cloud. Usługi chmurowe
-udostępnianie przez wymienionych i innych dostawców noszą miano chmury publicznej. 
-Są one dostępne na życzenie za pośrednictwem Internetu i posiadają elastyczny
-system rozliczeń, w którym koszta są zależne od faktycznie zużytych zasobów
+\textbf{Przetwarzanie w chmurze} (ang. \emph{cloud computing}) pozwala 
+na migrację części lub całości infrastruktury informatycznej do tzw. chmury.
+W śród popularnych rozwiązań chmurowych znajdują się: 
+Microsoft Azure, Amazon AWS, Google Cloud, czy IBM Cloud. Usługi chmurowe
+udostępnianie przez wymienionych i wielu innych dostawców za pośrednictwem Internetu 
+noszą miano \textbf{chmury publicznej}. 
+Są one dostępne na życzenie i posiadają elastyczny
+system rozliczeń, w którym koszta są zależne od faktycznie zużytych zasobów informatycznych
 (cykle procesorów, pamięć, wykorzystanie łącza, liczba zapytań). Do zalet takiego
 rozwiązania należą: łatwa skalowalność, konfigurowalność i duży wybór usług
 ułatwiających utrzymanie infrastruktury informatycznej. Spośród wad należy wymienić
 zależność od firm trzecich (dostawców chmury) oraz brak pełnej kontroli nad 
-posiadaną infrastrukturą \cite{iot-hype-to-reality}.
+posiadaną infrastrukturą. Niektóre firmy rozwijają też podobne, lecz dostępne 
+wyłącznie lokalnie, rozbudowane platformy infrastruktury informatycznej, zwane \textbf{chmurą prywatną}.
+Tego typu rozwiązania są kosztowne, lecz dają pełną kontrolę nad posiadanymi zasobami \cite{iot-hype-to-reality}.
 
-W ramach usług dostawcy chmury udostępniają m.in.: przetwarzanie danych, 
+W ramach swoich usług dostawcy chmury udostępniają m.in.: przetwarzanie danych, 
 analitykę, eksplorację danych, uczenie maszynowe, konteneryzację, relacyjne i nierelacyjne
 bazy danych, integrację aplikacji, hosting aplikacji i stron internetowych, 
 maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkwnikami, a także
@@ -296,10 +272,8 @@ Zarządzanie dużą ilością danych jest podstawowym zadaniem systemu IoT. Skł
 na: zbieranie, filtrowanie, agregację, przetwarzanie, składowanie, udostępnianie,
 wizualizację oraz zabezpieczanie \cite{intro-to-iot}. Usługi chmurowe umożliwiają złożone zarządzanie
 danymi oferując jednocześnie skalowalność, zdalny dostęp, opłaty zależne od zapotrzebowania
-i gotowe rozwiązania programistyczne skracające czas rozwoju systemów. 
-Wymienione usługi, jak i dedykowane chmurowe platformy do administrowania 
-urządzeniami mogą nieść wiele korzyści dla projektowanego lub rozwijanego
-systemu IoT \cite{measuring-value-of-cloud-computing}, \cite{iot-and-cloud}, \cite{iot-in-industrial-sector}. 
+i gotowe rozwiązania programistyczne skracające czas rozwoju systemów
+\cite{measuring-value-of-cloud-computing}, \cite{iot-and-cloud}, \cite{iot-in-industrial-sector}. 
 
 \subsection{Internet rzeczy w przemyśle}\label{iiot}
 
