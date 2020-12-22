@@ -31,10 +31,20 @@
 
 \section{Analiza tematu}
 
+W niniejszym rozdziale przedstawiono rozważania teoretyczne dotyczące projektowanego
+systemu opierające się na analizie dostępnej literatury. Realizowany temat
+składa się z czterech zasadniczych zagadnień: systemy do zbierania danych pomiarowych,
+systemy informatyczne w przemyśle, IoT i IIoT.  Do każdego z nich odnoszą się
+odpowiednio kolejne podrozdziały przedstawiające podstawowe pojęcia, problemy i~rozwiązania 
+w danej dziedzinie.
+W ostatnim podrozdziale dokonano konsolidacji zebranych wiadomości w kontekście
+celu pracy, jakim jest opracowanie systemu do zbierania danych pomiarowych 
+dla środowiska przemysłowego z wykorzystaniem IoT.
+
 \subsection{Systemy informatyczne do zbierania danych pomiarowych} \label{system-do-zbierania-danych}
 
 Zgodnie z encyklopedią \textbf{system informatyczny} to zespół systemów komputerowych,
-sieci oraz oprogramowanie, których celem zastosowania jest 
+sieci oraz oprogramowania, których celem zastosowania jest 
 przetwarzanie informacji \cite{system-informatyczny}. 
 \textbf{Przetwarzaniem informacji} nazywa się proces akwizycji, utrwalania, udostępniania,
 organizacji, interpretacji i wizualizacji informacji \cite{information-science}, 
@@ -63,11 +73,13 @@ realizujących nazwane funkcjonalności opierające się ponadto na zaawansowany
 stanowią \textbf{systemy cybernetyczno-fizyczne}
 (ang. \emph{Cyber-Physical Systems}, w skrócie: \emph{CPS}).
 Są to systemy fizyczne, których funkcjonowanie jest zintegrowane, monitorowane oraz 
-nadzorowane przez rdzeń obliczeniowy (system wbudowany). Człon ``cybernetyczny'' odnosi
-się do cyfrowych systemów przetwarzania informacji, natomiast człon ``fizyczny'' 
-dotyczy stworzonych przez ludzi rzeczywistych systemów technicznych \cite{iiot-cyber-manufacturing-systems}. 
+nadzorowane przez rdzeń obliczeniowy (system wbudowany) \cite{iiot-cyber-manufacturing-systems}. 
 
 \subsection{Systemy informatyczne w przemyśle} \label{isp}
+
+W podrozdziale podjęto zagadnienie systemów informatycznych wdrażanych w środowisku przemysłowym.
+Omówiono kolejno: pojęcia podstawowe, fundamentalne informacje dotyczące systemów rozproszonych i czasu rzeczywistego
+oraz zaprezentowano przykładową architekturę systemów przemysłowych.
 
 \subsubsection{Podstawowe zagadnienia}
 
@@ -75,17 +87,17 @@ Podstawowym zagadnieniem odnoszącym się do środowsika przemysłowego jest poj
 \textbf{procesu przemysłowego} nazywane też \textbf{procesem technologicznym}.
 Jest to ciąg określonych zjawisk fizykochemicznych mających na celu wytworzenie
 produktu. Dla zwiększenia efektywności, bezpieczeństwa i kontroli nad procesami
-przemysłowymi praktykuje się wspomaganie systemami informatycznymi \cite{isp}.
+przemysłowymi praktykuje się wspomaganie ich systemami informatycznymi \cite{isp}.
 
 W dziedzinie informatyki przeymsłowej wykorzystuje się tzw.
 \textbf{urządzenia aparatury kontrolno-pomiarowej i automatyki} (w skrócie: AKPiA). 
 Stanowią one pomost pomiędzy procesem przemysłowym a systemem informatycznym. 
 Zestaw takich urządzeń można zamodelować zbiorem informacji, który nazywamy
-\textbf{obiektem przemysłowym} \cite{isp}. Pojęcie AKPiA jest analogiczne do omawianych
+\textbf{obiektem przemysłowym} \cite{isp}. Pojęcie AKPiA jest podobne do omawianych
 w rozdziale \ref{system-do-zbierania-danych} urządzeń systemów DAQ oraz CPS. W~obrębie
 CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego --- 
 tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}). 
-Jest to określenie trafne, jako że informacja cyfrowa pod postacią modeli i obiektów
+Jest to nazwa trafna, jako że informacja cyfrowa pod postacią modeli i obiektów
 danych reprezentuje niejako drugą (bliźniaczą) tożsamość obiektu rzeczywistego 
 \cite{iiot-challenges-opportunities-directions}. 
 Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
@@ -108,7 +120,7 @@ Systemy informatyczne w przemyśle często posiadają cechy \textbf{systemów ro
 W systemach tych nie występuje centralne urządzenie
 przetwarzające informacje, lecz składają się one z wielu jednostek
 przetwarzających o różnym zakresie funkcjonalności. Do zalet
-takich systemów zalicza się zwiększoną: moc obliczeniową, niezawodność oraz 
+takich systemów zalicza się zwiększoną moc obliczeniową, niezawodność oraz 
 elastyczność (adaptacyjność, rekonfigurowalność)
 \cite{isp},
 \cite{isp-analiza-przepływu-informacji}. W obrębie systemów przemysłowych
@@ -120,12 +132,6 @@ Często wymaganą cechą procesów przemysłowych jest \textbf{determinizm czaso
 Postawienie wymagania determinizmu czasowego względem systemu przemysłowego oznacza,
 że jego odpowiedź na zdarzenia musi zachodzić w zdefiniowanym, skończonym czasie
 \cite{isp}.
-Ściślej mówiąc, oczekuje się, że czas obsługi zdarzenia przez system $T_s$ będzie
-mniejszy lub równy od określonego czasu granicznego $T_g$, co przedstawia 
-wzór \ref{ts-tg}.
-\begin{equation}
-    T_s \leq T_g\label{ts-tg}
-\end{equation}
 
 Systemy charakteryzujące się determinizmem czasowym nazywa się 
 \textbf{systemami czasu rzeczywistego} (ang. \emph{Real Time Systems}, w skrócie: RTS). 
@@ -139,21 +145,56 @@ przemysłu opracowano dedykowane sieci komputerowe odpowiadająće m. in. na pot
 działania w ramach ścisłych ograniczeń czasowych. Do przykładowych sieci należą:
 Modbus, Ethernet, Profinet, Profibus, CAN, EtherCAT \cite{systemy-automatyki-przemyslowej}.
 
-\subsubsection{Dziedzina zastosowań systemów informatycznych w przemyśle}
+\subsubsection{Architektura systemów informatycznych w przemyśle}
 
-Zarządzanie przedsiębiorstwem przemysłowym moze mieć dwa aspekty: 
-biznesowy (gospodarczy, zarządczy) oraz techniczny. 
-\textbf{Proces biznesowy} to zespół działań dążących do osiągnięcia pewnego celu
-zdefiniowanego w ramach przedsiębiorstwa. \textbf{Proces techniczny} dotyczy
-obsługi działań związanych z procesem przemysłowym. 
+Dziedzina funkcjonalna systemów informatycznych w przemyśle może być bardzo obszerna.
+Są one w stanie wspomagać zarówno przebieg procesu przemysłego,
+jak i~kompleksowo usprawniać procesy funkcjonujące na wyższych poziomach przedsiębiorstwa
+--- np. te związane z zarządzeniem zasobami. W literaturze spotkać można różne 
+modele przedstawiające zakres działania przemysłowych systemów informatycznych.
+Do najpopularniejszych należy tzw. model piramidowy (warstwowy, hierarchiczny) 
+\cite{isp}, \cite{iiot-cyber-manufacturing-systems}, \cite{intro-to-iot}
+przedstawiony na rys. \ref{fig:piramida}. Wyróżniono w nim następujące warstwy \cite{systemy-automatyki-przemyslowej}:
+\begin{itemize}
+    \item Warstwa produkcyjna --- tworzą ją urządzenia automatyki przemysłowej
+    oraz aparatury kontrolno-pomiarowej. Są to m. in. maszyny realizujące procesy przemysłowe,
+    aparatura pomiarowa, urządzenia wykonawcze (silniki, pompy, zawory, itp.),
+    urządzenia sterujące (sterowniki PLC, komputery przemysłowe, panele HMI) oraz
+    przemysłowe sieci komputerowe;
+    \item Warstwa operacyjna --- należą do niej systemy realizacji produkcji 
+    (ang. \emph{Manufacturing Execution System}, w skrócie: MES) oraz systemy 
+    zbierania danych i~sprawowania kontroli SCADA/HMI 
+    (ang. \emph{Supervisory Control and Data Acquisition, Human Machine Interface}).
+    Do funkcjalności systemu MES należą zarządzanie wykonaniem produkcji i zarządzanie
+    wydajnością. Systemy SCADA/HMI realizują zbieranie danych z procesu wraz z jego wizualizacją,
+    sterowanie nadrzędne (również przez człowieka), alarmowanie i archiwizację.
+    \item Warstwa biznesowa --- należą do niej wysokopoziomowe systemy planowania
+    zasobów przedsiębiorstwa ERP (ang. \emph{Enterprise Resource Planning}),
+    systemy analizy i produkcji SAP (ang. \emph{Systems Analytics and Product}),
+    systemy zarządzania relacjami z klientami CRM (ang.\emph{Customer Relationship Management})
+    oraz wiele innych. 
+    Oprogramowanie tego typu usprawnia działanie przedsiębiorstwa w różnych
+    obszarach, jak np.: logistyka, zamówienia,
+    analiza danych i~wspomaganie podejmowania decyzji, księgowość, inwentaryzacja.
+\end{itemize}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.50]{piramida.png}
+    \caption{Model piramidowy informatycznych systemów przemysłowych.}
+    \label{fig:piramida}
+\end{figure}
 
 \subsection{Internet Rzeczy}\label{iot}
+
+W podrozdziale przedstawiono przegląd definicji IoT oraz jego zastosowań, a także
+opisano elementy tworzące IoT. Podrozdział zawiera też odniesienie do ważnego
+w~kontekście omawianego zagadnienia przetwarzania w chmurze.
 
 \subsubsection{Definicje i zastosowania Internetu Rzeczy}
 
 \textbf{Internet Rzeczy} (ang. \emph{Internet of Things}, w skrócie: IoT) posiada różne definicje. 
-Jedną z prostszych jest sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
+Jedną z prostszych jest: sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
 do Internetu \cite{intro-to-iot}. Bardziej szczegółowe jest ujęcie IoT jako sieci jednoznacznie
 identyfikowalnych przedmiotów z wbudowanymi czujnikami, inteligencją obliczeniową
 oraz powszechną łącznością z Internetem \cite{iot-hype-to-reality}.
@@ -188,7 +229,7 @@ Przykładowe czujniki to: przyciski, przełączniki, czujniki ruchu, czujniki ga
 czujniki wibracji, czujniki temperatury, wilgoci,
 nacisku, ultradźwięków i wielu innych wielkości fizycznych. Przykłady urządzeń
 wykonawczych to: silniki, siłowniki liniowe, przekaźniki, zawory. Ważnym elementem
-infrastruktury IoT są systemy wbudowane typu SoC (ang. \emph{System on a chip}).  
+infrastruktury IoT są systemy wbudowane typu SoC (ang. \emph{System on a Chip}).  
 Są to układy elektroniczne, których poszczególne komponenty realizujące wymagane 
 funkcjonalności są zintegrowane w ramach jednego, kompletnego układu scalonego. 
 System typu SoC mogą zawierać m. in.: procesory lub mikrokontrolery, przetworniki
@@ -217,8 +258,8 @@ Stosowane modele komunikacji sieciowej bazują na standardowym modelu OSI bądź
 internetowym stosie TCP/IP. W warstwie fizycznej i łącza danych
 sieci IoT wykorzystuje się protokoły: Ethernet, WiFi, Bluetooth, sieci komórkowe,
 ZigBee, Z-Wave, NFC. W warstwie sieciowej stosuje się: IPv4, IPv6 oraz zoptymalizowaną
-pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m. in.: TCP i UDP. 
-Warstwy sesji, prezentacji i aplikacji implementują powszechne używane internetowe protokoły, jak
+pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m. in. TCP i UDP. 
+Warstwy sesji, prezentacji i aplikacji implementują powszechne używane internetowe protokoły, np.
 HTTP, RTP, SMTP. Wśród protokołów najwyższych wastw opracowano również 
 protokoły dedykowane dla IoT --- są to m. in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
 
@@ -228,8 +269,10 @@ W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{in
 \begin{itemize}
     \itemsep0em 
     \item Urządzenie -- Urządzenie (ang. \emph{Machine to Machine, Device to Device}, w skrócie: M2M)
-    --- Urządzenia komunikują się bezpośrednio bez potrzeby translacji czy wykonywania 
-    skomplikowanego przetwarzania danych (dotyczy to zarówno urządzeń tej samej klasy, jak i różnej);
+    --- Urządzenia komunikują się pomiędzy sobą bez potrzeby translacji czy wykonywania 
+    skomplikowanego przetwarzania danych.
+    W odniesieniu do zaprezentowanego w rozdziale \ref{isp} modelu piramidowego oznaczałoby to, że węzły
+    działające w~ramach odrębnych warstw hierarchii mogłyby się ze sobą komunikować bezpośrednio, na tej samej płaszczyźnie;
     \item Urządzenie -- Brama (ang. \emph{Device to Gateway})
     --- Występuje, gdy zachodzi potrzeba translacji informacji wymienianej pomiędzy różnymi sieciami.
     Translacją zajmuje brama (ang. \emph{gateway}), którą tworzy dedykowane oprogramowanie i/lub urządzenie;
@@ -237,9 +280,7 @@ W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{in
     --- Występuje, gdy zachodzi potrzeba zaawansowanego przetwarzania danych 
     (statystyka, eksploracja danych, big data, składowanie, itp.), 
     co nie jest możliwe w przypadku urządzeń o ograniczonych zasobach obliczeniowych, 
-    pamięciowych i energetycznych. Wówczas gromadzone przez urządzenia dane są 
-    przesyłane do platform opartych o usługi chmurowe. Może to być zarówno chmura publiczna 
-    (np. AWS, Azure), jak i lokalna, prywatna infrastruktura informatyczna. 
+    pamięciowych i energetycznych.
     Niektóre urządzenia są w stanie komunikować się z chmurą bezpośrednio, inne
     korzystają w tym celu z bram.
 \end{itemize}
@@ -248,7 +289,7 @@ W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{in
 
 \textbf{Przetwarzanie w chmurze} (ang. \emph{cloud computing}) pozwala 
 na migrację części lub całości infrastruktury informatycznej do tzw. chmury.
-W śród popularnych rozwiązań chmurowych znajdują się: 
+W śród popularnych rozwiązań znajdują się: 
 Microsoft Azure, Amazon AWS, Google Cloud, czy IBM Cloud. Usługi chmurowe
 udostępnianie przez wymienionych i wielu innych dostawców za pośrednictwem Internetu 
 noszą miano \textbf{chmury publicznej}. 
@@ -263,9 +304,9 @@ wyłącznie lokalnie, rozbudowane platformy infrastruktury informatycznej, zwane
 Tego typu rozwiązania są kosztowne, lecz dają pełną kontrolę nad posiadanymi zasobami \cite{iot-hype-to-reality}.
 
 W ramach swoich usług dostawcy chmury udostępniają m.in.: przetwarzanie danych, 
-analitykę, eksplorację danych, uczenie maszynowe, konteneryzację, relacyjne i nierelacyjne
+analitykę, eksplorację danych, uczenie maszynowe, konteneryzację, relacyjne i~nierelacyjne
 bazy danych, integrację aplikacji, hosting aplikacji i stron internetowych, 
-maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkwnikami, a także
+maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkwnikami, a~ponadto
 platformy do zarządzania systemami IoT \cite{aws}, \cite{azure}.
 
 Zarządzanie dużą ilością danych jest podstawowym zadaniem systemu IoT. Składa się ono
@@ -277,7 +318,7 @@ i gotowe rozwiązania programistyczne skracające czas rozwoju systemów
 
 \subsection{Internet rzeczy w przemyśle}\label{iiot}
 
-\textbf{Przemysłowym Internetem Rzeczy} (ang. \emph{Industrial Internet of Things}, w skrócie IIoT)
+\textbf{Przemysłowym Internetem Rzeczy} (ang. \emph{Industrial Internet of Things}, w~skrócie: IIoT)
 nazywamy rozwiązania IoT znajdujące zastosowanie w przemyśle. Do dziedziny
 IIoT należą: komunikacja M2M oraz przemysłowe technologie komunikacyjne stosowane 
 w systemach automatyzacji. IIoT ma umożliwić lepsze zrozumienie procesów
@@ -296,7 +337,14 @@ reprezentujące czwartą rewolucję przemysłową. Jest to koncept stosunkowo un
 skupiający rozwiązania CPS, IoT, IIoT wykorzystywane w celu zwiększania efektywności
 procesów przemysłowych w ramach tzw. inteligentych fabryk (ang. \emph{smart factories})
 \cite{iiot-cyber-manufacturing-systems}, \cite{iiot-challenges-opportunities-directions}.
-\todo{dodać diagram Venne'a}.
+Zależności pomiędzy wymienionymi pojęciami przedstawia rys. \ref{fig:venn}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.55]{Venn.png}
+    \caption{Diagram Venne'a przedstawiający zależności między CPS, IoT, IIoT i~Przemysłem 4.0}
+    \label{fig:venn}
+\end{figure}
 
 Ze względu na konieczność funkcjonowania w specyficznym środowisku przemysłowym
 IIoT posiada pewne cechy odróżniające od standardowego (konsumenckiego) IoT.
@@ -307,8 +355,7 @@ Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
     --- Podczas gdy wokół konsumenckiego IoT rozwijanych jest wiele nowych technologii i standardów, 
     wdrażając systemy IIoT należy się liczyć z dużą bezwładnością
     przemysłowego środowiska technologicznego. Istnieje wiele sprawdzonych, dobrze
-    funkcjonujących rozwiązań dedykowanych dla przemysłu, których przez długi czas
-    nie trzeba szczególnie rozbudowywać, lub co więcej --- wymieniać \cite{isp};
+    funkcjonujących rozwiązań dedykowanych dla przemysłu \cite{isp};
     \item Infrastruktura komunikacyjna 
     --- Infrastruktura IoT jest bardziej elastyczna, podczas gdy infrastruktura
     IIoT wymaga dostosowania do bardziej ustrukturyzowanych modeli komunikacyjnych;
@@ -320,9 +367,8 @@ Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
 
 Szczególną uwagę należy poświęcić stwierdzeniu, że \textbf{intencją wykorzystania IIoT nie 
 jest zastąpienie tradycyjnych systemów automatyzacji procesów przemysłowych} \cite{iiot-challenges-opportunities-directions}. 
-Na tej płaszczyźnie istnieją bowiem sprawdzone, dedykowane rozwiązania adresujące
-problem ograniczeń spotykanych w autoamtyce przemysłowej. Do rozwiązań technologicznych należą: przemysłowe sieci komputerowe,
-dedykowane urządzenia, systemy wykorzystujące redundancję, systemy SCADA, itp. \cite{isp}, \cite{systemy-automatyki-przemyslowej}.
+Na tej płaszczyźnie istnieją bowiem dedykowane rozwiązania adresujące
+problem ograniczeń spotykanych w autoamtyce przemysłowej.
 Właściwym \textbf{celem wdrażania systemów IIoT jest zwiększanie wiedzy na temat procesów
 przemysłowych, co w efekcie pozwala na ulepszenie jego wydajności}.
 \cite{iiot-challenges-opportunities-directions}. 
@@ -337,18 +383,24 @@ wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reali
     dla usług internetowych;
     \item Dostarczanie w czasie gwarantowanym
     --- Komunikacja spełnia pewne ograniczenia czasowe, których niedotrzymanie
-    skutkuje spadkiem korzyści płynących z wykorzystawanych usług;
+    skutkuje spadkiem korzyści płynących z~wykorzystawanych usług;
     \item Dostarczanie w czasie deterministycznym
     --- Komunikacja powinna spełniać ścisłe ograniczenia czasowe,
     których niedotrzymanie jest równoznaczne z awarią systemu.
 \end{itemize}
-Poziomy tolerancji opóźnień czasowych w różnych aplikacjach przedstawia rys. \todo{dodać rys}.
+Poziomy tolerancji opóźnień czasowych w różnych aplikacjach przedstawia rys. \ref{fig:tolerancja}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.45]{tolerancja.png}
+    \caption{Wykres przedstawiający poziomy tolerancji opóźnień dla różnych aplikacji.}
+    \label{fig:tolerancja}
+\end{figure}
+
 Powszechna infrastruktura tworząca Internet, jak i usługi w nim dostępne, są z reguły
 niedeterministyczne pod względem czasowym. Systemy IoT czy IIoT mogą więc
-funkcjonować zgodnie paradygmatem \emph{best effort}. Można rozważyć
-scenariusze, w których nie korzysta się z publicznej sieci Internet, a innych
-rozwiązań sieciowych, które umożliwiają zachowanie determinizmu. Nie są to jednak
-systemy IoT w ścisłym rozumieniu. Można też wyobrazić sobie heterogeniczny system
+funkcjonować zgodnie paradygmatem \emph{best effort}. Aczkolwiek można wyobrazić 
+sobie pewien heterogeniczny system
 IoT, w którym istnieje pewna sieć deterministyczna połączona z publicznym Internetem
 za pomocą odpowiedniej bramy. Takie podejście może okazać się przydatne w przemyśle, gdzie 
 istnieje potrzeba integracji istniejących systemów automatyki z Internetem Rzeczy \cite{iiot-design-and-impl-gateway}.
@@ -356,7 +408,15 @@ istnieje potrzeba integracji istniejących systemów automatyki z Internetem Rze
 W systemach IIoT popularny jest podstawowy, trójwarstwowy model architektury. Wśród jego
 warstw wyróżniamy: warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
 i warstwę biznesową (ang. \emph{enterprise}) \cite{iiot-challenges-opportunities-directions}.
-Model ten przedstawia rys. \todo{dodać rys}.
+Model ten przedstawia rys. \ref{fig:iiot-arch}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.50]{iiot_arch.png}
+    \caption{Model warstwowy informatycznych systemów przemysłowych.}
+    \label{fig:iiot-arch}
+\end{figure}
+
 Do warstwy brzegowej należą
 typowe urządzenia systemów automatyki przemysłowej, m.in. czujniki i urządzenia wykonawcze oraz
 sterowniki (np. klasy PLC) oraz łączące je sieci komputerowe. Warstwę platformową realizują
@@ -397,7 +457,7 @@ w ramach sieci przemysłowej
 oraz typowe dla IoT bezprzewodowe sieci sensorowe (ang. \emph{Wireless Sensor Networks}, w skrócie: WSN)
 lub inne zespoły urządzeń zawierające czujniki komunikujące się z wykorzystaniem protokołów charakterystycznych dla IoT
 \cite{iiot-gateway-introduction}
-(przykłady takich urządzeń wymieniono w rozdziale \ref{iot}). Implementację warstwy
+(przykłady takich urządzeń wymieniono w~rozdziale \ref{iot}). Implementację warstwy
 platformowej realizują wspomniane już rozwiązania oferowane przez dostawców chmury.
 Do warstwy biznesowej mogą należeć istniejące aplikacje 
 wspomagające działalność przedsiębiorstwa 
@@ -411,7 +471,7 @@ do różnych protokołów sieci przemysłowych i IoT. Konieczna jest też integr
 warstwy brzegowej i platformowej zaproponowanego modelu. Są to krytyczne zadania
 przypisywane systemom IIoT. Do rozwiązania 
 przytoczonego problemu stosuje się tak zwane \textbf{bramy IoT} (ang. \emph{IoT gateways}). Są to zwykle
-urządzenia wraz z oprogramowaniem będące w stanie integrować zarówno protokoły
+urządzenia wraz z~oprogramowaniem będące w stanie integrować zarówno protokoły
 warstwy fizycznej i łącza danych, jak i dokonywać translacji protokołów wyższych warstw 
 (tzw. bramy semantyczne) wraz z możliwością udostępniania danych za pośrednictwem
 Internetu \cite{iiot-heterogenous-gateways}. Bramy mogą realizować również
@@ -421,11 +481,11 @@ W ogólniejszym rozumieniu bramy IoT mogą stanowić pomost pomiędzy infrastruk
 pomiarową a infrastrukturą sieciową lub też pomiędzy technologią operacyjną a 
 technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challenges-opportunities-directions}. 
 Bramy IoT mogą z reguły udostępniać dane za pośrednictwem Internetu na poziomie usługi \emph{best-effort}.
-Warto jednak rozważyć możliwość, aby na poziomie lokalnym mogły one współpracować z istniejącymi
+Warto jednak rozważyć możliwość, aby na poziomie lokalnym mogły one współpracować z~istniejącymi
 systemami czasu rzeczywistego, co jest ważnym aspektem w środowisku przemysłowym. 
 
 Otrzymano zatem podstawowy zarys projektowanego systemu.
-Składa się on z urządzeń pomiarowych udostępniających dane w ramach sieci 
+Składa się on z~urządzeń pomiarowych udostępniających dane w ramach sieci 
 przemysłowych oraz IoT. Integracji różnych protokołów i wstępnego przetwarzania
 dokonuje dedykowana brama (bramy) IoT. Brama przekazuje dane w spójnym, jednolitym
 formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
@@ -457,8 +517,8 @@ znaleziono następujące przykłady:
     Wśród użytych technologii producent wymienia IoT, inteligentne czujniki, 
     przetwarzanie w chmurze, integrację systemów \cite{nazca};
     \item IXON --- Kompletne rozwiązanie IIoT holenderskiej firmy o tej samej nazwie.
-    System składa się z platformy internetowej umożliwiającej nadzór, analitykę i wizualizację danych,
-    a także dedykowanego routera/bramy IoT. Urządzenie wraz z opgrogramowaniem
+    System składa się z platformy internetowej umożliwiającej nadzór, analitykę i~wizualizację danych,
+    a~także dedykowanego routera/bramy IoT. Urządzenie wraz z~opgrogramowaniem
     integruje takie systemy i protokoły jak: OPC UA, Modbus, Ethernet \cite{ixon}.
 \end{itemize}
 
