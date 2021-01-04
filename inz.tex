@@ -11,6 +11,7 @@
 \usepackage[backend=biber, maxbibnames=30]{biblatex}
 \usepackage{amsmath}
 \usepackage{todonotes}
+\usepackage{float} % to use figure positioning [H]
 
 \addbibresource{inz.bib}
 \graphicspath{ {./images/} }
@@ -29,7 +30,93 @@
 
 \section{Wstęp}
 
-\section{Analiza tematu}
+Systemy informatyczne znajdują obecnie szerokie zastosowanie w wielu przedsiębiorstwach. 
+Do zadań takich systemów należą przede wszystkim: automatyzacja procesów,
+ułatwienie zarządzania zasobami (ludzkimi, materialnymi, finansowymi, dokumentacją, wiedzą), 
+gromadzenie informacji na temat prowadzonej
+działalności na potrzeby raportowania, nadzoru, optymalizacji i rozwoju strategii, a także
+usprawnienie komunikacji z klientami i kontrahentami. Korzyści wynikające z wdrożenia
+rozwiązań informatycznych wykorzystuje się również w środowisku
+przemysłowym. Obok wymienionych zadań (obejmujących szerszy zakres działalności 
+przedsiębiorstwa) podstawową rolą przemysłowych systemów informatycznych 
+jest wspomaganie prowadzenia procesów przemysłowych (produkcji przemysłowej). 
+Istotnym aspektem działania takich systemów
+jest zbieranie danych pomiarowych. Dane gromadzone przez zainstalowaną w systemie produkcji 
+aparaturę pomiarową, jak i wprowadzane przez ludzi lub inne systemy, determinują działanie układów automatyki, 
+umożliwiają nadzór, diagnostykę, regulację, monitorowanie i wizualizację procesów przemysłowych.
+Ponadto stosunkowo duża liczba gromadzonych danych poddana zaawansowanemu przetwarzaniu 
+(ang. \emph{big data})
+może dostarczyć cennej wiedzy w kontekście prowadzenia biznesu.
+Wymaganiem charakterystycznym stawianym wobec systemów informatyki przemysłowej
+jest konieczność działania w~ramach ograniczeń nakładanych przez specyficzne środowisko.
+Należą do nich: determinizm działań i determinizm czasowy, niezawodne funkcjonowanie (odporne 
+na często niesprzyjające warunki), bezpieczeństwo danych i~urządzeń~\cite{isp}.
+
+Zbieranie znacznej ilości danych w celu ich dalszego przetwarzania wymienia się
+wśród głównych zadań Internetu Rzeczy (ang. \emph{Internet of Things}, w skrócie:~IoT).
+Jest to koncepcja, w myśl której przedmioty wyposażone w czujniki i/lub elementy
+wykonawcze są podłączane do Internetu. Systemy wykorzystujące Internet Rzeczy stały się szczególnie popularne
+w ostatnich latach dzięki czynnikom ułatwiającym ich realizację:
+znaczący rozwój systemów komputerowych małej i~średniej skali oraz urządzeń mobilnych, upowszechniony
+dostęp do Internetu, stopniowe wdrażanie protokołu IPv6, duże postępy w dziedzinie
+eksploracji danych, uczenia maszynowego i inteligencji obliczeniowej,
+a~także dynamiczny rozwój usług opartych na chmurze obliczeniowej~\cite{intro-to-iot}.
+Dziedzina zastosowań IoT jest szeroka, gdyż obejmuje ona urządzenia
+o wielu różnych przeznaczeniach. Powszechne stało się używanie określenia ,,inteligenty'' 
+(ang. \emph{smart}) wobec tego typu przedmiotów lub środowisk, w których są one używane.  W~ten sposób
+powstały koncepcje inteligentnych gadżetów i urządzeń gospodarstwa domowego,
+rolnictwa, logistyki, systemów opieki zdrowotnej, budynków, a nawet miast. 
+Do obszarów wykorzystania IoT zalicza się także przemysł. Koncepcja ta nosi 
+nazwę Przemysłowego Internetu Rzeczy (ang. \emph{Industrial Internet of Things}, w skrócie IIoT).
+Głównym przeznaczeniem IIoT jest gromadzenie wiedzy na temat procesu przemysłowego, 
+a~w~konsekwencji --- zwiększanie jego efektywności \cite{iiot-challenges-opportunities-directions}.
+
+W ramach niniejszej pracy podjęto zadanie zaprojektowania systemu informatycznego
+wraz z prototypem, którego podstawową funkcją jest zbieranie i składowanie danych pomiarowych.
+Docelowym obszarem zastosowań systemu jest środowisko przemysłowe. 
+W realizacji projektu kładzie się nacisk na wykorzystanie technologii IoT
+oraz chmury obliczeniowej. Źródłem danych w systemie
+jest aparatura pomiarowa (czujniki) funkcjonująca w ramach systemów automatyki i IoT,
+inne systemy informatyczne wdrożone w przedsiębiorstwie, 
+a także pracownicy obsługujący proces przemysłowy (mogą oni monitorować jego działanie 
+i~wprowadzać wyniki obserwacji do systemu, jak również wyzwalać określone zdarzenia). 
+ Przedmiotem pracy jest ogólne opracowanie architektury 
+systemu adresujące przedstawiony problem aplikacyjny. Stąd opisane w kolejnych rozdziałach 
+rozwiązanie teoretyczne abstrahuje od szczegółowych przypadków użycia, konkretnych urządzeń
+technicznych czy technologii. Oczekiwaną cechą systemu jest możliwość dostosowania
+do różnych konfiguracji sprzętu i oprogramowania stosowanych w~IoT i dedykowanych
+rozwiązaniach przemysłowych. Jedną z~możliwych implementacji i~jednocześnie weryfikacją
+zaproponowanej koncepcji systemu jest wykonany prototyp. Na jego potrzeby zdefiniowano
+kilka ściślej sprecyzowanych przypadków zastosowania, dokonano wyboru urządzeń
+i określonych usług chmurowych, jak również bibliotek i narzędzi programistycznych.
+
+W rozdziale \ref{analiza} dokonano przeglądu dostępnej literatury związanej z podjętą problematyką.
+W pierwszej kolejności omówiono z osobna poszczególne zagadnienia, które
+obejmuje temat pracy, przybliżając w ten sposób jego dziedzinę. 
+Następnie zebrane informacje zestawiono w kontekście realizowanego zadania projektowego,
+wskazano możliwe problemy i potencjalne rozwiązania wraz z zarysem architektury
+systemu. Opisano również kilka dostępnych na rynku rozwiązań komercyjnych, 
+które adresują podobny zakres funkcjonalny. W rozdziale \ref{wymagania} sprecyzowano
+wymagania funkcjonalne i niefunkcjonalne, które ma realizować projektowany system
+oraz zdefiniowano ogólne przypadki użycia.
+Opisano również metodykę pracy oraz wybrane narzędzia, technologie i biblioteki użyte do realizacji 
+prototypu. Rozdział \ref{spec-zew} zawiera informacje dotyczące
+wdrażania i~używania systemu, a także wymagań sprzętowych i programowych.
+Poruszono również kwestie bezpieczeństwa. W oparciu o zrealizowany prototyp przedstawiono
+przykładowe scenariusze korzystania z systemu. W rozdziale \ref{spec-wew} zamieszczono
+szczegółowy opis architektury zaprojektowanego systemu. Wymieniono jej poszczególne
+komponenty i~omówiono sposoby ich wzajemnej interakcji. Zdefiniowano interfejs
+komunikacyjny systemu, przedstawiono sposoby integracji wykorzystanych gotowych
+narzędzi z elementami autorskimi. Opisano także rozwiązania
+mające na celu poprawę bezpieczeństwa. Rozdział \ref{testy} zawiera 
+opis stosowanej metodyki testowania i przypadków testowych oraz przedstawia wyniki przeprowadzonych
+testów z uwzględnieniem napotkanych problemów. W rozdziale \ref{wnioski} zamieszczono
+podsumowanie i wnioski, które nasunęły się po zakończeniu prac nad projektem. 
+Uzyskany rezultat zestawiono z postawionymi celami i określonymi wymaganiami.
+Rozważono również kierunki dalszego rozwoju systemu.
+
+
+\section{Analiza tematu}\label{analiza}
 
 W niniejszym rozdziale przedstawiono rozważania teoretyczne dotyczące projektowanego
 systemu opierające się na analizie dostępnej literatury. Realizowany temat
@@ -524,15 +611,15 @@ znaleziono następujące przykłady:
 
 
 
-\section{Wymagania i narzędzia}
+\section{Wymagania i narzędzia}\label{wymagania}
 
-\section{Specyfikacja zewnętrzna}
+\section{Specyfikacja zewnętrzna}\label{spec-zew}
 
-\section{Specyfikacja wewnętrzna}
+\section{Specyfikacja wewnętrzna}\label{spec-wew}
 
-\section{Weryfikacja i walidacja}
+\section{Weryfikacja i walidacja}\label{testy}
 
-\section{Podsumowanie i wnioski}
+\section{Podsumowanie i wnioski}\label{wnioski}
 
 \printbibliography
 
