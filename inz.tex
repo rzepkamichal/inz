@@ -683,12 +683,11 @@ które realizują kolejne etapy przetwarzania danych.
 Wykorzystanie Internetu Rzeczy to podstawowe założenie, które zostało ujęte 
 w~temacie niniejszej pracy i zaznaczone przy określeniu
 celu projektu. Do najważniejszych zastosowań IoT należy zbieranie dużej ilości
-danych z wielu różnych urządzeń. Użycie rozwiązań z dziedziny IoT na potrzeby
-projektowanego systemu jest więc wyborem uzasadnionym. 
+danych z wielu różnych urządzeń. Użycie rozwiązań z dziedziny IoT jest więc wyborem uzasadnionym. 
 Zadaniem krytycznym w systemach IoT jest przetwarzanie zebranych danych. 
-Problem ten adresują oferowane za pośrednictwem Internetu
-usługi chmurowe, które najczęściej wykorzystuje się w parze z IoT. Tak więc 
-Internet Rzeczy i~przetwarzanie w~chmurze w~stopniu znaczącym odpowiadają na 
+Problem ten adresują m.in. oferowane za pośrednictwem Internetu
+usługi chmurowe. Tak więc Internet Rzeczy i~przetwarzanie w~chmurze w~stopniu 
+znaczącym odpowiadają na 
 większość wymagań funkcjonalnych przedstawionych w~poprzednim rozdziale. 
 
 Użycie technologii IoT
@@ -750,6 +749,12 @@ stosuje się powszechnie protokół Modbus/TCP, a także zapewniające determini
 protokoły dedykowane dla sieci Ethernet: Profinet, EtherCAT, Ethernet Powerlink. 
 Warty uwzględnienia jest też przemysłowy model wymiany informacji OPC~UA.
 
+Wraz z implementacją popularnych protokołów wymagane jest ponadto \textbf{zapewnienie
+jednolitego formatu danych na poziomie warstwy aplikacji}, który ma zapewnić przenośność,
+łatwą wymianę danych pomiędzy współpracującymi systemami danych pomiędzy. Formaty
+te powinny być uprzednio specyfikowane, a projektowany system powinien być do 
+nich zaadaptowany --- analogiczni,e jak w przypadku protokołów.
+
 Obok przystosowania do różnych sposobów komunikacji ważnym kryterium uniwersalności
 systemu jest elastyczność oprogramowania.
 W systemie, w którym zbierane są dane z wielu różnych urządzeń, wymagania dotyczące
@@ -766,7 +771,8 @@ również \textbf{wykonania prototypu, którego celem jest weryfikacja przedstaw
 Na jego potrzeby mają zostać zaimplementowane określone scenariusze 
 biznesowe z wykorzystaniem wybranych urządzeń, sposobów komunikacji, narzędzi i 
 usług chmurowych. Szczegółową charakterystykę prototypu przedstawiono w dalszej
-części pracy. 
+części pracy.  
+
 
 \subsubsection{Skalowalność}
 
@@ -789,6 +795,32 @@ cyfrowym), a także zapewnienia poufności z wykorzystaniem szyfrowania i
 metod ochrony przed kradzieżą.
 
 \subsection{Przypadki użycia}
+
+Ogólne ujęcie funkcjonalności projektowanego systemu z perspektywy użytkowników,
+zewnętrznych urządzeń i systemów modeluje diagram przypadków użycia przedstawiony
+na rys. \ref{fig:use-case}. Na jego potrzeby zdefiniowano abstrakcyjne
+źródło danych, które może stanowić aparatura pomiarowa, sterowniki przemysłowe, komputery,
+urządzenia wbudowane, pamięć masowa, a także inne systemy. Źródło przesyła
+dane do systemu, który dokonuje ich konwersji na pożądany format i umożliwia
+dalsze składowanie, przetwarzanie, udostępnianie i wizualizację. Dane są
+udostępniane na potrzeby innych systemów informatycznych (aplikacji klienckich). 
+Są one także bezpośrednio prezentowane pracownikom obsługi procesu przemysłowego
+i analitykom w ramach wizualizacji. Wymienieni pracownicy we 
+współpracy z programistami i testerami uczestniczą
+w procesie implementacji, modyfikacji i rozbudowy logiki przetwarzania danych.
+Administrator systemu zajmuje się jego konfiguracją i utrzymaniem 
+poszczególnych jego komponentów. Praca ta polega na
+instalacji urządzeń warstwy sprzętowej, zarządzaniu
+użytkownikami i dostępem do systemu, integracji poszczególnych jego komponentów,
+ustawieniu parametrów połączeń sieciowych i protokołów, monitorowaniu 
+i usuwaniu awarii. 
+
+\begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{use-case.png}
+      \caption{Diagram przypadków użycia systemu.}
+      \label{fig:use-case}
+  \end{figure}
 
 \subsection{Scenariusze wykorzystania systemu}
 
