@@ -28,6 +28,8 @@
 
 \newpage
 
+\tableofcontents
+
 \section{Wstęp}\label{intro}
 
 Systemy informatyczne znajdują obecnie szerokie zastosowanie w wielu przedsiębiorstwach.
@@ -666,7 +668,7 @@ diagramów, plików o przejrzystej strukturze.
 
 \subsubsection{Udostępnianie danych}
 
-Z efektów działania projektowanego systemu niekoniecznie bezpośrednio muszą korzystać wyłącznie
+Z efektów działania projektowanego systemu bezpośrednio mogą korzystać nie tylko
 ludzie, lecz także inne systemy. Systemy informatyczne wspomagające funkcjonowanie 
 pojedynczych, jak również współpracę wielu przedsiębiorstw zwykle nie stanowią
 rozwiązań jednolitych, lecz tworzą rozproszony system mniej lub bardziej 
@@ -681,12 +683,12 @@ które realizują kolejne etapy przetwarzania danych.
 Wykorzystanie Internetu Rzeczy to podstawowe założenie, które zostało ujęte 
 w~temacie niniejszej pracy i zaznaczone przy określeniu
 celu projektu. Do najważniejszych zastosowań IoT należy zbieranie dużej ilości
-danych z wielu różnych urządzeń. Jako że główną funkcjonalnością projektowanego
-systemu jest zbieranie danych pomiarowych, użycie rozwiązań z dziedziny IoT 
-jest się wyborem uzasadnionym. Zadaniem krytycznym w systemach IoT jest 
-przetwarzanie zebranych danych. Problem ten adresują oferowane za pośrednictwem Internetu
+danych z wielu różnych urządzeń. Użycie rozwiązań z dziedziny IoT na potrzeby
+projektowanego systemu jest więc wyborem uzasadnionym. 
+Zadaniem krytycznym w systemach IoT jest przetwarzanie zebranych danych. 
+Problem ten adresują oferowane za pośrednictwem Internetu
 usługi chmurowe, które najczęściej wykorzystuje się w parze z IoT. Tak więc 
-Internet Rzeczy i przetwarzanie w~chmurze w~stopniu znaczącym odpowiadają na 
+Internet Rzeczy i~przetwarzanie w~chmurze w~stopniu znaczącym odpowiadają na 
 większość wymagań funkcjonalnych przedstawionych w~poprzednim rozdziale. 
 
 Użycie technologii IoT
@@ -698,23 +700,93 @@ danych.
 
 \subsubsection{Dostosowanie do środowiska przemysłowego}
 
-Drugim założeniem podstawowym zawartym w temacie niniejszej pracy
-jest ukierunkowanie projektowanego systemu na zastosowanie w przemyśle. 
-Rozpatrywane wymaganie obejmuje kilka aspektów. Pierwszym z nich jest cel
-zbierania danych pomiarowych z zastosowaniem rozwiązań IoT, 
-który w środowisku przemysłowym sprowadza się do zapewnienia większej wydajności,
-zrównoważenia i wiedzy na temat procesów przemysłowych. Intencją IIoT nie jest
-natomiast zastąpienie istniejących, dedykowanch systemów automatyzacji, w skład 
-których wchodzi także aparatura pomiarowa. Aczkolwiek
-własnością porządaną projektowanego systemu jest możliwość integracji
+Drugim założeniem podstawowym obejmującym zakres niniejszej pracy
+jest \textbf{przystosowanie projektowanego systemu do zastosowania w przemyśle.} 
+W wielu przedsiębiorstwach istnieją już sprawdzone systemy automatyki wyposażone
+w aparaturę pomiarową. Jako że rozwój technologiczny w przemyśle ma z reguły
+charakter stopniowy, wymaga się, aby projektowany system \textbf{integrował się 
+z obecnie funkcjonującymi systemami}, co oznacza konieczność posiadania
+odpowiednich interfejsów komunikacyjnych i implementowania określonych protokołów
+charakterystycznych dla przemysłu. 
 
+Jak już wspomniano w rozdziale \ref{analiza}, systemy nadzorujące
+procesy przemysłowe muszą zwykle działać w ramach twardych ograniczeń czasowych.
+Natomiast wykorzystanie technologii internetowych gwarantuje działanie na poziomie 
+co najwyżej \emph{best effort}. Celem ich stosowania w przemyśle nie jest jednak zastąpienie
+istniejących systemów automatyki, lecz ich integracja z systemami warstwy IT.
+Aczkolwiek, żeby zapewnić szerszą współpracę projektowanego systemu 
+z istniejącymi rozwiązaniami przemysłowymi, należy \textbf{uwzględnić możliwość jego funkcjonowania
+w czasie rzeczywistym na poziomie lokalnym}, tzn. w ramach warstwy brzegowej 
+(patrz: rozdział \ref{analiza}, rys. \ref{fig:iiot-arch}).
 
+W środowisku przemysłowym oczekuje się zwiększonej niezawodności systemów
+zarówno na poziomie sprzętowym, jak i programowym. Choć w przypadku IIoT nie jest
+to zwykle wymaganie o stopniu tak krytycznym, jak w standardowych systemach automatyki,
+to w projekcie systemu należy uwzględnić w zakresie podstawowym 
+zagadnienia \textbf{redundancji, diagnostyki i możlwości funkcjonowania w niesprzyjających
+warunkach środowiskowych}.
 
 \subsubsection{Ogólność rozwiązania}
 
-\subsubsection{Skalowalność, konfigurowalność}
+Pożądaną cechą projektowanego systemu jest jego uniwersalność. Wypracowane rozwiązanie
+powinno być możliwie niezależne od specyficznych urządzeń, narzędzi technicznych,
+oprogramowania, czy dostawców chmury. Takie podejście pozwala na implementację różnych przypadków biznesowych
+oraz dostosowanie do istniejącej w przedsiębiorstwach infrastruktury sprzętu i oprogramowania
+z uwzględnieniem indywidualnych preferencji, wymagań i posiadanych zasobów. 
 
-\subsubsection{Bezpieczeństwo}
+Integrację różnych systemów informatycznych na odpowiednich poziomach abstrakcji
+zapewniają sieci komputerowe, interfejsy i protokoły.
+Stąd \textbf{kluczowym aspektem projektowanego systemu --- co już kilkukrotnie zostało podkreślone ---
+jest dostarczenie wsparcia dla popularnych
+interfejsów, protokołów i modeli wymiany informacji stosowanych w~IoT, przemyśle oraz
+aplikacjach internetowych i usługach chmurowych}. Wśród rozwiązań sieciowych
+należy w szczególności uwzględnić: Ethernet (również klasy RTE szeroko stosowany
+w przemyśle \cite{isp}), sieci i standardy komunikacji bezprzewodowej (WiFi, Zigbee, Z-Wave, Bluetooth, GSM).
+Wiele urządzeń wbudowanych (w tym przemysłowych) komunikuje się za pośrednictwem 
+interfejsów szeregowych: RS232/485, USB, SPI, I2C. Spośród protokołów należy
+wziąć pod uwagę MQTT i CoAP, które są dedykowane dla rozwiązań IoT. Aplikacje
+internetowe wykorzystują obecnie najczęsciej protokół HTTP. W przemyśle 
+stosuje się powszechnie protokół Modbus/TCP, a także zapewniające determinizm czasowy 
+protokoły dedykowane dla sieci Ethernet: Profinet, EtherCAT, Ethernet Powerlink. 
+Warty uwzględnienia jest też przemysłowy model wymiany informacji OPC~UA.
+
+Obok przystosowania do różnych sposobów komunikacji ważnym kryterium uniwersalności
+systemu jest elastyczność oprogramowania.
+W systemie, w którym zbierane są dane z wielu różnych urządzeń, wymagania dotyczące
+ich przetwarzania podlegają częstej zmianie i ewolucji. Mogą się one również
+zasadniczo różnić pomiędzy poszczególnymi przedsiębiorstawmi. \textbf{Oczekuje się zatem, 
+aby system umożliwiał łatwą modyfikację i rozbudowę realizowanej logiki, jak
+również wymianę komponentów}. Ponadto należy uwzględnić fakt, że w zarządzaniu
+systemem przemysłowym niekoniecznie muszą uczestniczyć zawodowi programiści,
+z czym wiąże się potrzeba, aby \textbf{model programistyczny systemu był zrozumiały
+także dla specjalistów innych dziedzin techniki}.
+
+Poza wypracowaniem ogólnej sepcyfikacji projektu wymaga się 
+również \textbf{wykonania prototypu, którego celem jest weryfikacja przedstawionej koncepcji}.
+Na jego potrzeby mają zostać zaimplementowane określone scenariusze 
+biznesowe z wykorzystaniem wybranych urządzeń, sposobów komunikacji, narzędzi i 
+usług chmurowych. Szczegółową charakterystykę prototypu przedstawiono w dalszej
+części pracy. 
+
+\subsubsection{Skalowalność}
+
+Projekt powinien przewidywać możliwość zmiany skali infrastruktury przedsiębiorstwa,
+w ramach której ma on funkcjonować. Wymaga się, aby system mógł być
+w~stosunkowo prosty, szybki i tani sposób zaadaptowany do nowych warunków pracy,
+które są rezlutatem zmieniającej się liczby obsługiwanych
+urządzeń i~ilości koniecznych do przetworzenia danych. Dostosowanie systemu sprowadza
+się w głównej mierze do przydzielenia odpowiednich zasobów sprzętowych i programowych.
+
+\subsubsection{Bezpieczeństwo danych}
+
+Wymaganiem stawianym wobec większości systemów informatycznych jest bezpieczeństwo
+danych. Również w środowisku przemysłowym przetwarzane dane są zwykle traktowane
+jako poufne, zaś ograniczenie dostępu do systemów sterowania ma charakter krytyczny,
+gdyż mają one realny wpływ na bezpieczeństwo zasobów przedsiębiorstwa~--- w tym także
+i ludzi. W ramach projektu należy rozważyć w zakresie podstawowym kwestie 
+bezpieczeństwa w aspekcie autoryzacji dostępu do systemu (w świecie rzeczywistym oraz
+cyfrowym), a także zapewnienia poufności z wykorzystaniem szyfrowania i
+metod ochrony przed kradzieżą.
 
 \subsection{Przypadki użycia}
 
