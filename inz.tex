@@ -490,25 +490,23 @@ istnieje potrzeba integracji istniejących systemów automatyki z Internetem Rze
 
 W systemach IIoT popularny jest podstawowy, trójwarstwowy model architektury. Wśród jego
 warstw wyróżniamy: warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
-i warstwę biznesową (ang. \emph{enterprise}) \cite{iiot-challenges-opportunities-directions}.
-Model ten przedstawia rys. \ref{fig:iiot-arch}.
+i warstwę biznesową (ang. \emph{enterprise}).
+Model ten przedstawiono na rys.~\ref{fig:iiot-arch}. Do warstwy brzegowej należą
+typowe urządzenia systemów automatyki przemysłowej, m.in. czujniki i urządzenia wykonawcze oraz
+sterowniki (np. klasy PLC) oraz łączące je sieci komputerowe. Warstwa platformowa umożliwia zarządzanie
+systemem IoT, akwizycję i agregację danych oraz ich trasowanie na wejścia
+aplikacji i usług warstwy biznesowej, które
+korzystają ze zgromadzonych danych w celu wspomagania
+analityki, monitorowania, zarządzania, archiwizacji, itd. \cite{iiot-challenges-opportunities-directions},  \cite{models-innovative-iot}.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.50]{iiot_arch.png}
-    \caption{Model warstwowy informatycznych systemów przemysłowych.}
+    \caption{Model warstwowy systemów IIoT.}
     \label{fig:iiot-arch}
 \end{figure}
 
-Do warstwy brzegowej należą
-typowe urządzenia systemów automatyki przemysłowej, m.in. czujniki i urządzenia wykonawcze oraz
-sterowniki (np. klasy PLC) oraz łączące je sieci komputerowe. Warstwę platformową realizują
-zwykle usługi chmurowe, takie jak Azure IoT Hub czy AWS IoT. Serwisy te umożliwiają przede wszystkim zarządzanie
-systemem IoT, akwyizycję i agregację danych oraz trasowanie danych na wejścia
-innych usług i aplikacji domenowych \cite{models-innovative-iot}. Warstwę biznesową
-stanowią aplikacje domenowe lub zaawansowane usługi chmurowe
-korzystające ze zgromadzonych danych w celu wspomagania
-analityki, monitorowania, zarządzania, archiwizacji, itp.
+
 
 \subsection{Ujęcie tematu w świetle zgromadzonych informacji}
 
@@ -530,42 +528,35 @@ narzędzi i usług informatycznych.
 
 Modelem referencyjnym dla projektowanego systemu jest zaprezentowana w rozdziale
 \ref{iiot} \textbf{trójwarstwowa architektura systemów IIoT}. Dla warstwy brzegowej przyjmuje
-się, że w systemie może być zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
+się, że w systemie jest zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
 lub zespoły urządzeń aparatury kontrolno-pomiarowej pracujące w czasie rzeczywistym
 w ramach sieci przemysłowej
 (czujniki przemysłowe, wyspy czujników, moduły DAQ, moduły I/O, sterowniki, itp.)
 oraz typowe dla IoT bezprzewodowe sieci sensorowe (ang. \emph{Wireless Sensor Networks}, w skrócie: WSN)
-lub inne zespoły urządzeń zawierające czujniki komunikujące się z wykorzystaniem protokołów charakterystycznych dla IoT
-\cite{iiot-gateway-introduction}
+lub inne zespoły urządzeń zawierające czujniki komunikujące się z wykorzystaniem 
+interfejsów i protokołów charakterystycznych dla IoT \cite{iiot-gateway-introduction}
 (przykłady takich urządzeń wymieniono w~rozdziale \ref{iot}). Implementację warstwy
-platformowej realizują wspomniane już rozwiązania oferowane przez dostawców chmury.
+platformowej realizują rozwiązania oferowane przez dostawców chmury.
 Do warstwy biznesowej mogą należeć istniejące aplikacje
 wspomagające działalność przedsiębiorstwa
 (m. in. systemy klasy ERP) oraz mogące przejmować ich funkcje usługi chmurowe.
-
-Reasumując --- gromadzenie danych w ramach systemu umożliwia dostępna apratura pomiarowa
-składająca się z urządzeń przemysłowych i/lub IoT. Zarządzanie urządzeniami, agregację, przetwarzanie, składowanie i udostępnianie
-danych mogą realizować wybrane usługi chmurowe i/lub ``szyte na miarę'' aplikacje (głównie internetowe).
 Pewną lukę, element brakujący w proponowanym modelu stanowi konieczność dopasowania
-do różnych protokołów sieci przemysłowych i IoT. Potrzebna jest też integracja
+do różnych protokołów sieci przemysłowych i IoT. Istnieje również potrzeba integracji
 warstwy brzegowej i platformowej zaproponowanego modelu. Są to krytyczne zadania
 przypisywane systemom IIoT. Do rozwiązania
-przytoczonego problemu stosuje się tak zwane \textbf{bramy IoT} (ang. \emph{IoT gateways}). Są to zwykle
+przytoczonego problemu stosuje się tzw. \textbf{bramy IoT} (ang. \emph{IoT gateways}). Są to zwykle
 urządzenia wraz z~oprogramowaniem będące w stanie integrować zarówno protokoły
 warstwy fizycznej i łącza danych, jak i dokonywać translacji protokołów wyższych warstw
 (tzw. bramy semantyczne) wraz z możliwością udostępniania danych za pośrednictwem
-Internetu \cite{iiot-heterogenous-gateways}. Bramy mogą realizować również
+Internetu \cite{iiot-heterogenous-gateways}. Bramy mogą realizować ponadto
 wstępne przetwarzanie danych odciążając w ten sposób usługi wyższych warstw.
 Jest to tzw. koncepcja \textbf{przetwarzania brzegowego} (ang. \emph{edge computing}) \cite{iot-gateway-medical-and-industrial}.
 W ogólniejszym rozumieniu bramy IoT mają stanowić pomost pomiędzy technologią operacyjną a
 technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challenges-opportunities-directions}.
-Bramy IoT mogą z reguły udostępniać dane za pośrednictwem Internetu na poziomie usługi \emph{best-effort}.
-Warto jednak rozważyć możliwość, aby na poziomie lokalnym mogły one współpracować z~istniejącymi
-systemami czasu rzeczywistego, co jest ważnym aspektem w środowisku przemysłowym.
 
 Otrzymano zatem podstawowy zarys projektowanego systemu.
 Składa się on z~urządzeń pomiarowych udostępniających dane w ramach sieci
-przemysłowych oraz IoT. Integracji różnych protokołów i wstępnego przetwarzania
+przemysłowych oraz IoT. Integracji różnych urządzeń i wstępnego przetwarzania
 dokonuje dedykowana brama (bramy) IoT. Przekazuje ona dane w spójnym, jednolitym
 formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
 Te z kolei mogą realizować zaawansowane przetwarzanie, składowanie, udostępnianie
@@ -903,11 +894,48 @@ $n$ --- liczba wszystkich produktów wyprodukowanych w procesie.
 
 \subsection{Ogólna koncepcja rozwiązania}
 
+Proponowane rozwiązanie opiera się na trójwarstwowym modelu architektury
+systemów IIoT (patrz: rozdział \ref{iiot}, rys. \ref{fig:iiot-arch}), który
+zaadaptowano w celu praktycznego zastosowania, uwzględniwszy zdefiniowane 
+wymagania projektowe oraz dostępne narzędzia i usługi. Wypracowaną koncepcję
+zobrazowano na rys. \todo{dodać rysunek}. 
 
+Pierwszym punktem zbierania danych w systemie
+są bramy IoT (IIoT). Ich wykorzystanie
+pozwala na integrację zróżnicowanej pod względem technicznym aparatury pomiarowej.
+Bramy mają dostarczać odpowiednie interfejsy fizyczne, jak również dokonywać
+translacji protokołów pośrednicząc w ten sposób w wymianie danych
+pomiędzy warstwą brzegową i biznesową \cite{iiot-gateway-introduction}, 
+\cite{iiot-heterogenous-gateways}, \cite{iot-gateway-medical-and-industrial},
+\cite{modbus-iot-gateway}, \cite{iiot-design-and-impl-gateway}. Realizują one także 
+wstępne przetwarzanie w warstwie brzegowej (ang. \emph{edge computing}) i ułatwiają
+sprawowanie kontroli nad przepływem danych w systemie \cite{iiot-architecture-and-gateway}.
+Idea stosowania bramy IoT w przemyśle umożliwia
+spełnienie głównego zadania IIoT, jakim jest połączenie technologii operacyjnych
+i technologii informacyjnych (ang. \emph{OT/IT convergence}) \cite{iiot-opensource-gateway}. 
+Na omawianym rysunku zamieszczono trzy bramy, które integrują urządzenia odpowiednio 
+w ramach sieci bezprzewodowej, przemysłowej sieci Ethernet oraz interfejsów szeregowych.
+Jest to podział poglądowy. W zależności od indywidualnych potrzeb i dostępnego sprzętu możliwe są różne
+konfiguracje: pojedyncza brama pracująca w wielu sieciach, bramy dedykowane 
+dla określonych sieci, hierarchiczna struktura bram. 
+
+Za pośrednictwem Internetu brama
+przekazuje dane do warstw wyższych, z wykorzystaniem których odbywa się kolejny etap gromadzenia,
+a także przetwarzanie, składowanie i udostępnianie danych. Są to warstwy platformowa
+i biznesowa, których techniczną implementację oferują odpowiednie usługi chmurowe 
+popularnych dostawców: Microsoft, Amazon, Google, Intel, IBM. Możliwe jest też
+wdrożenie przez przedsiębiorstwo chmury prywatnej lub dedykowanej infrastruktury
+i oprogramowania.
+
+Do warstwy biznesowej należą także aplikacje klienckie, którym dane składowane
+w bazie są udostępniane za pośrednictwem protokołów
+internetowych, np. HTTP, AMQP, MQTT. Wśród potencjalnych klientów należy wyróżnić
+oprogramowanie, które będzie realizowało zdefiniowane w ramach projektu wymaganie wizualizacji 
+danych.
 
 \subsection{Komponentowy model architektury}
 
-\subsection{Specyfikacja prototypu}
+\subsection{Specyfikacja wewnętrzna prototypu}
 
 \todo{Opisać implementację modelu}
 
