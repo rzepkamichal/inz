@@ -424,16 +424,10 @@ i przetwarzanie informacji wartościowych z perspektywy przedsiębiorstwa
 Z zagadnieniem IIoT ściśle związane jest też pojęcie \textbf{Przemysłu 4.0} (ang. \emph{Industry 4.0})
 reprezentujące czwartą rewolucję przemysłową. Jest to koncept stosunkowo uniwersalny
 skupiający rozwiązania CPS, IoT, IIoT wykorzystywane w celu zwiększania efektywności
-procesów przemysłowych w ramach tzw. inteligentych fabryk (ang. \emph{smart factories})
+procesów przemysłowych w ramach tzw. inteligentnych fabryk (ang. \emph{smart factories})
 \cite{iiot-cyber-manufacturing-systems}, \cite{iiot-challenges-opportunities-directions}.
-Zależności pomiędzy wymienionymi pojęciami przedstawia rys. \ref{fig:venn}.
+Zależności pomiędzy wymienionymi pojęciami przedstawia rys.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.55]{Venn.png}
-    \caption{Diagram Venne'a przedstawiający zależności między CPS, IoT, IIoT i~Przemysłem 4.0}
-    \label{fig:venn}
-\end{figure}
 
 Ze względu na konieczność funkcjonowania w specyficznym środowisku przemysłowym
 IIoT posiada pewne cechy odróżniające od standardowego (konsumenckiego) IoT.
@@ -455,12 +449,11 @@ Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
 \end{itemize}
 
 Szczególną uwagę należy poświęcić stwierdzeniu, że \textbf{intencją wykorzystania IIoT nie
-    jest zastąpienie tradycyjnych systemów automatyzacji procesów przemysłowych} \cite{iiot-challenges-opportunities-directions}.
+jest zastąpienie tradycyjnych systemów automatyzacji procesów przemysłowych}.
 Na tej płaszczyźnie istnieją bowiem dedykowane rozwiązania adresujące
-problem ograniczeń spotykanych w autoamtyce przemysłowej.
+problem ograniczeń spotykanych w automatyce przemysłowej.
 Właściwym \textbf{celem wdrażania systemów IIoT jest zwiększanie wiedzy na temat procesów
-    przemysłowych, co w efekcie pozwala na ulepszenie jego wydajności}.
-\cite{iiot-challenges-opportunities-directions}.
+przemysłowych, co w efekcie pozwala na ulepszenie jego wydajności} \cite{iiot-challenges-opportunities-directions}.
 
 Ze względu na tolerancję ograniczeń w systemie (m. in. opóźnień czasowych) można
 wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reality}:
@@ -479,9 +472,9 @@ wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reali
 \end{itemize}
 Poziomy tolerancji opóźnień czasowych w różnych aplikacjach przedstawia rys. \ref{fig:tolerancja}
 
-\begin{figure}[h]
+\begin{figure}
     \centering
-    \includegraphics[scale=0.45]{tolerancja.png}
+    \includegraphics[scale=0.4]{tolerancja.png}
     \caption{Wykres przedstawiający poziomy tolerancji opóźnień dla różnych aplikacji.}
     \label{fig:tolerancja}
 \end{figure}
@@ -492,14 +485,15 @@ funkcjonować zgodnie paradygmatem \emph{best effort}. Aczkolwiek można wyobraz
 sobie pewien heterogeniczny system
 IoT, w którym istnieje pewna sieć deterministyczna połączona z publicznym Internetem
 za pomocą odpowiedniej bramy. Takie podejście może okazać się przydatne w przemyśle, gdzie
-istnieje potrzeba integracji istniejących systemów automatyki z Internetem Rzeczy \cite{iiot-design-and-impl-gateway}.
+istnieje potrzeba integracji istniejących systemów automatyki z Internetem Rzeczy 
+\cite{iiot-design-and-impl-gateway}, \cite{iiot-rapid-integration-framework}.
 
 W systemach IIoT popularny jest podstawowy, trójwarstwowy model architektury. Wśród jego
 warstw wyróżniamy: warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
 i warstwę biznesową (ang. \emph{enterprise}) \cite{iiot-challenges-opportunities-directions}.
 Model ten przedstawia rys. \ref{fig:iiot-arch}.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[scale=0.50]{iiot_arch.png}
     \caption{Model warstwowy informatycznych systemów przemysłowych.}
@@ -513,13 +507,10 @@ zwykle usługi chmurowe, takie jak Azure IoT Hub czy AWS IoT. Serwisy te umożli
 systemem IoT, akwyizycję i agregację danych oraz trasowanie danych na wejścia
 innych usług i aplikacji domenowych \cite{models-innovative-iot}. Warstwę biznesową
 stanowią aplikacje domenowe lub zaawansowane usługi chmurowe
-korzystające ze zgromadzonych danych w celu wspomagnia
+korzystające ze zgromadzonych danych w celu wspomagania
 analityki, monitorowania, zarządzania, archiwizacji, itp.
 
 \subsection{Ujęcie tematu w świetle zgromadzonych informacji}
-
-Niniejszy podrozdział przedstawia konsolidację wiedzy zebranej w ramach poprzednich
-podrozdziałów w kontekście podjętego tematu pracy.
 
 Głównym zagadnieniem rozważanym
 w ramach projektu jest zbieranie danych pomiarowych w środowisku
@@ -556,7 +547,7 @@ Reasumując --- gromadzenie danych w ramach systemu umożliwia dostępna apratur
 składająca się z urządzeń przemysłowych i/lub IoT. Zarządzanie urządzeniami, agregację, przetwarzanie, składowanie i udostępnianie
 danych mogą realizować wybrane usługi chmurowe i/lub ``szyte na miarę'' aplikacje (głównie internetowe).
 Pewną lukę, element brakujący w proponowanym modelu stanowi konieczność dopasowania
-do różnych protokołów sieci przemysłowych i IoT. Konieczna jest też integracja
+do różnych protokołów sieci przemysłowych i IoT. Potrzebna jest też integracja
 warstwy brzegowej i platformowej zaproponowanego modelu. Są to krytyczne zadania
 przypisywane systemom IIoT. Do rozwiązania
 przytoczonego problemu stosuje się tak zwane \textbf{bramy IoT} (ang. \emph{IoT gateways}). Są to zwykle
@@ -566,8 +557,7 @@ warstwy fizycznej i łącza danych, jak i dokonywać translacji protokołów wy�
 Internetu \cite{iiot-heterogenous-gateways}. Bramy mogą realizować również
 wstępne przetwarzanie danych odciążając w ten sposób usługi wyższych warstw.
 Jest to tzw. koncepcja \textbf{przetwarzania brzegowego} (ang. \emph{edge computing}) \cite{iot-gateway-medical-and-industrial}.
-W ogólniejszym rozumieniu bramy IoT mogą stanowić pomost pomiędzy infrastrukturą
-pomiarową a infrastrukturą sieciową lub też pomiędzy technologią operacyjną a
+W ogólniejszym rozumieniu bramy IoT mają stanowić pomost pomiędzy technologią operacyjną a
 technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challenges-opportunities-directions}.
 Bramy IoT mogą z reguły udostępniać dane za pośrednictwem Internetu na poziomie usługi \emph{best-effort}.
 Warto jednak rozważyć możliwość, aby na poziomie lokalnym mogły one współpracować z~istniejącymi
@@ -576,24 +566,10 @@ systemami czasu rzeczywistego, co jest ważnym aspektem w środowisku przemysło
 Otrzymano zatem podstawowy zarys projektowanego systemu.
 Składa się on z~urządzeń pomiarowych udostępniających dane w ramach sieci
 przemysłowych oraz IoT. Integracji różnych protokołów i wstępnego przetwarzania
-dokonuje dedykowana brama (bramy) IoT. Brama przekazuje dane w spójnym, jednolitym
+dokonuje dedykowana brama (bramy) IoT. Przekazuje ona dane w spójnym, jednolitym
 formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
 Te z kolei mogą realizować zaawansowane przetwarzanie, składowanie, udostępnianie
 i wizualizację danych.
-
-Poza podstawowym zdefiniowanym celem gromadzenia danych pomiarowych
-możliwe jest też oddziaływanie systemów informatycznych na systemy nadzorujące
-przebiegiem procesów przemysłowych. Nie jest to przypadek użycia
-zalecany dla zadań automatyzacji, gdzie zwykle narzucany jest determinizm czasowy.
-Aczkolwiek zapewne można sobie wyobrazić przykładową sytuację, w której wynikiem analizy danych jest
-polecenie dla systemu automatyzacji, które niekoniecznie musi
-być zrealizowane w ścisłych ramach czasowych. Projektowany system powinien zatem dopuszczać
-możliwość implementacji podobnych funkcjonalności wpisujących się w paradygmat
-systemów CPS.
-
-W następującym, szczegółowym etapie projektowania poruszone zostaną również
-inne ważne wyzwania IIoT, jakimi są \textbf{bezpieczeństwo danych} oraz \textbf{bezpieczeństwo w kontekście niesprzyjająćego
-    środowiska przemysłowego} \cite{iiot-challenges-opportunities-directions}.
 
 Wśród istniejących, komercyjnych rozwiązań o podobnej dziedzinie funkcjonalnej
 znaleziono następujące przykłady:
@@ -829,7 +805,7 @@ użytkownikami i dostępem do systemu, integracji poszczególnych jego komponent
 ustawieniu parametrów połączeń sieciowych i protokołów, monitorowaniu 
 i usuwaniu awarii. 
 
-\begin{figure}[H]
+\begin{figure}
       \centering
       \includegraphics[width=\textwidth]{use-case.png}
       \caption{Diagram przypadków użycia systemu.}
@@ -900,8 +876,47 @@ wyznaczany dla każdej z trzech rozpatrywanych linii procesowych powinien być n
 $s$ --- liczba produktów wyprodukowanych bez wad,\\
 $n$ --- liczba wszystkich produktów wyprodukowanych w procesie.
 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{flow1.png}
+      \caption{Model piramidowy informatycznych systemów przemysłowych.}
+      \label{fig:flow1}
+  \end{figure}
+
+  \begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{flow2.png}
+      \caption{Model piramidowy informatycznych systemów przemysłowych.}
+      \label{fig:flow2}
+  \end{figure}
+
+  \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.75\textwidth]{flow3.png}
+      \caption{Model piramidowy informatycznych systemów przemysłowych.}
+      \label{fig:flow3}
+  \end{figure}
+
+
 
 \section{Specyfikacja wewnętrzna}\label{spec-zew}
+
+\subsection{Ogólna koncepcja rozwiązania}
+
+
+
+\subsection{Komponentowy model architektury}
+
+\subsection{Specyfikacja prototypu}
+
+\todo{Opisać implementację modelu}
+
+\subsubsection{Bramy IIoT}
+
+\subsubsection{Usługi chmurowe}
+
+\subsubsection{Aplikacja do wizualizacji danych}
+
 
 \section{Specyfikacja zewnętrzna}\label{spec-wew}
 
