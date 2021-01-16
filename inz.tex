@@ -14,6 +14,18 @@
 \usepackage{float} % to use figure positioning [H]
 \usepackage{multirow} % tabele wielowierszowe komórki
 \usepackage{array} % jw
+\usepackage{listings}
+\lstset
+{ %Formatting for code in appendix
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    frame=single,
+    tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+    xleftmargin=1cm,
+}
 \addbibresource{inz.bib}
 \graphicspath{ {./images/} }
 
@@ -1172,6 +1184,39 @@ przedstawiono na rys. \todo{dodać rys}. Zdefiniowano następujące klasy:
       \item \texttt{ProductEvaluationMeasurement} --- Reprezentuje ocenę jakości produktu. Posiada kolejno pola informujące o nazwie produktu,
             spełnieniu wymagań (tak/nie --- \texttt{true}/\texttt{false}) i ewentualnej przyczynie niespełnienia wymagań.
 \end{itemize}
+\noindent Przykładową definicję struktury \texttt{AirMeasurement} w notacji 
+JSON Schema przedstawiono na listingu \ref{lst:json-schema}\\
+
+\begin{lstlisting}[caption={Przykład definicji obiektu JSON w notacji JSON Schema dla 
+      struktury \texttt{AirMeasurement}}, label={lst:json-schema}]
+      {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "locationName",
+                  "temperature",
+                  "humidity"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "locationName": {
+                    "type": "string"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  },
+                  "humidity": {
+                    "type": "number"
+                  }
+                }
+              }
+            ]
+          }    
+\end{lstlisting}
 
 Na potrzeby realizacji komponentu \texttt{Bufora Brzegowego} (patrz: \todo{xd})
 zaprojektowano własny węzeł Node-RED o nazwie \texttt{EdgeBuffer}.
