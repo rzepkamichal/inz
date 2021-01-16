@@ -14,7 +14,6 @@
 \usepackage{float} % to use figure positioning [H]
 \usepackage{multirow} % tabele wielowierszowe komórki
 \usepackage{array} % jw
-\usepackage{tabularx}
 \addbibresource{inz.bib}
 \graphicspath{ {./images/} }
 
@@ -835,7 +834,7 @@ zbierać, składować, udostępniać i wizualizować zmierzone parametry powietr
 W zakładzie produkcyjnym rozlokowane są trzy zbiorniki (bufory) chemii przemysłowej.
 Zbiorniki są połączone z zewnętrznym zbiornikiem głównym, z którego uzupełniany
 jest ich stan. W celu automatycznego napełniania zbiorników wykorzystano sterownik
-klasy PLC podłączony do lokalnej sieci Profinet, który otwiera albo zamyka
+klasy PLC podłączony do lokalnej sieci Ethernet, który otwiera albo zamyka
 odpowiednie zawory i nadzoruje pracę pomp.
 Odczytuje on dane z przepływomierzy pozwalające na monitorowanie stanu
 zużycia chemii w każdej z trzech stref oraz poziom cieczy w zbiorniku głównym.
@@ -849,7 +848,7 @@ Na wyjściu trzech linii procesowych rozmieszczona jest aparatura przeznaczona
 do oceny jakości dostarczanych produktów. Może ją stanowić zaawansowane
 rozwiązanie wykorzystujące specjalizowane przyrządy pomiarowe i sztuczną inteligencję lub
 pracownik dokonujący oceny manualnie i wpisujący wyniki do komputera. Urządzenie,
-w którym zapisywany jest wynik, jest podłączone do lokalnej sieci Profinet.
+w którym zapisywany jest wynik, jest podłączone do lokalnej sieci Ethernet.
 Informacja o spełnieniu albo niespełnieniu wymagań jakościowych jest przesyłana
 do serwera z~wykorzystaniem CoAP/UDP w oparciu o architekturę REST. Zadaniem
 realizowanym przez prototyp jest odbiór przesyłanych rezultatów inspekcji
@@ -949,7 +948,7 @@ i zwielokrotnieniu pod warunkiem spełnienia wymaganego interfejsu.
 Biorąc pod uwagę fakt, że system obejmuje szeroką dziedzinę (od warstwy procesowej
 po wysokopoziomowe aplikacje IT) i może być utrzymywany przez zespoły o różnych
 specjalnościach, jest to aspekt szczególnie ważny. Podstawą współpracy
-grup komponentów osadzonych \texttt{Bramie IIoT}, \texttt{Chmurze} i na 
+grup komponentów osadzonych \texttt{Bramie IIoT}, \texttt{Chmurze} i na
 \texttt{Urządzeniach Klienckich} jest
 Internet i popularne protokoły internetowe: HTTP, FTP, MQTT, AMQP, WebSocket, TLS.
 
@@ -977,10 +976,10 @@ wziąć pod uwagę wykorzystanie platformy BeagleBone Black, czy dedykowanych ro
 producentów Cisco, Dell, Huawei, Hewlett Packard, NXP i innych \cite{gateways}.
 Do realizacji oprogramowania można posłużyć się narzędziami przeznaczonymi do
 integracji urządzeń IoT. Jednym z najpopularniejszych programów jest
-Node-RED \cite{testing-node-red}, \cite{flow-programming}, \cite{iot-gateway-medical-and-industrial},
+Node-RED \cite{flow-programming}, \cite{iot-gateway-medical-and-industrial},
 \cite{design-impl-node-gateway}, \cite{iiot-opensource-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
 Jest to darmowe narzędzie \emph{open source} działające w środowisku Node.js na
-systemach Linux, Windows. Alternatywne darmowe rozwiązania to m.in. n8n.io, Total.js Flow.
+systemach Linux, Windows. Alternatywne bezpłatne rozwiązania to m.in. n8n.io, Total.js Flow.
 Wśród ofert komercyjnych dostępne są przykładowo platformy Crosser, Bosch ProSyst
 \cite{node-red}, \cite{n8n}, \cite{total-js-flow}, \cite{crosser}, \cite{gateways}.
 
@@ -1001,8 +1000,8 @@ Pod tym pojęciem rozumiane są wszelkie usługi chmurowe realizujące tzw. bezs
 przetwarzanie danych (ang. \emph{serverless computing}). Nie oznacza to, że
 serwer nie istnieje, lecz że jest on niejako ,,zakryty'' przed programistą, który skupia
 się jedynie na dostarczeniu logiki w postaci wsadowej \cite{azure-serverless}.
-Usługi przetwarzania bezserwerowego dokonują ewentualnego odczytu i zapisu do \texttt{Bazy Danych}. 
-Wśród usług oferowanych przez liderów rynku chmurowego 
+Usługi przetwarzania bezserwerowego dokonują ewentualnego odczytu i zapisu do \texttt{Bazy Danych}.
+Wśród usług oferowanych przez liderów rynku chmurowego
 --- Amazon Web Services (AWS) i Microsoft Azure \cite{gartner-cloud-liders}
 --- dokonano przeglądu przykładowych, które mogą być użyte do implementacji opisanych komponentów.
 W poniższych punktach oddzielono znakiem ,, | '' odpowiednio nazwy usług AWS i Azure,
@@ -1011,34 +1010,34 @@ które mają podobny zakres funkcjonalny \cite{azure-aws-comparison}.\\
 \noindent\textbf{Przykładowe usługi użyteczne do realizacji \texttt{Platformy IoT}}:
 \begin{itemize}
       \itemsep0em
-      \item IoT | IoT Hub ---  Brama w chmurze umożliwiająca komunikację z 
-      urządzeniami w bezpieczny i skalowalny sposób,
-      \item IoT Things Graph | Digital Twins --- Tworzenie cyfrowych modeli systemów 
-      fizycznych umożliwiających zbieranie danych ze świata rzeczywistego.
+      \item IoT | IoT Hub ---  Brama w chmurze umożliwiająca komunikację z
+            urządzeniami w bezpieczny i skalowalny sposób,
+      \item IoT Things Graph | Digital Twins --- Tworzenie cyfrowych modeli systemów
+            fizycznych umożliwiających zbieranie danych ze świata rzeczywistego.
 \end{itemize}
 
 \noindent\textbf{Przykładowe usługi użyteczne do realizacji \texttt{Bazy Danych}}:
 \begin{itemize}
       \itemsep0em
-      \item Simple Storage Services | Blob Storage --- Magazyn do składowania, 
-      udostępniania, archiwizowania i tworzenia kopii zapasowej obiektów,
+      \item Simple Storage Services | Blob Storage --- Magazyn do składowania,
+            udostępniania, archiwizowania i tworzenia kopii zapasowej obiektów,
       \item RDS | SQL Database --- Relacyjne bazy danych,
       \item DynamoDB | CosmosDB --- Nierelacyjne bazy danych,
-      \item Redshift | Synapse Analytics --- Hurtownie danych wykorzystujące 
-      masowe przetwarzanie równoległe (MPP) w celu efektywnej realizacji zapytań.
+      \item Redshift | Synapse Analytics --- Hurtownie danych wykorzystujące
+            masowe przetwarzanie równoległe (MPP) w celu efektywnej realizacji zapytań.
 \end{itemize}
 
 \noindent\textbf{Przykładowe usługi użyteczne do realizacji \texttt{Komponentów Przetwarzania}}:
 \begin{itemize}
       \itemsep0em
-      \item Lambda | Functions --- Bezserwerowe, skalowalne funkcje implementowane, 
-      z~wykorzystaniem języków programowania: Javascript, Python, Java, C\#,
+      \item Lambda | Functions --- Bezserwerowe, skalowalne funkcje implementowane,
+            z~wykorzystaniem języków programowania: Javascript, Python, Java, C\#,
       \item Batch | Batch --- Równoległe przetwarzanie danych o masowej ilości,
       \item Elastic Compute Cloud Instances | Virtual Machines --- Wirtualne
-      serwery,
+            serwery,
       \item SageMaker | Machine Learning --- Uczenie maszynowe,
       \item Kinesis Analytics | Stream Analytics --- Tworzenie potoków przetwarzania
-      strumieniowego dla dużej ilości danych z wykorzystaniem języka SQL. 
+            strumieniowego dla dużej ilości danych z wykorzystaniem języka SQL.
 \end{itemize}
 
 Przedstawione na rys. \todo{wstawić} \texttt{Urządzenie Klienta} może w rzeczywistości
@@ -1047,7 +1046,7 @@ Na urządzeniu jest wdrożone \texttt{Oprogramowanie Klienta}. Jest to komponent
 korzysta za pośrednictwem Internetu z danych udostępnianych przez \texttt{Chmurę}.
 W kontekście niniejszej pracy rozpatruje się w szczególności
 aplikacje wizualizujące dane i wspomagającymi analitykę. Wśród potencjalnie
-użytecznych narzędzi dostępne są darmowe rozwiązania \emph{open source}, które 
+użytecznych narzędzi dostępne są darmowe rozwiązania \emph{open source}, które
 pozwalają na tworzenie modularnych paneli wizualizacji w ramach
 aplikacji internetowej (przeglądarkowej): Grafana,
 Freeboard, Kibana, Dash. Na rynku oferowane są także komercyjne platformy analityczne:
@@ -1055,10 +1054,146 @@ PowerBI, Tableau, Grow.
 
 \subsection{Specyfikacja wewnętrzna prototypu}
 
-Na podstawie opisanej w poprzednim rozdziale architektury 
-
+Na podstawie architektury systemu opisanej w poprzednim rozdziale wykonano
+prototyp, który implementuje scenariusze użycia zdefiniowane w rozdziale \ref{scenariusze}.
+Model zrealizowanego prototypu przedstawiono na rys. \todo{dodać}.
+System składa się z dwóch bram IIoT: Siemens Simatic IOT2020 i RaspberryPi.
+Dane z urządzeń pomiarowych są przesyłane do bram z wykorzystaniem sieci WiFi, Ethernet
+oraz protokołów MQTT, CoAP i Modbus/TCP. Na potrzeby translacji protokołów
+i przetwarzania brzegowego zainstalowano na urządzeniach platformę Node-RED.
+W celu dalszego zbierania, przetwarzania, składowania i udostępniania danych
+użyto usług chmury Azure. Na potrzeby bieżącej wizualizacji danych wykorzystano
+bazę danych szeregów czasowych InfluxDB osadzoną w chmurze InfluxDB Cloud.
+Zebrane dane pomiarowe są cyklicznie odczytywane przez narzędzie Grafana ---
+aplikację do wizualizacji danych zainstalowaną na komputerze klienckim.
+W kolejnych rozdziałach omówiono poszczególne elementy systemu.
 
 \subsubsection{Bramy IIoT}
+
+W systemie pracują dwie bramy: Siemens Simatic IOT2020 i RaspberryPi. Wyboru urządzenia
+IOT2020 dokonano ze względu na spełnienie odpowiednich standardów przemysłowych,
+o czym zapewnia producent. Posiada ono certyfikat UL/CE. Płytka elektroniczna
+jest umieszczona w obudowie, która jest przystosowana do montażu
+na popularnych w przemyśle szynach DIN i zapewnia ochronę o stopniu IP20. Bramka
+ma wbudowane interfejsy USB, Ethernet oraz moduł rozszerzeń GPIO. W systemie
+komputerowym Intel Quark x1000 (400MHz), 512 MB RAM można uruchomić system
+Linux z obrazu na karcie microSD. Producent dostarcza obraz systemu zbudowany
+na dystrybucji Yocto Linux dedykowanej dla urządzeń wbudowanych. Udostępniona
+jest także wersja z modułem czasu rzeczywistego i sterownikami Profinet,
+dzięki której brama IIoT może funkcjonować z lokalnym systemem czasu rzeczywistego.
+\cite{simatic-iot-sepc}, \cite{simatic-iot-profinet}, \cite{modbus-iot-gateway}.
+Minikomputer RaspberryPi nie spełnia ściśle wymagań przemysłowych, natomiast ze
+względu na dostępne wsparcie użyto go na potrzeby prototypownia i rozwoju.
+Jest to bowiem platforma bardzo popularna, posiadająca liczną społeczność zwolenników.
+RaspberryPi jako bramę IoT/IIoT można spotkać również w literaturze \cite{iiot-opensource-gateway},
+\cite{design-impl-node-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
+W projekcie użyto modelu 3 B, który posiada m. in. czterordzeniowy
+procesor o taktowaniu 1.2 GHz, 1 GB RAM, interfejsy USB, Ethernet, Bluetooth, GPIO.
+Z karty microSD można uruchomić dedykowaną dystrybucję systemu Linux RaspberryPi OS lub inną.
+
+Jako że brama IOT2020 zapewnia lepsze przystosowanie do środowiska przemysłowego,
+postanowiono wykorzystać ją do zbierania danych ze sterownika PLC, który
+monitoruje stan zużycia chemii przemysłowej. Komunikacja odbywa się w ramach
+sieci Ethernet z wykorzystaniem protokołu Modbus/TCP. Modbus to protokół,
+w którym występuje węzeł nadrzędny (ang. \emph{Master}) oraz węzły
+podrzędne (ang. \emph{Slave}). Węzeł nadrzędny może dokonywać odczytu i zapisu
+do węzła podrzędnego z wykorzystaniem odpowiednich funkcji kodowanych w ramce.
+Pierwotnie protokół był zaprojektowany dla połączeń szeregowych, z czasem
+zaczęto używać go także na stosie TCP/IP kapsułkując ramki Modbus w ramce TCP
+\cite{isp}, \cite{isp-analiza-przepływu-informacji}. W rozpatrywanej konfiguracji
+brama pełni rolę węzła nadrzędnego, który cyklicznie odczytuje zawartość
+rejestrów węzła podrzędnego (sterownika PLC)
+
+Bramę RaspberryPi wykorzystano do komunikacji z siecią bezprzewodowych czujników
+mierzących parametry powietrza w określonych pomieszczeniach oraz z
+komputerami zainstalowanymi przy trzech stacjach procesowych, które
+przesyłają informacje o ocenie jakości wytworzonych produktów.
+Komunikacja z czujnikami odbywa się z wykorzystaniem sieci WiFi i protokołu
+MQTT. MQTT (ang. \emph{Message Queue Telemetry Transport}) to lekki pod względem wykorzystania zasobów
+protokół polegający na wymianie komunikatów. Architektura komunikacji
+jest oparta na wzorcu publikuj-subskrybuj (ang. \emph{publish-subscribe}).
+Klienci łączą się do centralnego serwera (pośrednika, ang. \emph{broker}), za pośrednictwem
+którego mogą wysyłać i odbierać komunikaty pod konkretnym adresem (tematem, ang. \emph{topic}).
+Tematy tworzą hierarchiczną strukturę analogiczną do URL. MQTT
+wykorzystuje TCP w warstwie transportowej \cite{iot-hype-to-reality}. W omawianym
+scenariuszu czujniki publikują dane pomiarowe pod tematami zarezerwowanymi
+odpowiednio dla pomieszczenia chłodni, magazynu i hali produkcyjnej. Brama
+jest subskrybentem, który nasłuchuje na każdym z trzech tematów. Wymiana danych
+z komputerami zbierającymi dane dotyczące jakości produkcji odbywa się
+z użyciem sieci Ethernet i protokołu CoAP. CoAP (ang. \emph{Constrained Application Protocol})
+to alternatywa dla HTTP przeznaczona dla urządzeń o ograniczonych zasobach.
+Wykorzystuje m. in. protokół UDP w warstwie transportowej oraz krótsze nagłówki w formie binarnej.
+CoAP jest zorientowany na zasoby umożliwiając ich tworzenie, odczyt, aktualizację
+i usuwanie. Analogicznie do HTTP realizowany jest model komunikacji
+klient-serwer z użyciem metod GET, POST, PUT, DELETE, itp. \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
+W realizowanym przypadku biznesowym brama jest serwerem, a komputery
+przy stacji procesowej klientami, którzy przesyłają dane metodą POST.
+
+Komponent \texttt{Oprogramowania} bramy (patrz: rys. , rozdział. \todo{dodać})zaimplementowano z wykorzystaniem
+narzędzia Node-RED. Jest to darmowe oprogramowanie \emph{open source} funkcjonujące
+w środowisku Node.Js. Jego celem jest integracja interfejsów
+fizycznych oraz interfejsów programowania aplikacji
+(ang. \emph{Application Programming Interface}, w skrócie API).
+W Node-RED stosuje się paradygmat programowania opartego na przepływie danych.
+Program posiada postać wizualną, w ramach której łączy się węzły (ang. \emph{nodes})
+realizujące określone funkcjonalności. Pomiędzy wyjściem i wejściem kolejnych
+węzłów przekazywany jest komunikat (wiadomość, ang. \emph{message}) w popularnym formacie
+JSON (ang. \emph{JavaScript Object Notation}). Węzły mogą być prostymi lub złożonymi
+funkcjami, a nawet rozbudowanymi bibliotekami napisanymi w języku JavaScript.
+Wizualny model programowania odpowiada na wymaganie uniwersalności,
+jako że może być on łatwo zrozumiały dla specjalistów różnych dziedzin pracujących w przemyśle
+\cite{flow-programming}.
+Node-RED to serwer, którego panel administracyjny i środowisko programistyczne
+udostępniane są w ramach aplikacji przeglądarkowej. Wyboru opisanego
+narzędzia dokonano ze względu na elastyczność sposobu implementacji logiki i
+wsparcie w postaci wielu bibliotek umożliwiających translację protokołów.
+Dystrybucja w formie \emph{open source} daje większą kontrolę nad używanym oprogramowaniem,
+zaś licencja Apache 2.0 pozwala na jego bezpłatne wykorzystanie również
+w celach komercyjnych \cite{node-red}. Stosowanie Node-RED w IoT jest rozwiązaniem popularnym \cite{iot-gateway-medical-and-industrial},
+\cite{design-impl-node-gateway}, \cite{iiot-opensource-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
+
+Zadaniem bramy zdefiniowanym w obrębie wymagań jest zapewnienie jednolitych
+struktur danych stosowanych w warstwie aplikacji na poziomie wszystkich
+systemów informatycznych w przedsiębiorstwie. W tym celu proponuje się
+wykorzystanie formatu JSON, który jest obecnie bardzo popularny w branży
+aplikacji internetowych i domyślnie wspierany przez środowisko Node.JS --- w tym
+także Node-RED. Za pomocą specyfikacji JSON Schema możliwe jest
+formalne określanie struktur danych, które powinny być zaimplementowane przez
+wszystkie systemy.
+
+Struktury danych niezbędne do realizacji przypadków biznesowych
+przedstawiono na rys. \todo{dodać rys}. Zdefiniowano następujące klasy:
+\begin{itemize}
+      \itemsep0em
+      \item \texttt{Measurement} --- Klasa abstrakcyjna reprezentująca pomiar, który ma określony typ, np. pomiar powietrza
+            Jawna informacja o typie może być zbędna na poziomie języka programowania, lecz musi być zawarta w obiekcie JSON, który podlega serializacji;
+      \item \texttt{FluidControlMeasurement} --- Reprezentuje informację o poziomie zużycia cieczy w strefach 1, 2, 3 oraz w poziomie cieczy w zbiorniku głównym;
+      \item \texttt{AirMeasurement} --- Reprezentuje pomiar powietrza. Posiada kolejno pola informujące o lokacji, wartości temperatury i wilgotności;
+      \item \texttt{ProductEvaluationMeasurement} --- Reprezentuje ocenę jakości produktu. Posiada kolejno pola informujące o nazwie produktu,
+            spełnieniu wymagań (tak/nie --- \texttt{true}/\texttt{false}) i ewentualnej przyczynie niespełnienia wymagań.
+\end{itemize}
+
+Na potrzeby realizacji komponentu \texttt{Bufora Brzegowego} (patrz: \todo{xd})
+zaprojektowano własny węzeł Node-RED o nazwie \texttt{EdgeBuffer}.
+Jego model przedstawiono na rys. \todo{dodać}.
+Bufor ma być w domyśle umieszczany tuż przed węzłem wysyłającym dane na
+zewnątrz systemu (do chmury). Jego rolą jest sprawdzenie, czy przekazane dane
+są w zdefiniowanym formacie używanym w warstwie IT systemu. Ma on także umożliwić
+kumulowanie danych w celu ich agregacji. Bufor posiada publiczne następujące
+metody publiczne:
+\begin{itemize}
+      \itemsep0em
+      \item \texttt{send} --- przepisanie danych z wejścia na wyjście z
+            opcjonalnym opóźnieniem i obowiązkową uprzednią walidacją,
+      \item \texttt{put} --- składowanie danych wejściowych w buforze po uprzedniej walidacji,
+      \item \texttt{flush} --- przekazanie składowanych danych na wyjście
+            i zwolnienie bufora.
+\end{itemize}
+\noindent W ramach implementacji \texttt{BufferImpl} zdefiniowano
+prywatną kolejkę \texttt{queue}, która umożliwia przekazanie zbuforowanych
+danych na wyjście w kolejności FIFO. Prywatna metoda \texttt{validate} realizuje
+logikę walidacji formatu danych wejściowych i zwraca wartość \texttt{true},
+gdy dane są poprawne.
 
 \subsubsection{Usługi chmurowe}
 
