@@ -17,14 +17,16 @@
 \usepackage{listings}
 \lstset
 { %Formatting for code in appendix
-    numbers=left,
+basicstyle=\ttfamily\scriptsize,    
+numbers=left,
     stepnumber=1,
     showstringspaces=false,
     frame=single,
     tabsize=1,
     breaklines=true,
     breakatwhitespace=false,
-    xleftmargin=1cm,
+    xleftmargin=2.5cm,
+    xrightmargin=1.5cm
 }
 \addbibresource{inz.bib}
 \graphicspath{ {./images/} }
@@ -880,27 +882,6 @@ wyznaczany dla każdej z trzech rozpatrywanych linii procesowych powinien być n
 $s$ --- liczba produktów wyprodukowanych bez wad,\\
 $n$ --- liczba wszystkich produktów wyprodukowanych w procesie.
 
-\begin{figure}[h]
-      \centering
-      \includegraphics[width=\textwidth]{flow1.png}
-      \caption{Model piramidowy informatycznych systemów przemysłowych.}
-      \label{fig:flow1}
-\end{figure}
-
-\begin{figure}[h]
-      \centering
-      \includegraphics[width=\textwidth]{flow2.png}
-      \caption{Model piramidowy informatycznych systemów przemysłowych.}
-      \label{fig:flow2}
-\end{figure}
-
-\begin{figure}[h]
-      \centering
-      \includegraphics[width=0.75\textwidth]{flow3.png}
-      \caption{Model piramidowy informatycznych systemów przemysłowych.}
-      \label{fig:flow3}
-\end{figure}
-
 
 
 \section{Specyfikacja wewnętrzna}\label{spec-zew}
@@ -1070,13 +1051,16 @@ Na podstawie architektury systemu opisanej w poprzednim rozdziale wykonano
 prototyp, który implementuje scenariusze użycia zdefiniowane w rozdziale \ref{scenariusze}.
 Model zrealizowanego prototypu przedstawiono na rys. \todo{dodać}.
 System składa się z dwóch bram IIoT: Siemens Simatic IOT2020 i RaspberryPi.
-Dane z urządzeń pomiarowych są przesyłane do bram z wykorzystaniem sieci WiFi, Ethernet
-oraz protokołów MQTT, CoAP i Modbus/TCP. Na potrzeby translacji protokołów
-i przetwarzania brzegowego zainstalowano na urządzeniach platformę Node-RED.
+Dane pomiarowe są przesyłane do bram z wykorzystaniem sieci WiFi, Ethernet
+oraz protokołów MQTT, CoAP i Modbus/TCP. Źródła danych 
+zostały zasymulowane przez komputery, na których uruchomiono specjalnie wykonane oprogramowanie
+generujące zadane przebiegi. Stworzone narzędzie symulacji danych opisano szerzej w rozdziale
+\ref{testy}. Na potrzeby translacji protokołów
+i przetwarzania brzegowego w systemach obu bram zainstalowano platformę Node-RED.
 W celu dalszego zbierania, przetwarzania, składowania i udostępniania danych
 użyto usług chmury Azure. Na potrzeby bieżącej wizualizacji danych wykorzystano
 bazę danych szeregów czasowych InfluxDB osadzoną w chmurze InfluxDB Cloud.
-Zebrane dane pomiarowe są cyklicznie odczytywane przez narzędzie Grafana ---
+Zebrane tam dane pomiarowe są cyklicznie odczytywane przez narzędzie Grafana ---
 aplikację do wizualizacji danych zainstalowaną na komputerze klienckim.
 W kolejnych rozdziałach omówiono poszczególne elementy systemu.
 
@@ -1141,9 +1125,9 @@ klient-serwer z użyciem metod GET, POST, PUT, DELETE, itp. \cite{intro-to-iot},
 W realizowanym przypadku biznesowym brama jest serwerem, a komputery
 przy stacji procesowej klientami, którzy przesyłają dane metodą POST.
 
-Komponent \texttt{Oprogramowania} bramy (patrz: rys. , rozdział. \todo{dodać})zaimplementowano z wykorzystaniem
+Komponent \texttt{Oprogramowania} obu bram (patrz: rys. , rozdział. \todo{dodać})zaimplementowano z wykorzystaniem
 narzędzia Node-RED. Jest to darmowe oprogramowanie \emph{open source} funkcjonujące
-w środowisku Node.Js. Jego celem jest integracja interfejsów
+w środowisku Node.js. Jego celem jest integracja interfejsów
 fizycznych oraz interfejsów programowania aplikacji
 (ang. \emph{Application Programming Interface}, w skrócie API).
 W Node-RED stosuje się paradygmat programowania opartego na przepływie danych.
@@ -1168,7 +1152,7 @@ Zadaniem bramy zdefiniowanym w obrębie wymagań jest zapewnienie jednolitych
 struktur danych stosowanych w warstwie aplikacji na poziomie wszystkich
 systemów informatycznych w przedsiębiorstwie. W tym celu proponuje się
 wykorzystanie formatu JSON, który jest obecnie bardzo popularny w branży
-aplikacji internetowych i domyślnie wspierany przez środowisko Node.JS --- w tym
+aplikacji internetowych i domyślnie wspierany przez środowisko Node.js --- w tym
 także Node-RED. Za pomocą specyfikacji JSON Schema możliwe jest
 formalne określanie struktur danych, które powinny być zaimplementowane przez
 wszystkie systemy.
@@ -1185,7 +1169,7 @@ przedstawiono na rys. \todo{dodać rys}. Zdefiniowano następujące klasy:
             spełnieniu wymagań (tak/nie --- \texttt{true}/\texttt{false}) i ewentualnej przyczynie niespełnienia wymagań.
 \end{itemize}
 \noindent Przykładową definicję struktury \texttt{AirMeasurement} w notacji 
-JSON Schema przedstawiono na listingu \ref{lst:json-schema}\\
+JSON Schema przedstawiono na listingu \ref{lst:json-schema}.
 
 \begin{lstlisting}[caption={Przykład definicji obiektu JSON w notacji JSON Schema dla 
       struktury \texttt{AirMeasurement}}, label={lst:json-schema}]
@@ -1218,12 +1202,14 @@ JSON Schema przedstawiono na listingu \ref{lst:json-schema}\\
           }    
 \end{lstlisting}
 
+
 Na potrzeby realizacji komponentu \texttt{Bufora Brzegowego} (patrz: \todo{xd})
 zaprojektowano własny węzeł Node-RED o nazwie \texttt{EdgeBuffer}.
 Jego model przedstawiono na rys. \todo{dodać}.
 Bufor ma być w domyśle umieszczany tuż przed węzłem wysyłającym dane na
-zewnątrz systemu (do chmury). Jego rolą jest sprawdzenie, czy przekazane dane
-są w zdefiniowanym formacie używanym w warstwie IT systemu. Ma on także umożliwić
+zewnątrz systemu (do chmury). Jego rolą jest sprawdzenie, czy format
+przekazanych danych jest zgodny ze strukturami zdefiniowanymi za pomocą notacji JSON Schema. 
+Ma on także umożliwić
 kumulowanie danych w celu ich agregacji. Bufor posiada publiczne następujące
 metody publiczne:
 \begin{itemize}
@@ -1238,7 +1224,90 @@ metody publiczne:
 prywatną kolejkę \texttt{queue}, która umożliwia przekazanie zbuforowanych
 danych na wyjście w kolejności FIFO. Prywatna metoda \texttt{validate} realizuje
 logikę walidacji formatu danych wejściowych i zwraca wartość \texttt{true},
-gdy dane są poprawne.
+gdy dane są poprawne. W konfiguracji Node-RED przewidziano parametr określający
+ścieżkę do pliku zawierającego definicje prawidłowych struktur danych w notacji JSON Schema.
+
+Diagram przepływu Node-RED realizujący logikę zbierania danych ze sterownika
+PLC przedstawiono na rys. \ref{fig:flow3}. Implementację protokołu
+Modbus/TCP dostarcza biblioteka \texttt{node-red-contrib-modbus}. 
+Jednym z jej komponentów jest węzeł \texttt{Modbus Read}, który implementuje
+węzeł nadrzędny (w sensie protokołu Modbus) umożliwiający cykliczny odczyt 
+danych ze sterownika PLC będącego węzłem podrzędnym. Przyjęto, że dane
+o zużyciu cieczy przemysłowej w strefach 1, 2, 3 są zapisane w kolejnych rejestrach
+40001, 40002, 40003 jako liczby całkowite określające zużycie w litrach. 
+Podobnie informacja o poziomie cieczy w zbiorniku głównym zapisana jest w rejestrze 40004.
+Węzeł \texttt{Modbus Read} skonfigurowano zatem do użycia funkcji Modbus
+\texttt{FC 3: Read Holding Registers} do odczytu danych z czterech kolejnych
+rejestrów, począwszy od adresu 40001. Odczyt wykonywany jest co 3 sekundy.
+Funkcja \texttt{adapt and send} przekształca otrzymaną na wejściu tablicę
+kolejnych wartości zrejestru na oczekiwaną strukturę \texttt{FluidControlMeasurement}
+i przekazuje dane do bufora wywołując metodę \texttt{send}.
+Węzeł \texttt{fluids-azure} to \texttt{Bufor Brzegowy}, która rola sprawdza się 
+w rozpatrywanym przypadku jedynie do sprawdzenia poprawności otrzymanej na 
+wejściu struktury i natychmiastowym przekazaniu jej na wyjście. Na końcu
+umieszczono węzeł \texttt{IoT Hub} pochodzący z biblioteki \texttt{node-red-contrib-azure-iot-hub},
+który implementuje interfejs usługi IoT Hub chmury Azure. Umożliwia on przekazywanie
+danych do chmury za pośrednictwem Internetu.
+Węzeł \texttt{debug} wyświetla w konsoli informacje o ewentalnych błędach, w 
+tym m. in. komunikaty bufora o niepowodzeniu walidacji. 
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.75\textwidth]{flow3.png}
+      \caption{Diagram przepływu Node-RED realizujący odczyt danych ze sterownika PLC}
+      \label{fig:flow3}
+\end{figure}
+
+Na rys. \ref{fig:flow1} zamieszczono diagram przepływu wykonujący gromadzenie pomiarów parametrów
+powietrza w ramach protokołu MQTT. Serwer pośredniczący w wymianie komunikatów
+(broker MQTT) zralizowano z wykorzystaniem darmowego oprogramowania
+Eclipse Mosquitto zainstalowanego na RaspberryPi \cite{mosquitto}. Węzeł
+\texttt{/sensors/freezer} to subskrybent MQTT dostępny w ramach standardowej
+biblioteki Node-RED nasłuchujący na temacie o tej samej nazwie. Publikacji
+komunikatów na temacie dokonują w tym przypadku czujniki rozmieszczone w
+chłodni. Identyczne diagramy z tematami \texttt{/sensors/warehouse} i 
+\texttt{/sensors/production} opracowano dla czujników osadzonych odpowiednio 
+w magazynie i hali produkcyjnej. Węzeł \texttt{JSON Parser} deserializuje
+nadesłane wiadomości z postaci znakowej na obiekt JSON. Funkcja \texttt{adapt and put}
+mapuje dane otrzymane z czujników na strukturę \texttt{AirMeasurement}
+i składa w buforze \texttt{freezer-azure}, który standardowo waliduje format 
+danych na wejściu. Węzeł \texttt{flush 60 sec} co minutę wywołuje metodę \texttt{flush}
+zwalniającą bufor. Funkcja agregująca \texttt{avg} wylicza średnią z zebranych 
+danych i wysła pojedynczą wiadomość do serwisu IoT Hub. Funkcja \texttt{adapt and send}
+dostosowuje format danych do bazy InfluxDB, która wymaga jedynie przekazania
+prostego obiektu JSON składającego się jedynie z pól temperatury i wilgotności. 
+Tylko te dane telemetrzyczne są wykorzystywane do wizualizacji. Na buforze
+\texttt{freezer-influx} wywoływana jest metoda \texttt{send}. Dalej dane 
+przekazywane są do węzła \texttt{influx /freezer} pochodzącego z biblioteki
+\texttt{node-red-contrib-influxdb}. Przekazuje on otrzymane dane pomiarowe 
+do chmury InfluxDB Cloud dołączając do nich atrybut \texttt{measurement}
+określający rodzaj pomiaru --- w tym przepadku jego wartość to \texttt{"freezer"}.
+Dla pozostałych monitorowanych pomieszczeń używane są wartości \texttt{"warehouse"}
+oraz \texttt{"production"}.
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{flow1.png}
+      \caption{Diagram przepływu Node-RED realizujący zbieranie danych dostarczanych z czujników mierzących parametry powietrza}
+      \label{fig:flow1}
+\end{figure}
+
+Algorytm przetwarzania danych zbieranych w ramach protokołu CoAP ze stacji
+kontroli jakości przedstawiono na rys. \ref{fig:flow2}. Węzeł \texttt{[POST] /ftq}
+pochodzi z biblioteki \texttt{node-red-contrib-coap} i implementuje serwer CoAP, 
+a ściślej --- obsługę punktu końcowego \texttt{/ftq}, na który klienty zainstalowane
+w stacjach kontroli jakości przesyłają wyniki ewaluacji. Funkcja \texttt{CoAP OK}
+wysyła pozytywną odpowiedź na zapytanie i przekazuje otrzymane dane do kolejnych węzłów.
+Dalszy przebieg algorytmu jest zbliżony do wcześniej opisanych przypadków. 
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{flow2.png}
+      \caption{Diagram przepływu Node-RED realizujący zbieranie danych dostarczanych ze stacji kontroli jakości}
+      \label{fig:flow2}
+\end{figure}
+
+
 
 \subsubsection{Usługi chmurowe}
 
