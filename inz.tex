@@ -596,9 +596,8 @@ biznesowych implementowanych w ramach prototypu.
 \subsection{Wymagania funkcjonalne}
 
 Do założonych ogólnych funkcjonalności systemu należą: zbieranie, przetwarzanie,
-składowanie, udostępnianie i wizualizacja danych pomiarowych. W kolejnych
-podrozdziałach opisano szerzej każde z wymienionych wymagań wraz z nadaniem kontekstu
-użycia.
+składowanie, udostępnianie i wizualizacja danych pomiarowych, które omówiono
+w kolejnych podrozdziałach.
 
 \subsubsection{Zbieranie danych pomiarowych}
 
@@ -616,12 +615,7 @@ interfejsami oraz protokołami komunikacyjnymi.
 
 \subsubsection{Przetwarzanie danych}
 
-Przetwarzanie danych (ang. \emph{data processing}) to przekształcanie danych
-wejściowych z użyciem komputerów dla uzyskania informacji
-wartościowych w określonym kontekście. Korzyści wynikające z przetwarzania
-danych wykorzystuje się w prowadzeniu organizacji lub przedsiębiorstw \cite{data-processing}.
-Przetwarzanie jest oczywistym następstwem zbierania danych. Realizowany
-system ma więc za zadanie umożliwić \textbf{przetwarzanie zgromadzonych danych pomiarowych}
+Realizowany system ma za zadanie umożliwić \textbf{przetwarzanie zgromadzonych danych pomiarowych}
 --- zarówno na poziomie sprzętowym, jak i~programowym. Wśród możliwych przykładów
 przetwarzania danych w systemie można wymienić: agregację danych
 (scalanie wyników, wyznaczanie statystyk),
@@ -631,12 +625,11 @@ obliczanie kluczowych wskaźników efektywności prowadzonej działalności
 
 \subsubsection{Składowanie danych}
 
-Z przetwarzaniem danych ściśle związany jest problem ich składowania.
 W ramach dziedziny biznesowej istnieje zwykle potrzeba przyszłego wykorzystania
 zebranych danych oraz wyników ich przetwarzania. Trwały zapis danych dokumentuje
 procesy zachodzące w przedsiębiorstwie i udogadnia sprawowanie kontroli; pozwala
 na gromadzenie większej ich ilości i w konsekwencji pogłębioną, bardziej dokładną
-analizę. Zatem oczekuje się, aby projektowany system \textbf{realizował również
+analizę. Zatem oczekuje się, aby projektowany system \textbf{realizował
       funkcjonalność składowania (archiwizacji) danych pomiarowych w bazach danych}
 i umożliwiał dostęp do nich w przyszłości.
 
@@ -653,11 +646,8 @@ diagramów, plików o przejrzystej strukturze.
 \subsubsection{Udostępnianie danych}
 
 Z efektów działania projektowanego systemu bezpośrednio mogą korzystać nie tylko
-ludzie, lecz także inne systemy. Systemy informatyczne wspomagające funkcjonowanie
-pojedynczych, jak również współpracę wielu przedsiębiorstw zwykle nie stanowią
-rozwiązań jednolitych, lecz tworzą rozproszony system mniej lub bardziej
-powiązanych aplikacji i urządzeń. Wymaga się więc, aby realizowany system \textbf{mógł udostępniać
-      zgromadzone dane i wyniki ich przetwarzania na potrzeby innych systemów (klientów)},
+ludzie, lecz także inne systemy. Wymaga się więc, aby realizowany system \textbf{mógł udostępniać
+      zgromadzone dane i wyniki ich przetwarzania na potrzeby zewnętrznych systemów (klientów)},
 które realizują kolejne etapy przetwarzania danych.
 
 \subsection{Wymagania niefunkcjonalne}
@@ -678,13 +668,6 @@ Zadaniem krytycznym w systemach IoT jest przetwarzanie zebranych danych.
 Problem ten podejmują przede wszystkim oferowane za pośrednictwem Internetu
 usługi chmurowe. Tak więc Internet Rzeczy i~przetwarzanie w~chmurze w~stopniu
 znaczącym odpowiadają na większość wymagań funkcjonalnych przedstawionych w~poprzednim rozdziale.
-
-Użycie technologii IoT
-w realizowanej pracy sprowadza się do zastosowania odpowiednich modeli komunikacyjnych,
-sieci, protokołów oraz urządzeń. Wykorzystanie chmury obliczeniowej polega
-na wyborze usług wspomagających zarządzanie urządzeniami IoT,
-a także udogadniających gromadzenie, przetwarzanie, składowanie i udostępnianie
-danych.
 
 \subsubsection{Dostosowanie do środowiska przemysłowego}
 
@@ -728,16 +711,7 @@ zapewniają sieci komputerowe, interfejsy i protokoły.
 Stąd \textbf{kluczowym aspektem projektowanego systemu --- co już kilkukrotnie zostało podkreślone ---
       jest dostarczenie wsparcia dla popularnych
       interfejsów, protokołów i modeli wymiany informacji stosowanych w~IoT, przemyśle oraz
-      aplikacjach internetowych i usługach chmurowych}. Wśród rozwiązań sieciowych
-należy w szczególności uwzględnić: Ethernet (również klasy RTE szeroko stosowany
-w przemyśle \cite{isp}), sieci i standardy komunikacji bezprzewodowej (WiFi, Zigbee, Z-Wave, Bluetooth, GSM).
-Wiele urządzeń wbudowanych (w tym przemysłowych) komunikuje się za pośrednictwem
-interfejsów szeregowych: RS232/485, USB, SPI, I2C. Spośród protokołów należy
-wziąć pod uwagę MQTT i CoAP, które są dedykowane dla rozwiązań IoT. Aplikacje
-internetowe wykorzystują obecnie najczęściej protokół HTTP. W przemyśle
-stosuje się powszechnie protokół Modbus/TCP, a także zapewniające determinizm czasowy
-protokoły dedykowane dla sieci Ethernet: Profinet, EtherCAT, Ethernet Powerlink.
-Warty uwzględnienia jest też przemysłowy model wymiany informacji OPC~UA.
+      aplikacjach internetowych i usługach chmurowych}.
 
 Wraz z implementacją popularnych protokołów wymagane jest ponadto \textbf{zapewnienie
       jednolitego formatu danych na poziomie warstwy aplikacji}, który ma zagwarantować przenośność,
@@ -748,19 +722,12 @@ nich zaadaptowany --- analogicznie, jak w przypadku protokołów.
 Obok przystosowania do różnych sposobów komunikacji ważnym kryterium uniwersalności
 systemu jest elastyczność oprogramowania.
 W systemie, w którym zbierane są dane z wielu różnych urządzeń, wymagania dotyczące
-ich przetwarzania podlegają częstej zmianie i ewolucji. Mogą się one również
-zasadniczo różnić pomiędzy poszczególnymi przedsiębiorstwami. \textbf{Oczekuje się zatem,
-      aby system umożliwiał łatwą modyfikację i rozbudowę realizowanej logiki, jak
+ich przetwarzania podlegają częstej zmianie i ewolucji. \textbf{Oczekuje się zatem,
+      że system będzie umożliwiał łatwą modyfikację i rozbudowę realizowanej logiki, jak
       również wymianę komponentów}. Ponadto należy uwzględnić fakt, że w zarządzaniu
 systemem przemysłowym niekoniecznie muszą uczestniczyć zawodowi programiści,
 z czym wiąże się potrzeba, aby \textbf{model programistyczny systemu był zrozumiały
       także dla specjalistów innych dziedzin techniki i analityków}.
-
-Poza wypracowaniem ogólnej specyfikacji projektu wymaga się
-również \textbf{wykonania prototypu, którego celem jest weryfikacja przedstawionej koncepcji}.
-Na jego potrzeby mają zostać zaimplementowane określone scenariusze
-biznesowe z wykorzystaniem wybranych urządzeń, sposobów komunikacji, narzędzi i
-usług chmurowych.
 
 \subsubsection{Skalowalność}
 
@@ -787,8 +754,8 @@ metod ochrony przed kradzieżą.
 Ogólne ujęcie funkcjonalności projektowanego systemu z perspektywy użytkowników,
 zewnętrznych urządzeń i systemów modeluje diagram przypadków użycia przedstawiony
 na rys. \ref{fig:use-case}. Na jego potrzeby zdefiniowano abstrakcyjne
-źródło danych, które może stanowić aparatura pomiarowa, sterowniki przemysłowe, komputery,
-urządzenia wbudowane, pamięć masowa, a także inne systemy. Źródło przesyła
+źródło danych, które mogą stanowić zróżnicowane urządzenia pomiarowe, komputery,
+jak również inne systemy. Źródło przesyła
 dane do systemu, który dokonuje ich konwersji na pożądany format i umożliwia
 dalsze składowanie, przetwarzanie, udostępnianie i wizualizację. Dane są
 udostępniane na potrzeby innych systemów informatycznych (aplikacji klienckich).
@@ -820,12 +787,8 @@ z wykorzystaniem protokołów
 MQTT, CoAP oraz Modbus/TCP. Pierwsze dwa są charakterystyczne dla IoT, natomiast
 ostatni jest popularny wśród rozwiązań przemysłowych. System ma za zadanie
 integrować się z lokalną siecią i wymienionymi protokołami, z użyciem
-których gromadzone będą dane. Te z kolei mają zostać skonwertowane na oczekiwany,
-jednolity format warstwy aplikacji i przekazane do usług chmurowych, gdzie odbywa się dalsze
-przetwarzanie i składowanie. System powinien także umożliwić przeglądanie danych
-w bazie oraz podstawową wizualizację za pośrednictwem wykresów, diagramów, tabel.
-Szczegółowy opis przyjętych scenariuszy biznesowych przedstawiono w kolejnych
-podrozdziałach.
+których gromadzone będą dane. Szczegółowy opis przyjętych scenariuszy biznesowych
+przedstawiono w kolejnych podrozdziałach.
 
 \subsubsection{Monitorowanie parametrów powietrza}
 
@@ -851,14 +814,12 @@ Zebrane dane powinny być składowane w chmurze oraz wizualizowane.
 \subsubsection{Wyznaczanie parametru KPI}
 
 Na wyjściu trzech linii procesowych rozmieszczona jest aparatura przeznaczona
-do oceny jakości dostarczanych produktów. Może ją stanowić zaawansowane
-rozwiązanie wykorzystujące specjalizowane przyrządy pomiarowe i sztuczną inteligencję lub
-pracownik dokonujący oceny manualnie i wpisujący wyniki do komputera. Urządzenie,
+do oceny jakości dostarczanych produktów. Urządzenie,
 w którym zapisywany jest wynik, jest podłączone do lokalnej sieci Ethernet.
 Informacja o spełnieniu albo niespełnieniu wymagań jakościowych jest przesyłana
 do serwera z~wykorzystaniem CoAP/UDP w oparciu o architekturę REST. Zadaniem
-realizowanym przez prototyp jest odbiór przesyłanych rezultatów inspekcji
-(implementacja serwera), przetwarzanie i składowanie w chmurze. Przetwarzanie
+realizowanym przez prototyp jest odbiór przesyłanych rezultatów inspekcji, 
+przetwarzanie i składowanie w chmurze. Przetwarzanie
 danych polega w tym przypadku na wyznaczaniu wartości parametru FTQ
 (ang. \emph{First Time Quality}). Jest to jeden ze wskaźników KPI będący miarą
 zdolności linii do produkowania bez wad. FTQ to iloraz liczby produktów,
