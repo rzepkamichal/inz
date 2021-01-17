@@ -485,14 +485,6 @@ wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reali
             --- Komunikacja powinna spełniać ścisłe ograniczenia czasowe,
             których niedotrzymanie jest równoznaczne z awarią systemu.
 \end{itemize}
-Poziomy tolerancji opóźnień czasowych w różnych aplikacjach przedstawia rys. \ref{fig:tolerancja}
-
-\begin{figure}
-      \centering
-      \includegraphics[scale=0.4]{tolerancja.png}
-      \caption{Wykres przedstawiający poziomy tolerancji opóźnień dla różnych aplikacji.}
-      \label{fig:tolerancja}
-\end{figure}
 
 Powszechna infrastruktura tworząca Internet, jak i usługi w nim dostępne, są z reguły
 niedeterministyczne pod względem czasowym. Systemy IoT czy IIoT mogą więc
@@ -892,7 +884,14 @@ Proponowane rozwiązanie opiera się na trójwarstwowym modelu architektury
 systemów IIoT (patrz: rozdział \ref{iiot}, rys. \ref{fig:iiot-arch}), który
 zaadaptowano w celu praktycznego zastosowania, uwzględniwszy zdefiniowane
 wymagania projektowe oraz dostępne narzędzia i usługi. Wypracowaną koncepcję
-zobrazowano na rys. \todo{dodać rysunek}.
+zobrazowano na rys. \ref{fig:general-idea}.
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{koncepcja.png}
+      \caption{Ogólna koncepcja architektury systemu}
+      \label{fig:general-idea}
+\end{figure}
 
 Pierwszym punktem zbierania danych w systemie
 są bramy IoT (IIoT). Ich wykorzystanie
@@ -902,11 +901,11 @@ translacji protokołów pośrednicząc w ten sposób w wymianie danych
 pomiędzy warstwą brzegową i biznesową \cite{iiot-gateway-introduction},
 \cite{iiot-heterogenous-gateways}, \cite{iot-gateway-medical-and-industrial},
 \cite{modbus-iot-gateway}, \cite{iiot-design-and-impl-gateway}. Realizują one także
-wstępne przetwarzanie w warstwie brzegowej (ang. \emph{edge computing}) i ułatwiają
+wstępne przetwarzanie w warstwie brzegowej i ułatwiają
 sprawowanie kontroli nad przepływem danych w systemie \cite{iiot-architecture-and-gateway}.
-Idea stosowania bramy IoT w przemyśle umożliwia
-spełnienie głównego zadania IIoT, jakim jest połączenie technologii operacyjnych
-i technologii informacyjnych (ang. \emph{OT/IT convergence}) \cite{iiot-opensource-gateway}.
+Idea stosowania bramy IoT w przemyśle umożliwia spełnienie głównego zadania
+IIoT, jakim jest połączenie technologii operacyjnych i informacyjnych
+\cite{iiot-opensource-gateway}.
 Na omawianym rysunku zamieszczono trzy bramy, które integrują urządzenia odpowiednio
 w ramach sieci bezprzewodowej, przemysłowej sieci Ethernet oraz interfejsów szeregowych.
 Jest to podział poglądowy. W zależności od indywidualnych potrzeb i dostępnego sprzętu możliwe są różne
@@ -916,50 +915,57 @@ dla określonych sieci, hierarchiczna struktura bram.
 Za pośrednictwem Internetu brama
 przekazuje dane do warstw wyższych, z wykorzystaniem których odbywa się kolejny etap gromadzenia,
 a także przetwarzanie, składowanie i udostępnianie danych. Są to warstwy platformowa
-i biznesowa, których techniczną implementację oferują odpowiednie usługi chmurowe
+i biznesowa, których techniczną implementację umożliwiają odpowiednie usługi chmurowe
 popularnych dostawców: Microsoft, Amazon, Google, Intel, IBM. Możliwe jest też
 wdrożenie przez przedsiębiorstwo chmury prywatnej lub dedykowanej infrastruktury
-i oprogramowania.
+i oprogramowania. Do warstwy biznesowej należą także aplikacje klienckie, którym są
+udostępniane dane składowane w bazie. Wśród potencjalnych klientów należy wyszczególnić
+oprogramowanie, które realizuje zdefiniowane w ramach projektu wymaganie wizualizacji~danych.
 
-Do warstwy biznesowej należą także aplikacje klienckie, którym dane składowane
-w bazie są udostępniane za pośrednictwem protokołów
-internetowych, np. HTTP, AMQP, MQTT. Wśród potencjalnych klientów należy wyróżnić
-oprogramowanie, które będzie realizowało zdefiniowane w ramach projektu wymaganie wizualizacji
-danych.
-
-\subsection{Komponentowy model architektury}
+\subsection{Komponentowy model architektury}\label{model-komp}
 
 Wychodząc od koncepcji opisanej w poprzednim rozdziale opracowano
 formalny model architektury projektowanego systemu przedstawiony
-w postaci diagramu na rys. \todo{usupełnić}. Składa się on z licznych luźno
+w postaci diagramu na rys. \ref{fig:arch}. Składa się on z licznych luźno
 powiązanych komponentów rozlokowanych na określonych platformach sprzętu i oprogramowania.
 Rozdział systemu na pojedyncze elementy składowe odpowiada na wymaganie uniwersalności, zapewnia
-lepszą konfigurowalność i skalowalności. Modularny charakter systemu
+lepszą konfigurowalność i skalowalność. Modularny charakter systemu
 udogadnia także niezależną modyfikację i rozbudowę poszczególnych podzespołów.
-Komponenty podlegają swobodnej wymianie
-i zwielokrotnieniu pod warunkiem spełnienia wymaganego interfejsu.
 Biorąc pod uwagę fakt, że system obejmuje szeroką dziedzinę (od warstwy procesowej
 po wysokopoziomowe aplikacje IT) i może być utrzymywany przez zespoły o różnych
-specjalnościach, jest to aspekt szczególnie ważny. Podstawą współpracy
-grup komponentów osadzonych \texttt{Bramie IIoT}, \texttt{Chmurze} i na
+specjalnościach, jest to aspekt szczególnie ważny. Środkiem współpracy
+grup komponentów osadzonych w \texttt{Bramie IIoT}, \texttt{Chmurze} i na
 \texttt{Urządzeniach Klienckich} jest
 Internet i popularne protokoły internetowe: HTTP, FTP, MQTT, AMQP, WebSocket, TLS.
 
-Zamieszczona na omawianym diagramie \texttt{Brama IIoT} to urządzenie (system komputerowy)
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{arch.png}
+      \caption{Komponentowy model architektury systemu}
+      \label{fig:arch}
+\end{figure}
+
+\subsubsection{Brama IIoT}\label{brama-iot-general}
+
+Zamieszczona na diagramie z rys. \ref{fig:arch} \texttt{Brama IIoT} to urządzenie (system komputerowy)
 posiadające odpowiednie porty (interfejsy fizyczne, porty sieciowe, porty szeregowe),
 przez które może komunikować się z aparaturą pomiarową reprezentowaną przez
 \texttt{Źródło danych}. Zbieranie danych w jednym miejscu, translację protokołów,
 przetwarzanie brzegowe i komunikację z komponentami udostępnianymi za pośrednictwem
-Internetu realizuje dedykowane \texttt{Oprogramowanie}.
+Internetu realizuje dedykowane \texttt{Oprogramowanie Bramy}.
 Jest to komponent złożony składający z \texttt{Komponentów Przetwarzania Brzegowego}
 realizujących określone funkcje przetwarzające oraz \texttt{Buforów Brzegowych},
 które umożliwiają agregację i zachowanie jednolitego formatu danych wyjściowych.
-Szczegóły komponentu \texttt{Oprogramowania}
-przedstawiono na rys. \todo{dodać rys}
+Szczegóły komponentu \texttt{Oprogramowania Bramy}
+przedstawiono na rys. \ref{fig:gateway_soft}.
+
 W ramach bramy może funkcjonować również sprzętowo-programowy moduł
 czasu rzeczywistego RT (ang. \emph{Real-Time}), którego celem jest współpraca
-z lokalnym systemem czasu rzeczywistego. W systemie przewiduje się istnienie wielu źródeł
-danych, jak i możliwe jest wykorzystanie wielu bram. Ponadto żeby zapewnić większą niezawodność i skalowalność
+z lokalnym systemem czasu rzeczywistego. 
+
+W systemie przewiduje się istnienie wielu źródeł
+danych, jak i możliwe jest wykorzystanie wielu bram. Ponadto żeby zapewnić 
+większą niezawodność i skalowalność,
 można rozważyć budowę klastra bram z redundancją i równoważeniem obciążenia.
 Jako sprzętową realizację bramy w literaturze spotyka się komputer jednopłytkowy
 RaspberryPi, a także bramki z serii Siemens Simatic IOT2000
@@ -969,14 +975,21 @@ wziąć pod uwagę wykorzystanie platformy BeagleBone Black, czy dedykowanych ro
 producentów Cisco, Dell, Huawei, Hewlett Packard, NXP i innych \cite{gateways}.
 Do realizacji oprogramowania można posłużyć się narzędziami przeznaczonymi do
 integracji urządzeń IoT. Jednym z najpopularniejszych programów jest
-Node-RED \cite{flow-programming}, \cite{iot-gateway-medical-and-industrial},
+darmowe narzędzie Node-RED \cite{flow-programming}, \cite{iot-gateway-medical-and-industrial},
 \cite{design-impl-node-gateway}, \cite{iiot-opensource-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
-Jest to darmowe narzędzie \emph{open source} działające w środowisku Node.js na
-systemach Linux, Windows. Alternatywne bezpłatne rozwiązania to m.in. n8n.io, Total.js Flow.
+Alternatywne bezpłatne rozwiązania to m.in. n8n.io, Total.js Flow.
 Wśród ofert komercyjnych dostępne są przykładowo platformy Crosser, Bosch ProSyst
 \cite{node-red}, \cite{n8n}, \cite{total-js-flow}, \cite{crosser}, \cite{gateways}.
 
-Przedstawiony na rys. \todo{dodać rys} diagram o nazwie \texttt{Chmura}
+\begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{oprog_bramy.png}
+      \caption{Model oprogramowania bramy IIoT}
+      \label{fig:gateway_soft}
+\end{figure}
+
+\subsubsection{Chmura}\label{cloud-general}
+Przedstawiony na rys. \ref{fig:arch} diagram o nazwie \texttt{Chmura}
 może w rzeczywistości odpowiadać chmurze publicznej, prywatnej lub innej
 dedykowanej infrastrukturze sprzętu i oprogramowania. W niniejszym projekcie
 w szczególności rozpatruje się wariant z chmurą publiczną, której usługi są dostępne
@@ -985,7 +998,7 @@ wymagań przetwarzania, składowania i udostępniania danych.
 Umieszczone wewnątrz diagramu komponenty zostały dobrane
 pod kątem zdefiniowanych wymagań funkcjonalnych. \texttt{Platforma IoT}
 to komponent, który odbiera dane przychodzące z urządzeń (bram IIoT).
-Umożliwia również zarządzanie urządzeniami:
+Umożliwia również zarządzanie nimi:
 dodawanie, usuwanie, modyfikację uprawnień, a także monitoring i diagnostykę.
 Dane z platformy mogą zostać bezpośrednio składowane w \texttt{Bazie Danych}.
 Możliwe jest też przekazanie ich na wejście \texttt{Komponentu Przetwarzającego}.
@@ -1016,8 +1029,6 @@ które mają podobny zakres funkcjonalny \cite{azure-aws-comparison}.\\
             udostępniania, archiwizowania i tworzenia kopii zapasowej obiektów,
       \item RDS | SQL Database --- Relacyjne bazy danych,
       \item DynamoDB | CosmosDB --- Nierelacyjne bazy danych,
-      \item Redshift | Synapse Analytics --- Hurtownie danych wykorzystujące
-            masowe przetwarzanie równoległe (MPP) w celu efektywnej realizacji zapytań.
 \end{itemize}
 
 \noindent\textbf{Przykładowe usługi użyteczne do realizacji \texttt{Komponentów Przetwarzania}}:
@@ -1026,19 +1037,19 @@ które mają podobny zakres funkcjonalny \cite{azure-aws-comparison}.\\
       \item Lambda | Functions --- Bezserwerowe, skalowalne funkcje implementowane,
             z~wykorzystaniem języków programowania: Javascript, Python, Java, C\#,
       \item Batch | Batch --- Równoległe przetwarzanie danych o masowej ilości,
-      \item Elastic Compute Cloud Instances | Virtual Machines --- Wirtualne
-            serwery,
       \item SageMaker | Machine Learning --- Uczenie maszynowe,
       \item Kinesis Analytics | Stream Analytics --- Tworzenie potoków przetwarzania
             strumieniowego dla dużej ilości danych z wykorzystaniem języka SQL.
 \end{itemize}
 
-Przedstawione na rys. \todo{wstawić} \texttt{Urządzenie Klienta} może w rzeczywistości
+\subsubsection{Aplikacja kliencka}
+
+Przedstawione na rys. \ref{fig:arch} \texttt{Urządzenie Klienta} może w rzeczywistości
 być komputerem osobistym, urządzeniem mobilnym, serwerem lub usługą chmurową.
 Na urządzeniu jest wdrożone \texttt{Oprogramowanie Klienta}. Jest to komponent, który
 korzysta za pośrednictwem Internetu z danych udostępnianych przez \texttt{Chmurę}.
 W kontekście niniejszej pracy rozpatruje się w szczególności
-aplikacje wizualizujące dane i wspomagającymi analitykę. Wśród potencjalnie
+aplikacje wizualizujące dane i wspomagające analitykę. Wśród potencjalnie
 użytecznych narzędzi dostępne są darmowe rozwiązania \emph{open source}, które
 pozwalają na tworzenie modularnych paneli wizualizacji w ramach
 aplikacji internetowej (przeglądarkowej): Grafana,
@@ -1049,43 +1060,39 @@ PowerBI, Tableau, Grow.
 
 Na podstawie architektury systemu opisanej w poprzednim rozdziale wykonano
 prototyp, który implementuje scenariusze użycia zdefiniowane w rozdziale \ref{scenariusze}.
-Model zrealizowanego prototypu przedstawiono na rys. \todo{dodać}.
+Model zrealizowanego prototypu przedstawiono na rys. \ref{fig:impl}.
 System składa się z dwóch bram IIoT: Siemens Simatic IOT2020 i RaspberryPi.
-Dane pomiarowe są przesyłane do bram z wykorzystaniem sieci WiFi, Ethernet
-oraz protokołów MQTT, CoAP i Modbus/TCP. Źródła danych 
+Źródła danych
 zostały zasymulowane przez komputery, na których uruchomiono specjalnie wykonane oprogramowanie
-generujące zadane przebiegi. Stworzone narzędzie symulacji danych opisano szerzej w rozdziale
+generujące zadane przebiegi. Sporządzone narzędzie do symulacji danych opisano szerzej w rozdziale
 \ref{testy}. Na potrzeby translacji protokołów
 i przetwarzania brzegowego w systemach obu bram zainstalowano platformę Node-RED.
 W celu dalszego zbierania, przetwarzania, składowania i udostępniania danych
 użyto usług chmury Azure. Na potrzeby bieżącej wizualizacji danych wykorzystano
 bazę danych szeregów czasowych InfluxDB osadzoną w chmurze InfluxDB Cloud.
-Zebrane tam dane pomiarowe są cyklicznie odczytywane przez narzędzie Grafana ---
-aplikację do wizualizacji danych zainstalowaną na komputerze klienckim.
+Zebrane tam dane pomiarowe są cyklicznie odczytywane i wizualizowane przez narzędzie Grafana.
 W kolejnych rozdziałach omówiono poszczególne elementy systemu.
 
-\subsubsection{Bramy IIoT}
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{impl.png}
+      \caption{Model implementacji prototypu}
+      \label{fig:impl}
+\end{figure}
 
-W systemie pracują dwie bramy: Siemens Simatic IOT2020 i RaspberryPi. Wyboru urządzenia
-IOT2020 dokonano ze względu na spełnienie odpowiednich standardów przemysłowych,
+\subsubsection{Bramy IIoT --- Simatic IOT2020 i RaspberryPi}
+
+Wyboru urządzenia IOT2020 dokonano ze względu na spełnienie wymaganych standardów przemysłowych,
 o czym zapewnia producent. Posiada ono certyfikat UL/CE. Płytka elektroniczna
 jest umieszczona w obudowie, która jest przystosowana do montażu
 na popularnych w przemyśle szynach DIN i zapewnia ochronę o stopniu IP20. Bramka
 ma wbudowane interfejsy USB, Ethernet oraz moduł rozszerzeń GPIO. W systemie
-komputerowym Intel Quark x1000 (400MHz), 512 MB RAM można uruchomić system
+komputerowym Intel Quark x1000 400 MHz, 512 MB RAM można uruchomić system
 Linux z obrazu na karcie microSD. Producent dostarcza obraz systemu zbudowany
 na dystrybucji Yocto Linux dedykowanej dla urządzeń wbudowanych. Udostępniona
 jest także wersja z modułem czasu rzeczywistego i sterownikami Profinet,
-dzięki której brama IIoT może funkcjonować z lokalnym systemem czasu rzeczywistego.
+dzięki której brama IIoT może funkcjonować z lokalnym systemem czasu rzeczywistego
 \cite{simatic-iot-sepc}, \cite{simatic-iot-profinet}, \cite{modbus-iot-gateway}.
-Minikomputer RaspberryPi nie spełnia ściśle wymagań przemysłowych, natomiast ze
-względu na dostępne wsparcie użyto go na potrzeby prototypownia i rozwoju.
-Jest to bowiem platforma bardzo popularna, posiadająca liczną społeczność zwolenników.
-RaspberryPi jako bramę IoT/IIoT można spotkać również w literaturze \cite{iiot-opensource-gateway},
-\cite{design-impl-node-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
-W projekcie użyto modelu 3 B, który posiada m. in. czterordzeniowy
-procesor o taktowaniu 1.2 GHz, 1 GB RAM, interfejsy USB, Ethernet, Bluetooth, GPIO.
-Z karty microSD można uruchomić dedykowaną dystrybucję systemu Linux RaspberryPi OS lub inną.
 
 Jako że brama IOT2020 zapewnia lepsze przystosowanie do środowiska przemysłowego,
 postanowiono wykorzystać ją do zbierania danych ze sterownika PLC, który
@@ -1098,7 +1105,16 @@ Pierwotnie protokół był zaprojektowany dla połączeń szeregowych, z czasem
 zaczęto używać go także na stosie TCP/IP kapsułkując ramki Modbus w ramce TCP
 \cite{isp}, \cite{isp-analiza-przepływu-informacji}. W rozpatrywanej konfiguracji
 brama pełni rolę węzła nadrzędnego, który cyklicznie odczytuje zawartość
-rejestrów węzła podrzędnego (sterownika PLC)
+rejestrów węzła podrzędnego (sterownika PLC).
+
+Minikomputer RaspberryPi nie spełnia ściśle wymagań przemysłowych, natomiast ze
+względu na dostępne wsparcie użyto go na potrzeby prototypownia i rozwoju.
+Jest to bowiem platforma bardzo popularna, posiadająca liczną społeczność zwolenników.
+RaspberryPi jako bramę IoT/IIoT można spotkać również w literaturze \cite{iiot-opensource-gateway},
+\cite{design-impl-node-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
+W projekcie użyto modelu 3 B, który posiada m. in. czterordzeniowy
+procesor o taktowaniu 1.2 GHz, 1 GB RAM, interfejsy USB, Ethernet, Bluetooth, GPIO.
+Z karty microSD można uruchomić dedykowaną dystrybucję systemu Linux RaspberryPi OS lub inną.
 
 Bramę RaspberryPi wykorzystano do komunikacji z siecią bezprzewodowych czujników
 mierzących parametry powietrza w określonych pomieszczeniach oraz z
@@ -1106,34 +1122,36 @@ komputerami zainstalowanymi przy trzech stacjach procesowych, które
 przesyłają informacje o ocenie jakości wytworzonych produktów.
 Komunikacja z czujnikami odbywa się z wykorzystaniem sieci WiFi i protokołu
 MQTT. MQTT (ang. \emph{Message Queue Telemetry Transport}) to lekki pod względem wykorzystania zasobów
-protokół polegający na wymianie komunikatów. Architektura komunikacji
-jest oparta na wzorcu publikuj-subskrybuj (ang. \emph{publish-subscribe}).
+protokół polegający na wymianie komunikatów. Komunikacja
+jest oparta na wzorcu publikuj-subskrybuj (ang.~\emph{publish-subscribe}).
 Klienci łączą się do centralnego serwera (pośrednika, ang. \emph{broker}), za pośrednictwem
 którego mogą wysyłać i odbierać komunikaty pod konkretnym adresem (tematem, ang. \emph{topic}).
 Tematy tworzą hierarchiczną strukturę analogiczną do URL. MQTT
 wykorzystuje TCP w warstwie transportowej \cite{iot-hype-to-reality}. W omawianym
 scenariuszu czujniki publikują dane pomiarowe pod tematami zarezerwowanymi
 odpowiednio dla pomieszczenia chłodni, magazynu i hali produkcyjnej. Brama
-jest subskrybentem, który nasłuchuje na każdym z trzech tematów. Wymiana danych
-z komputerami zbierającymi dane dotyczące jakości produkcji odbywa się
-z użyciem sieci Ethernet i protokołu CoAP. CoAP (ang. \emph{Constrained Application Protocol})
+jest subskrybentem, który nasłuchuje na każdym z trzech tematów. 
+
+Wymiana danych z komputerami, które zbierają informacje na temat jakości produktów odbywa się
+za pośrednictwem sieci Ethernet i protokołu CoAP. CoAP (ang. \emph{Constrained Application Protocol})
 to alternatywa dla HTTP przeznaczona dla urządzeń o ograniczonych zasobach.
 Wykorzystuje m. in. protokół UDP w warstwie transportowej oraz krótsze nagłówki w formie binarnej.
 CoAP jest zorientowany na zasoby umożliwiając ich tworzenie, odczyt, aktualizację
 i usuwanie. Analogicznie do HTTP realizowany jest model komunikacji
-klient-serwer z użyciem metod GET, POST, PUT, DELETE, itp. \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
-W realizowanym przypadku biznesowym brama jest serwerem, a komputery
-przy stacji procesowej klientami, którzy przesyłają dane metodą POST.
+klient-serwer z użyciem metod GET, POST, PUT, DELETE, itd. \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
+W realizowanym przypadku biznesowym brama jest serwerem, a trzy komputery
+przy stacji procesowej klientami, które przesyłają dane metodą POST.
 
-Komponent \texttt{Oprogramowania} obu bram (patrz: rys. , rozdział. \todo{dodać})zaimplementowano z wykorzystaniem
-narzędzia Node-RED. Jest to darmowe oprogramowanie \emph{open source} funkcjonujące
+\subsubsection{Oprogramowanie bram --- Node-RED}
+Komponent \texttt{Oprogramowania} obu bram (patrz: rys. \ref{fig:gateway_soft} , rozdział \ref{model-komp})
+zaimplementowano z wykorzystaniem
+narzędzia Node-RED. Jest to darmowe oprogramowanie typu \emph{open source} funkcjonujące
 w środowisku Node.js. Jego celem jest integracja interfejsów
-fizycznych oraz interfejsów programowania aplikacji
-(ang. \emph{Application Programming Interface}, w skrócie API).
+fizycznych oraz interfejsów programowania aplikacji.
 W Node-RED stosuje się paradygmat programowania opartego na przepływie danych.
 Program posiada postać wizualną, w ramach której łączy się węzły (ang. \emph{nodes})
 realizujące określone funkcjonalności. Pomiędzy wyjściem i wejściem kolejnych
-węzłów przekazywany jest komunikat (wiadomość, ang. \emph{message}) w popularnym formacie
+węzłów przekazywany jest komunikat (wiadomość, ang. \emph{message}) w powszechnym formacie
 JSON (ang. \emph{JavaScript Object Notation}). Węzły mogą być prostymi lub złożonymi
 funkcjami, a nawet rozbudowanymi bibliotekami napisanymi w języku JavaScript.
 Wizualny model programowania odpowiada na wymaganie uniwersalności,
@@ -1145,31 +1163,36 @@ narzędzia dokonano ze względu na elastyczność sposobu implementacji logiki i
 wsparcie w postaci wielu bibliotek umożliwiających translację protokołów.
 Dystrybucja w formie \emph{open source} daje większą kontrolę nad używanym oprogramowaniem,
 zaś licencja Apache 2.0 pozwala na jego bezpłatne wykorzystanie również
-w celach komercyjnych \cite{node-red}. Stosowanie Node-RED w IoT jest rozwiązaniem popularnym \cite{iot-gateway-medical-and-industrial},
+w celach komercyjnych \cite{node-red}. Node-RED jest stosowane w IoT stosunkowo często \cite{iot-gateway-medical-and-industrial},
 \cite{design-impl-node-gateway}, \cite{iiot-opensource-gateway}, \cite{low-cost-esp32-pi-node-red-scada}.
 
 Zadaniem bramy zdefiniowanym w obrębie wymagań jest zapewnienie jednolitych
 struktur danych stosowanych w warstwie aplikacji na poziomie wszystkich
 systemów informatycznych w przedsiębiorstwie. W tym celu proponuje się
-wykorzystanie formatu JSON, który jest obecnie bardzo popularny w branży
-aplikacji internetowych i domyślnie wspierany przez środowisko Node.js --- w tym
-także Node-RED. Za pomocą specyfikacji JSON Schema możliwe jest
+wykorzystanie formatu JSON. Za pomocą notacji JSON Schema możliwe jest
 formalne określanie struktur danych, które powinny być zaimplementowane przez
 wszystkie systemy.
 
 Struktury danych niezbędne do realizacji przypadków biznesowych
-przedstawiono na rys. \todo{dodać rys}. Zdefiniowano następujące klasy:
+przedstawiono na rys. \ref{fig:data-structs}. Zdefiniowano następujące klasy:
 \begin{itemize}
       \itemsep0em
-      \item \texttt{Measurement} --- Klasa abstrakcyjna reprezentująca pomiar, który ma określony typ, np. pomiar powietrza
+      \item \texttt{Measurement} --- Klasa abstrakcyjna reprezentująca pomiar, który ma określony typ, np. pomiar powietrza.
             Jawna informacja o typie może być zbędna na poziomie języka programowania, lecz musi być zawarta w obiekcie JSON, który podlega serializacji;
-      \item \texttt{FluidControlMeasurement} --- Reprezentuje informację o poziomie zużycia cieczy w strefach 1, 2, 3 oraz w poziomie cieczy w zbiorniku głównym;
+      \item \texttt{FluidControlMeasurement} --- Reprezentuje informację o poziomie zużycia cieczy w strefach 1, 2, 3 oraz o poziomie cieczy w zbiorniku głównym;
       \item \texttt{AirMeasurement} --- Reprezentuje pomiar powietrza. Posiada kolejno pola informujące o lokacji, wartości temperatury i wilgotności;
       \item \texttt{ProductEvaluationMeasurement} --- Reprezentuje ocenę jakości produktu. Posiada kolejno pola informujące o nazwie produktu,
             spełnieniu wymagań (tak/nie --- \texttt{true}/\texttt{false}) i ewentualnej przyczynie niespełnienia wymagań.
 \end{itemize}
-\noindent Przykładową definicję struktury \texttt{AirMeasurement} w notacji 
+\noindent Przykładową definicję struktury \texttt{AirMeasurement} w notacji
 JSON Schema przedstawiono na listingu \ref{lst:json-schema}.
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.6]{data_structs.png}
+      \caption{Struktury danych używane w warstwie biznesowej systemu}
+      \label{fig:data-structs}
+\end{figure}
 
 \begin{lstlisting}[caption={Przykład definicji obiektu JSON w notacji JSON Schema dla 
       struktury \texttt{AirMeasurement}}, label={lst:json-schema}]
@@ -1202,15 +1225,15 @@ JSON Schema przedstawiono na listingu \ref{lst:json-schema}.
           }    
 \end{lstlisting}
 
-
-Na potrzeby realizacji komponentu \texttt{Bufora Brzegowego} (patrz: \todo{xd})
+\subsubsection{Bufor Brzegowy w Node-RED}
+Na potrzeby realizacji komponentu \texttt{Bufora Brzegowego} (patrz: rozdział \ref{brama-iot-general})
 zaprojektowano własny węzeł Node-RED o nazwie \texttt{EdgeBuffer}.
-Jego model przedstawiono na rys. \todo{dodać}.
+Jego model przedstawiono na rys. \ref{fig:edge-buffer}.
 Bufor ma być w domyśle umieszczany tuż przed węzłem wysyłającym dane na
-zewnątrz systemu (do chmury). Jego rolą jest sprawdzenie, czy format
-przekazanych danych jest zgodny ze strukturami zdefiniowanymi za pomocą notacji JSON Schema. 
+zewnątrz systemu. Jego rolą jest sprawdzenie, czy format
+przekazanych danych jest zgodny ze strukturami zdefiniowanymi za pomocą notacji JSON Schema.
 Ma on także umożliwić
-kumulowanie danych w celu ich agregacji. Bufor posiada publiczne następujące
+kumulowanie danych w celu ich agregacji. Bufor posiada następujące
 metody publiczne:
 \begin{itemize}
       \itemsep0em
@@ -1227,29 +1250,38 @@ logikę walidacji formatu danych wejściowych i zwraca wartość \texttt{true},
 gdy dane są poprawne. W konfiguracji Node-RED przewidziano parametr określający
 ścieżkę do pliku zawierającego definicje prawidłowych struktur danych w notacji JSON Schema.
 
+\begin{figure}
+      \centering
+      \includegraphics[scale=0.45]{edge_buffer.png}
+      \caption{Model \texttt{Bufora Brzegowego}}
+      \label{fig:edge-buffer}
+\end{figure}
+
+\subsubsection{Zbieranie informacji o stanie zużycia chemmi przemysłowej }
+
 Diagram przepływu Node-RED realizujący logikę zbierania danych ze sterownika
 PLC przedstawiono na rys. \ref{fig:flow3}. Implementację protokołu
-Modbus/TCP dostarcza biblioteka \texttt{node-red-contrib-modbus}. 
+Modbus/TCP dostarcza biblioteka \texttt{node-red-contrib-modbus}.
 Jednym z jej komponentów jest węzeł \texttt{Modbus Read}, który implementuje
-węzeł nadrzędny (w sensie protokołu Modbus) umożliwiający cykliczny odczyt 
+węzeł nadrzędny (w sensie protokołu Modbus) umożliwiający cykliczny odczyt
 danych ze sterownika PLC będącego węzłem podrzędnym. Przyjęto, że dane
 o zużyciu cieczy przemysłowej w strefach 1, 2, 3 są zapisane w kolejnych rejestrach
-40001, 40002, 40003 jako liczby całkowite określające zużycie w litrach. 
+40001, 40002, 40003 jako liczby całkowite określające zużycie w litrach.
 Podobnie informacja o poziomie cieczy w zbiorniku głównym zapisana jest w rejestrze 40004.
-Węzeł \texttt{Modbus Read} skonfigurowano zatem do użycia funkcji Modbus
-\texttt{FC 3: Read Holding Registers} do odczytu danych z czterech kolejnych
+Węzeł \texttt{Modbus Read} skonfigurowano do użycia funkcji Modbus
+\texttt{FC 3: Read Holding Registers} w celu odczytu danych z czterech sąsiednich
 rejestrów, począwszy od adresu 40001. Odczyt wykonywany jest co 3 sekundy.
 Funkcja \texttt{adapt and send} przekształca otrzymaną na wejściu tablicę
-kolejnych wartości zrejestru na oczekiwaną strukturę \texttt{FluidControlMeasurement}
+wartości na oczekiwaną strukturę \texttt{FluidControlMeasurement}
 i przekazuje dane do bufora wywołując metodę \texttt{send}.
-Węzeł \texttt{fluids-azure} to \texttt{Bufor Brzegowy}, która rola sprawdza się 
-w rozpatrywanym przypadku jedynie do sprawdzenia poprawności otrzymanej na 
+Węzeł \texttt{fluids-azure} to \texttt{Bufor Brzegowy}, którego rola sprawdza się
+w rozpatrywanym przypadku jedynie do sprawdzenia poprawności otrzymanej na
 wejściu struktury i natychmiastowym przekazaniu jej na wyjście. Na końcu
 umieszczono węzeł \texttt{IoT Hub} pochodzący z biblioteki \texttt{node-red-contrib-azure-iot-hub},
 który implementuje interfejs usługi IoT Hub chmury Azure. Umożliwia on przekazywanie
 danych do chmury za pośrednictwem Internetu.
-Węzeł \texttt{debug} wyświetla w konsoli informacje o ewentalnych błędach, w 
-tym m. in. komunikaty bufora o niepowodzeniu walidacji. 
+Węzeł \texttt{debug} wyświetla w konsoli informacje o ewentalnych błędach, w
+tym m. in. komunikaty bufora o niepowodzeniu walidacji.
 
 \begin{figure}[h]
       \centering
@@ -1258,28 +1290,30 @@ tym m. in. komunikaty bufora o niepowodzeniu walidacji.
       \label{fig:flow3}
 \end{figure}
 
+\subsubsection{Zbieranie pomiarów parametrów powietrza }
+
 Na rys. \ref{fig:flow1} zamieszczono diagram przepływu wykonujący gromadzenie pomiarów parametrów
 powietrza w ramach protokołu MQTT. Serwer pośredniczący w wymianie komunikatów
-(broker MQTT) zralizowano z wykorzystaniem darmowego oprogramowania
+(broker) zralizowano z wykorzystaniem darmowego oprogramowania
 Eclipse Mosquitto zainstalowanego na RaspberryPi \cite{mosquitto}. Węzeł
 \texttt{/sensors/freezer} to subskrybent MQTT dostępny w ramach standardowej
 biblioteki Node-RED nasłuchujący na temacie o tej samej nazwie. Publikacji
-komunikatów na temacie dokonują w tym przypadku czujniki rozmieszczone w
-chłodni. Identyczne diagramy z tematami \texttt{/sensors/warehouse} i 
-\texttt{/sensors/production} opracowano dla czujników osadzonych odpowiednio 
+komunikatów  dokonują w tym przypadku czujniki rozmieszczone w
+chłodni. Identyczne diagramy, lecz z dopasowanymi tematami \texttt{/sensors/warehouse} i
+\texttt{/sensors/production} opracowano dla czujników osadzonych odpowiednio
 w magazynie i hali produkcyjnej. Węzeł \texttt{JSON Parser} deserializuje
 nadesłane wiadomości z postaci znakowej na obiekt JSON. Funkcja \texttt{adapt and put}
 mapuje dane otrzymane z czujników na strukturę \texttt{AirMeasurement}
-i składa w buforze \texttt{freezer-azure}, który standardowo waliduje format 
+i składa w buforze \texttt{freezer-azure}, który standardowo waliduje format
 danych na wejściu. Węzeł \texttt{flush 60 sec} co minutę wywołuje metodę \texttt{flush}
-zwalniającą bufor. Funkcja agregująca \texttt{avg} wylicza średnią z zebranych 
-danych i wysła pojedynczą wiadomość do serwisu IoT Hub. Funkcja \texttt{adapt and send}
-dostosowuje format danych do bazy InfluxDB, która wymaga jedynie przekazania
-prostego obiektu JSON składającego się jedynie z pól temperatury i wilgotności. 
-Tylko te dane telemetrzyczne są wykorzystywane do wizualizacji. Na buforze
-\texttt{freezer-influx} wywoływana jest metoda \texttt{send}. Dalej dane 
+zwalniającą bufor. Funkcja agregująca \texttt{avg} wylicza średnią z zebranych
+wartości i wysła pojedynczą wiadomość do serwisu IoT Hub. Funkcja \texttt{adapt and send}
+dostosowuje format danych do bazy InfluxDB, która wymaga przekazania
+prostego obiektu JSON składającego się jedynie z pól temperatury i wilgotności.
+Tylko te dane telemetryczne są wykorzystywane do wizualizacji. Na buforze
+\texttt{freezer-influx} wywoływana jest metoda \texttt{send}. Dalej dane
 przekazywane są do węzła \texttt{influx /freezer} pochodzącego z biblioteki
-\texttt{node-red-contrib-influxdb}. Przekazuje on otrzymane dane pomiarowe 
+\texttt{node-red-contrib-influxdb}. Przekazuje on otrzymane dane pomiarowe
 do chmury InfluxDB Cloud dołączając do nich atrybut \texttt{measurement}
 określający rodzaj pomiaru --- w tym przepadku jego wartość to \texttt{"freezer"}.
 Dla pozostałych monitorowanych pomieszczeń używane są wartości \texttt{"warehouse"}
@@ -1292,13 +1326,16 @@ oraz \texttt{"production"}.
       \label{fig:flow1}
 \end{figure}
 
-Algorytm przetwarzania danych zbieranych w ramach protokołu CoAP ze stacji
+\subsubsection{Zbieranie danych do wyznaczenia parametru KPI }
+
+Algorytm przetwarzania danych zbieranych w ramach protokołu CoAP z trzech stacji
 kontroli jakości przedstawiono na rys. \ref{fig:flow2}. Węzeł \texttt{[POST] /ftq}
-pochodzi z biblioteki \texttt{node-red-contrib-coap} i implementuje serwer CoAP, 
+pochodzi z biblioteki \texttt{node-red-contrib-coap} i implementuje serwer CoAP,
 a ściślej --- obsługę punktu końcowego \texttt{/ftq}, na który klienty zainstalowane
-w stacjach kontroli jakości przesyłają wyniki ewaluacji. Funkcja \texttt{CoAP OK}
+przy stacjach przesyłają wyniki ewaluacji. Funkcja \texttt{CoAP OK}
 wysyła pozytywną odpowiedź na zapytanie i przekazuje otrzymane dane do kolejnych węzłów.
-Dalszy przebieg algorytmu jest zbliżony do wcześniej opisanych przypadków. 
+Dalszy przebieg algorytmu jest zbliżony do wcześniej opisanych przypadków,
+gdzie dane są walidowane przez bufor i wysyłane do~serwisu IoT~Hub.
 
 \begin{figure}[h]
       \centering
@@ -1308,11 +1345,177 @@ Dalszy przebieg algorytmu jest zbliżony do wcześniej opisanych przypadków.
 \end{figure}
 
 
+\subsubsection{Użycie chmury Azure}
 
-\subsubsection{Usługi chmurowe}
+Chmura Microsoft Azure udostępnia usługi, które pozwalają na realizację wszystkich komponentów zdefiniowanych
+na potrzeby projektu (patrz: rozdział \ref{cloud-general}).
+Z kolei Node-RED posiada dobre wsparcie dla Azure w postaci licznych bibiliotek.
+Ponadto Microsoft oferuje studentom darmową subskrypcję \emph{Azure for Students}
+dającą bezpłatny dostęp do określonego przez dostawcę zbioru usług \cite{azure-students}. 
+Stąd platforma Azure została wybrana do prototypowania.
 
-\subsubsection{Aplikacja do wizualizacji danych}
+\subsubsection{Zbieranie danych w chmurze --- Azure IoT Hub}
+Jako \texttt{Platformy IoT} użyto usługi IoT Hub. Pozwala ona na rejestrowanie
+wielu urządzeń IoT, zarządzanie ich uprawnieniami, zbieranie danych i wysyłanie
+wiadomości do urządzeń. W portalu zarejestrowano obie wykorzystane bramy IIoT, co przedstawia
+zrzut ekranu zamieszczony na rys. \ref{fig:iot_hub_1}. W ustawieniach
+usługi IoT Hub zdefiniowano także trasowanie (ang. \emph{message routing})
+na wejście usług Blob Storage i Functions pełniących rolę komponentu
+\texttt{Bazy Danych} i \texttt{Kompunentu Przetwarzającego}.
 
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.8\textwidth]{iot_hub_1.png}}
+      \caption{Zrzut ekranu przedstawiający tabelę urządzeń zarejestrowanych w usłudze IoT Hub}
+      \label{fig:iot_hub_1}
+\end{figure}
+
+\subsubsection{Składowanie w chmurze i udostępnianie --- Azure Blob Storage}
+Baza Blob Storage umożliwia elastyczne przechowywanie danych zebranych w
+usłudze IoT Hub w formie obiektów JSON zapisanych w strukturze plików i folderów,
+którą można swobodnie przeglądać w portalu Azure (interfejs graficzny przypomina
+menadżera plików).
+W prototypowym systemie baza Blob Storage przechwuje zagregowane wartości
+parametrów temperatury \texttt{AirMeasurement}, aktualne wskazania przepływomierzy
+i czujnika poziomu cieczy \texttt{FluidControlMeasurement}, a także liczbę
+produktów wytworzonych bez wad i liczbę wszystkich produktów na potrzeby
+wyznaczania wartości parametru FTQ. Pobieranie i zapis danych przez systemy
+zewnętrzne umożliwia interfejs programistyczny
+REST z wykorzystaniem protokołu HTTP \cite{blob-storage-doc}
+W ten sposób realizowane są wymagania składowania i udostępniana danych pomiarowych.
+
+\subsubsection{Przetwarzanie w chmurze --- Azure Functions}
+
+Dane zbierane za pośrednictwem usługi IoT Hub są także przekazywane na
+wejście usługi Azure Functions realizującej wymaganie przetwarzania danych.
+Umożliwia ona impelemtację prostych funkcji bezserwerowych w wybranych językach programowania.
+Programista zajmuje się jedynie implementacją logiki, zaś dostarczenie niezbędnych
+zasobów informatycznych i ich skalowanie zapewnia chmura.
+W ramach prototypu napisano funkcję w języku Javascript, która wyznacza
+wartość parametru FTQ. Na wejściu przyjmuje ona wiadomość informującą o wyniku
+oceny jakości nowo wytworzonego produktu w postaci \texttt{ProductEvaluationMeasurement}.
+Z bazy Blob Storage pobierane są ostatnie wartości liczników produktów wyprodukowanych
+bez wad oraz wszystkich produktów. Odpowiedni licznik jest inkrementowany
+i wyznaczana jest nowa wartość parametru FTQ na podstawie wzoru \ref{eq:ftq}
+zamieszczonego w rozdziale~\ref{scenariusze}. Następnie aktualizowane są wpisy
+w bazie i wynik jest przesyłany do chmury InfluxDB na potrzeby bieżącej wizualizacji.
+Kod źródłowy funkcji przedstawiono na listingu~\ref{lst:azure-fun}. Zdefiniowano
+także drugą, prostszą funkcję pomocniczą, która przekazuje wartości parametru \texttt{FluidControlMeasurement}
+do bazy InfluxDB. Zbierająca wartości tego parametru brama IOT2020 
+nie wspiera bowiem na chwilę obecną oprogramowania 
+umożliwiającego bezpośredni przesył danych z Node-RED do chmury InfluxDB, stąd
+konieczne było wykorzystanie pośrednika w psotaci Azure IoT Hub i Functions. 
+
+\begin{lstlisting}[caption={Kod źródłowy funkcji wyznaczającej aktualną wartość 
+      parametru FTQ osadzonej w usłudze Azure Functions}, label={lst:azure-fun}]
+IoTHubMessages.forEach(message => {
+      message = JSON.parse(message);
+ 
+      // akceptacja wiadomosci o okreslonym typie
+      if (message.type !== 'product-evaluation-result') {
+          return;
+      }
+  
+      // wczytanie danych z Blob Storage
+      input = context.bindings.inputBlob;
+      var ftqParams;
+
+      // sprawdzenie, ktorego produktu dotyczy wiadomosc
+      switch(message.productName) {
+          case 'PRODUCT-A':
+              ftqParams = context.bindings.inputBlob.prodA;
+              break;
+          case 'PRODUCT-B':
+              ftqParams = context.bindings.inputBlob.prodB;
+              break;
+          case 'PRODUCT-C':
+              ftqParams = input.prodC;
+              break;
+      }
+
+      // inkrementacja licznikow
+      incrementFtqCounters(ftqParams, message.accepted);
+
+      // wyznaczenie wartosci ftq
+      const ftq = ftqParams.positive / ftqParams.all * 100;
+
+      // przeslanie wyniku do bazy InfluxDB
+      sendToInflux(message.productName, ftq, context);
+
+      // zapis wyniku do Blob Storage
+      context.bindings.outputBlob = input;
+    });
+
+    context.done();    
+\end{lstlisting}
+
+\subsubsection{Wizualizacja danych --- chmura InfluxDB i narzędzie Grafana}
+
+Do realizacji wymagania wizualizacji danych użyto bazy danych InfluxDB.
+Jest to baza zoptymalizowana pod kątem przechowywania szeregów czasowych 
+(ang. \emph{Time Series Database}). InfluxDB to bezpłatne
+oprogramowanie dostępne na licencji MIT, które można zainstalować na dowolnej
+maszynie z systemem Linux, Mac OS X, Windows. Oferowana jest także 
+płatna usługa chmurowa InfluxDB Cloud z darmowym programem startowym, co wykorzystano
+na potrzeby prototypowania. Dane pomiarowe są składowane w InfluxDB
+jako rekordy w tabelach pogrupowanych w konternery --- tzw. wiadra (ang. \emph{buckets}).
+Do podstawowych kolumn należą: znacznik czasowy pomiaru (\texttt{\_time}), 
+wartość parametru (\texttt{\_value}), nazwa parametru (\texttt{\_field}) i nazwa pomiaru (\texttt{\_measurement}).
+Zrzuty ekranów z tabel InfluxDB przechowujących pomiary wilgotności i temperatury
+przedsawiono na rysunkach \ref{fig:influx_1} i \ref{fig:influx_2}.
+
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.9\textwidth]{influxDB_1.png}}
+      \caption{Zrzut ekranu przedstawiający tabelę InfluxDB zawierającą szeregi czasowe pomiaru temperatury}
+      \label{fig:influx_1}
+\end{figure}
+
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.9\textwidth]{influxDB_2.png}}
+      \caption{Zrzut ekranu przedstawiający tabelę InfluxDB zawierającą szeregi czasowe pomiaru wilgotności}
+      \label{fig:influx_2}
+\end{figure}
+
+Z bazą InfluxDB dobrze integruje się Grafana --- darmowa aplikacja do wizualizacji
+danych dostępna na licencji Apache 2.0. Podobnie jak
+w przypadku InfluxDB, możliwa jest lokalna instalacja lub skorzystanie z 
+płatnej usługi chmurowej. W ramach prototypu narzędzie zostało zainstalowane
+na komputerze klienckim. Jest to serwer, który udostępnia interfejs graficzny
+w postaci aplikacji przeglądarkowej. W aplikacji można tworzyć
+dowolne diagramy, wykresy, tabele, wskaźniki i swobodnie rozbudowywać 
+modularne panele zarządzania. Istnieje także możliwość tworzenia własnych komponentów
+graficznych i wtyczek. 
+Grafana komunikuje się z bazą InfluxDB za pośrednictwem Internetu z wykorzystaniem
+deklaratywnego języka zapytań Flux. Przykładowe zapytanie przedstawiono na 
+listingu \ref{lst:flux}. Wykonywana jest selekcja
+rekordów z kontenera o nazwie \texttt{bucket}, w których wartość pola 
+\texttt{\_measurement} to \texttt{freezer}, a pola \texttt{\_field} --- \texttt{temperature}.
+Zakres wyników ograniczany jest do trzech ostatnich godzin, a wartości
+są agregowane z wykorzystaniem funkcji wyznaczającej średnią (\texttt{mean}) w obrębie interwałów
+pięciosekundowych. Wynik zapytania może być wizualizowany przez wybrany komponent
+graficzny. Na rys. \ref{fig:grafana-1} zamieszczono zrzut ekranu będący fragmentem panelu Grafana,
+przedstawiający wykres i wskaźnik wartości chwilowej odnoszący się do zapytania
+z listingu \ref{lst:flux}.
+
+
+\begin{lstlisting}[caption={Przykładowe zapytanie w języku Flux}, label={lst:flux}]
+from(bucket:"bucket")
+      |> range(start:-3h)
+      |> filter(fn:(r) =>
+            r._measurement == "freezer" and
+            r._field == "temperature"
+      )
+      |> aggregateWindow(every: 5s, fn: mean)
+\end{lstlisting}
+
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.9\textwidth]{grafana_1.png}}
+      \caption{Zrzut ekranu z panelu Grafana wizualizujący wyniki zapytania przedstawione na listing \ref{lst:flux}}
+      \label{fig:grafana-1}
+\end{figure}
 
 \section{Specyfikacja zewnętrzna}\label{spec-wew}
 
