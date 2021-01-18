@@ -141,9 +141,8 @@ składa się z czterech zasadniczych zagadnień: systemy do zbierania danych pom
 systemy informatyczne w przemyśle, IoT i IIoT.  Do każdego z nich odnoszą się
 odpowiednio kolejne podrozdziały przedstawiające podstawowe pojęcia, problemy i~rozwiązania
 w danej dziedzinie.
-W ostatnim podrozdziale dokonano konsolidacji zebranych wiadomości w kontekście
-celu pracy, jakim jest opracowanie systemu do zbierania danych pomiarowych
-dla środowiska przemysłowego z wykorzystaniem IoT.
+W ostatnim podrozdziale dokonano zestawienia zebranych wiadomości w kontekście
+celu pracy.
 
 \subsection{Systemy informatyczne do zbierania danych pomiarowych} \label{system-do-zbierania-danych}
 
@@ -197,19 +196,15 @@ W dziedzinie informatyki przeymsłowej wykorzystuje się tzw.
 \textbf{urządzenia aparatury kontrolno-pomiarowej i automatyki} (w skrócie: AKPiA).
 Stanowią one pomost pomiędzy procesem przemysłowym a systemem informatycznym.
 Zestaw takich urządzeń można zamodelować zbiorem informacji, który nazywamy
-\textbf{obiektem przemysłowym} \cite{isp}. Pojęcie AKPiA jest podobne do omawianych
-w rozdziale \ref{system-do-zbierania-danych} urządzeń systemów DAQ oraz CPS. W~obrębie
+\textbf{obiektem przemysłowym} \cite{isp}. W~obrębie
 CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego ---
-tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}).
-Jest to nazwa trafna, jako że informacja cyfrowa pod postacią modeli i obiektów
-danych reprezentuje niejako drugą (bliźniaczą) tożsamość obiektu rzeczywistego
-\cite{iiot-challenges-opportunities-directions}.
+tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}) \cite{iiot-challenges-opportunities-directions}.
 Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
 \begin{itemize}
       \itemsep0em
-      \item układy \textbf{inicjatorów} (czujniki, sensory, ang. \emph{sensors}) --- rejestrowanie stanu procesu (produkcja informacji),
-      \item układy \textbf{wykonawcze} (ang. \emph{actuators}) --- modyfikacja stanu procesu (konsumpcja informacji),
-      \item układy \textbf{mieszane} (ang. \emph{mixed}) --- jednoczesna produkcja i konsumpcja informacji.
+      \item układy \textbf{inicjatorów} (czujniki, sensory, ang. \emph{sensors}) --- rejestrowanie stanu procesu,
+      \item układy \textbf{wykonawcze} (ang. \emph{actuators}) --- modyfikacja stanu procesu,
+      \item układy \textbf{mieszane} (ang. \emph{mixed}) --- jednoczesna rejestracja i modyfikacja stanu procesu.
 \end{itemize}
 
 Omawiając tematykę związaną z systemami przemysłowymi nie sposób pominąć kwestię
@@ -291,27 +286,17 @@ przedstawiony na rys. \ref{fig:piramida}. Wyróżniono w nim następujące warst
 
 \subsection{Internet Rzeczy}\label{iot}
 
-W podrozdziale przedstawiono przegląd definicji IoT oraz jego zastosowań, a także
-opisano elementy tworzące IoT. Podrozdział zawiera też odniesienie do ważnego
+W podrozdziale przedstawiono przegląd definicji, zastosowań, a także
+elementów tworzących IoT. Podrozdział zawiera również odniesienie do ważnego
 w~kontekście omawianego zagadnienia przetwarzania w chmurze.
 
 \subsubsection{Definicje i zastosowania Internetu Rzeczy}
 
 \textbf{Internet Rzeczy} (ang. \emph{Internet of Things}, w skrócie: IoT) posiada różne definicje.
 Jedną z prostszych jest: sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
-do Internetu \cite{intro-to-iot}. Bardziej szczegółowe jest ujęcie IoT jako sieci jednoznacznie
-identyfikowalnych przedmiotów z wbudowanymi czujnikami, inteligencją obliczeniową
-oraz powszechną łącznością z Internetem \cite{iot-hype-to-reality}.
-Na nieco wyższym poziomie definiuje się IoT jako globalną infrastrukturę udostępniającą
+do Internetu \cite{intro-to-iot}. Na nieco wyższym poziomie definiuje się IoT jako globalną infrastrukturę udostępniającą
 zaawansowane usługi poprzez połączenie przedmiotów z wykorzystaniem technologii informacyjnych.
 \cite{intro-to-iot}.
-
-W każdej z przytoczonych
-definicji zauważalne jest pewne podobieństwo pomiędzy IoT a CPS
-scharakteryzowanym w rozdziale \ref{system-do-zbierania-danych}. Zagadnienia te
-posiadają część wspólną, dotyczą podobnej tematyki (przede wszystkim połączenia świata fizycznego i logicznego),
-lecz mają odrębną genezę i uwydatnia się w ich ramach różne aspekty:
-inżynierię systemów sterowania w CPS oraz sieci i komunikację w IoT \cite{cps-vs-iot}.
 
 Głównym zastosowaniem Internetu Rzeczy jest monitorowanie świata rzeczywistego
 oraz wchodzenie z nim w interakcję, co może usprawnić działalność człowieka na wielu płaszczyznach.
@@ -328,7 +313,7 @@ Wśród przedmiotów tworzących IoT wyróżnia się dwie kategorie:
 wykorzystywanej w przemyśle (patrz: rozdział \ref{isp}). Czujniki umożliwiają
 obserwację świata rzeczywistego i jej zapis w postaci cyfrowej.
 Urządzenia wykonawcze są w stanie zmienić stan układu rzeczywistego
-na podstawie otrzymanej informacji cyfrowej \cite{iot-hype-to-reality}.
+na podstawie otrzymanej informacji \cite{iot-hype-to-reality}.
 Przykładowe czujniki to: przyciski, przełączniki, czujniki ruchu, czujniki gazów,
 czujniki wibracji, czujniki temperatury, wilgoci,
 nacisku, ultradźwięków i wielu innych wielkości fizycznych. Przykłady urządzeń
@@ -350,9 +335,9 @@ Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące 
             Można na nich uruchomić system operacyjny (również z interfejsem graficznym). Posiadają liczne
             interfejsy komunikacyjne (w tym sieciowe) \cite{rpi}.
 \end{itemize}
-Wymienione platformy uniwersalne mogą też stanowić pomost pomiędzy główną siecią w systemie
+Wymienione platformy uniwersalne mogą stanowić pomost pomiędzy główną siecią w systemie
 IoT (np. Ethernet lub WiFi) a innymi urządzeniami
-peryferyjnemi komunikującymi się za pośrednictwem
+peryferyjnymi komunikującymi się za pośrednictwem
 uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, takich jak: SPI, I2C, RS232, USB \cite{intro-to-iot}.
 
 \subsubsection{``Internet'' w IoT}
@@ -360,11 +345,11 @@ uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, takich jak: S
 Wymiana informacji w systemach IoT może odbywać się w sposób przewodowy lub bezprzewodowy.
 Stosowane modele komunikacji sieciowej bazują na standardowym modelu OSI bądź
 internetowym stosie TCP/IP. W warstwie fizycznej i łącza danych
-sieci IoT wykorzystuje się protokoły: Ethernet, WiFi, Bluetooth, sieci komórkowe,
-ZigBee, Z-Wave, NFC. W warstwie sieciowej stosuje się: IPv4, IPv6 oraz zoptymalizowaną
+sieci IoT wykorzystuje się: Ethernet, WiFi, Bluetooth, sieci komórkowe,
+ZigBee, Z-Wave, NFC. W warstwie sieciowej stosuje się protokoły: IPv4, IPv6 oraz zoptymalizowaną
 pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m. in. TCP i UDP.
 Warstwy sesji, prezentacji i aplikacji implementują powszechne używane internetowe protokoły, np.
-HTTP, RTP, SMTP. Wśród protokołów najwyższych wastw opracowano również
+HTTP, RTP, SMTP. Wśród protokołów najwyższych warstw opracowano również
 protokoły dedykowane dla IoT --- są to m. in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
 
 
@@ -372,21 +357,15 @@ W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{in
 
 \begin{itemize}
       \itemsep0em
-      \item Urządzenie -- Urządzenie (ang. \emph{Machine to Machine, Device to Device}, w skrócie: M2M)
+      \item Urządzenie -- Urządzenie (ang. \emph{Machine to Machine, Device to Device}, w skrócie:~M2M)
             --- Urządzenia komunikują się pomiędzy sobą bez potrzeby translacji czy wykonywania
             skomplikowanego przetwarzania danych.
-            W odniesieniu do zaprezentowanego w rozdziale \ref{isp} modelu piramidowego oznaczałoby to, że węzły
-            działające w~ramach odrębnych warstw hierarchii mogłyby się ze sobą komunikować bezpośrednio, na tej samej płaszczyźnie;
       \item Urządzenie -- Brama (ang. \emph{Device to Gateway})
             --- Występuje, gdy zachodzi potrzeba translacji informacji wymienianej pomiędzy różnymi sieciami.
             Translacją zajmuje brama (ang. \emph{gateway}), którą tworzy dedykowane oprogramowanie i/lub urządzenie;
       \item Urządzenie -- Chmura (ang. \emph{Device to Cloud})
             --- Występuje, gdy zachodzi potrzeba zaawansowanego przetwarzania danych
-            (statystyka, eksploracja danych, big data, składowanie, itp.),
-            co nie jest możliwe w przypadku urządzeń o ograniczonych zasobach obliczeniowych,
-            pamięciowych i energetycznych.
-            Niektóre urządzenia są w stanie komunikować się z chmurą bezpośrednio, inne
-            korzystają w tym celu z bram.
+            z wykorzystaniem chmury (statystyka, eksploracja danych, big data, składowanie, itp.).
 \end{itemize}
 
 \subsubsection{Usługi chmurowe}
@@ -410,22 +389,20 @@ Tego typu rozwiązania są kosztowne, lecz dają pełną kontrolę nad posiadany
 W ramach swoich usług dostawcy chmury udostępniają m.in.: przetwarzanie danych,
 analitykę, eksplorację danych, uczenie maszynowe, konteneryzację, relacyjne i~nierelacyjne
 bazy danych, integrację aplikacji, hosting aplikacji i stron internetowych,
-maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkwnikami, a~ponadto
+maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkownikami, a~ponadto
 platformy do zarządzania systemami IoT \cite{aws}, \cite{azure}.
 
-Zarządzanie dużą ilością danych jest podstawowym zadaniem systemu IoT. Składa się ono
-na: zbieranie, filtrowanie, agregację, przetwarzanie, składowanie, udostępnianie,
-wizualizację oraz zabezpieczanie \cite{intro-to-iot}. Usługi chmurowe umożliwiają złożone zarządzanie
-danymi oferując jednocześnie skalowalność, zdalny dostęp, opłaty zależne od zapotrzebowania
+Zarządzanie dużą ilością danych jest podstawowym zadaniem systemów IoT. 
+Usługi chmurowe umożliwiają zaawansowane przetwarzanie danych
+oferując jednocześnie skalowalność, zdalny dostęp, opłaty zależne od zapotrzebowania
 i gotowe rozwiązania programistyczne skracające czas rozwoju systemów
-\cite{measuring-value-of-cloud-computing}, \cite{iot-and-cloud}, \cite{iot-in-industrial-sector}.
+\cite{intro-to-iot}, \cite{measuring-value-of-cloud-computing}, \cite{iot-and-cloud}, \cite{iot-in-industrial-sector}.
 
 \subsection{Internet rzeczy w przemyśle}\label{iiot}
 
 \textbf{Przemysłowym Internetem Rzeczy} (ang. \emph{Industrial Internet of Things}, w~skrócie: IIoT)
-nazywamy rozwiązania IoT znajdujące zastosowanie w przemyśle. Do dziedziny
-IIoT należą: komunikacja M2M oraz przemysłowe technologie komunikacyjne stosowane
-w systemach automatyzacji. IIoT ma umożliwić lepsze zrozumienie procesów
+nazywa się rozwiązania IoT znajdujące zastosowanie w przemyśle. 
+IIoT ma umożliwić lepsze zrozumienie procesów
 przemysłowych, a w związku z tym zapewnić większą wydajność i zrównoważenie
 produkcji. Innymi słowy, IIoT ma za zadanie ułatwić integrację \textbf{technologii operacyjnych}
 (ang. \emph{Operation Technologies}, w skrócie: OT) oraz
@@ -437,12 +414,10 @@ i przetwarzanie informacji wartościowych z perspektywy przedsiębiorstwa
 \cite{ot-it-categorization-of-customer-concerns}.
 
 Z zagadnieniem IIoT ściśle związane jest też pojęcie \textbf{Przemysłu 4.0} (ang. \emph{Industry 4.0})
-reprezentujące czwartą rewolucję przemysłową. Jest to koncept stosunkowo uniwersalny
+reprezentujące tzw. czwartą rewolucję przemysłową. Jest to koncept stosunkowo uniwersalny
 skupiający rozwiązania CPS, IoT, IIoT wykorzystywane w celu zwiększania efektywności
 procesów przemysłowych w ramach tzw. inteligentnych fabryk (ang. \emph{smart factories})
 \cite{iiot-cyber-manufacturing-systems}, \cite{iiot-challenges-opportunities-directions}.
-Zależności pomiędzy wymienionymi pojęciami przedstawia rys.
-
 
 Ze względu na konieczność funkcjonowania w specyficznym środowisku przemysłowym
 IIoT posiada pewne cechy odróżniające od standardowego (konsumenckiego) IoT.
@@ -450,10 +425,8 @@ Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
 \begin{itemize}
       \itemsep0em
       \item Rozwój o charakterze ewolucyjnym, nie rewolucyjnym
-            --- Podczas gdy wokół konsumenckiego IoT rozwijanych jest wiele nowych technologii i standardów,
-            wdrażając systemy IIoT należy się liczyć z dużą bezwładnością
-            przemysłowego środowiska technologicznego. Istnieje wiele sprawdzonych, dobrze
-            funkcjonujących rozwiązań dedykowanych dla przemysłu \cite{isp};
+            --- Wdrażając systemy IIoT należy się liczyć z dużą bezwładnością
+            przemysłowego zaplecza technicznego~\cite{isp};
       \item Infrastruktura komunikacyjna
             --- Infrastruktura IoT jest bardziej elastyczna, podczas gdy infrastruktura
             IIoT wymaga dostosowania do bardziej ustrukturyzowanych modeli komunikacyjnych;
@@ -468,7 +441,7 @@ Szczególną uwagę należy poświęcić stwierdzeniu, że \textbf{intencją wyk
 Na tej płaszczyźnie istnieją bowiem dedykowane rozwiązania adresujące
 problem ograniczeń spotykanych w automatyce przemysłowej.
 Właściwym \textbf{celem wdrażania systemów IIoT jest zwiększanie wiedzy na temat procesów
-      przemysłowych, co w efekcie pozwala na ulepszenie jego wydajności} \cite{iiot-challenges-opportunities-directions}.
+      przemysłowych, co w efekcie pozwala na ulepszenie ich wydajności} \cite{iiot-challenges-opportunities-directions}.
 
 Ze względu na tolerancję ograniczeń w systemie (m. in. opóźnień czasowych) można
 wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reality}:
@@ -488,12 +461,9 @@ wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reali
 
 Powszechna infrastruktura tworząca Internet, jak i usługi w nim dostępne, są z reguły
 niedeterministyczne pod względem czasowym. Systemy IoT czy IIoT mogą więc
-funkcjonować zgodnie paradygmatem \emph{best effort}. Aczkolwiek można wyobrazić
-sobie pewien heterogeniczny system
-IoT, w którym istnieje pewna sieć deterministyczna połączona z publicznym Internetem
-za pomocą odpowiedniej bramy. Takie podejście może okazać się przydatne w przemyśle, gdzie
-istnieje potrzeba integracji istniejących systemów automatyki z Internetem Rzeczy
-\cite{iiot-design-and-impl-gateway}, \cite{iiot-rapid-integration-framework}.
+funkcjonować zgodnie paradygmatem \emph{best effort}. Aczkolwiek niekoniecznie
+należy odrzucać możliwość współpracy systemu z układem automatyki na poziomie lokalnym, 
+zanim dane trafią do Internetu \cite{iiot-design-and-impl-gateway}, \cite{iiot-rapid-integration-framework}.
 
 W systemach IIoT popularny jest podstawowy, trójwarstwowy model architektury. Wśród jego
 warstw wyróżniamy: warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
@@ -506,14 +476,12 @@ aplikacji i usług warstwy biznesowej, które
 korzystają ze zgromadzonych danych w celu wspomagania
 analityki, monitorowania, zarządzania, archiwizacji, itd. \cite{iiot-challenges-opportunities-directions},  \cite{models-innovative-iot}.
 
-\begin{figure}
+\begin{figure}[h]
       \centering
       \includegraphics[scale=0.50]{iiot_arch.png}
-      \caption{Model warstwowy systemów IIoT.}
+      \caption{Trójwarstwowy model systemów IIoT.}
       \label{fig:iiot-arch}
 \end{figure}
-
-
 
 \subsection{Ujęcie tematu w świetle zgromadzonych informacji}
 
@@ -533,16 +501,14 @@ stanowić wykonany prototyp, na poziomie którego dobór technologii
 i aparatury będzie skonkretyzowany na podstawie analizy i porównań dostępnych
 narzędzi i usług informatycznych.
 
-Modelem referencyjnym dla projektowanego systemu jest zaprezentowana w rozdziale
-\ref{iiot} \textbf{trójwarstwowa architektura systemów IIoT}. Dla warstwy brzegowej przyjmuje
+Modelem referencyjnym dla projektowanego systemu jest zaprezentowana na rys.~\ref{fig:iiot-arch}
+\textbf{trójwarstwowa architektura systemów IIoT}. Dla warstwy brzegowej przyjmuje
 się, że w systemie jest zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
 lub zespoły urządzeń aparatury kontrolno-pomiarowej pracujące w czasie rzeczywistym
 w ramach sieci przemysłowej
-(czujniki przemysłowe, wyspy czujników, moduły DAQ, moduły I/O, sterowniki, itp.)
 oraz typowe dla IoT bezprzewodowe sieci sensorowe (ang. \emph{Wireless Sensor Networks}, w skrócie: WSN)
 lub inne zespoły urządzeń zawierające czujniki komunikujące się z wykorzystaniem
-interfejsów i protokołów charakterystycznych dla IoT \cite{iiot-gateway-introduction}
-(przykłady takich urządzeń wymieniono w~rozdziale \ref{iot}). Implementację warstwy
+interfejsów i protokołów charakterystycznych dla IoT \cite{iiot-gateway-introduction}. Implementację warstwy
 platformowej realizują rozwiązania oferowane przez dostawców chmury.
 Do warstwy biznesowej mogą należeć istniejące aplikacje
 wspomagające działalność przedsiębiorstwa
@@ -563,8 +529,8 @@ technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challen
 
 Otrzymano zatem podstawowy zarys projektowanego systemu.
 Składa się on z~urządzeń pomiarowych udostępniających dane w ramach sieci
-przemysłowych oraz IoT. Integracji różnych urządzeń i wstępnego przetwarzania
-dokonuje dedykowana brama (bramy) IoT. Przekazuje ona dane w spójnym, jednolitym
+przemysłowych oraz IoT. Zbieraniem danych zajmuje się brama (bramy) IoT, która 
+przekazuje dane w spójnym, jednolitym
 formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
 Te z kolei mogą realizować zaawansowane przetwarzanie, składowanie, udostępnianie
 i wizualizację danych.
@@ -573,16 +539,14 @@ Wśród istniejących, komercyjnych rozwiązań o podobnej dziedzinie funkcjonal
 znaleziono następujące przykłady:
 \begin{itemize}
       \itemsep0em
-      \item Sensemetrics --- Rozwiązanie amerykańskiej firmy Industrial IoT Solutions
-            oparte na standaryzowanej architekturze warstwowej. Jest to system do akwizycji
-            i zarządzania danych. Producent przypisuje swojemu systemowi wysoką konfigurowalność \cite{sensmetrics};
+      \item Sensemetrics --- Rozwiązanie amerykańskiej firmy Industrial IoT Solutions. 
+      Jest to system do akwizycji i zarządzania danymi \cite{sensmetrics};
       \item Nazca 4.0 --- System rozwijany przez polską firmę APA Group zorientowany na Przemysł 4.0.
             Wśród użytych technologii producent wymienia IoT, inteligentne czujniki,
             przetwarzanie w chmurze, integrację systemów \cite{nazca};
-      \item IXON --- Kompletne rozwiązanie IIoT holenderskiej firmy o tej samej nazwie.
-            System składa się z platformy internetowej umożliwiającej nadzór, analitykę i~wizualizację danych,
-            a~także dedykowanego routera/bramy IoT. Urządzenie wraz z~oprogramowaniem
-            integruje takie systemy i protokoły jak: OPC UA, Modbus, Ethernet \cite{ixon}.
+      \item IXON --- Rozwiązanie IIoT holenderskiej firmy o tej samej nazwie.
+            System składa się z platformy internetowej umożliwiającej nadzór, analitykę i~wizualizację danych oraz
+            dedykowanego routera/bramy IoT \cite{ixon}.
 \end{itemize}
 
 
@@ -836,8 +800,11 @@ $s$ --- liczba produktów wyprodukowanych bez wad,\\
 $n$ --- liczba wszystkich produktów wyprodukowanych w procesie.
 
 
-
+\newpage
 \section{Specyfikacja wewnętrzna}\label{spec-zew}
+
+Niniejszy rozdział zawiera specyfikację ogólnego projektu systemu oraz
+opis szczegółów implementacji wykonanego prototypu.
 
 \subsection{Ogólna koncepcja rozwiązania}\label{ogolna-koncepcja}
 
@@ -997,7 +964,6 @@ które mają podobny zakres funkcjonalny \cite{azure-aws-comparison}.\\
       \itemsep0em
       \item Lambda | Functions --- Bezserwerowe, skalowalne funkcje implementowane,
             z~wykorzystaniem języków programowania: Javascript, Python, Java, C\#,
-      \item Batch | Batch --- Równoległe przetwarzanie danych o masowej ilości,
       \item SageMaker | Machine Learning --- Uczenie maszynowe,
       \item Kinesis Analytics | Stream Analytics --- Tworzenie potoków przetwarzania
             strumieniowego dla dużej ilości danych z wykorzystaniem języka SQL.
@@ -1157,8 +1123,8 @@ JSON Schema przedstawiono na listingu \ref{lst:json-schema}.
 
 \begin{lstlisting}[caption={Przykład definicji obiektu JSON w notacji JSON Schema dla 
       struktury \texttt{AirMeasurement}}, label={lst:json-schema}]
-      {
-            "anyOf": [
+{
+      "anyOf": [
               {
                 "type": "object",
                 "required": [
@@ -1182,8 +1148,8 @@ JSON Schema przedstawiono na listingu \ref{lst:json-schema}.
                   }
                 }
               }
-            ]
-          }    
+      ]
+}    
 \end{lstlisting}
 
 \subsubsection{Bufor Brzegowy w Node-RED}
@@ -1213,7 +1179,7 @@ gdy dane są poprawne. W konfiguracji Node-RED przewidziano parametr określają
 
 \begin{figure}
       \centering
-      \includegraphics[scale=0.45]{edge_buffer.png}
+      \includegraphics[scale=0.4]{edge_buffer.png}
       \caption{Model \texttt{Bufora Brzegowego}}
       \label{fig:edge-buffer}
 \end{figure}
@@ -1384,10 +1350,10 @@ IoTHubMessages.forEach(message => {
       // sprawdzenie, ktorego produktu dotyczy wiadomosc
       switch(message.productName) {
           case 'PRODUCT-A':
-              ftqParams = context.bindings.inputBlob.prodA;
+              ftqParams = input.prodA;
               break;
           case 'PRODUCT-B':
-              ftqParams = context.bindings.inputBlob.prodB;
+              ftqParams = input.prodB;
               break;
           case 'PRODUCT-C':
               ftqParams = input.prodC;
@@ -1405,9 +1371,7 @@ IoTHubMessages.forEach(message => {
 
       // zapis wyniku do Blob Storage
       context.bindings.outputBlob = input;
-    });
-
-    context.done();    
+});   
 \end{lstlisting}
 
 \subsubsection{Wizualizacja danych --- chmura InfluxDB i narzędzie Grafana}
