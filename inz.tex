@@ -196,11 +196,11 @@ Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
 \end{itemize}
 
 Zestaw urządzeń AKPiA można zamodelować zbiorem informacji, który nazywa się
-\textbf{obiektem przemysłowym} \cite{isp}. 
+\textbf{obiektem przemysłowym} \cite{isp}.
 
-W ostatnich latach na popularności zyskał pomysł wykorzystania 
+W ostatnich latach na popularności zyskał pomysł wykorzystania
 w przemyśle systemów cybernetyczno-fizycznych
-(ang. \emph{Cyber-Physical Systems}). Koncepcja ta polega na osadzaniu 
+(ang. \emph{Cyber-Physical Systems}). Koncepcja ta polega na osadzaniu
 komputerów o niewielkich rozmiarach w zwykłych obiektach fizycznych, a w kontekście
 przemysłowym --- w elementach obsługujących procesy przemysłowe. Mówi się
 wówczas o tzw. inteligencji wbudowanej. W~obrębie
@@ -221,7 +221,7 @@ Systemy informatyczne w przemyśle często posiadają cechy \textbf{systemów ro
 W systemach tych nie występuje centralne urządzenie
 przetwarzające informacje, lecz składają się one z wielu jednostek
 przetwarzających o różnym zakresie funkcjonalności. Do zalet
-takich systemów zalicza się zwiększoną moc obliczeniową względem systemów nierozproszonych, 
+takich systemów zalicza się zwiększoną moc obliczeniową względem systemów nierozproszonych,
 niezawodność oraz elastyczność (adaptacyjność, rekonfigurowalność)
 \cite{isp},
 \cite{isp-analiza-przepływu-informacji}. W obrębie systemów przemysłowych
@@ -239,16 +239,16 @@ Systemy charakteryzujące się determinizmem czasowym nazywa się
 Systemy posiadające cechy zarówno systemów rozproszonych, jak i systemów
 czasu rzeczywistego nazywa się \textbf{systemami rozproszonymi czasu rzeczywistego}.
 Zagadnieniem kluczowym w kontekście takich systemów
-jest \textbf{komunikacja}, którą umożliwiają sieci i protokoły. 
+jest \textbf{komunikacja}, którą umożliwiają sieci i protokoły.
 Na potrzeby przemysłu opracowano rozwiązania odpowiadające również na potrzebę
 działania w ścisłych ograniczeniach czasowych. Do przykładowych sieci należą przede wszystkim
 sieci polowe (ang. \emph{fieldbus}) i Ethernet czasu rzeczywistego (Ethernet przemysłowy, ang. \emph{Real-Time Ethernet}, w skrócie: RTE).
 Sieci RTE posiadają obecnie wiele technicznych realizacji. Krokiem w kierunku
-standaryzacji  jest koncept sieci TSN (ang. \emph{Time-Sensitive Networks}) 
+standaryzacji  jest koncept sieci TSN (ang. \emph{Time-Sensitive Networks})
 rozwijany od ostatniej dekady w ramach specyfikacji sieci Ethernet należących do grupy IEEE 802.
 Dedykowane dla sieci przemysłowych protokoły to m. in. Profibus/Profinet,
-Modbus, EtherCAT, Ethernet Powerlink i inne \cite{isp}, \cite{isp-analiza-przepływu-informacji}, 
-\cite{tsn-for-dummies}, \cite{rte-standards-and-impl}. 
+Modbus, EtherCAT, Ethernet Powerlink i inne \cite{isp}, \cite{isp-analiza-przepływu-informacji},
+\cite{tsn-for-dummies}, \cite{rte-standards-and-impl}.
 
 
 
@@ -261,7 +261,7 @@ jak i~kompleksowo usprawniać procesy funkcjonujące na wyższych poziomach prze
 modele przedstawiające zakres działania przemysłowych systemów informatycznych.
 Swego czasu popularny był tzw. model piramidowy (warstwowy, hierarchiczny)
 przedstawiony na rys. \ref{fig:piramida}. Został on wyparty m. in.
-przez model RAMI 4.0, który opisano w rozdziale \ref{iiot} w kontekście IIoT. 
+przez model RAMI 4.0, który opisano w rozdziale \ref{iiot} w kontekście IIoT.
 W modelu piramidowym wyróżnia się następujące warstwy:
 \cite{systemy-automatyki-przemyslowej}, \cite{isp}, \cite{iiot-cyber-manufacturing-systems}, \cite{intro-to-iot}:
 \begin{itemize}
@@ -295,7 +295,7 @@ w~kontekście omawianego zagadnienia przetwarzania w chmurze.
 \subsubsection{Definicje i zastosowania Internetu Rzeczy}
 
 \textbf{Internet Rzeczy} (ang. \emph{Internet of Things}, w skrócie: IoT) posiada różne definicje.
-Jedną z prostszych jest: sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
+Jedną z podstawowych jest: sieć przedmiotów z wbudowanymi czujnikami, które są podłączone
 do Internetu \cite{intro-to-iot}. Na nieco wyższym poziomie definiuje się IoT jako globalną infrastrukturę udostępniającą
 zaawansowane usługi poprzez połączenie przedmiotów z wykorzystaniem technologii informacyjnych.
 \cite{intro-to-iot}.
@@ -303,8 +303,13 @@ zaawansowane usługi poprzez połączenie przedmiotów z wykorzystaniem technolo
 Głównym zastosowaniem Internetu Rzeczy jest monitorowanie świata rzeczywistego
 oraz wchodzenie z nim w interakcję, co może usprawnić działalność człowieka na wielu płaszczyznach.
 Wśród praktycznych zastosowań IoT wymienia się między innymi:
-sieci czujników i pomiary rozproszone, urządzenia (gadżety) ubieralne,
-inteligentne budynki, miasta, logistyka, przemysł, a także marketing \cite{internet-reczy}.
+sieci czujników i pomiary rozproszone --- w szczególności z wykorzystaniem
+technologii bezprzewodowej sieci czujników
+(ang. \emph{Wireless Sensor Networks}, w skrócie: WSN) lub też
+bezprzewodowej sieci czujników i urządzeń wykonawczych
+(ang. \emph{Wireless Sensor and Actuator Networks}, w skrócie: WSAN), urządzenia (gadżety) ubieralne,
+inteligentne budynki, miasta, logistyka, przemysł, a także marketing \cite{internet-reczy},
+\cite{wsan}.
 Możliwości, jakie niesie IoT dla przemysłu zostały w sposób szczególny rozpatrzone
 w rozdziale \ref{iiot}.
 
@@ -319,23 +324,35 @@ na podstawie otrzymanej informacji \cite{iot-hype-to-reality}.
 Przykładowe czujniki to: przyciski, przełączniki, czujniki ruchu, czujniki gazów,
 czujniki wibracji, czujniki temperatury, wilgoci,
 nacisku, ultradźwięków i wielu innych wielkości fizycznych. Przykłady urządzeń
-wykonawczych to: silniki, siłowniki liniowe, przekaźniki, zawory. Ważnym elementem
-infrastruktury IoT są systemy wbudowane typu SoC (ang. \emph{System on a Chip}).
+wykonawczych to: silniki, siłowniki liniowe, przekaźniki, zawory. 
+
+Ważnym elementem
+infrastruktury IoT są systemy wbudowane typu SoC (ang.~\emph{System on a Chip}).
 Są to układy elektroniczne, których poszczególne komponenty realizujące wymagane
 funkcjonalności są zintegrowane w ramach jednego, kompletnego układu scalonego.
 System typu SoC mogą zawierać m. in.: procesory lub mikrokontrolery, przetworniki
 analogowo-cyfrowe i cyfrowo-analogowe, pamięci, procesory graficzne, interfejsy komunikacyjne \cite{intro-to-iot}, \cite{soc}.
-Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące platformy uniwersalne \cite{intro-to-iot}:
+Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące platformy uniwersalne \cite{intro-to-iot},
+\cite{rpi}, \cite{stm32}, \cite{mikrokontrolery-stm32}, \cite{beaglebone}, \cite{beaglebone-rtu}, \cite{beaglebone-vs-rpi}:
 \begin{itemize}
       \itemsep0em
       \item Arduino --- Różne modele płytek rozwojowych wykorzystujące m. in. systemy
             SoC producenta Atmel oparte o mikrokontrolery AVR. Wśród zestawów płytek
             dostępne są moduły rozszerzeń posiadające przewodowe i bezprzewodowe interfejsy sieciowe.
-      \item ESP --- Systemy typu SoC producenta Espressif Systems zawierające wbudowane
-            bezprzewodowe interfejsy sieciowe.
-      \item Raspberry Pi --- Zaawansowane płytki tworzące komputery jednopłtykowe (ang. \emph{single-board computer}).
+      \item ESP --- Systemy typu SoC producenta Espressif Systems zawierające m. in. wbudowane
+            bezprzewodowe interfejsy sieciowe,
+      \item Raspberry Pi --- Zaawansowane płytki tworzące komputery jednopłytkowe (ang. \emph{single-board computers})
+            wykorzystujące m. in. procesory ARM Cortex.
             Można na nich uruchomić system operacyjny (również z interfejsem graficznym). Posiadają liczne
-            interfejsy komunikacyjne (w tym sieciowe) \cite{rpi}.
+            interfejsy komunikacyjne (w tym sieciowe) .
+      \item STM32 --- Rodzina 32-bitowych mikrokontrolerów opartych na procesorach
+            ARM Cortex. Platformę cechuje stosunkowo duża moc obliczeniowa, możliwość działania w trybie niskiego poboru energii
+            oraz ograniczeniach czasowych,
+      \item BeagleBone --- Komputery jednopłytkowe podobne do RaspberryPi
+            oparte na procesorach ARM. Można na nich uruchomić system operacyjny.
+            Cechą wyróżniającą jest możliwość funkcjonowania w czasie rzeczywistym
+            z wykorzystaniem programowalnej jednostki czasu rzeczywistego
+            (ang. \emph{Programmable Real-Time Unit}, w skrócie PRU).
 \end{itemize}
 Wymienione platformy uniwersalne mogą stanowić pomost pomiędzy główną siecią w systemie
 IoT (np. Ethernet lub WiFi) a innymi urządzeniami
@@ -347,12 +364,12 @@ uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, takich jak: S
 Wymiana informacji w systemach IoT może odbywać się w sposób przewodowy lub bezprzewodowy.
 Stosowane modele komunikacji sieciowej bazują na standardowym modelu OSI bądź
 internetowym stosie TCP/IP. W warstwie fizycznej i łącza danych
-sieci IoT wykorzystuje się: Ethernet, WiFi, Bluetooth, sieci komórkowe,
+sieci~IoT wykorzystuje się: Ethernet, WiFi, Bluetooth, sieci komórkowe,
 ZigBee, Z-Wave, NFC. W warstwie sieciowej stosuje się protokoły: IPv4, IPv6 oraz zoptymalizowaną
-pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m. in. TCP i UDP.
+pod IoT wersję IPv6 --- 6LoWPAN. Protokoły warstwy transportowej to m.~in. TCP i UDP.
 Warstwy sesji, prezentacji i aplikacji implementują powszechne używane internetowe protokoły, np.
-HTTP, RTP, SMTP. Wśród protokołów najwyższych warstw opracowano również
-protokoły dedykowane dla IoT --- są to m. in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
+HTTP, RTP, SMTP. Wśród nich opracowano również
+protokoły dedykowane dla IoT --- są to m.~in. MQTT i CoAP \cite{internet-reczy}, \cite{intro-to-iot}, \cite{iot-hype-to-reality}.
 
 
 W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{intro-to-iot}:
@@ -374,7 +391,7 @@ W sieciach IoT rozróżnia się trzy następujące modele komunikacyjne \cite{in
 
 \textbf{Przetwarzanie w chmurze} (ang. \emph{cloud computing}) pozwala
 na migrację części lub całości infrastruktury informatycznej do tzw. chmury.
-W śród popularnych rozwiązań znajdują się:
+Wśród popularnych rozwiązań znajdują się:
 Microsoft Azure, Amazon AWS, Google Cloud, czy IBM Cloud. Usługi chmurowe
 udostępnianie przez wymienionych i wielu innych dostawców za pośrednictwem Internetu
 noszą miano \textbf{chmury publicznej}.
@@ -394,7 +411,7 @@ bazy danych, integrację aplikacji, hosting aplikacji i stron internetowych,
 maszyny wirtualne, narzędzia programistyczne, zarządzanie użytkownikami, a~ponadto
 platformy do zarządzania systemami IoT \cite{aws}, \cite{azure}.
 
-Zarządzanie dużą ilością danych jest podstawowym zadaniem systemów IoT. 
+Zarządzanie dużą ilością danych jest podstawowym zadaniem systemów IoT.
 Usługi chmurowe umożliwiają zaawansowane przetwarzanie danych
 oferując jednocześnie skalowalność, zdalny dostęp, opłaty zależne od zapotrzebowania
 i gotowe rozwiązania programistyczne skracające czas rozwoju systemów
@@ -403,7 +420,7 @@ i gotowe rozwiązania programistyczne skracające czas rozwoju systemów
 \subsection{Internet rzeczy w przemyśle}\label{iiot}
 
 \textbf{Przemysłowym Internetem Rzeczy} (ang. \emph{Industrial Internet of Things}, w~skrócie: IIoT)
-nazywa się rozwiązania IoT znajdujące zastosowanie w przemyśle. 
+nazywa się rozwiązania IoT znajdujące zastosowanie w przemyśle.
 IIoT ma umożliwić lepsze zrozumienie procesów
 przemysłowych, a w związku z tym zapewnić większą wydajność i zrównoważenie
 produkcji. Innymi słowy, IIoT ma za zadanie ułatwić integrację \textbf{technologii operacyjnych}
@@ -464,11 +481,11 @@ wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reali
 Powszechna infrastruktura tworząca Internet, jak i usługi w nim dostępne, są z reguły
 niedeterministyczne pod względem czasowym. Systemy IoT czy IIoT mogą więc
 funkcjonować zgodnie paradygmatem \emph{best effort}. Aczkolwiek niekoniecznie
-należy odrzucać możliwość współpracy systemu z układem automatyki na poziomie lokalnym, 
+należy odrzucać możliwość współpracy systemu z układem automatyki na poziomie lokalnym,
 zanim dane trafią do Internetu \cite{iiot-design-and-impl-gateway}, \cite{iiot-rapid-integration-framework}.
 
 Dla IIoT zostały opracowane pewne wzorce architektoniczne,
-które stanowią szablon dla implementacji tego typu systemów. 
+które stanowią szablon dla implementacji tego typu systemów.
 Obecnie popularny jest wzorzec trójwarstwowy, dla którego wyróżnia się
 warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
 i warstwę biznesową (ang. \emph{enterprise}).
@@ -487,28 +504,28 @@ analityki, monitorowania, zarządzania, archiwizacji, itd. \cite{iiot-challenges
       \label{fig:iiot-arch}
 \end{figure}
 
-W wyniku połączenia idei wywodzących się z systemów IoT, IIoT i CPS 
+W wyniku połączenia idei wywodzących się z systemów IoT, IIoT i CPS
 powstała koncepcja \textbf{Przemysłu 4.0} (niem. \emph{Industrie 4.0}) reprezentująca
 tzw. czwartą rewolucję przemysłową. Domenę Przemysłu 4.0 opisuje na wysokim poziomie
 model architektury RAMI 4.0 (ang. \emph {Reference Architectural
-Model Industrie 4.0}), któremu ustępuje
+      Model Industrie 4.0}), któremu ustępuje
 obecnie przestarzały model piramidowy opisany w rozdziale \ref{arch-przemysl}.
 Architektura RAMI 4.0 została przedstawiona na rys. \ref{fig:rami}.
 Jest to model trójwymiarowy opisujący trzy podstawowe aspekty Przemysłu 4.0.
-Na osi o nazwie ,,Poziomy hierarchii`` umieszczono poziomy funkcjonowania 
-jednostek produkcyjnych. Podział ten wywodzi się ze standardów IEC 62264 i 
+Na osi o nazwie ,,Poziomy hierarchii`` umieszczono poziomy funkcjonowania
+jednostek produkcyjnych. Podział ten wywodzi się ze standardów IEC 62264 i
 ISA-95 (modelu piramidowego). Oś o nazwie ,,Cykl życia strumienia wartości``
-reprezentuje cykl życia produktów i innych aktywów. W pierwszej fazie 
+reprezentuje cykl życia produktów i innych aktywów. W pierwszej fazie
 następuje projekt, rozwój i prototypownie (powstaje tzw. ,,typ produktu``), a w
 drugiej fazie rozpoczyna się produkcja (powstają tzw. ,,instancje produktu``).
 Pionowa oś przedstawia sześć warstw funkcjonowania systemów informatycznych
 w ramach Przemysłu 4.0. Każda z nich udostępnia usługi dla warstwy wyższej
 i używa usług warstwy niższej. Warstwa aktywów (zasobów) reprezentuje fizyczne
-urządzenia. Warstwa integracji jest pomostem między światem fizycznym a światem 
+urządzenia. Warstwa integracji jest pomostem między światem fizycznym a światem
 informacji. Warstwa komunikacji zapewnia jednolity format danych i sposób komunikacji.
-Warstwa informacji odpowiada za przetwarzanie danych. Warstwa funkcjonalna 
+Warstwa informacji odpowiada za przetwarzanie danych. Warstwa funkcjonalna
 dostarcza środowiska do realizacji modeli implementowanych w ramach warstwy biznesowej
-\cite{iiot-challenges-opportunities-directions}, 
+\cite{iiot-challenges-opportunities-directions},
 \cite{industry4-ref-models}, \cite{rami4}.
 
 
@@ -544,7 +561,7 @@ Modelem referencyjnym dla projektowanego systemu jest zaprezentowana na rys.~\re
 się, że w systemie jest zapewniony dostęp do dwóch rodzajów urządzeń: przemysłowe urządzenia
 lub zespoły urządzeń aparatury kontrolno-pomiarowej pracujące w czasie rzeczywistym
 w ramach sieci przemysłowej
-oraz typowe dla IoT bezprzewodowe sieci sensorowe (ang. \emph{Wireless Sensor Networks}, w skrócie: WSN)
+oraz typowe dla IoT bezprzewodowe sieci WSN/WSAN (patrz: rozdział \ref{iot})
 lub inne zespoły urządzeń zawierające czujniki komunikujące się z wykorzystaniem
 interfejsów i protokołów charakterystycznych dla IoT \cite{iiot-gateway-introduction}. Implementację warstwy
 platformowej realizują rozwiązania oferowane przez dostawców chmury.
@@ -567,7 +584,7 @@ technologią informatyczną \cite{iiot-gateway-introduction}, \cite{iiot-challen
 
 Otrzymano zatem podstawowy zarys projektowanego systemu.
 Składa się on z~urządzeń pomiarowych udostępniających dane w ramach sieci
-przemysłowych oraz IoT. Zbieraniem danych zajmuje się brama (bramy) IoT, która 
+przemysłowych oraz IoT. Zbieraniem danych zajmuje się brama (bramy) IoT, która
 przekazuje dane w spójnym, jednolitym
 formacie do usług chmurowych i innych aplikacji za pośrednictwem Internetu.
 Te z kolei mogą realizować zaawansowane przetwarzanie, składowanie, udostępnianie
@@ -577,8 +594,8 @@ Wśród istniejących, komercyjnych rozwiązań o podobnej dziedzinie funkcjonal
 znaleziono następujące przykłady:
 \begin{itemize}
       \itemsep0em
-      \item Sensemetrics --- Rozwiązanie amerykańskiej firmy Industrial IoT Solutions. 
-      Jest to system do akwizycji i zarządzania danymi \cite{sensmetrics};
+      \item Sensemetrics --- Rozwiązanie amerykańskiej firmy Industrial IoT Solutions.
+            Jest to system do akwizycji i zarządzania danymi \cite{sensmetrics};
       \item Nazca 4.0 --- System rozwijany przez polską firmę APA Group zorientowany na Przemysł 4.0.
             Wśród użytych technologii producent wymienia IoT, inteligentne czujniki,
             przetwarzanie w chmurze, integrację systemów \cite{nazca};
@@ -588,6 +605,7 @@ znaleziono następujące przykłady:
 \end{itemize}
 
 
+\newpage
 \section{Specyfikacja wymagań}\label{wymagania}
 
 W niniejszym rozdziale przedstawiono szczegółową specyfikację wymagań
@@ -820,7 +838,7 @@ do oceny jakości dostarczanych produktów. Urządzenie,
 w którym zapisywany jest wynik, jest podłączone do lokalnej sieci Ethernet.
 Informacja o spełnieniu albo niespełnieniu wymagań jakościowych jest przesyłana
 do serwera z~wykorzystaniem CoAP/UDP w oparciu o architekturę REST. Zadaniem
-realizowanym przez prototyp jest odbiór przesyłanych rezultatów inspekcji, 
+realizowanym przez prototyp jest odbiór przesyłanych rezultatów inspekcji,
 przetwarzanie i składowanie w chmurze. Przetwarzanie
 danych polega w tym przypadku na wyznaczaniu wartości parametru FTQ
 (ang. \emph{First Time Quality}). Jest to jeden ze wskaźników KPI będący miarą
@@ -927,10 +945,10 @@ przedstawiono na rys. \ref{fig:gateway_soft}.
 
 W ramach bramy może funkcjonować również sprzętowo-programowy moduł
 czasu rzeczywistego RT (ang. \emph{Real-Time}), którego celem jest współpraca
-z lokalnym systemem czasu rzeczywistego. 
+z lokalnym systemem czasu rzeczywistego.
 
 W systemie przewiduje się istnienie wielu źródeł
-danych, jak i możliwe jest wykorzystanie wielu bram. Ponadto żeby zapewnić 
+danych, jak i możliwe jest wykorzystanie wielu bram. Ponadto żeby zapewnić
 większą niezawodność i skalowalność,
 można rozważyć budowę klastra bram z redundancją i równoważeniem obciążenia.
 Jako sprzętową realizację bramy w literaturze spotyka się komputer jednopłytkowy
@@ -1095,7 +1113,7 @@ Tematy tworzą hierarchiczną strukturę analogiczną do URL. MQTT
 wykorzystuje TCP w warstwie transportowej \cite{iot-hype-to-reality}. W omawianym
 scenariuszu czujniki publikują dane pomiarowe pod tematami zarezerwowanymi
 odpowiednio dla pomieszczenia chłodni, magazynu i hali produkcyjnej. Brama
-jest subskrybentem, który nasłuchuje na każdym z trzech tematów. 
+jest subskrybentem, który nasłuchuje na każdym z trzech tematów.
 
 Wymiana danych z komputerami, które zbierają informacje na temat jakości produktów odbywa się
 za pośrednictwem sieci Ethernet i protokołu CoAP. CoAP (ang. \emph{Constrained Application Protocol})
@@ -1316,7 +1334,7 @@ Chmura Microsoft Azure udostępnia usługi, które pozwalają na realizację wsz
 na potrzeby projektu (patrz: rozdział \ref{cloud-general}).
 Z kolei Node-RED posiada dobre wsparcie dla Azure w postaci licznych bibiliotek.
 Ponadto Microsoft oferuje studentom darmową subskrypcję \emph{Azure for Students}
-dającą bezpłatny dostęp do określonego przez dostawcę zbioru usług \cite{azure-students}. 
+dającą bezpłatny dostęp do określonego przez dostawcę zbioru usług \cite{azure-students}.
 Stąd platforma Azure została wybrana do prototypowania.
 
 \subsubsection{Zbieranie danych w chmurze --- Azure IoT Hub}
@@ -1366,10 +1384,10 @@ zamieszczonego w rozdziale~\ref{scenariusze}. Następnie aktualizowane są wpisy
 w bazie i wynik jest przesyłany do chmury InfluxDB na potrzeby bieżącej wizualizacji.
 Kod źródłowy funkcji przedstawiono na listingu~\ref{lst:azure-fun}. Zdefiniowano
 także drugą, prostszą funkcję pomocniczą, która przekazuje wartości parametru \texttt{FluidControlMeasurement}
-do bazy InfluxDB. Zbierająca wartości tego parametru brama IOT2020 
-nie wspiera bowiem na chwilę obecną oprogramowania 
+do bazy InfluxDB. Zbierająca wartości tego parametru brama IOT2020
+nie wspiera bowiem na chwilę obecną oprogramowania
 umożliwiającego bezpośredni przesył danych z Node-RED do chmury InfluxDB, stąd
-konieczne było wykorzystanie pośrednika w psotaci Azure IoT Hub i Functions. 
+konieczne było wykorzystanie pośrednika w psotaci Azure IoT Hub i Functions.
 
 \begin{lstlisting}[caption={Kod źródłowy funkcji wyznaczającej aktualną wartość 
       parametru FTQ osadzonej w usłudze Azure Functions}, label={lst:azure-fun}]
@@ -1415,14 +1433,14 @@ IoTHubMessages.forEach(message => {
 \subsubsection{Wizualizacja danych --- chmura InfluxDB i narzędzie Grafana}
 
 Do realizacji wymagania wizualizacji danych użyto bazy danych InfluxDB.
-Jest to baza zoptymalizowana pod kątem przechowywania szeregów czasowych 
+Jest to baza zoptymalizowana pod kątem przechowywania szeregów czasowych
 (ang. \emph{Time Series Database}). InfluxDB to bezpłatne
 oprogramowanie dostępne na licencji MIT, które można zainstalować na dowolnej
-maszynie z systemem Linux, Mac OS X, Windows. Oferowana jest także 
+maszynie z systemem Linux, Mac OS X, Windows. Oferowana jest także
 płatna usługa chmurowa InfluxDB Cloud z darmowym programem startowym, co wykorzystano
 na potrzeby prototypowania. Dane pomiarowe są składowane w InfluxDB
 jako rekordy w tabelach pogrupowanych w konternery --- tzw. wiadra (ang. \emph{buckets}).
-Do podstawowych kolumn należą: znacznik czasowy pomiaru (\texttt{\_time}), 
+Do podstawowych kolumn należą: znacznik czasowy pomiaru (\texttt{\_time}),
 wartość parametru (\texttt{\_value}), nazwa parametru (\texttt{\_field}) i nazwa pomiaru (\texttt{\_measurement}).
 Zrzuty ekranów z tabel InfluxDB przechowujących pomiary wilgotności i temperatury
 przedsawiono na rysunkach \ref{fig:influx_1} i \ref{fig:influx_2}.
@@ -1443,17 +1461,17 @@ przedsawiono na rysunkach \ref{fig:influx_1} i \ref{fig:influx_2}.
 
 Z bazą InfluxDB dobrze integruje się Grafana --- darmowa aplikacja do wizualizacji
 danych dostępna na licencji Apache 2.0. Podobnie jak
-w przypadku InfluxDB, możliwa jest lokalna instalacja lub skorzystanie z 
+w przypadku InfluxDB, możliwa jest lokalna instalacja lub skorzystanie z
 płatnej usługi chmurowej. W ramach prototypu narzędzie zostało zainstalowane
 na komputerze klienckim. Jest to serwer, który udostępnia interfejs graficzny
 w postaci aplikacji przeglądarkowej. W aplikacji można tworzyć
-dowolne diagramy, wykresy, tabele, wskaźniki i swobodnie rozbudowywać 
+dowolne diagramy, wykresy, tabele, wskaźniki i swobodnie rozbudowywać
 modularne panele zarządzania. Istnieje także możliwość tworzenia własnych komponentów
-graficznych i wtyczek. 
+graficznych i wtyczek.
 Grafana komunikuje się z bazą InfluxDB za pośrednictwem Internetu z wykorzystaniem
-deklaratywnego języka zapytań Flux. Przykładowe zapytanie przedstawiono na 
+deklaratywnego języka zapytań Flux. Przykładowe zapytanie przedstawiono na
 listingu \ref{lst:flux}. Wykonywana jest selekcja
-rekordów z kontenera o nazwie \texttt{bucket}, w których wartość pola 
+rekordów z kontenera o nazwie \texttt{bucket}, w których wartość pola
 \texttt{\_measurement} to \texttt{freezer}, a pola \texttt{\_field} --- \texttt{temperature}.
 Zakres wyników ograniczany jest do trzech ostatnich godzin, a wartości
 są agregowane z wykorzystaniem funkcji wyznaczającej średnią (\texttt{mean}) w obrębie interwałów
@@ -1486,6 +1504,7 @@ from(bucket:"bucket")
 
 \section{Podsumowanie i wnioski}\label{wnioski}
 
+\newpage
 \printbibliography
 
 \end{document}
