@@ -137,8 +137,8 @@ Rozważono również kierunki dalszego rozwoju systemu.
 
 W niniejszym rozdziale przedstawiono rozważania teoretyczne dotyczące projektowanego
 systemu opierające się na analizie dostępnej literatury. Realizowany temat
-składa się z czterech zasadniczych zagadnień: systemy do zbierania danych pomiarowych,
-systemy informatyczne w przemyśle, IoT i IIoT.  Do każdego z nich odnoszą się
+dotyczy zasadniczo czterech zagadnień: systemów do zbierania danych pomiarowych,
+systemów informatycznych w przemyśle, IoT i IIoT.  Do każdego z nich odnoszą się
 odpowiednio kolejne podrozdziały przedstawiające podstawowe pojęcia, problemy i~rozwiązania
 w danej dziedzinie.
 W ostatnim podrozdziale dokonano zestawienia zebranych wiadomości w kontekście
@@ -170,14 +170,6 @@ o odpowiednich przeznaczeniach:
 Systemy DAQ stanowią jedno z głównych narzędzi stosowanych przez naukowców i~inżynierów
 na potrzeby testów, pomiarów, a także zadań automatyzacji \cite{data-aq-systems}.
 
-Poza bierną obserwacją zjawisk fizycznych przydatną może okazać się również
-możliwość oddziaływania systemu wirtualnego na rzeczywistość. Ogólny typ systemów
-realizujących nazwane funkcjonalności opierające się ponadto na zaawansowanym przetwarzaniu informacji
-stanowią \textbf{systemy cybernetyczno-fizyczne}
-(ang. \emph{Cyber-Physical Systems}, w skrócie: \emph{CPS}).
-Są to systemy fizyczne, których funkcjonowanie jest zintegrowane, monitorowane oraz
-nadzorowane przez rdzeń obliczeniowy (system wbudowany) \cite{iiot-cyber-manufacturing-systems}.
-
 \subsection{Systemy informatyczne w przemyśle} \label{isp}
 
 W podrozdziale podjęto zagadnienie systemów informatycznych wdrażanych w środowisku przemysłowym.
@@ -195,10 +187,6 @@ przemysłowymi praktykuje się wspomaganie ich systemami informatycznymi \cite{i
 W dziedzinie informatyki przeymsłowej wykorzystuje się tzw.
 \textbf{urządzenia aparatury kontrolno-pomiarowej i automatyki} (w skrócie: AKPiA).
 Stanowią one pomost pomiędzy procesem przemysłowym a systemem informatycznym.
-Zestaw takich urządzeń można zamodelować zbiorem informacji, który nazywamy
-\textbf{obiektem przemysłowym} \cite{isp}. W~obrębie
-CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego ---
-tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}) \cite{iiot-challenges-opportunities-directions}.
 Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
 \begin{itemize}
       \itemsep0em
@@ -206,6 +194,20 @@ Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
       \item układy \textbf{wykonawcze} (ang. \emph{actuators}) --- modyfikacja stanu procesu,
       \item układy \textbf{mieszane} (ang. \emph{mixed}) --- jednoczesna rejestracja i modyfikacja stanu procesu.
 \end{itemize}
+
+Zestaw urządzeń AKPiA można zamodelować zbiorem informacji, który nazywa się
+\textbf{obiektem przemysłowym} \cite{isp}. 
+
+W ostatnich latach na popularności zyskał pomysł wykorzystania 
+w przemyśle systemów cybernetyczno-fizycznych
+(ang. \emph{Cyber-Physical Systems}). Koncepcja ta polega na osadzaniu 
+komputerów o niewielkich rozmiarach w zwykłych obiektach fizycznych, a w kontekście
+przemysłowym --- w elementach obsługujących procesy przemysłowe. Mówi się
+wówczas o tzw. inteligencji wbudowanej. W~obrębie
+CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego ---
+tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}). Jest to
+cyfrowe odwzorowanie (bliźniak) cech i atrybutów rzeczywistego obiektu \cite{isp}, \cite{iiot-challenges-opportunities-directions}.
+
 
 Omawiając tematykę związaną z systemami przemysłowymi nie sposób pominąć kwestię
 warunków otoczenia. Środowisko przemysłowe charakteryzuje się zwiększoną uciążliwością.
@@ -219,67 +221,67 @@ Systemy informatyczne w przemyśle często posiadają cechy \textbf{systemów ro
 W systemach tych nie występuje centralne urządzenie
 przetwarzające informacje, lecz składają się one z wielu jednostek
 przetwarzających o różnym zakresie funkcjonalności. Do zalet
-takich systemów zalicza się zwiększoną moc obliczeniową, niezawodność oraz
-elastyczność (adaptacyjność, rekonfigurowalność)
+takich systemów zalicza się zwiększoną moc obliczeniową względem systemów nierozproszonych, 
+niezawodność oraz elastyczność (adaptacyjność, rekonfigurowalność)
 \cite{isp},
 \cite{isp-analiza-przepływu-informacji}. W obrębie systemów przemysłowych
 w szczególności stosuje się \textbf{rozproszone systemy sterowania},
 (ang. \emph{Distributed Control Systems}, w~skrócie: DCS). Do zadań takich systemów
 należą sterowanie i wizualizacja procesu przemysłowego.
 
-Często wymaganą cechą procesów przemysłowych jest \textbf{determinizm czasowy}.
+Wymaganą cechą procesów przemysłowych jest \textbf{determinizm czasowy}.
 Postawienie wymagania determinizmu czasowego względem systemu przemysłowego oznacza,
-że jego odpowiedź na zdarzenia musi zachodzić w zdefiniowanym, skończonym czasie
+że jego odpowiedź na zdarzenia musi zachodzić zawsze w zdefiniowanym, skończonym czasie
 \cite{isp}.
 
 Systemy charakteryzujące się determinizmem czasowym nazywa się
 \textbf{systemami czasu rzeczywistego} (ang. \emph{Real Time Systems}, w skrócie: RTS).
 Systemy posiadające cechy zarówno systemów rozproszonych, jak i systemów
-czasu rzeczywistego nazywa się po prostu \textbf{systemami rozproszonymi czasu rzeczywistego}.
+czasu rzeczywistego nazywa się \textbf{systemami rozproszonymi czasu rzeczywistego}.
 Zagadnieniem kluczowym w kontekście takich systemów
-jest \textbf{komunikacja} \cite{isp-analiza-przepływu-informacji}.
-Rolę medium komunikacyjnego
-w systemach komputerowych stanowią \textbf{sieci komputerowe}. Na potrzeby
-przemysłu opracowano dedykowane sieci komputerowe odpowiadająće m. in. na potrzebą
-działania w ramach ścisłych ograniczeń czasowych. Do przykładowych sieci należą:
-Modbus, Ethernet, Profinet, Profibus, CAN, EtherCAT \cite{systemy-automatyki-przemyslowej}.
+jest \textbf{komunikacja}, którą umożliwiają sieci i protokoły. 
+Na potrzeby przemysłu opracowano rozwiązania odpowiadające również na potrzebę
+działania w ścisłych ograniczeniach czasowych. Do przykładowych sieci należą przede wszystkim
+sieci polowe (ang. \emph{fieldbus}) i Ethernet czasu rzeczywistego (Ethernet przemysłowy, ang. \emph{Real-Time Ethernet}, w skrócie: RTE).
+Sieci RTE posiadają obecnie wiele technicznych realizacji. Krokiem w kierunku
+standaryzacji  jest koncept sieci TSN (ang. \emph{Time-Sensitive Networks}) 
+rozwijany od ostatniej dekady w ramach specyfikacji sieci Ethernet należących do grupy IEEE 802.
+Dedykowane dla sieci przemysłowych protokoły to m. in. Profibus/Profinet,
+Modbus, EtherCAT, Ethernet Powerlink i inne \cite{isp}, \cite{isp-analiza-przepływu-informacji}, 
+\cite{tsn-for-dummies}, \cite{rte-standards-and-impl}. 
 
-\subsubsection{Architektura systemów informatycznych w przemyśle}
 
-Dziedzina funkcjonalna systemów informatycznych w przemyśle może być bardzo obszerna.
-Są one w stanie wspomagać zarówno przebieg procesu przemysłego,
+
+\subsubsection{Architektura systemów informatycznych w przemyśle}\label{arch-przemysl}
+
+Dziedzina funkcjonalna systemów informatycznych w przemyśle jest stosunkowo obszerna.
+Są one w stanie wspomagać zarówno przebieg procesu przemysłowego,
 jak i~kompleksowo usprawniać procesy funkcjonujące na wyższych poziomach przedsiębiorstwa
---- np. te związane z zarządzeniem zasobami. W literaturze spotkać można różne
+--- np. te związane z zarządzaniem zasobami. W literaturze spotkać można różne
 modele przedstawiające zakres działania przemysłowych systemów informatycznych.
-Do najpopularniejszych należy tzw. model piramidowy (warstwowy, hierarchiczny)
-\cite{isp}, \cite{iiot-cyber-manufacturing-systems}, \cite{intro-to-iot}
-przedstawiony na rys. \ref{fig:piramida}. Wyróżniono w nim następujące warstwy \cite{systemy-automatyki-przemyslowej}:
+Swego czasu popularny był tzw. model piramidowy (warstwowy, hierarchiczny)
+przedstawiony na rys. \ref{fig:piramida}. Został on wyparty m. in.
+przez model RAMI 4.0, który opisano w rozdziale \ref{iiot} w kontekście IIoT. 
+W modelu piramidowym wyróżnia się następujące warstwy:
+\cite{systemy-automatyki-przemyslowej}, \cite{isp}, \cite{iiot-cyber-manufacturing-systems}, \cite{intro-to-iot}:
 \begin{itemize}
+      \itemsep0em
       \item Warstwa produkcyjna --- tworzą ją urządzenia automatyki przemysłowej
-            oraz aparatury kontrolno-pomiarowej. Są to m. in. maszyny realizujące procesy przemysłowe,
-            aparatura pomiarowa, urządzenia wykonawcze (silniki, pompy, zawory, itp.),
-            urządzenia sterujące (sterowniki PLC, komputery przemysłowe, panele HMI) oraz
-            przemysłowe sieci komputerowe;
+            oraz aparatury kontrolno-pomiarowej wraz z łączącymi je sieciami komputerowymi,
       \item Warstwa operacyjna --- należą do niej systemy realizacji produkcji
             (ang. \emph{Manufacturing Execution System}, w skrócie: MES) oraz systemy
             zbierania danych i~sprawowania kontroli SCADA/HMI
             (ang. \emph{Supervisory Control and Data Acquisition, Human Machine Interface}).
-            Do funkcjalności systemu MES należą zarządzanie wykonaniem produkcji i zarządzanie
-            wydajnością. Systemy SCADA/HMI realizują zbieranie danych z procesu wraz z jego wizualizacją,
-            sterowanie nadrzędne (również przez człowieka), alarmowanie i archiwizację.
       \item Warstwa biznesowa --- należą do niej wysokopoziomowe systemy planowania
             zasobów przedsiębiorstwa ERP (ang. \emph{Enterprise Resource Planning}),
             systemy analizy i produkcji SAP (ang. \emph{Systems Analytics and Product}),
             systemy zarządzania relacjami z klientami CRM (ang.\emph{Customer Relationship Management})
             oraz wiele innych.
-            Oprogramowanie tego typu usprawnia działanie przedsiębiorstwa w różnych
-            obszarach, jak np.: logistyka, zamówienia,
-            analiza danych i~wspomaganie podejmowania decyzji, księgowość, inwentaryzacja.
 \end{itemize}
 
 \begin{figure}[h]
       \centering
-      \includegraphics[scale=0.50]{piramida.png}
+      \includegraphics[width=0.55\textwidth]{piramida.png}
       \caption{Model piramidowy informatycznych systemów przemysłowych.}
       \label{fig:piramida}
 \end{figure}
@@ -465,8 +467,10 @@ funkcjonować zgodnie paradygmatem \emph{best effort}. Aczkolwiek niekoniecznie
 należy odrzucać możliwość współpracy systemu z układem automatyki na poziomie lokalnym, 
 zanim dane trafią do Internetu \cite{iiot-design-and-impl-gateway}, \cite{iiot-rapid-integration-framework}.
 
-W systemach IIoT popularny jest podstawowy, trójwarstwowy model architektury. Wśród jego
-warstw wyróżniamy: warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
+Dla IIoT zostały opracowane pewne wzorce architektoniczne,
+które stanowią szablon dla implementacji tego typu systemów. 
+Obecnie popularny jest wzorzec trójwarstwowy, dla którego wyróżnia się
+warstwę brzegową (ang. \emph{edge}), warstwę platformową (ang. \emph{platform})
 i warstwę biznesową (ang. \emph{enterprise}).
 Model ten przedstawiono na rys.~\ref{fig:iiot-arch}. Do warstwy brzegowej należą
 typowe urządzenia systemów automatyki przemysłowej, m.in. czujniki i urządzenia wykonawcze oraz
@@ -479,9 +483,43 @@ analityki, monitorowania, zarządzania, archiwizacji, itd. \cite{iiot-challenges
 \begin{figure}[h]
       \centering
       \includegraphics[scale=0.50]{iiot_arch.png}
-      \caption{Trójwarstwowy model systemów IIoT.}
+      \caption{Trójwarstwowy wzorzec architektury systemów IIoT}
       \label{fig:iiot-arch}
 \end{figure}
+
+W wyniku połączenia idei wywodzących się z systemów IoT, IIoT i CPS 
+powstała koncepcja \textbf{Przemysłu 4.0} (niem. \emph{Industrie 4.0}) reprezentująca
+tzw. czwartą rewolucję przemysłową. Domenę Przemysłu 4.0 opisuje na wysokim poziomie
+model architektury RAMI 4.0 (ang. \emph {Reference Architectural
+Model Industrie 4.0}), któremu ustępuje
+obecnie przestarzały model piramidowy opisany w rozdziale \ref{arch-przemysl}.
+Architektura RAMI 4.0 została przedstawiona na rys. \ref{fig:rami}.
+Jest to model trójwymiarowy opisujący trzy podstawowe aspekty Przemysłu 4.0.
+Na osi o nazwie ,,Poziomy hierarchii`` umieszczono poziomy funkcjonowania 
+jednostek produkcyjnych. Podział ten wywodzi się ze standardów IEC 62264 i 
+ISA-95 (modelu piramidowego). Oś o nazwie ,,Cykl życia strumienia wartości``
+reprezentuje cykl życia produktów i innych aktywów. W pierwszej fazie 
+następuje projekt, rozwój i prototypownie (powstaje tzw. ,,typ produktu``), a w
+drugiej fazie rozpoczyna się produkcja (powstają tzw. ,,instancje produktu``).
+Pionowa oś przedstawia sześć warstw funkcjonowania systemów informatycznych
+w ramach Przemysłu 4.0. Każda z nich udostępnia usługi dla warstwy wyższej
+i używa usług warstwy niższej. Warstwa aktywów (zasobów) reprezentuje fizyczne
+urządzenia. Warstwa integracji jest pomostem między światem fizycznym a światem 
+informacji. Warstwa komunikacji zapewnia jednolity format danych i sposób komunikacji.
+Warstwa informacji odpowiada za przetwarzanie danych. Warstwa funkcjonalna 
+dostarcza środowiska do realizacji modeli implementowanych w ramach warstwy biznesowej
+\cite{iiot-challenges-opportunities-directions}, 
+\cite{industry4-ref-models}, \cite{rami4}.
+
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.72\textwidth]{RAMI4.png}
+      \caption{Model architektury RAMI 4.0}
+      \label{fig:rami}
+\end{figure}
+
+
 
 \subsection{Ujęcie tematu w świetle zgromadzonych informacji}
 
@@ -808,7 +846,7 @@ opis szczegółów implementacji wykonanego prototypu.
 
 \subsection{Ogólna koncepcja rozwiązania}\label{ogolna-koncepcja}
 
-Proponowane rozwiązanie opiera się na trójwarstwowym modelu architektury
+Proponowane rozwiązanie opiera się na trójwarstwowym wzorcu architektury
 systemów IIoT (patrz: rozdział \ref{iiot}, rys. \ref{fig:iiot-arch}), który
 zaadaptowano w celu praktycznego zastosowania, uwzględniwszy zdefiniowane
 wymagania projektowe oraz dostępne narzędzia i usługi. Wypracowaną koncepcję
@@ -1184,7 +1222,7 @@ gdy dane są poprawne. W konfiguracji Node-RED przewidziano parametr określają
       \label{fig:edge-buffer}
 \end{figure}
 
-\subsubsection{Zbieranie informacji o stanie zużycia chemmi przemysłowej }
+\subsubsection{Zbieranie informacji o stanie zużycia chemii przemysłowej }
 
 Diagram przepływu Node-RED realizujący logikę zbierania danych ze sterownika
 PLC przedstawiono na rys. \ref{fig:flow3}. Implementację protokołu
