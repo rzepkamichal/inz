@@ -45,6 +45,7 @@ numbers=left,
 
 \tableofcontents
 
+\newpage
 \section{Wstęp}\label{intro}
 
 Systemy informatyczne znajdują obecnie szerokie zastosowanie w wielu przedsiębiorstwach.
@@ -115,24 +116,21 @@ wskazano możliwe problemy i potencjalne rozwiązania wraz z zarysem architektur
 systemu. Opisano również kilka dostępnych na rynku rozwiązań komercyjnych,
 które adresują podobny zakres funkcjonalny. W rozdziale \ref{wymagania} sprecyzowano
 wymagania funkcjonalne i niefunkcjonalne, które ma realizować projektowany system
-oraz zdefiniowano ogólne przypadki użycia.
-Opisano również metodykę pracy oraz wybrane narzędzia, technologie i biblioteki użyte do realizacji
-prototypu. Rozdział \ref{spec-zew} zawiera informacje dotyczące
+oraz zdefiniowano ogólne przypadki użycia i przykładowe scenariusze wykorzystania systemu
+implementowane w ramach prototypu. Rozdział \ref{spec-wew} zawiera
+szczegółowy opis architektury zaprojektowanego systemu i jego implementacji
+w postaci prototypu. Przedstawiono poszczególne
+komponenty systemu oraz~omówiono ich funkcje i sposoby wzajemnej interakcji. 
+W rozdziale \ref{spec-zew} zamieszczono informacje dotyczące
 wdrażania i~używania systemu, a także wymagań sprzętowych i programowych.
-Poruszono również kwestie bezpieczeństwa. W oparciu o zrealizowany prototyp przedstawiono
-przykładowe scenariusze korzystania z systemu. W rozdziale \ref{spec-wew} zamieszczono
-szczegółowy opis architektury zaprojektowanego systemu. Wymieniono jej poszczególne
-komponenty i~omówiono sposoby ich wzajemnej interakcji. Zdefiniowano interfejs
-komunikacyjny systemu, przedstawiono sposoby integracji wykorzystanych gotowych
-narzędzi z elementami autorskimi. Opisano także rozwiązania
-mające na celu poprawę bezpieczeństwa. Rozdział \ref{testy} zawiera
+Poruszono również kwestie bezpieczeństwa. Rozdział \ref{testy} zawiera
 opis stosowanej metodyki testowania i przypadków testowych oraz przedstawia wyniki przeprowadzonych
 testów z uwzględnieniem napotkanych problemów. W rozdziale \ref{wnioski} zamieszczono
 podsumowanie i wnioski, które nasunęły się po zakończeniu prac nad projektem.
 Uzyskany rezultat zestawiono z postawionymi celami i określonymi wymaganiami.
 Rozważono również kierunki dalszego rozwoju systemu.
 
-
+\newpage
 \section{Analiza tematu}\label{analiza}
 
 W niniejszym rozdziale przedstawiono rozważania teoretyczne dotyczące projektowanego
@@ -195,7 +193,7 @@ Wśród urządzeń AKPiA można wyróżnić następujące grupy \cite{isp}:
       \item układy \textbf{mieszane} (ang. \emph{mixed}) --- jednoczesna rejestracja i modyfikacja stanu procesu.
 \end{itemize}
 
-Zestaw urządzeń AKPiA można zamodelować zbiorem informacji, który nazywa się
+\noindent Zestaw urządzeń AKPiA można zamodelować zbiorem informacji, który nazywa się
 \textbf{obiektem przemysłowym} \cite{isp}.
 
 W ostatnich latach na popularności zyskał pomysł wykorzystania
@@ -206,7 +204,7 @@ przemysłowym --- w elementach obsługujących procesy przemysłowe. Mówi się
 wówczas o tzw. inteligencji wbudowanej. W~obrębie
 CPS spotykane jest określenie analogiczne (nieco bardziej ogólne) do obiektu przemysłowego ---
 tzw. \textbf{bliźniaka cyfrowego} (ang. \emph{Digital Twin}). Jest to
-cyfrowe odwzorowanie (bliźniak) cech i atrybutów rzeczywistego obiektu \cite{isp}, \cite{iiot-challenges-opportunities-directions}.
+cyfrowe odwzorowanie cech i atrybutów rzeczywistego obiektu \cite{isp}, \cite{iiot-challenges-opportunities-directions}.
 
 
 Omawiając tematykę związaną z systemami przemysłowymi nie sposób pominąć kwestię
@@ -234,7 +232,7 @@ Postawienie wymagania determinizmu czasowego względem systemu przemysłowego oz
 że jego odpowiedź na zdarzenia musi zachodzić zawsze w zdefiniowanym, skończonym czasie
 \cite{isp}.
 
-Systemy charakteryzujące się determinizmem czasowym nazywa się
+Systemy charakteryzujące się m. in. determinizmem czasowym nazywa się
 \textbf{systemami czasu rzeczywistego} (ang. \emph{Real Time Systems}, w skrócie: RTS).
 Systemy posiadające cechy zarówno systemów rozproszonych, jak i systemów
 czasu rzeczywistego nazywa się \textbf{systemami rozproszonymi czasu rzeczywistego}.
@@ -271,7 +269,7 @@ W modelu piramidowym wyróżnia się następujące warstwy:
       \item Warstwa operacyjna --- należą do niej systemy realizacji produkcji
             (ang. \emph{Manufacturing Execution System}, w skrócie: MES) oraz systemy
             zbierania danych i~sprawowania kontroli SCADA/HMI
-            (ang. \emph{Supervisory Control and Data Acquisition, Human Machine Interface}).
+            (ang. \emph{Supervisory Control and Data Acquisition, Human Machine Interface}),
       \item Warstwa biznesowa --- należą do niej wysokopoziomowe systemy planowania
             zasobów przedsiębiorstwa ERP (ang. \emph{Enterprise Resource Planning}),
             systemy analizy i produkcji SAP (ang. \emph{Systems Analytics and Product}),
@@ -313,7 +311,7 @@ inteligentne budynki, miasta, logistyka, przemysł, a także marketing \cite{int
 Możliwości, jakie niesie IoT dla przemysłu zostały w sposób szczególny rozpatrzone
 w rozdziale \ref{iiot}.
 
-\subsubsection{``Rzeczy'' w IoT}
+\subsubsection{,,Rzeczy'' w IoT}
 
 Wśród przedmiotów tworzących IoT wyróżnia się dwie kategorie:
 \textbf{czujniki oraz urządzenia wykonawcze}. Są to odpowiedniki aparatury kontrolno-pomiarowej
@@ -338,16 +336,16 @@ Obok rozwiązań dedykowanych dużą popularnością cieszą się następujące 
       \itemsep0em
       \item Arduino --- Różne modele płytek rozwojowych wykorzystujące m. in. systemy
             SoC producenta Atmel oparte o mikrokontrolery AVR. Wśród zestawów płytek
-            dostępne są moduły rozszerzeń posiadające przewodowe i bezprzewodowe interfejsy sieciowe.
+            dostępne są moduły rozszerzeń posiadające przewodowe i bezprzewodowe interfejsy sieciowe;
       \item ESP --- Systemy typu SoC producenta Espressif Systems zawierające m. in. wbudowane
-            bezprzewodowe interfejsy sieciowe,
+            bezprzewodowe interfejsy sieciowe;
       \item Raspberry Pi --- Zaawansowane płytki tworzące komputery jednopłytkowe (ang. \emph{single-board computers})
             wykorzystujące m. in. procesory ARM Cortex.
             Można na nich uruchomić system operacyjny (również z interfejsem graficznym). Posiadają liczne
-            interfejsy komunikacyjne (w tym sieciowe) .
+            interfejsy komunikacyjne (w tym sieciowe);
       \item STM32 --- Rodzina 32-bitowych mikrokontrolerów opartych na procesorach
             ARM Cortex. Platformę cechuje stosunkowo duża moc obliczeniowa, możliwość działania w trybie niskiego poboru energii
-            oraz ograniczeniach czasowych,
+            oraz ograniczeniach czasowych;
       \item BeagleBone --- Komputery jednopłytkowe podobne do RaspberryPi
             oparte na procesorach ARM. Można na nich uruchomić system operacyjny.
             Cechą wyróżniającą jest możliwość funkcjonowania w czasie rzeczywistym
@@ -359,7 +357,7 @@ IoT (np. Ethernet lub WiFi) a innymi urządzeniami
 peryferyjnymi komunikującymi się za pośrednictwem
 uniwersalnych złącz pinowych GPIO albo interfejsów szeregowych, takich jak: SPI, I2C, RS232, USB \cite{intro-to-iot}.
 
-\subsubsection{``Internet'' w IoT}
+\subsubsection{,,Internet'' w IoT}
 
 Wymiana informacji w systemach IoT może odbywać się w sposób przewodowy lub bezprzewodowy.
 Stosowane modele komunikacji sieciowej bazują na standardowym modelu OSI bądź
@@ -432,12 +430,6 @@ zaś technologie informatyczne to systemy, których rolą jest jest gromadzenie
 i przetwarzanie informacji wartościowych z perspektywy przedsiębiorstwa
 \cite{ot-it-categorization-of-customer-concerns}.
 
-Z zagadnieniem IIoT ściśle związane jest też pojęcie \textbf{Przemysłu 4.0} (ang. \emph{Industry 4.0})
-reprezentujące tzw. czwartą rewolucję przemysłową. Jest to koncept stosunkowo uniwersalny
-skupiający rozwiązania CPS, IoT, IIoT wykorzystywane w celu zwiększania efektywności
-procesów przemysłowych w ramach tzw. inteligentnych fabryk (ang. \emph{smart factories})
-\cite{iiot-cyber-manufacturing-systems}, \cite{iiot-challenges-opportunities-directions}.
-
 Ze względu na konieczność funkcjonowania w specyficznym środowisku przemysłowym
 IIoT posiada pewne cechy odróżniające od standardowego (konsumenckiego) IoT.
 Wśród nich należy wymienić \cite{iiot-challenges-opportunities-directions}:
@@ -459,8 +451,8 @@ Szczególną uwagę należy poświęcić stwierdzeniu, że \textbf{intencją wyk
       jest zastąpienie tradycyjnych systemów automatyzacji procesów przemysłowych}.
 Na tej płaszczyźnie istnieją bowiem dedykowane rozwiązania adresujące
 problem ograniczeń spotykanych w automatyce przemysłowej.
-Właściwym \textbf{celem wdrażania systemów IIoT jest zwiększanie wiedzy na temat procesów
-      przemysłowych, co w efekcie pozwala na ulepszenie ich wydajności} \cite{iiot-challenges-opportunities-directions}.
+Właściwym celem wdrażania systemów IIoT jest zwiększanie wiedzy na temat procesów
+      przemysłowych, co w efekcie pozwala na ulepszenie ich wydajności \cite{iiot-challenges-opportunities-directions}.
 
 Ze względu na tolerancję ograniczeń w systemie (m. in. opóźnień czasowych) można
 wyróżnić trzy poziomy jakości usług komunikacyjnych \cite{iot-hype-to-reality}:
@@ -499,7 +491,7 @@ analityki, monitorowania, zarządzania, archiwizacji, itd. \cite{iiot-challenges
 
 \begin{figure}[h]
       \centering
-      \includegraphics[scale=0.50]{iiot_arch.png}
+      \includegraphics[scale=0.6]{iiot_arch.png}
       \caption{Trójwarstwowy wzorzec architektury systemów IIoT}
       \label{fig:iiot-arch}
 \end{figure}
@@ -516,7 +508,7 @@ Na osi o nazwie ,,Poziomy hierarchii`` umieszczono poziomy funkcjonowania
 jednostek produkcyjnych. Podział ten wywodzi się ze standardów IEC 62264 i
 ISA-95 (modelu piramidowego). Oś o nazwie ,,Cykl życia strumienia wartości``
 reprezentuje cykl życia produktów i innych aktywów. W pierwszej fazie
-następuje projekt, rozwój i prototypownie (powstaje tzw. ,,typ produktu``), a w
+następuje projektowanie, rozwój i prototypownie (powstaje tzw. ,,typ produktu``), a w
 drugiej fazie rozpoczyna się produkcja (powstają tzw. ,,instancje produktu``).
 Pionowa oś przedstawia sześć warstw funkcjonowania systemów informatycznych
 w ramach Przemysłu 4.0. Każda z nich udostępnia usługi dla warstwy wyższej
@@ -526,16 +518,14 @@ informacji. Warstwa komunikacji zapewnia jednolity format danych i sposób komun
 Warstwa informacji odpowiada za przetwarzanie danych. Warstwa funkcjonalna
 dostarcza środowiska do realizacji modeli implementowanych w ramach warstwy biznesowej
 \cite{iiot-challenges-opportunities-directions},
-\cite{industry4-ref-models}, \cite{rami4}.
+\cite{industry4-ref-models}, \cite{rami4}, \cite{iiot-cyber-manufacturing-systems}.
 
-
-\begin{figure}[H]
+\begin{figure}[h]
       \centering
-      \includegraphics[width=0.72\textwidth]{RAMI4.png}
+      \includegraphics[width=0.8\textwidth]{RAMI4.png}
       \caption{Model architektury RAMI 4.0}
       \label{fig:rami}
 \end{figure}
-
 
 
 \subsection{Ujęcie tematu w świetle zgromadzonych informacji}
@@ -700,7 +690,7 @@ charakter stopniowy, wymaga się, aby projektowany system \textbf{integrował si
 odpowiednich interfejsów komunikacyjnych i implementowania określonych protokołów
 charakterystycznych dla rozproszonych systemów przemysłowych.
 
-Jak już wspomniano w rozdziale \ref{analiza}, systemy nadzorujące
+Jak już wspomniano w rozdziale \ref{analiza}, systemy kontrolujące
 procesy przemysłowe muszą zwykle działać w ramach twardych ograniczeń czasowych.
 Natomiast wykorzystanie technologii internetowych gwarantuje działanie na poziomie
 \emph{best effort}. Celem ich stosowania w przemyśle nie jest jednak zastąpienie
@@ -769,7 +759,7 @@ bezpieczeństwa w aspekcie autoryzacji dostępu do systemu (w świecie rzeczywis
 cyfrowym), a także zapewnienia poufności z wykorzystaniem szyfrowania i
 metod ochrony przed kradzieżą.
 
-\subsection{Przypadki użycia}
+\subsection{Przypadki użycia}\label{use-case}
 
 Ogólne ujęcie funkcjonalności projektowanego systemu z perspektywy użytkowników,
 zewnętrznych urządzeń i systemów modeluje diagram przypadków użycia przedstawiony
@@ -857,7 +847,7 @@ $n$ --- liczba wszystkich produktów wyprodukowanych w procesie.
 
 
 \newpage
-\section{Specyfikacja wewnętrzna}\label{spec-zew}
+\section{Specyfikacja wewnętrzna}\label{spec-wew}
 
 Niniejszy rozdział zawiera specyfikację ogólnego projektu systemu oraz
 opis szczegółów implementacji wykonanego prototypu.
@@ -1430,18 +1420,23 @@ IoTHubMessages.forEach(message => {
 });   
 \end{lstlisting}
 
-\subsubsection{Wizualizacja danych --- chmura InfluxDB i narzędzie Grafana}
+\subsubsection{Wizualizacja danych --- InfluxDB i Grafana}
 
 Do realizacji wymagania wizualizacji danych użyto bazy danych InfluxDB.
 Jest to baza zoptymalizowana pod kątem przechowywania szeregów czasowych
 (ang. \emph{Time Series Database}). InfluxDB to bezpłatne
 oprogramowanie dostępne na licencji MIT, które można zainstalować na dowolnej
-maszynie z systemem Linux, Mac OS X, Windows. Oferowana jest także
-płatna usługa chmurowa InfluxDB Cloud z darmowym programem startowym, co wykorzystano
+maszynie z systemem Linux, Mac OS X, Windows. Dostępna jest także
+płatna usługa chmurowa o nazwie InfluxDB Cloud firmy InfluxData. Usługa ta oferuje hosting
+bazy w chmurze wraz z panelem zarządzania dostępnym z przeglądarki jako 
+aplikacja internetowa. Osadzenie bazy w chmurze umożliwia łatwą konfigurację
+i skalowanie ,,na żądanie`` bez konieczności zajmowania się szczegółami technicznymi. 
+Dostawca przewodział darmowy program startowy, co wykorzystano w niniejszym projekcie
 na potrzeby prototypowania. Dane pomiarowe są składowane w InfluxDB
 jako rekordy w tabelach pogrupowanych w konternery --- tzw. wiadra (ang. \emph{buckets}).
 Do podstawowych kolumn należą: znacznik czasowy pomiaru (\texttt{\_time}),
-wartość parametru (\texttt{\_value}), nazwa parametru (\texttt{\_field}) i nazwa pomiaru (\texttt{\_measurement}).
+wartość parametru (\texttt{\_value}), nazwa parametru (\texttt{\_field}) i nazwa pomiaru (\texttt{\_measurement})
+\cite{influx-db-cloud}, \cite{influx-db}.
 Zrzuty ekranów z tabel InfluxDB przechowujących pomiary wilgotności i temperatury
 przedsawiono na rysunkach \ref{fig:influx_1} i \ref{fig:influx_2}.
 
@@ -1464,7 +1459,7 @@ danych dostępna na licencji Apache 2.0. Podobnie jak
 w przypadku InfluxDB, możliwa jest lokalna instalacja lub skorzystanie z
 płatnej usługi chmurowej. W ramach prototypu narzędzie zostało zainstalowane
 na komputerze klienckim. Jest to serwer, który udostępnia interfejs graficzny
-w postaci aplikacji przeglądarkowej. W aplikacji można tworzyć
+w postaci aplikacji przeglądarkowej, w ramach której można tworzyć
 dowolne diagramy, wykresy, tabele, wskaźniki i swobodnie rozbudowywać
 modularne panele zarządzania. Istnieje także możliwość tworzenia własnych komponentów
 graficznych i wtyczek.
@@ -1477,8 +1472,7 @@ Zakres wyników ograniczany jest do trzech ostatnich godzin, a wartości
 są agregowane z wykorzystaniem funkcji wyznaczającej średnią (\texttt{mean}) w obrębie interwałów
 pięciosekundowych. Wynik zapytania może być wizualizowany przez wybrany komponent
 graficzny. Na rys. \ref{fig:grafana-1} zamieszczono zrzut ekranu będący fragmentem panelu Grafana,
-przedstawiający wykres i wskaźnik wartości chwilowej odnoszący się do zapytania
-z listingu \ref{lst:flux}.
+przedstawiający wykres i wskaźnik wartości wizualizujące wynki zapytania z listingu \ref{lst:flux}.
 
 
 \begin{lstlisting}[caption={Przykładowe zapytanie w języku Flux}, label={lst:flux}]
@@ -1498,9 +1492,270 @@ from(bucket:"bucket")
       \label{fig:grafana-1}
 \end{figure}
 
-\section{Specyfikacja zewnętrzna}\label{spec-wew}
+\clearpage
 
+\section{Specyfikacja zewnętrzna}\label{spec-zew}
+
+\subsection{Wdrożenie systemu}
+
+\subsubsection{Uruchomienie i konfiguracja bram IIoT}
+
+W celu uruchomienia urządzeń pełniących rolę bram IIoT należy w pierwszej
+kolejności przygotowoać środowisko ich funkjonowania, tj. wydzielić
+miejsce ich instalacji zapewniając łatwy dostęp i odpowiedni poziom zabezpieczeń
+przed czynnikami niesprzyjającymi lub osobami nieuprawnionymi. Następnie 
+konieczne jest dostarczenie wymaganego źródła zasilania określonego
+w specyfikacji urządzenia. Kolejny etap polega na konfiguracji oprogramowania
+(w tym ewentualnego systemu operacyjnego) i połączeń sieciowych. 
+
+W ramach prototypu użyto dwóch bramy IIoT - Simatic IOT2020 i Raspberry Pi 3 B.
+Brama IOT2020 wymaga stałego napięcia zasilania mieszczącego się w zakresie 9 - 36V.
+Pobór prądu wynosi 1.4A. Dla RaspberryPi producent zaleca użycie
+zasilacza sieciowego microUSB o napięciu wyjściovym 5.1V i prądzie 2.5A.
+Przy wyborze źródła zasilania należy zwrócić uwagę na rodzaj obudowy. Warto 
+rozważyć produkty posiadające odpowiedni stopień ochrony (np. IP20) i możliwość
+montażu na szynie DIN (co jest rozwiązaniem popularnym w przemyśle).
+
+Dla każdej z bram producenci przygotowali dedykowaną dystrybucję systemu Linux.
+Obrazy systemów należy najlepiej pobrać z oficjalnych stron i zainstalować na kartach
+microSD o minimalnej pojemności 8 GB. Po umieszczeniu karty w odpowiednim
+slocie urządzenia i podłączenia zasilania system uruchamia się samoczynnie.
+Następnie należy dokonać podstawowej konfiguracji systemu operacyjnego: podłączenia i konfiguracji interfejsów sieciowych,
+wprowadzenia użytkowników i nadania praw, instalacja preferowanych narzędzi.  
+
+Podstawą oprogramowania bram w przyjętej implementacji prototypu jest 
+narzędzie Node-RED wymagające zainstalowanego środowiska Node.js. W przypadku
+obu obrazów systemów oprogramowanie to jest dostępne domyślnie. Dla RaspberryPi 
+warto rozważyć natychmiastową aktualizację. W przypadku IOT2020 aktualizacja
+może być utrudniona, ze względu na ograniczone wsparcie Node.js dla procesora
+Intel Quark x1000. W tym przypadku najlepiej jest śledzić aktualności na 
+forum producenta.
+
+Serwer Node-RED należy uruchomić zgodnie z dokumentacją. Domyślny port, na 
+którym nasłuchuje serwer to 1880. Po wpisaniu w przeglądarce lokalnego adres i portu
+w oknie pojawia się widok aplikacji do zarządzania serwerem Node-RED. Aplikacja
+umożliwia tworzenie i wdrażanie programów, dodawanie bibliotek, importowanie i eksportowanie projektu.
+Instalację bibliotek (w szczególności własnych, lokalnych węzłów) umożliwia także menadżer pakietów \texttt{npm}.
+W zależności od integrowanych interfejsów i protokołów konieczne jest ustawienie
+określonych parametrów połączeń, np. adres userwera pośrednika (brokera) w przypadku protokołu MQTT.
+
+Dalsze czynności polegają na rozwoju i utrzymaniu bram w zależności od wymagań
+biznesowych. Działania te sprowadzają się m. in. do dołączania apartury pomiarowej dostarczającej dane
+z wykorzystaniem dostępnych interfejsów, implementacji logiki przetwarzania
+brzegowego w ramach Node-RED, instalacji dodatkowego oprogramowania 
+(w przypadku wykonanego prototypu zainstalowano przykładowo serwer pośrednika MQTT Mosquitto na RaspberryPi).
+
+
+\subsubsection{Konfiguracja usług w chmurze}
+
+Każda chmura posiada nieco inny sposób konfiguracji i model zarządzania. 
+Czynności administracyjne, które należy przeprowadzić, żeby korzystać z usług
+chmurowych, to zwykle: rejestracja konta organizacji i użytkowników,
+wybór modelu rozliczeniowego (subskrypcji), konfiguracja i wzajemna
+integracja zasobów, które można postrzegać jako instancje usług. Przykładowe zasoby
+to bazy danych, funkcje bezserwerowe, maszyny wirtualne, itp. 
+
+Na potrzeby prototypu postanowiono użyć chmury Azure wraz z usługami:
+IoT Hub, Blob Storage, Functions. Po założeniu konta i uzyskaniu 
+dostępu do portalu należy stworzyć grupę zasobów i dołączyć do niej nowy zasób 
+w ramach każdej z wymienionych usług.
+Konfiguracja zasobu IoT Hub polega m. in. na zarejestrowaniu urządzeń (w tym przypadku bram IIoT).
+W celu skorzystania z usługi Blob Storage należy stworzyć zasób typu
+Storage Account i zdefiniować kontenery na dane zgodnie z zapotrzebowaniem.
+Przechodząc do wybranego kontenera można przeglądać składowane dane, które
+są zorganizowane w strukturę folderów i plików.
+Użycie usługi Azure Functions wymaga storzenia zasobu typu Function App. 
+Nowe funkcje można implementować przez panel zasobu Function App za pośrednictwem
+edytora w przeglądarce (tylko dla języka JavaScript). Dla większej wygody
+kod źródłowy można rozwijać lokalnie w jednym ze wspieranych języków programowania
+i przesyłać do chmury z wykorzystaniem narzędzia Function Core Tools.
+Żeby umożliwić wyzwalanie funkcji przez wiadomości (dane) zbierane w usłudze IoT Hub,
+a także zapis danych do bazy Blob Storage należy w ustawieniach IoT Hub
+skonfigurować trasowanie (integrację zasobów) przez zakładkę o nazwie Message Routing.
+
+W implementacji projektu postanowiono także wykorzystać bazę InfluxDB 
+osadzoną w chmurze InfluxDB Cloud. Po założeniu konta w usłudze i wybraniu
+modelu rozliczeniowego można od razu przejść do zarządzania zainstalowaną
+i uruchomioną już bazą za pośrednictwem aplikacji przeglądarkowej. Panel 
+umożliwia m. in. definiowanie kontenerów na dane, edycję ustawień, 
+realizację zapytań do bazy wraz z podstawową wizualizacją wyników. 
+
+
+\subsubsection{Instalacja i konfiguracja narzędzia do wizualizacji}\label{grafana-conf}
+
+Na rynku dostępnych jest wiele darmowych i płatnych narzędzi do wizualizacji danych.
+Sposób ich instalacji i konfiguracji jest zróżnicowany. Mogą to być mianowicie
+aplikacje przeznaczone do instalacji lokalnej na komputerze osobistym,
+statyczne albo dynamiczne aplikacje internetowe (ang. \emph{Static Web Applications} / \emph{Single Page Applications})
+z oprogramowaniem serwera (ang. \emph{backend}), a także
+aplikacje na platformy mobilne i urządzenia wbudowane.
+
+Do realizacji prototypu wybrano apikację Grafana, jako że jest to darmowe,
+modularne (łatwe w rozbudowie) narzędzie, które domyślnie wspiera
+bazę InfluxDB. Aplikację postanowiono zainstalować lokalnie na komputerze osobistym
+z systemem Linux pobrawszy pakiet instalacyjny ze strony producenta. 
+Alternatywnie Grafana może być zainstalowana na maszynie wirtualnej w 
+chmurze albo można skorzystać bezpośrednio z płatnej usługi chmurowej producenta 
+o nazwie Grafana Cloud (analogicznie jak w przypadku InfluxDB Cloud).
+Sposób użytkowania aplikacji jest podobny do Node-RED. Działający w tle
+serwer udostępnia aplikację przeglądarkową na domyślnym porcie 3000, w ramach której
+można konfigurować użytkowników, dodawać źródła danych i tworzyć panele wizualizacji.
+Żeby móc odczytywać dane z bazy InfluxDB należy w ustawieniach dodać źródło danych
+typu InfluxDB, podać adres URL bazy, nazwę organizacji i kontenera, a także wpisać
+znacznik (ang. \emph{token}), który można wygenerować w panelu
+zarządzania bazą InfluxDB. Znacznik to specjalny, poufny ciąg znaków, który 
+umożliwia klientom (aplikacjom i/lub użytkownikom) uwierzytelnianie i autoryzację.
+
+
+\subsubsection{Integracja bram IIoT z usługami chmurowymi}
+
+W celu połączenia urządzeń z usługami chmurowymi należy w peirwszej kolejności
+dokonać ich rejestracji w panelu zarządzania chmurą, a następnie zaimplementować
+wymagany protokół po stronie urządze lub skrozystać z dedykowanej biblioteki
+będącej wygodną w użyciu fasadą dla protokołu. Bibliotekę należy odpowiednio 
+skonfigurować, co odbywa się zwykle przez określenie parametrów połączenia:
+adresu IP albo URL, portu, danych uwierzytelniających, itd.
+
+Użyte na potrzeby prototypu oprogramowanie bram IIoT w postaci Node-RED 
+posiada w swoim katalogu darmowe biblioteki umożliwiające połączenie zarówno z usługą
+Azure IoT Hub (\texttt{node-red-contrib-azure-iot-hub }), 
+jak i bazą InfluxDB osadzoną w chmurze (\texttt{node-red-contrib-influxdb}). 
+Węzeł IoT Hub wymaga dostarczenia danych połączenia w postaci nazwy hosta, 
+identyfikatora urządzenia i klucza dostępu, które można znaleźć w ustawieniach
+zarejestrowanego urządzenia w portalu Azure. Węzeł służący do połączenia z 
+InfluxDB Cloud wymaga dostarczenia tych samych danych, co w przypadku integracji
+aplikacji Grafana (patrz: rozdział \ref{grafana-conf}).
+
+\subsection{Kategorie użytkowników}
+
+Na diagramie przypadków użycia (patrz: rozdział \ref{use-case}, rys. \ref{fig:use-case})
+przedstawiono użytkowników systemu wraz z możliwym zakresem ich działań.
+W systemie wyróżniono następujące kategorie użytkowników:
+\begin{itemize}
+      \itemsep0em
+      \item Administratorzy --- Są to pracownicy zarządzający infrastrukturą systemu.
+      Do ich zadań należy instalacja, konfiguracja i utrzymanie urządzeń,
+      zarządzanie sieciami komputerowymi, dbanie o bezpieczeństwo (monitorowanie, 
+      wykrywanie awarii, aktualizacja oprogramowania i certyfikatów),  zarządzanie zasobami w chmurze
+      i minotorowanie kosztów, zarządzanie użytkownikami, administracja urządzeniami klienckimi.
+      W zależności od skali systemu administratorzy mogą pełnić obowiązki 
+      w obrębie całego systemu lub poszczególnych jego warstw i~komponentów;
+      \item Programiści i testerzy --- Implementują i testują logikę przetwarzania
+      danych osadzaną na urządzeniach warstwy brzegowej oraz w chmurze;
+      \item Analitycy, pracownicy obsługujący proces przemysłowy i~inni ---
+      Kategoria odnosi się do wszystkich użytkowników, którzy korzystają z wników zbierania, przetwarzania
+      i wizualizacji danych, a także uczestniczą w rozwoju logiki przetwarzania danych. 
+\end{itemize} 
+
+\subsection{Kwestie bezpieczeństwa}
+
+\subsubsection{Niezawodność}
+
+Zagadnienie niezawodności systemu posiada dwa aspekty --- sprzętowy i programowy.
+Żeby zapewnić poprawne działanie w warstwie sprzętowej, należy w pierwszej 
+kolejności dokładnie przemyśleć dobór urządzeń. Ich specyfikację należy zestawić
+z potencjalnymi warunkami, w których przyjdzie ich pracować. Te zaś w środowisku
+przemysłowym mogą być różne. Mogą w nim bowiem występować zakłócenia elektromagnetyczne,
+mechaniczne i chemicze mające realny wpływ na pracę urządzeń elektronicznych.
+Ponadto dla uzyskania większego poziomu bezawaryjności można rozważyć 
+instalację źródeł awaryjnego zasilania, wprowadzenie urządzeń nadmiarowych (redundantnych)
+przejmujących zadania uszkodzonych urządzeń, a także układów typu \emph{watchdog}
+wykrywających awarie.
+
+Drogą do osiągnięcia niezawodności w warstwie programowej jest przede wszystkim sporządzanie
+odpowiedniej liczby testów automatycznych oraz przeprowadzenie testów manualnych
+na poziomie jednostkowym, integracyjnym i systemowym. 
+Można również rozważyć użycie programów i/lub urządzeń typu \emph{watchdog}
+wykrywających potencjalne awarie i wyzwalające przewidziane reakcje systemu,
+na przyklad ponowne uruchomienie urządzeń, próba ponownego nawiązania połączenia, itp. 
+
+\subsubsection{Ograniczenie dostępu}
+
+Kwestie zapewnienia dostępu do systemu wyłącznie osobom i aplikacjom do tego 
+uprawnionym można również rozpatrywać na płaszczyźnie sprzętowej i programowej.
+Dla warstwy sprzętowej należy rozważyć wydzielenie specjalnych pomieszczeń 
+dla używanych urządzeń, do których dostęp będzie kontrolowany i monitorowany 
+przez wyznaczony do tego personel i odpowiednie systemy monitoringu. 
+
+Ograniczenie dostępu do płaszczyzny programowej polega przede wszystkim na zastosowaniu
+metod uwierzytelniania i autoryzacji oraz wykorzystaniu sieciowych mechanizmów zabezpieczeń 
+(zapora ogniowa, oprogramowanie antyirusowe, itd.). Uwierzytelnianie i autoryzacja z wykorzystaniem
+identyfikatorów i haseł powinny znaleźć zastosowanie zarówno w warstwie brzegowej,
+jak i biznesowej systemu. Wymagane jest, aby hasła posiadały odpowiedni stopień skomplikowania
+i były często aktualizowane.
+
+Uwierzytelnianiu i autoryzacji w obrębie zrealizowanego prototypu podlega dostęp do: systemów operacyjnych 
+bram IIoT, aplikacji Node-RED, portali zarządzania chmurą Azure i InfluxDB Cloud,
+komputerów klienckich i aplikacji Grafana. Komponenty integrujące się z chmurą
+(Node-RED i Grafana) uzyskują dostęp na podstawie wspomnianego już znacznika ---
+specjalnego ciągu znaków pęłniącego rolę klucza. Znaczniki można w każdej
+chwili deaktywować lub wycofywać poszczególne uprawnienia. Analogicznie wygląda
+systuacja z kontami użytkowników w chmurach. Nieco więcej wysiłku może wymagać 
+administracja kontami na poziomie urządzeń przedsiębiorstwa. W niektórych 
+przypadkach możliwe jest wykorzystanie mechanizmu pojedynczego logowania 
+(ang. \emph{Single Sign-On}, w skrócie: SSO) zintegrowanego z chmurą, np. 
+w ramach usług Azure Active Directory czy AWS Directory Service. 
+Dla podniesienia poziomu bezpieczeństwa można także rozważyć wprowadzenie
+mechanizmów ochrony dostępu na poziomie protokołów używanych do komunikacji 
+w warstwie brzegowej, np. ustawienie hasła w serwerze pośredniczącym MQTT. 
+
+\subsubsection{Szyfrowanie komunikacji}
+
+W celu zwiększenia ochrony poufności danych przesyłanych za pośrednictwem sieci
+komputerowych należy wdrożyć odpowiednie mechanizmy szyfrowania. Jest to aspekt
+szczególnie ważny, gdy ma miejsce wymiana danych w ramach sieci publicznej --- Internetu.
+W kontekście realizowanego projektu dotyczy to połączenia bram IIoT z usługami chmurowymi.
+Wśród dostępnych rozwiązań wyróżnia się m. in. użycie protokołu kryptograficznego TLS w połączeniu
+ze standardowymi protokołami HTTP, MQTT, itd. Przydatne może okazać się również
+wykorzystanie mechanizmu tunelowania w postaci usługi VPN (ang. \emph{Virtual Private Network}).
+Powinno się także rozważyć szyfrowanie komunikacji na poziomie sieci warstwy brzegowej.
+W tym przypadku można jednak napotkać pewne problemy, gdyż nie wszystkie urządzenia
+są w stanie implementować algorytmy kryptograficzne ze względu 
+na ograniczone zasoby, jak również nie wszystkie protokoły posiadają specyfikację
+odnoszącą się do zagadnień bezpieczeństwa.
+
+Wykorzystane na potrzeby prototypu chmury Azure i InfluxDB narzucają szyfrowanie
+komunikacji z wykorzystaniem protokołu TLS. Narzędzia Node-RED i Grafana
+umożliwiają konfigurację certyfikatów SSL i tym samym użycie protokołu
+HTTPS do komunikacji z serwerem aplikacji w ramach przeglądarki. Specyfikacje
+protokołów MQTT, CoAP i Modbus/TCP również przewidują użycie protokołu TLS albo
+DTLS (w przypadku, gdy protokołem warstwy transportowej jest UDP).
+
+\newpage
 \section{Weryfikacja i walidacja}\label{testy}
+
+\subsection{Testy jednostkowe}
+
+W celu weryfikacji poprawności działania autorskich komponentów, tj. 
+funkcji bezserwerowych uruchamianych w chmurze Azure oraz Bufora Brzegowego i funkcji przetwarzających Node-RED 
+zaimplementowano testy jednostkowe. Żeby uruchomić i zautomatyzować przeprowadzanie
+testów posłużono się darmowymi narzędziami: dedykowanym modułem \texttt{node-red-node-test-helper}
+w przypadku Node-RED oraz narzędziem Jest w przypadku funkcji Azure implementowanych
+w języku JavaScript.
+
+\subsection{Testy systemowe}
+
+Na potrzeby weryfikacji poprawności działania całego systemu oraz sprawdzenia,
+czy spełnia on zdefiniowane wymagania (walidacja), uruchomiono w warunkach
+domowych zrealizowany prototyp systemu o konfiguracji przedstawionej na rys. \ref{fig:network}.
+Zbudowano sieć komputerową na bazie Ethernet i WiFi składającą się z dwóch 
+podsieci: 10.42.0.0/24 przeznaczona dla urządzeń przewodowych oraz 
+192.168.1.0/24, w ramach której komunikują się urządzenia bezprzewodowe.
+Bramy RaspberryPi oraz Simatic IOT2020 nie pełnią w tej konstelacji roli 
+bram w sensie sieci, lecz w sensie funkcjonalnym bram IIoT, czyli gromadzenia danych, przetwarzania
+brzegowego, translacji protokołów i przekazywania danych do chmury. 
+Właściwą bramą sieciową udostępniającą połączenie z Internetem jest w systemie urządzenie o adresie 10.42.0.1. 
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.9\textwidth]{network.png}
+      \caption{Schemat ideowy systemu uruchomionego na potrzeby testów systemowych}
+      \label{fig:network}
+\end{figure}
+
+Na komputerach o adresach 192.168.1.3, 10.42.0.4 i 10.42.0.5 zainstalowano
+autorskie oprogramowanie symulujące, które generuje wartości danych pomiarowych
+i przeysła je do bram z wykorzystaniem odpowiednich protokołów. 
 
 \section{Podsumowanie i wnioski}\label{wnioski}
 
