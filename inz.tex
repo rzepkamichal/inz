@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[polish]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{ragged2e}
 \usepackage{indentfirst}
@@ -31,18 +32,90 @@ numbers=left,
 \addbibresource{inz.bib}
 \graphicspath{ {./images/} }
 
-\title{System IIoT do zbierania danych pomiarowych}
-\date{}
+\newcommand{\miesiac}{%
+  \ifcase\the\month
+  \or styczeń% 1
+  \or luty% 2
+  \or marzec% 3
+  \or kwiecień% 4
+  \or maj% 5
+  \or czerwiec% 6
+  \or lipiec% 7
+  \or sierpień% 8
+  \or wrzesień% 9
+  \or październik% 10
+  \or listopad% 11
+  \or grudzień% 12
+  \fi}
+\newcommand{\headerfont}{\fontfamily{phv}\fontsize{18}{18}\bfseries\scshape\selectfont}
+\newcommand{\titlefont}{\fontfamily{phv}\fontsize{18}{18}\selectfont}
+\newcommand{\otherfont}{\fontfamily{phv}\fontsize{14}{14}\selectfont}
+\newcommand{\autor}{Michał Rzepka}
+\newcommand{\promotor}{dr hab. inż., prof. PŚ Piotr Gaj}
+\newcommand{\tytul}{System IIoT do zbierania danych pomiarowych}
+\newcommand{\polsl}{Politechnika Śląska}
+\newcommand{\wydzial}{Wydział Automatyki, Elektroniki i Informatyki}
+
 
 \begin{document}
+	
+%%%%%%%%%%%%%%%%%%  STRONA TYTULOWA %%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+{
+	\newgeometry{top=2.5cm,%
+	             bottom=2.5cm,%
+	             left=3cm,
+	             right=2.5cm}
+	\sffamily
+	\rule{0cm}{0cm}
+	
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{politechnika_sl_logo_bw_poziom_pl.eps}
+	\end{center} 
+	\vspace{1cm}
+	\begin{center}
+	\headerfont \polsl
+	\end{center}
+	\begin{center}
+	\headerfont \wydzial
+	\end{center}
+	\vfill
+	\begin{center}
+	\titlefont Praca dyplomowa inżynierska
+	\end{center}
+	\vfill
+	
+	\begin{center}
+	\otherfont \tytul\par
+	\end{center}
+	
+	\vfill
+	
+	\vfill
+	 
+	\noindent\vbox
+	{
+		\hbox{\otherfont autor: \autor}
+		\vspace{12pt}
+		\hbox{\otherfont kierujący pracą: \promotor}
+	}
+	\vfill 
+ 
+   \begin{center}
+   \otherfont Gliwice,  \miesiac\ \the\year
+   \end{center}	
+	\restoregeometry
+}
 
-\clearpage\maketitle %no page number on title page
-\thispagestyle{empty}
+\fancypagestyle{NumeryStronNazwyRozdzialow}{%
+   \fancyhf{} 
+   \fancyhead[LO]{\nouppercase{\it\rightmark}}
+   \fancyhead[RE]{\nouppercase{\it\leftmark}}
+   \fancyhead[LE,RO]{\it\thepage}
+}
+\pagestyle{NumeryStronNazwyRozdzialow}
 
-\listoftodos
-
-\newpage
-
+\cleardoublepage
 \tableofcontents
 
 \newpage
@@ -124,13 +197,13 @@ komponenty systemu oraz~omówiono ich funkcje i sposoby wzajemnej interakcji.
 W rozdziale \ref{spec-zew} zamieszczono informacje dotyczące
 wdrażania i~używania systemu, a także wymagań sprzętowych i programowych.
 Poruszono również kwestie bezpieczeństwa. Rozdział \ref{testy} zawiera
-opis stosowanej metodyki testowania i przypadków testowych oraz przedstawia wyniki przeprowadzonych
+opis stosowanej metodyki testowania oraz przedstawia wyniki przeprowadzonych
 testów z uwzględnieniem napotkanych problemów. W rozdziale \ref{wnioski} zamieszczono
 podsumowanie i wnioski, które nasunęły się po zakończeniu prac nad projektem.
 Uzyskany rezultat zestawiono z postawionymi celami i określonymi wymaganiami.
 Rozważono również kierunki dalszego rozwoju systemu.
 
-\newpage
+
 \section{Analiza tematu}\label{analiza}
 
 W niniejszym rozdziale przedstawiono rozważania teoretyczne dotyczące projektowanego
@@ -280,7 +353,7 @@ W modelu piramidowym wyróżnia się następujące warstwy:
 \begin{figure}[h]
       \centering
       \includegraphics[width=0.55\textwidth]{piramida.png}
-      \caption{Model piramidowy informatycznych systemów przemysłowych.}
+      \caption{Model piramidowy informatycznych systemów przemysłowych}
       \label{fig:piramida}
 \end{figure}
 
@@ -595,7 +668,7 @@ znaleziono następujące przykłady:
 \end{itemize}
 
 
-\newpage
+
 \section{Specyfikacja wymagań}\label{wymagania}
 
 W niniejszym rozdziale przedstawiono szczegółową specyfikację wymagań
@@ -783,7 +856,7 @@ i usuwaniu awarii.
 \begin{figure}
       \centering
       \includegraphics[width=\textwidth]{use-case.png}
-      \caption{Diagram przypadków użycia systemu.}
+      \caption{Diagram przypadków użycia systemu}
       \label{fig:use-case}
 \end{figure}
 
@@ -846,7 +919,7 @@ $s$ --- liczba produktów wyprodukowanych bez wad,\\
 $n$ --- liczba wszystkich produktów wyprodukowanych w procesie.
 
 
-\newpage
+
 \section{Specyfikacja wewnętrzna}\label{spec-wew}
 
 Niniejszy rozdział zawiera specyfikację ogólnego projektu systemu oraz
@@ -1354,7 +1427,7 @@ i czujnika poziomu cieczy \texttt{FluidControlMeasurement}, a także liczbę
 produktów wytworzonych bez wad i liczbę wszystkich produktów na potrzeby
 wyznaczania wartości parametru FTQ. Pobieranie i zapis danych przez systemy
 zewnętrzne umożliwia interfejs programistyczny
-REST z wykorzystaniem protokołu HTTP \cite{blob-storage-doc}
+REST z wykorzystaniem protokołu HTTP \cite{blob-storage-rest}
 W ten sposób realizowane są wymagania składowania i udostępniana danych pomiarowych.
 
 \subsubsection{Przetwarzanie w chmurze --- Azure Functions}
@@ -1488,15 +1561,25 @@ from(bucket:"bucket")
 \begin{figure}[h]
       \centering
       \fbox{\includegraphics[width=0.9\textwidth]{grafana_1.png}}
-      \caption{Zrzut ekranu z panelu Grafana wizualizujący wyniki zapytania przedstawione na listing \ref{lst:flux}}
+      \caption{Zrzut ekranu z panelu Grafana wizualizujący wyniki zapytania przedstawione na listingu \ref{lst:flux}}
       \label{fig:grafana-1}
 \end{figure}
 
-\clearpage
-
 \section{Specyfikacja zewnętrzna}\label{spec-zew}
 
-\subsection{Wdrożenie systemu}
+W niniejszym rozdziale przedstawiono opis sposobu uruchomienia systemu,
+wymieniono kategorie użytkowników i dokonano rozważań na temat bezpieczeństwa.
+
+\subsection{Uruchomienie systemu}
+
+Wyróżniono cztery etapy uruchamiania, wdrażania i konfiguracji systemu:
+uruchomienie i konfiguracja bram IIoT, konfiguracja usług w chmurze,
+instalacja i konfiguracja narzędzia do wizualizacji, integracja bram 
+IIoT z usługami chmurowymi. Kolejne podrozdziały dotyczą poszczególnych zagadnień.
+Specyfikacja ma charakter ogólny, zaś szczegółowe wskazówki do implementacji
+należy zaczerpnąć z dokumentacji narzędzi i urządzeń. Aktualne
+odnośniki (styczeń 2021 r.) do odpowiednich
+dokumentów zamieszczono w przypisach do niektórych akapitów.
 
 \subsubsection{Uruchomienie i konfiguracja bram IIoT}
 
@@ -1515,35 +1598,36 @@ zasilacza sieciowego microUSB o napięciu wyjściowym 5.1V i prądzie 2.5A.
 Przy wyborze źródła zasilania należy zwrócić uwagę na rodzaj obudowy. Warto
 rozważyć produkty posiadające odpowiedni stopień ochrony (np. IP20) i możliwość
 montażu na szynie DIN (co jest rozwiązaniem popularnym w przemyśle).
-
 Dla każdej z bram producenci przygotowali dedykowaną dystrybucję systemu Linux.
 Obrazy systemów należy najlepiej pobrać z oficjalnych stron i zainstalować na kartach
 microSD o minimalnej pojemności 8 GB. Po umieszczeniu karty w odpowiednim
 slocie urządzenia i podłączenia zasilania system uruchamia się samoczynnie.
 Następnie należy dokonać podstawowej konfiguracji systemu operacyjnego: podłączenia i konfiguracji interfejsów sieciowych,
-wprowadzenia użytkowników i nadania praw, instalacja preferowanych narzędzi.
+wprowadzenia użytkowników i nadania praw, instalacja preferowanych narzędzi
+\cite{simatic-iot-getting-started}, \cite{simatic-iot-sepc}, \cite{rpi-doc}.
 
 Podstawą oprogramowania bram w przyjętej implementacji prototypu jest
 narzędzie Node-RED wymagające zainstalowanego środowiska Node.js. W przypadku
 obu obrazów systemów oprogramowanie to jest dostępne domyślnie. Dla RaspberryPi
-warto rozważyć natychmiastową aktualizację. W przypadku IOT2020 aktualizacja
+warto rozważyć jego natychmiastową aktualizację. W przypadku IOT2020 aktualizacja
 może być utrudniona, ze względu na ograniczone wsparcie Node.js dla procesora
 Intel Quark x1000. W tym przypadku najlepiej jest śledzić aktualności na
-forum producenta.
-
+forum producenta \cite{simatic-iot-forum}. 
 Serwer Node-RED należy uruchomić zgodnie z dokumentacją. Domyślny port, na
-którym nasłuchuje serwer to 1880. Po wpisaniu w przeglądarce lokalnego adres i portu
+którym nasłuchuje serwer to 1880. Po wpisaniu w przeglądarce lokalnego adresu i portu
 w oknie pojawia się widok aplikacji do zarządzania serwerem Node-RED. Aplikacja
 umożliwia tworzenie i wdrażanie programów, dodawanie bibliotek, importowanie i eksportowanie projektu.
 Instalację bibliotek (w szczególności własnych, lokalnych węzłów) umożliwia także menadżer pakietów \texttt{npm}.
 W zależności od integrowanych interfejsów i protokołów konieczne jest ustawienie
-określonych parametrów połączeń, np. adres serwera pośrednika (brokera) w przypadku protokołu MQTT.
+określonych parametrów połączeń, np. adres serwera pośrednika (brokera) w przypadku protokołu MQTT
+\cite{node-red-doc}.
 
 Dalsze czynności polegają na rozwoju i utrzymaniu bram w zależności od wymagań
 biznesowych. Działania te sprowadzają się m. in. do dołączania aparatury pomiarowej dostarczającej dane
 z wykorzystaniem dostępnych interfejsów, implementacji logiki przetwarzania
 brzegowego w ramach Node-RED, instalacji dodatkowego oprogramowania
-(w przypadku wykonanego prototypu zainstalowano przykładowo serwer pośrednika MQTT Mosquitto na RaspberryPi).
+(w przypadku wykonanego prototypu na RaspberryPi zainstalowano przykładowo 
+serwer pośrednika MQTT --- Mosquitto \cite{mosquitto-doc}).
 
 
 \subsubsection{Konfiguracja usług w chmurze}
@@ -1570,15 +1654,16 @@ edytora w przeglądarce (tylko dla języka JavaScript). Dla większej wygody
 kod źródłowy można rozwijać lokalnie w jednym ze wspieranych języków programowania
 i przesyłać do chmury z wykorzystaniem narzędzia Function Core Tools.
 Żeby umożliwić wyzwalanie funkcji przez wiadomości (dane) zbierane w usłudze IoT Hub,
-a także zapis danych do bazy Blob Storage należy w ustawieniach IoT Hub
-skonfigurować trasowanie (integrację zasobów) przez zakładkę o nazwie Message Routing.
+a także zapis danych do bazy Blob Storage, należy w ustawieniach IoT Hub
+skonfigurować trasowanie (integrację zasobów) przez zakładkę o nazwie Message Routing
+\cite{iot-hub-doc}, \cite{blob-storage-doc}, \cite{functions-doc}.
 
 W implementacji projektu postanowiono także wykorzystać bazę InfluxDB
 osadzoną w chmurze InfluxDB Cloud. Po założeniu konta w usłudze i wybraniu
 modelu rozliczeniowego można od razu przejść do zarządzania zainstalowaną
 i uruchomioną już bazą za pośrednictwem aplikacji przeglądarkowej. Panel
 umożliwia m. in. definiowanie kontenerów na dane, edycję ustawień,
-realizację zapytań do bazy wraz z podstawową wizualizacją wyników.
+realizację zapytań do bazy wraz z podstawową wizualizacją wyników \cite{influx-db}.
 
 
 \subsubsection{Instalacja i konfiguracja narzędzia do wizualizacji}\label{grafana-conf}
@@ -1604,7 +1689,8 @@ można konfigurować użytkowników, dodawać źródła danych i tworzyć panele
 typu InfluxDB, podać adres URL bazy, nazwę organizacji i kontenera, a także wpisać
 znacznik (ang. \emph{token}), który można wygenerować w panelu
 zarządzania bazą InfluxDB. Znacznik to specjalny, poufny ciąg znaków, który
-umożliwia klientom (aplikacjom i/lub użytkownikom) uwierzytelnianie i autoryzację.
+umożliwia klientom (aplikacjom i/lub użytkownikom) uwierzytelnianie i autoryzację
+\cite{grafana-doc}, \cite{influx-db}.
 
 
 \subsubsection{Integracja bram IIoT z usługami chmurowymi}
@@ -1624,7 +1710,8 @@ Węzeł IoT Hub wymaga dostarczenia danych połączenia w postaci nazwy hosta,
 identyfikatora urządzenia i klucza dostępu, które można znaleźć w ustawieniach
 zarejestrowanego urządzenia w portalu Azure. Węzeł służący do połączenia z
 InfluxDB Cloud wymaga dostarczenia tych samych danych, co w przypadku integracji
-aplikacji Grafana (patrz: rozdział \ref{grafana-conf}).
+aplikacji Grafana (patrz: rozdział \ref{grafana-conf}) \cite{node-red-flows},
+\cite{influx-db}, \cite{iot-hub-doc}.
 
 \subsection{Kategorie użytkowników}
 
@@ -1649,24 +1736,27 @@ W systemie wyróżniono następujące kategorie użytkowników:
 
 \subsection{Kwestie bezpieczeństwa}
 
+W ramach podrozdziału rozpatrzono zagadnienia niezawodności, ograniczenia dostępu 
+i szyfrowania komunikacji w systemie.
+
 \subsubsection{Niezawodność}
 
-Zagadnienie niezawodności systemu posiada dwa aspekty --- sprzętowy i programowy.
-Żeby zapewnić poprawne działanie w warstwie sprzętowej, należy w pierwszej
+Problematyka niezawodności systemu posiada dwa aspekty --- sprzętowy i programowy.
+Żeby zapewnić poprawne działanie w warstwie sprzętowej, warto w pierwszej
 kolejności dokładnie przemyśleć dobór urządzeń. Ich specyfikację należy zestawić
-z potencjalnymi warunkami, w których przyjdzie ich pracować. Te zaś w środowisku
-przemysłowym mogą być różne. Mogą w nim bowiem występować zakłócenia elektromagnetyczne,
+z warunkami, w których potencjalnie przyjdzie im pracować. W otoczeniu przemysłowym
+mogą występować bowiem różne zagrożenia: zakłócenia elektromagnetyczne,
 mechaniczne i chemiczne mające realny wpływ na pracę urządzeń elektronicznych.
 Ponadto dla uzyskania większego poziomu bezawaryjności można rozważyć
 instalację źródeł awaryjnego zasilania, wprowadzenie urządzeń nadmiarowych (redundantnych)
 przejmujących zadania uszkodzonych urządzeń, a także układów typu \emph{watchdog}
-wykrywających awarie.
+wykrywających awarie \cite{isp}.
 
 Drogą do osiągnięcia niezawodności w warstwie programowej jest przede wszystkim sporządzanie
 odpowiedniej liczby testów automatycznych oraz przeprowadzenie testów manualnych
 na poziomie jednostkowym, integracyjnym i systemowym.
-Można również rozważyć użycie programów i/lub urządzeń typu \emph{watchdog}
-wykrywających potencjalne awarie i wyzwalające przewidziane reakcje systemu,
+W tym przypadku również należy również rozważyć użycie programów i/lub urządzeń typu \emph{watchdog}
+wykrywających awarie i wyzwalające przewidziane reakcje systemu --- 
 na przykład ponowne uruchomienie urządzeń, próba ponownego nawiązania połączenia, itp.
 
 \subsubsection{Ograniczenie dostępu}
@@ -1676,26 +1766,25 @@ uprawnionym można również rozpatrywać na płaszczyźnie sprzętowej i progra
 Dla warstwy sprzętowej należy rozważyć wydzielenie specjalnych pomieszczeń
 dla używanych urządzeń, do których dostęp będzie kontrolowany i monitorowany
 przez wyznaczony do tego personel i odpowiednie systemy monitoringu.
-
 Ograniczenie dostępu do płaszczyzny programowej polega przede wszystkim na zastosowaniu
 metod uwierzytelniania i autoryzacji oraz wykorzystaniu sieciowych mechanizmów zabezpieczeń
 (zapora ogniowa, oprogramowanie antywirusowe, itd.). Uwierzytelnianie i autoryzacja z wykorzystaniem
 identyfikatorów i haseł powinny znaleźć zastosowanie zarówno w warstwie brzegowej,
 jak i biznesowej systemu. Wymagane jest, aby hasła posiadały odpowiedni stopień skomplikowania
-i były często aktualizowane.
+i były często aktualizowane \cite{situation-aware-iot-gateway}.
 
 Uwierzytelnianiu i autoryzacji w obrębie zrealizowanego prototypu podlega dostęp do: systemów operacyjnych
 bram IIoT, aplikacji Node-RED, portali zarządzania chmurą Azure i InfluxDB Cloud,
 komputerów klienckich i aplikacji Grafana. Komponenty integrujące się z chmurą
 (Node-RED i Grafana) uzyskują dostęp na podstawie wspomnianego już znacznika ---
 specjalnego ciągu znaków pełniącego rolę klucza. Znaczniki można w każdej
-chwili dezaktywować lub wycofywać poszczególne uprawnienia. Analogicznie przedstawia się
+chwili dezaktywować. Analogicznie przedstawia się
 sytuacja z kontami użytkowników w chmurach. Nieco więcej wysiłku może wymagać
 administracja kontami na poziomie urządzeń przedsiębiorstwa. W niektórych
 przypadkach możliwe jest wykorzystanie mechanizmu pojedynczego logowania
 (ang. \emph{Single Sign-On}, w skrócie: SSO) zintegrowanego z chmurą, np.
 w ramach usług Azure Active Directory czy AWS Directory Service.
-Dla podniesienia poziomu bezpieczeństwa można także rozważyć wprowadzenie
+Dla podniesienia poziomu bezpieczeństwa należy także rozważyć wprowadzenie
 mechanizmów ochrony dostępu na poziomie protokołów używanych do komunikacji
 w warstwie brzegowej, np. ustawienie hasła w serwerze pośredniczącym MQTT.
 
@@ -1712,19 +1801,19 @@ Powinno się także rozważyć szyfrowanie komunikacji na poziomie sieci warstwy
 W tym przypadku można jednak napotkać pewne problemy, gdyż nie wszystkie urządzenia
 są w stanie implementować algorytmy kryptograficzne ze względu
 na ograniczone zasoby, jak również nie wszystkie protokoły posiadają specyfikację
-odnoszącą się do zagadnień bezpieczeństwa.
+odnoszącą się do zagadnień bezpieczeństwa \cite{isp}, \cite{intro-to-iot}.
 
 Wykorzystane na potrzeby prototypu chmury Azure i InfluxDB narzucają szyfrowanie
 komunikacji z wykorzystaniem protokołu TLS. Narzędzia Node-RED i Grafana
 umożliwiają konfigurację certyfikatów SSL i tym samym użycie protokołu
 HTTPS do komunikacji z serwerem aplikacji w ramach przeglądarki. Specyfikacje
 protokołów MQTT, CoAP i Modbus/TCP również przewidują użycie protokołu TLS albo
-DTLS (w przypadku, gdy protokołem warstwy transportowej jest UDP).
+DTLS (w przypadku, gdy protokołem warstwy transportowej jest UDP)
+\cite{mqtt-tls}, \cite{modbus-tls}, \cite{coap-tls}.
 
-\newpage
 \section{Weryfikacja i walidacja}\label{testy}
 
-W niniejszym rozdziale opisano dwa rodzaje testów przeprowadzone 
+W niniejszym rozdziale opisano dwa rodzaje testów przeprowadzonych
 w celu weryfikacji i walidacji działania systemu: testy jednostkowe oraz systemowe.
 
 \subsection{Testy jednostkowe}
@@ -1742,7 +1831,7 @@ Na potrzeby weryfikacji poprawności działania całego systemu oraz sprawdzenia
 czy spełnia on zdefiniowane wymagania (walidacja), uruchomiono w warunkach
 domowych zrealizowany prototyp systemu o konfiguracji przedstawionej na rys. \ref{fig:network}.
 Zbudowano sieć komputerową na bazie Ethernet i WiFi składającą się z dwóch
-podsieci: 10.42.0.0/24 przeznaczona dla urządzeń przewodowych oraz
+podsieci: 10.42.0.0/24 przeznaczonej dla urządzeń przewodowych oraz
 192.168.1.0/24, w ramach której komunikują się urządzenia bezprzewodowe.
 Bramy RaspberryPi oraz Simatic IOT2020 nie pełnią w tej konstelacji roli
 bram w sensie sieci, lecz w sensie funkcjonalnym bram IIoT, czyli gromadzenia danych, przetwarzania
@@ -1759,7 +1848,7 @@ Właściwą bramą sieciową udostępniającą połączenie z Internetem jest w 
 Na komputerach o adresach 192.168.1.3, 10.42.0.4 i 10.42.0.5 zainstalowano i uruchomiono
 autorskie oprogramowanie symulujące urządzenia pomiarowe, które generuje kolejne dane
 i przesyła je do bram z wykorzystaniem odpowiednich protokołów. Program napisano
-w języku Java. Zaprojektowano prostą architekturę przedstawioną na rys. \ref{fig:iot-sim}.
+w języku Java. Jego stosunkowo prostą architekturę przedstawiono na rys. \ref{fig:iot-sim}.
 Rozszerzanie działania symulatora odbywa się przez implementację interfejsów
 i klasy abstrakcyjnej znajdujących się na diagramie. Implementacje interfejsu \texttt{MeasurementSimulator}
 mają za zadanie generować kolejne wartości pomiarów w postaci obiektów typu
@@ -1770,23 +1859,23 @@ darmowe biblioteki: Eclipse Paho (MQTT), Apache PLC4J (Modbus/TCP), Eclipse Cali
 \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{iot-sim-architecture.png}
-      \caption{Schemat ideowy systemu uruchomionego na potrzeby testów systemowych}
+      \caption{Diagram przedstawiający architekturę oprogramowania symulatora danych pomiarowych}
       \label{fig:iot-sim}
 \end{figure}
 
 Implementacja symulatora parametrów powietrza dla każdego z trzech pomieszczeń 
 pozwala na zdefiniowanie listy kroków
-symulacji, które wykonywane przez określoną liczbę wywołań metody
-\texttt{generateNext}. Dla każdego kroku należy zdefiniować jeden z trybów pracy:
+symulacji, które są wykonywane przez określoną liczbę wywołań metody
+\texttt{generateNext}. Dla każdego kroku należy wybrać jeden z trybów pracy:
 \begin{itemize}
       \itemsep0em
-      \item \texttt{OSCILLATE} --- pseudolosowa oscylacja (w ograniczonym przedziale),
-      \item \texttt{DROP} --- spadek o pseudolosową wartość (z~ograniczonego przedziału),
-      \item \texttt{GROW} --- wzrost o pseudolosową wartość (z~ograniczonego przedziału).
+      \item \texttt{OSCILLATE} --- oscylacja (przyrosty pseudolosowe, w ograniczonym przedziale),
+      \item \texttt{DROP} --- spadek (o pseudolosową wartość z~ograniczonego przedziału),
+      \item \texttt{GROW} --- wzrost (o pseudolosową wartość z~ograniczonego przedziału).
 \end{itemize}
-\noindent W ten sposób możliwe jest definiowanie przebiegów o konkretnym kształcie, aczkolwiek
-wyglądającym naturalnie ze względu na pewien stopień losowości. Wygenerowane 
-dane są przesyłane cyklicznie do serwera pośredniczącego MQTT znajdującego
+\noindent W ten sposób możliwe jest definiowanie przebiegów o konkretnym kształcie,
+który jednocześnie sprawia wrażenie naturalnego ze względu na pewien stopień losowości. Wygenerowane 
+wartości temperatury i wilgotności są przesyłane cyklicznie do serwera pośredniczącego MQTT znajdującego
 się pod adresem 192.168.1.2:1883 (RaspberryPi).
 
 Symulator danych dotyczących jakości wytworzonych produktów przyjmuje jako parametr
@@ -1798,9 +1887,9 @@ do serwera CoAP znajdującego się pod adresem 192.168.1.2:5683 (RaspberryPi.)
 Symulator stanu przepływomierzy i poziomu cieczy w zbiorniku głównym generuje 
 w każdym kroku symulacji nowy stan dla przepływomierzy. Od poziomu cieczy w zbiorniku głównym
 odejmowana jest następnie wartość ostatniego przyrostu zużycia cieczy w każdej ze stref. 
-Zbiornik jest automatycznie uzupełniony po przekroczeniu zdefiniowanej wartości minimalnej.
+Zbiornik jest automatycznie uzupełniany po przekroczeniu zdefiniowanej wartości minimalnej.
 Symulator pełni zatem jednocześnie funkcję atrapy sterownika PLC. Cztery wygenerowane
-wartości są zapisywane cyklicznie do węzła podrzędnego Modbus/TCP nasłuchującego
+wartości są zapisywane cyklicznie do rejestrów węzła podrzędnego Modbus/TCP nasłuchującego
 pod adresem 10.42.0.5:502 (na tym samym komputerze, co symulator). Dane 
 z atrapy PLC są odczytywane przez bramę Simatic IOT2020 będącą węzłem nadrzędnym, 
 znajdującą się pod adresem 10.42.0.3. 
@@ -1839,13 +1928,13 @@ stwierdzono.
 
 Przeprowadzone testy pozwoliły na weryfikację działania systemu, a także na
 walidację --- sprawdzenie, czy spełnione są zdefiniowane wymagania. Prototypowa 
-konfiguracja realizuje bowiem zadania zbierania, przetwarzania, składowania,
+konfiguracja realizuje zadania zbierania, przetwarzania, składowania,
 udostępniania i wizualizacji danych pomiarowych. Wykorzystano określone rozwiązania
 IoT i~usługi chmurowe. Użycie bramy Simatic IOT2020 i protokołu Modbus pozwoliło na dostosowanie 
-do środowiska przemysłowego w zakresie podstawowym. Oprogramowanie Node-RED
+do środowiska przemysłowego w podstawowym zakresie. Oprogramowanie Node-RED
 realizuje wymaganie ogólności, jako że umożliwia integrację różnych urządzeń i protokołów.
 Usługi chmurowe pozwalają na stosunkowo proste skalowanie zasobów. Zapewniono
-podstawowy poziom bezpieczeństwa --- dostęp do komponentów systemu wymaga uwierzytelnienia
+także podstawowy poziom bezpieczeństwa --- dostęp do komponentów systemu wymaga uwierzytelnienia
 z użyciem hasła, zaś komunikacja za pośrednictwem Internetu odbywa się z wykorzystaniem mechanizmów
 szyfrowania.
 
@@ -1857,7 +1946,7 @@ zbieranie danych pomiarowych w środowisku przemysłowym, a także ich składowa
 udostępnianie i wizualizacja. Przyjęto założenie, że należy w tym celu wykorzystać możliwości
 oferowane przez IoT i chmurę obliczeniową. W rozdziale \ref{ogolna-koncepcja}
 przedstawiono uniwersalny model architektury systemu, który opracowano na podstawie
-dostępnego w literaturze trójwarstwowego wzorca systemów IIoT oraz referencyjnego
+spotykanego w literaturze trójwarstwowego wzorca systemów IIoT oraz referencyjnego
 modelu architektury RAMI 4.0 (patrz: rozdział \ref{iiot}). Zaproponowany model
 posiada strukturę komponentową podzieloną na trzy grupy ze względu na miejsce wdrożenia:
 środowisko przemysłowe (bramy IIoT), chmura i urządzenia klienckie. 
@@ -1869,7 +1958,7 @@ na podstawie przeglądu dostępnych urządzeń, rozwiązań technicznych i  narz
 Żeby umożliwić weryfikację działania systemu, 
 na potrzeby prototypu zdefiniowano konkretne scenariusze biznesowe, które 
 podlegały implementacji: pomiar parametrów powietrza (temperatury i wilgotności),
-wyznaczanie wskaźnika jakości produkcji na podstawie ewaluacji produktów, 
+wyznaczanie wskaźnika jakości produkcji na podstawie wyników ewaluacji produktów, 
 wizualizacja stanu zużycia chemii przemysłowej. Wykorzystano urządzenia
 RaspberryPi i Siemens Simatic IOT2020, które pełnią rolę bram IIoT. Zbieranie
 danych pomiarowych w systemie odbywa się z wykorzystaniem sieci Ethernet oraz WiFi.
@@ -1879,10 +1968,10 @@ umożliwia darmowe oprogramowanie Node-RED zainstalowane na bramach IIoT.
 Realizuje ono przetwarzanie brzegowe i przesył danych do chmury za pośrednictwem Internetu.
 Pozwala na elastyczną modyfikację i rozbudowę logiki przetwarzania.
 W warstwie biznesowej systemu użyto chmury Microsoft Azure. W celu 
-gromadzenia danych przesyłanych z bram użyto usługi IoT Hub, zaś dalsze
+gromadzenia danych przesyłanych z bram zastosowano usługę IoT Hub, zaś dalsze
 przetwarzanie, składowanie i udostępnianie danych realizują usługi Functions i Blob Storage
 oraz baza danych szeregów czasowych InfluxDB osadzona w chmurze InfluxDB Cloud. 
-Do wizualizacji danych użyto darmowego narzędzia Grafana, które integruje się z bazą InfluxDB i
+Do wizualizacji danych posłużono się darmowym narzędziem Grafana, które integruje się z bazą InfluxDB i
 umożliwia tworzenie wykresów, diagramów, tabel, wskaźników, jak również własnych
 komponentów graficznych.
 
@@ -1891,12 +1980,12 @@ połączenia wiedzy ze stosunkowo szerokiej dziedziny, którą stanowią: urząd
 systemy pomiarowe, sieci komputerowe, przemysłowe systemy informatyczne, aplikacje internetowe, IoT i chmura. 
 Zasadniczym problemem technicznym okazała się być integracja komponentów systemu, co 
 można wnioskować na podstawie wychwyconych błędów wymienionych w rozdziale 
-\ref{testy-systemowe}. Dobrym podejściem okazało się prototypownie z wykorzystaniem
+\ref{testy-systemowe}. Dobrą decyzją było prototypownie z wykorzystaniem
 mikrokomputera RaspberryPi w pierwszej kolejności. Choć nie jest to urządzenie 
 dedykowane dla przemysłu, to jednak stosunkowo duża moc obliczeniowa i 
 dostępne wsparcie programistyczne przyniosły korzyści w warunkach testowych, rozwojowych.
 Brama IOT2020 jest przeznaczona do zastosowań przemysłowych, lecz nie posiada 
-tak dużej mocy obliczeniowej oraz wsparcia dla najnowszego oprogramowania (m. in. Node.js),
+tak dużej mocy obliczeniowej oraz wsparcia dla najnowszych wersji oprogramowania (m. in. Node.js),
 co znacząco wydłużyło czas implementacji i wdrażania, jak również wymusiło 
 zrezygnowanie z niektórych bibliotek Node-RED. Zaobserwowane korzyści wynikające
 z zastosowania chmury to przede wszystkim brak konieczności utrzymywania infrastruktury
@@ -1922,7 +2011,7 @@ na realizację w zasadzie dowolnej funkcjonalności. Dostępne rozwiązania tech
 umożliwiają także przepływ informacji w kierunku od chmury do warstwy brzegowej,
 co może być pożyteczne w wielu scenariuszach, jednak jednocześnie podnosi 
 poziom zagrożenia, jako że systemy zewnętrzne mogłyby mieć wpływ na działanie 
-układów sterowania, zaś sieć publiczna ułatwia dostęp potencjalnym przestępcom. 
+układów sterowania, zaś sieć publiczna ułatwia dostęp dla potencjalnych przestępców. 
 Implementacji takiego modelu należy zatem dokonywać bardzo rozważnie. 
 Przedstawiona architektura opiera się na koncepcji bram IIoT jako pośrednika 
 komunikacji. Istnieje podejście alternatywne, w myśl którego przetwarzanie brzegowe
@@ -1930,7 +2019,7 @@ odbywa się w chmurze, zaś urządzenia komunikują się z nią bezpośrednio. T
 jednak zwrócić uwagę na fakt, że nie wszystkie urządzenia są w stanie implementować 
 kompletne stosy protokołów. Brak elementu pośredniczącego w postaci bramy utrudnia 
 sprawowanie kontroli nad systemem. Stąd dla przemysłu można rozważyć 
-rozwiązanie co najwyżej o charakterze hybrydowym. 
+rozwiązanie co najwyżej o charakterze hybrydowym \cite{analysis-of-different-iot-protocols}. 
 
 \newpage
 \printbibliography
