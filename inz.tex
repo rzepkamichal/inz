@@ -29,8 +29,15 @@ numbers=left,
     xleftmargin=2.5cm,
     xrightmargin=1.5cm
 }
+\usepackage[page]{appendix} % toc,
+\renewcommand{\appendixtocname}{Dodatki}
+\renewcommand{\appendixpagename}{Dodatki}
+\renewcommand{\appendixname}{Dodatek}
+
 \addbibresource{inz.bib}
 \graphicspath{ {./images/} }
+
+
 
 \newcommand{\miesiac}{%
   \ifcase\the\month
@@ -56,6 +63,21 @@ numbers=left,
 \newcommand{\polsl}{Politechnika Śląska}
 \newcommand{\wydzial}{Wydział Automatyki, Elektroniki i Informatyki}
 
+\fancypagestyle{NumeryStronNazwyRozdzialow}{%
+      \fancyhf{}
+      \fancyhead[LE]{\thepage}
+      \fancyhead[RE]{\nouppercase{\leftmark}}
+      \fancyhead[LO]{\nouppercase{\leftmark}}
+      \fancyhead[RO]{\thepage}
+}
+
+\fancypagestyle{skroty}{%
+      \fancyhf{}
+      \fancyhead[LE]{\thepage}
+      \fancyhead[RE]{Spis skrótów i symboli}
+      \fancyhead[LO]{Spis skrótów i symboli}
+      \fancyhead[RO]{\thepage}
+}
 
 \begin{document}
 
@@ -165,13 +187,7 @@ Gliwice, dnia \today
       \fi}
 \makeatother
 
-\fancypagestyle{NumeryStronNazwyRozdzialow}{%
-      \fancyhf{}
-      \fancyhead[LE]{\thepage}
-      \fancyhead[RE]{\nouppercase{\leftmark}}
-      \fancyhead[LO]{\nouppercase{\leftmark}}
-      \fancyhead[RO]{\thepage}
-}
+
 \pagestyle{NumeryStronNazwyRozdzialow}
 
 \tableofcontents
@@ -531,7 +547,7 @@ rozwiązania należą: łatwa skalowalność, konfigurowalność i duży wybór 
 ułatwiających utrzymanie infrastruktury informatycznej. Spośród wad należy wymienić
 zależność od firm trzecich (dostawców chmury) oraz brak pełnej kontroli nad
 posiadaną infrastrukturą. Niektóre firmy rozwijają też podobne, lecz dostępne
-wyłącznie lokalnie, rozbudowane platformy infrastruktury informatycznej, zwane \textbf{chmurą prywatną}.
+wyłącznie w sieci prywatnej, rozbudowane platformy infrastruktury informatycznej, zwane \textbf{chmurą prywatną}.
 Tego typu rozwiązania są kosztowne, lecz dają pełną kontrolę nad posiadanymi zasobami \cite{iot-hype-to-reality}.
 
 W ramach swoich usług dostawcy chmury udostępniają m.in.: przetwarzanie danych,
@@ -553,8 +569,8 @@ nazywa się rozwiązania IoT znajdujące zastosowanie w przemyśle.
 IIoT ma umożliwić lepsze zrozumienie procesów
 przemysłowych, a w związku z tym zapewnić większą wydajność i zrównoważenie
 produkcji. Innymi słowy, IIoT ma za zadanie ułatwić integrację \textbf{technologii operacyjnych}
-(ang. \emph{Operation Technologies}, w skrócie: OT) oraz
-\textbf{technologii informatycznych} (ang. \emph{Information Technologies}, w skrócie: IT)
+(ang. \emph{Operation Technologies}, w~skrócie:~OT) oraz
+\textbf{technologii informatycznych} (ang. \emph{Information Technologies}, w~skrócie:~IT)
 \cite{iiot-challenges-opportunities-directions}.
 Technologie operacyjne to systemy nadzorujące przebieg procesów przemysłowych,
 zaś technologie informatyczne to systemy, których rolą jest jest gromadzenie
@@ -633,7 +649,7 @@ tzw. czwartą rewolucję przemysłową. Domenę Przemysłu 4.0 opisuje na wysoki
 model architektury RAMI 4.0 (ang. \emph {Reference Architectural
       Model Industrie 4.0}), któremu ustępuje
 obecnie przestarzały model piramidowy opisany w rozdziale \ref{arch-przemysl}.
-Architektura RAMI 4.0 została przedstawiona na rys. \ref{fig:rami}.
+Architektura RAMI~4.0 została przedstawiona na rys. \ref{fig:rami}.
 Jest to model trójwymiarowy opisujący trzy podstawowe aspekty Przemysłu 4.0.
 Na osi o nazwie ,,Poziomy hierarchii`` umieszczono poziomy funkcjonowania
 jednostek produkcyjnych. Podział ten wywodzi się ze standardów IEC 62264 i
@@ -2081,5 +2097,52 @@ rozwiązanie co najwyżej o charakterze hybrydowym \cite{analysis-of-different-i
 
 \newpage
 \printbibliography
+
+\newpage
+
+
+
+\newpage
+\listoffigures
+
+\newpage
+\renewcommand{\lstlistlistingname}{Spis listingów}
+\lstlistoflistings
+
+\newpage
+\pagestyle{skroty}
+\section*{Spis skrótów i symboli}
+
+\begin{description}
+      \item[IoT] Internet Rzeczy, ang. \emph{Internet of Things} ,
+      \item[IIoT] Przemysłowy Internet Rzeczy, ang. \emph{Industrial Internet of Things},
+      \item[DAQ] Akwizycja Danych, ang. \emph{Data Acquisition},
+      \item[AKPiA] Aparatura Kontrolno-Pomiarowa i Automatyki,
+      \item[CPS] Systemy Cybernetyczno-Fizyczne, ang. \emph{Cyber-Physical Systems},
+      \item[DCS] Rozproszony System Sterowania, ang. \emph{Distributed Control System},
+      \item[RTS] Systemy Czasu Rzeczywistego, ang. \emph{Real-Time Systems},
+      \item[RTE] Ethernet Czasu Rzeczywistego, ang. \emph{Real-Time Ethernet},
+      \item[TSN] ang. \emph{Time-Sensitive Networking},
+      \item[RAMI 4.0] Referencyjny Model Architektury Przemysł 4.0, ang. \emph{Reference Architectural Model Industrie 4.0},
+      \item[MES] System Zarządzania Produkcją, ang. \emph{Manufacturing Execution System},
+      \item[SCADA] ang. \emph{Supervisory Control And Data Acquisition},
+      \item[HMI] Panel Sterowniczy, ang. Human-Machine Interface,
+      \item[ERP] Planowanie Zasobów Przedsiębiorstwa, ang. \emph{Enterprise Resource Planning},
+      \item[SAP] ang. \emph{System Analytics and Product},
+      \item[CRM] Zarządzanie Relacjami z Klientami ang. \emph{Customer Relationship Management},
+      \item[WSN] Bezprzewodowa Sieć Czujników, ang. \emph{Wireless Sensor Network},
+      \item[WSAN] Bezprzewodowa Sieć Czujników i Urządzeń Wykonawczych, ang. \emph{Wireless Sensor and Actuators Network},
+      \item[SoC] ang. \emph{System on a Chip}
+      \item[PRU] Programowalna Jednostka Czasu Rzeczywistego, ang. \emph{Programmable Real-Time Unit},
+      \item[GPIO] Wejście-Wyjście Uniwersalnego Przeznaczenia, ang. \emph{General Purpose input/output},
+      \item[M2M] Maszyna-Maszyna, ang. \emph{Machine to Machine},
+      \item[AWS] ang. \emph{Azure Web Services},
+      \item[OT] Technologia Operacyjna, ang. \emph{Operational Technology},
+      \item[IT] Technologia Informatyczna, ang. \emph{Information Technology},
+      \item[PLC] Programowalny Sterownik Logiczny, ang. \emph{Programmable Logic Controller},
+      \item[KPI] Kluczowe Wskaźniki Efektywności, ang. \emph{Key Performance Indicators},
+      \item[FTQ] ang. \emph{First Time Quality},
+      \item[REST] ang. \emph{Representational State Transfer}.
+\end{description}
 
 \end{document}

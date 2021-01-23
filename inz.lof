@@ -1,0 +1,40 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {polish}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Model piramidowy informatycznych systemów przemysłowych}}{12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2}{\ignorespaces Trójwarstwowy wzorzec architektury systemów IIoT}}{17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3}{\ignorespaces Model architektury RAMI 4.0}}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4}{\ignorespaces Diagram przypadków użycia systemu}}{24}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5}{\ignorespaces Ogólna koncepcja architektury systemu}}{26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6}{\ignorespaces Komponentowy model architektury systemu}}{28}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7}{\ignorespaces Model oprogramowania bramy IIoT}}{29}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {8}{\ignorespaces Model implementacji prototypu}}{31}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {9}{\ignorespaces Struktury danych używane w warstwie biznesowej systemu}}{34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {10}{\ignorespaces Model \texttt {Bufora Brzegowego}}}{35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {11}{\ignorespaces Diagram przepływu Node-RED realizujący odczyt danych ze sterownika PLC}}{36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {12}{\ignorespaces Diagram przepływu Node-RED realizujący zbieranie danych dostarczanych z czujników mierzących parametry powietrza}}{37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {13}{\ignorespaces Diagram przepływu Node-RED realizujący zbieranie danych dostarczanych ze stacji kontroli jakości}}{37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {14}{\ignorespaces Zrzut ekranu przedstawiający tabelę urządzeń zarejestrowanych w usłudze IoT Hub}}{38}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {15}{\ignorespaces Zrzut ekranu przedstawiający tabelę InfluxDB zawierającą szeregi czasowe pomiaru temperatury}}{40}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {16}{\ignorespaces Zrzut ekranu przedstawiający tabelę InfluxDB zawierającą szeregi czasowe pomiaru wilgotności}}{40}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {17}{\ignorespaces Zrzut ekranu z panelu Grafana wizualizujący wyniki zapytania przedstawione na listingu \ref {lst:flux}}}{41}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {18}{\ignorespaces Schemat ideowy systemu uruchomionego na potrzeby testów systemowych}}{48}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {19}{\ignorespaces Diagram przedstawiający architekturę oprogramowania symulatora danych pomiarowych}}{48}%

@@ -1,0 +1,150 @@
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.55\textwidth]{piramida.png}
+      \caption{Model piramidowy informatycznych systemów przemysłowych}
+      \label{fig:piramida}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.6]{iiot_arch.png}
+      \caption{Trójwarstwowy wzorzec architektury systemów IIoT}
+      \label{fig:iiot-arch}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{RAMI4.png}
+      \caption{Model architektury RAMI 4.0}
+      \label{fig:rami}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{use-case.png}
+      \caption{Diagram przypadków użycia systemu}
+      \label{fig:use-case}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{koncepcja.png}
+      \caption{Ogólna koncepcja architektury systemu}
+      \label{fig:general-idea}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{arch.png}
+      \caption{Komponentowy model architektury systemu}
+      \label{fig:arch}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{oprog_bramy.png}
+      \caption{Model oprogramowania bramy IIoT}
+      \label{fig:gateway_soft}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{impl.png}
+      \caption{Model implementacji prototypu}
+      \label{fig:impl}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.6]{data_structs.png}
+      \caption{Struktury danych używane w warstwie biznesowej systemu}
+      \label{fig:data-structs}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+      \centering
+      \includegraphics[scale=0.4]{edge_buffer.png}
+      \caption{Model \texttt{Bufora Brzegowego}}
+      \label{fig:edge-buffer}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.75\textwidth]{flow3.png}
+      \caption{Diagram przepływu Node-RED realizujący odczyt danych ze sterownika PLC}
+      \label{fig:flow3}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{flow1.png}
+      \caption{Diagram przepływu Node-RED realizujący zbieranie danych dostarczanych z czujników mierzących parametry powietrza}
+      \label{fig:flow1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{flow2.png}
+      \caption{Diagram przepływu Node-RED realizujący zbieranie danych dostarczanych ze stacji kontroli jakości}
+      \label{fig:flow2}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.8\textwidth]{iot_hub_1.png}}
+      \caption{Zrzut ekranu przedstawiający tabelę urządzeń zarejestrowanych w usłudze IoT Hub}
+      \label{fig:iot_hub_1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.9\textwidth]{influxDB_1.png}}
+      \caption{Zrzut ekranu przedstawiający tabelę InfluxDB zawierającą szeregi czasowe pomiaru temperatury}
+      \label{fig:influx_1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.9\textwidth]{influxDB_2.png}}
+      \caption{Zrzut ekranu przedstawiający tabelę InfluxDB zawierającą szeregi czasowe pomiaru wilgotności}
+      \label{fig:influx_2}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \fbox{\includegraphics[width=0.9\textwidth]{grafana_1.png}}
+      \caption{Zrzut ekranu z panelu Grafana wizualizujący wyniki zapytania przedstawione na listingu \ref{lst:flux}}
+      \label{fig:grafana-1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.9\textwidth]{network.png}
+      \caption{Schemat ideowy systemu uruchomionego na potrzeby testów systemowych}
+      \label{fig:network}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{iot-sim-architecture.png}
+      \caption{Diagram przedstawiający architekturę oprogramowania symulatora danych pomiarowych}
+      \label{fig:iot-sim}
+\end{figure}
